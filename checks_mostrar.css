@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+.cont-graf{
+	position: absolute;
+  	border-radius: 10px 10px;
+  	border-radius: 10px 10px;
+  	background-color: #000;
+  	padding: 1px;
+  	width: 920px;
+  	margin-left: 10px;
+  	top:60px;
+}
+.check-graf{
+	background-color: #000000;
+}
+.cont-botonera{
+  	border-radius: 10px 10px;
+  	border-radius: 10px 10px;
+  	background-color: #000;	
+	padding: 1em 1em;
+	margin: 0 auto;
+	width: 580px;
+}
+.botones{
+	margin-left: 0px;
+}
+.botonico{
+    display: inline-block;
+    transform: scaleY(2) scaleX(2);
+    margin-left:50px;
+    cursor: pointer;
+}
+.botonico:hover{
+	color:#35ff35;
+}

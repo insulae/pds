@@ -1,0 +1,178 @@
+@CHARSET "UTF-8";
+
+/* ################# AVION ################# */
+.cont-aviones-fondo{
+	position: absolute;
+  	border-radius: 10px 10px;
+  	background-color: #2a2c31;
+  	top:60px;
+  	margin-left: 5px;
+}
+.cont-aviones{
+	position:relative;
+	background-color: black;
+	margin: 10px;
+	padding: 10px;
+	width:450px;
+	height: 380px;
+	overflow-y:auto;
+}
+
+
+.cont-aviones-botonera{
+	position:relative;
+	background-color: black;
+	margin: 10px;
+	width:450px;
+	height: 50px;
+	padding: 2px;
+}
+
+.cont-logo{
+	position:relative;
+	top:350px;
+	left:620px;
+	height: 50px;
+	width: 50px;
+}
+
+
+.input-avion{
+	position:relative;
+	background-color: #dadada;
+	width: 200px;
+	height: 40px;
+	border-radius: 3px 3px;
+	padding-left: 10px;
+	margin-top: 2px;	
+	margin-left: 2px;
+}
+.input-avion option {
+	color:black;
+}
+.input-avion:focus {
+  border-color: #ffffff;
+  outline: 0;
+  box-shadow: inset 0 1px 1px #3791ff, 0 0 20px #3791ff;
+}
+
+.add-avion{
+	position:relative;
+	color:#fff;
+	left: 380px;
+	bottom:30px;
+	cursor: pointer;
+    display: inline-block;
+    transform: scaleY(1.5) scaleX(1.5);	
+}
+.add-avion:hover{
+	color:#35ff35;
+}
+
+.aviones-titulos{
+	font-weight: bold;
+
+}
+
+/* ################# AVION TABLA ################# */
+
+.tr-avion{
+	text-align: center;
+	font-size: 1.5em;
+	height: 60px;
+	background: #565656;
+	cursor: pointer;
+}
+
+.tr-avion-activo{
+	text-align: center;
+	font-size: 1.5em;
+	height: 60px;
+	background: #8ae234;
+	cursor: pointer;
+	color:black;
+}
+
+
+.cont-aviones th{
+	font-size: 1em;
+	width:70px; 
+	text-align: center;
+	background-color: #375a7f;
+	font-weight: normal;
+	border-bottom: 2px;
+	border-bottom-style: solid;
+	border-color: #000;
+}
+
+.cont-aviones td{
+	border-bottom: 2px;
+	border-bottom-style: solid;
+	border-color: #000;
+}
+
+.btn-accion-eliminar, .btn-accion-editar{
+	display: inline-block;
+    transform: scaleY(1.2) scaleX(1.2);
+    cursor: pointer;
+}
+.btn-accion-eliminar{
+	color:#f28551;    
+}
+.btn-accion-editar{
+	color:#40b440;	    
+}
+
+.icon-acciones{
+	display: inline-block;
+    transform: scaleY(1.4) scaleX(1.4);
+}
+
+/* ################# LOGIN ################# */
+.cont-login-fondo{
+	position: absolute;
+  	border-radius: 10px 10px;
+  	border-radius: 10px 10px;
+  	background-color: #2a2c31;
+  	top:60px;
+  	right:10px;
+  	margin-left: 5px;
+}
+.cont-login{
+	position:relative;
+	background-color: black;
+	margin: 10px;
+	padding:10px;
+	font-weight:bold;
+	width:400px;
+	height: 230px;
+}
+.btn-login{
+	position:absolute;
+	width: 100px; 
+	height: 50px; 
+	margin-left: 150px;
+	visibility: collapse;
+	right: 0;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	
+}
+.input-login{
+	position:relative;
+	background-color: #dadada;
+	width: 380px;
+	margin-top: 30px;
+	visibility: hidden;
+}
+.input-login:focus{
+  border-color: #ffffff;
+  outline: 0;
+  box-shadow: inset 0 1px 1px #3791ff, 0 0 20px #3791ff;
+}
+.login-error{
+	margin-top:5px;
+	color:red;
+	font-style: bold;
+	visibility: hidden;
+}

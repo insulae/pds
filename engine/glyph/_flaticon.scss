@@ -1,0 +1,115 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 07/04/2016 22:49
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-alphabet:before { content: "\f100"; }
+.flaticon-arrows:before { content: "\f101"; }
+.flaticon-arrows-1:before { content: "\f102"; }
+.flaticon-check:before { content: "\f103"; }
+.flaticon-circle:before { content: "\f104"; }
+.flaticon-circle-1:before { content: "\f105"; }
+.flaticon-clock:before { content: "\f106"; }
+.flaticon-close:before { content: "\f107"; }
+.flaticon-cogwheel:before { content: "\f108"; }
+.flaticon-computer:before { content: "\f109"; }
+.flaticon-cone:before { content: "\f10a"; }
+.flaticon-flying:before { content: "\f10b"; }
+.flaticon-globe:before { content: "\f10c"; }
+.flaticon-graphic:before { content: "\f10d"; }
+.flaticon-graphic-1:before { content: "\f10e"; }
+.flaticon-lock:before { content: "\f10f"; }
+.flaticon-nature:before { content: "\f110"; }
+.flaticon-next:before { content: "\f111"; }
+.flaticon-people:before { content: "\f112"; }
+.flaticon-phone:before { content: "\f113"; }
+.flaticon-play:before { content: "\f114"; }
+.flaticon-power:before { content: "\f115"; }
+.flaticon-shape:before { content: "\f116"; }
+.flaticon-signal:before { content: "\f117"; }
+.flaticon-signs:before { content: "\f118"; }
+.flaticon-signs-1:before { content: "\f119"; }
+.flaticon-signs-2:before { content: "\f11a"; }
+.flaticon-speedometer:before { content: "\f11b"; }
+.flaticon-square:before { content: "\f11c"; }
+.flaticon-tool:before { content: "\f11d"; }
+.flaticon-tool-1:before { content: "\f11e"; }
+.flaticon-tool-2:before { content: "\f11f"; }
+.flaticon-tool-3:before { content: "\f120"; }
+.flaticon-toolbox:before { content: "\f121"; }
+.flaticon-transport:before { content: "\f122"; }
+.flaticon-transport-1:before { content: "\f123"; }
+.flaticon-travel:before { content: "\f124"; }
+.flaticon-video:before { content: "\f125"; }
+    
+    $font-Flaticon-alphabet: "\f100";
+    $font-Flaticon-arrows: "\f101";
+    $font-Flaticon-arrows-1: "\f102";
+    $font-Flaticon-check: "\f103";
+    $font-Flaticon-circle: "\f104";
+    $font-Flaticon-circle-1: "\f105";
+    $font-Flaticon-clock: "\f106";
+    $font-Flaticon-close: "\f107";
+    $font-Flaticon-cogwheel: "\f108";
+    $font-Flaticon-computer: "\f109";
+    $font-Flaticon-cone: "\f10a";
+    $font-Flaticon-flying: "\f10b";
+    $font-Flaticon-globe: "\f10c";
+    $font-Flaticon-graphic: "\f10d";
+    $font-Flaticon-graphic-1: "\f10e";
+    $font-Flaticon-lock: "\f10f";
+    $font-Flaticon-nature: "\f110";
+    $font-Flaticon-next: "\f111";
+    $font-Flaticon-people: "\f112";
+    $font-Flaticon-phone: "\f113";
+    $font-Flaticon-play: "\f114";
+    $font-Flaticon-power: "\f115";
+    $font-Flaticon-shape: "\f116";
+    $font-Flaticon-signal: "\f117";
+    $font-Flaticon-signs: "\f118";
+    $font-Flaticon-signs-1: "\f119";
+    $font-Flaticon-signs-2: "\f11a";
+    $font-Flaticon-speedometer: "\f11b";
+    $font-Flaticon-square: "\f11c";
+    $font-Flaticon-tool: "\f11d";
+    $font-Flaticon-tool-1: "\f11e";
+    $font-Flaticon-tool-2: "\f11f";
+    $font-Flaticon-tool-3: "\f120";
+    $font-Flaticon-toolbox: "\f121";
+    $font-Flaticon-transport: "\f122";
+    $font-Flaticon-transport-1: "\f123";
+    $font-Flaticon-travel: "\f124";
+    $font-Flaticon-video: "\f125";
