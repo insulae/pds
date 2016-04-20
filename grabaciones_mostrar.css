@@ -1,0 +1,340 @@
+@CHARSET "UTF-8";
+
+.cont-graf{
+	position: absolute;
+  	border-radius: 10px 10px;
+  	border-radius: 10px 10px;
+  	background-color: #2a2c31;
+  	top:60px;
+  	margin-left: 5px;
+}
+
+.cont-botonera{
+	position:relative;
+  	border-radius: 10px 10px;
+  	border-radius: 10px 10px;
+  	background-color: #000;	
+	padding: 1em 1em;
+	margin: 1em 10%;
+	width: 580px;
+	left:-50px;
+}
+
+.botonico{
+    display: inline-block;
+    transform: scaleY(2) scaleX(2);
+    margin-left:50px;
+    cursor: pointer;
+}
+.botonico:hover{
+	color:#35ff35;
+}
+
+.graba-reloj{
+	width: 150px;
+	height:32px;
+  	border-radius: 0px 0px 0px 0px;
+  	border-color: #2e3436;
+  	border: solid 2px;
+  	border-width: 2px;
+    font-size: 1.4em;
+  	color: #8ae234;
+  	font-weight: bold;
+  	text-align: center;
+  	background-color: #000;
+  	display: inline-block;
+  	vertical-align: middle;
+  	background-image: none;
+  	white-space: nowrap;
+  	cursor: auto;
+  	margin-bottom: 10px;
+}
+.graba-descripcion{
+	width: 420px;
+	height:50px;
+  	border-radius: 0px 0px 0px 0px;
+  	border-color: #2e3436;
+  	padding: 3px;
+  	border: solid 2px;
+  	border-width: 2px;
+  	background-color: #000;
+  	display: inline-block;
+  	vertical-align: middle;
+  	background-image: none;
+  	cursor: auto;
+  	margin-bottom: 10px;
+  	margin-left: 10px;
+  	margin-right: 5px;
+  	
+}
+.label-descripcion{
+ 	font-weight: bold; 
+ 	font-size: 0.8em; 
+ 	width: 420px";	
+}
+/* ######################### MODAL graba VER ########################## */
+
+/* ######################### RELOJES ########################## */
+
+.cont-relojes-fondo{
+	position:absolute;
+	right:5px;
+	top:60px;
+	border-radius: 10px 10px;
+  	border-radius: 10px 10px;
+  	background-color: #2a2c31;
+}
+
+.cont-relojes{
+	position:relative;
+	background-color: black;
+	margin: 10px;
+	width:300px;
+	height: 450px;
+}
+.relojes-renglon1{
+	float:left;
+	width:90%;
+	margin: 10px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	padding-bottom:10px;
+	border-bottom-color: #777777;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+ 
+.relojes-renglon2{
+	float:left;
+	width:90%;
+	margin: 10px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	padding-bottom:20px;
+	border-bottom-color: #777777;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+ 
+.relojes-renglon3{
+	float:left;
+	margin: 10px;
+	margin-left: 30px;
+}
+
+/* ###################################### CORRIENTE ############################ */
+.corriente{
+	position:relative;
+	float:left;
+	margin: 10px;
+}
+.corriente-carga{
+	position:absolute;
+	/*rectangulo que dibuja la carga */
+	width: 35px;
+	height: 2px; /* 115px da el 100% para 120px de la regla */
+	background: #2b63dd; /* color > 200 #d7ddff */ 
+	bottom:3px;
+	left:12px;
+    transition: all 1s ease-in-out;
+	
+}
+.corriente-regla{
+	height:120px;
+	width:100px;
+	margin-top: 7px;
+}
+.corriente-valor{
+	position: absolute;
+	font-weight: bold;
+	font-size: 1.2em;
+	color: #fff;
+	left:5%;
+	bottom: 1%;	
+}
+.corriente-titulo{
+	position: absolute;
+	font-weight: bold;
+	font-size:0.8em;
+	color: #fff;
+	bottom:-20px;	
+}
+/* ###################################### VOLTAJE ############################ */
+.voltaje {
+	position:relative;
+	float:left;
+	margin:10px;
+	height: 120px;
+    width: 120px;
+    top:20px;
+}
+
+.voltaje-aguja {
+  position: absolute;
+  left: 47%;
+  top:0%;
+  transition: all 1s ease-in-out;
+}
+
+.voltaje-titulo{
+	position: absolute;
+	font-weight: bold;
+	font-size:0.8em;
+	color: #fff;
+	bottom:6px;
+	margin-left: 35px;
+	
+}
+
+
+.voltaje-valor{
+	position: absolute;
+	font-weight: bold;
+	font-size: 1.5em;
+	color: #fff;
+	left:47px;
+	bottom: 40px;
+}
+/* ###################################### BATERIA ############################ */
+
+.bateria{
+	position:relative;
+	float: left;
+	margin-left: 10px;
+	margin-right: 20px;
+}
+.bateria-carga{
+	position:absolute;
+	/*rectangulo que dibuja la carga */
+	width: 25px;
+	height: 2px; /* 170px da el 100% para 180px de la regla */
+	background: red;
+	bottom:4px;
+	left:7px;
+    transition: all 1s ease-in-out;
+	
+}
+.bateria-regla{
+	height:160px;
+	margin-top: 7px;
+}
+.bateria-titulo{
+	position: absolute;
+	font-weight: bold;
+	font-size:0.8em;
+	color: #fff;
+	bottom:-20px;	
+}
+.bateria-valor{
+	position: absolute;
+	font-weight: bold;
+	font-size: 1.2em;
+	color: #000;
+	left:8px;
+	bottom: 1%;	
+}
+
+/* ###################################### TEMPERATURA ############################ */
+
+.temperatura{
+	position:relative;
+	float:left;
+	margin-right: 20px;
+}
+.temperatura-carga{
+	position:absolute;
+	/*rectangulo que dibuja la carga */
+	width: 25px;
+	height: 2px; /* 170px da el 100% para 180px de la regla */
+	background: red;
+	bottom:4px;
+	left:7px;
+    transition: all 1s ease-in-out;
+	
+}
+.temperatura-regla{
+	height:160px;
+	margin-top: 7px;
+}
+.temperatura-titulo{
+	position: absolute;
+	font-weight: bold;
+	font-size:0.8em;
+	color: #fff;
+	bottom:-20px;
+}
+.temperatura-valor{
+	position: absolute;
+	font-weight: bold;
+	font-size: 1.2em;
+	color: #000;
+	left:8px;
+	bottom: 1%;	
+}
+
+/* ###################################### HUMEDAD ############################ */
+
+.humedad{
+	position:relative;
+	float: left;
+}
+.humedad-carga{
+	position:absolute;
+	/*rectangulo que dibuja la carga */
+	width: 25px;
+	height: 2px; /* 170px da el 100% para 180px de la regla */
+	background: red;
+	bottom:4px;
+	left:7px;
+    transition: all 1s ease-in-out;
+	
+}
+.humedad-regla{
+	height:160px;
+	margin-top: 7px;
+}
+.humedad-titulo{
+	position: absolute;
+	font-weight: bold;
+	font-size:0.8em;
+	color: #fff;
+	bottom:-20px;
+}
+.humedad-valor{
+	position: absolute;
+	font-weight: bold;
+	font-size: 1.2em;
+	color: #000;
+	left:8px;
+	bottom: 1%;	
+}
+
+/* ###################################### BAR CHARTS ############################ */
+.presion {
+	position:relative;
+	float:left;
+	/*background: #000;*/
+	height:28px;
+    transition-timing-function: linear;
+    transition: width 1s;
+}
+
+.presion-valor{
+	position:absolute;
+	font-weight: bold;
+	font-size: 1em;
+	color: #fff;
+	bottom: 3px;
+	left:5px;
+}
+.presion-titulo{
+	position:absolute;
+	font-weight: bold;
+	font-size:0.8em;
+	color: #fff;
+	bottom: -22px;
+	left:3px;
+}
+
+
+/* ######################### RELOJES ########################## */

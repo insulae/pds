@@ -1,0 +1,134 @@
+@CHARSET "UTF-8";
+
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(engine/font/lato_regular.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(engine/font/lato_regular2.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(engine/font/lato_bold.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(engine/font/lato_bold2.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* CSS para index y estilos comunes a todas las paginas */
+.contenedor{
+	position:relative;
+	width: 950px; 
+	height: 600px;
+	border-style: solid;
+	border-color: #2a2c31;
+	margin:0 auto;
+	background-image: url(images/fondo2.png);
+	zoom:1;
+}
+
+/* ############# TABLAS GLOBALES ################### */
+
+.fila1{
+	background-color: #375a7f;
+	cursor:pointer;	
+}
+.fila2{
+	background-color: #3498db;
+	cursor:pointer;	
+}
+
+
+/* ############# TABS ################### */
+.menu-tabs{
+	position: absolute;	
+	background-color: #2a2c31;
+	width: 100%;
+	
+}
+.icon-conf{
+	display: inline-block;
+    transform: scaleY(2) scaleX(2);
+	margin-left:30px;
+	color:#fff;    
+}
+.icon-conf:hover{
+	color:#35ff35;
+}
+.tabavion{
+	width: 150px;
+	height:32px;
+  	border-radius: 0px 0px 0px 0px;
+  	border-color: #000;
+  	border-width: 2px;
+    font-size: 1.4em;
+  	color: #8ae234;
+  	font-weight: bold;
+  	text-align: center;
+  	background-color: #000;
+  	display: inline-block;
+  	margin-bottom: 0;
+  	vertical-align: middle;
+  	background-image: none;
+  	white-space: nowrap;
+  	cursor: auto;
+  	margin-left: 30px;
+}
+
+.tab{
+	width: 130px;
+	height:50px;
+  	border-radius: 10px 10px 0px 0px;
+  	border-color: #000;
+  	border-width: 2px;
+  	font-size: 1.1em;
+  	background-color: #375a7f;
+  	display: inline-block;
+  	margin-bottom: 0;
+  	font-weight: bold;
+  	text-align: center;
+  	vertical-align: middle;
+  	-ms-touch-action: manipulation;
+    touch-action: manipulation;
+  	background-image: none;
+  	white-space: nowrap;
+  	font-size: 15px;
+}
+.tab:hover{
+	background-color: #5081b5;
+}
+.tabactivo{
+  	background-color: #3498db;
+  	cursor: pointer;
+}
+.tabactivo:hover{
+  	background-color: #3498db;
+}
+.tabno{
+	background-color:#565656;
+	cursor: auto;
+}
+.tabno:hover{
+	background-color:#565656;
+}
+
+
+/* ############# TABS ################### */

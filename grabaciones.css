@@ -1,0 +1,72 @@
+@CHARSET "UTF-8";
+
+.cont-graba-fondo{
+	position: absolute;
+  	border-radius: 10px 10px;
+  	background-color: #2a2c31;
+  	top:60px;
+  	margin-left: 10px;
+  	padding: 10px;
+  	height: 500px;
+  	width: 920px;
+}
+.graba-tabla{
+	width: 100%;
+}
+.graba-tabla-titulo{
+	border: solid 2px; 
+	border-color: #000;
+	font-size: 1em;
+	background-color: #375a7f;
+	font-weight: bold;
+}
+.th-graba{
+	text-align: center;
+}
+
+.tr-graba{
+	cursor: pointer;
+	border: solid 2px;
+	border-color: #000;
+	background-color: #565656;
+}
+.tr-graba-activo{
+	background-color: #8ae234;
+	color:#000;
+}
+
+.td-hidden{
+	display: none;
+}
+.cont-graba-botonera{
+	position:relative;
+	background-color: black;
+	margin-bottom: 10px;
+	height: 55px;
+	padding: 2px;
+}
+
+.graba-fecha{
+	width: 95px;
+	height: 50px;
+	border: solid; 
+	border-radius: 3px 3px;
+}
+.btn-filtrar{
+	width:70px; 
+	height: 45px; 
+	margin-left: 10px;
+	margin-bottom: 2px;
+}
+
+.btn-mostrar{
+	margin-left:470px;
+	padding:0 auto;
+	width:140px; 
+	height: 45px; 
+	margin-bottom: 2px;
+}
+.icon-eliminar{
+    display: inline-block;
+    transform: scaleY(1.3) scaleX(1.3);	
+}

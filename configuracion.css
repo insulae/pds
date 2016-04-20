@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+.icon-zoom{
+	display: inline-block;
+    transform: scaleY(2) scaleX(2);
+	margin-left:50px;
+	cursor:pointer;
+	color:#fff;
+	    
+}
+.icon-zoom:hover{
+	color:#35ff35;
+}

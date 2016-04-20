@@ -1,0 +1,87 @@
+@CHARSET "UTF-8";
+
+.cont-cranks-fondo{
+	position: absolute;
+  	border-radius: 10px 10px;
+  	background-color: #2a2c31;
+  	top:60px;
+  	margin-left: 10px;
+  	padding: 10px;
+  	height: 500px;
+  	width: 920px;
+}
+.cranks-tabla{
+	width: 100%;
+}
+.cranks-tabla-titulo{
+	border: solid 2px; 
+	border-color: #000;
+	font-size: 1em;
+	background-color: #375a7f;
+	font-weight: bold;
+}
+.th-crank{
+	text-align: center;
+}
+
+.tr-crank{
+	cursor: pointer;
+	border: solid 2px;
+	border-color: #000;
+	background-color: #565656;
+}
+.tr-crank-activo{
+	background-color: #8ae234;
+	color:#000;
+}
+
+.td-hidden{
+	display: none;
+}
+.cont-cranks-botonera{
+	position:relative;
+	background-color: black;
+	margin-bottom: 10px;
+	height: 55px;
+	padding: 2px;
+}
+
+.cranks-fecha{
+	width: 95px;
+	height: 50px;
+	border: solid; 
+	border-radius: 3px 3px;
+}
+.btn-filtrar{
+	width:70px; 
+	height: 45px; 
+	margin-left: 10px;
+	margin-bottom: 2px;
+}
+
+.btn-mostrar{
+	padding:0 auto;
+	width:140px; 
+	height: 45px; 
+	margin-bottom: 2px;
+}
+
+.cranks-cant{
+	margin-left:420px;
+	display: inline-block;
+	width: 45px;
+	background-color: #565656;
+	padding-left: 7px;
+}
+.cranks-cant label{
+	font-weight: bold;
+	font-size: 1.4em;
+	margin-top:2px;
+}
+.cranks-cant-full{
+	color: #8ae234;
+}
+.icon-eliminar{
+    display: inline-block;
+    transform: scaleY(1.3) scaleX(1.3);	
+}
