@@ -13,7 +13,10 @@ if($_REQUEST['accion'] == 'traerChecks'){
 	//TODO agregar llave secundaria en check_sensor (id_check nr_sensor)
 	$query = $db->query('
  
-		select c.fyh,c.observacion,
+		SELECT 
+			id_check,
+			c.fyh,
+			c.observacion,
 			(select check_sensor.dato
 				FROM check_sensor
 				WHERE nro_sensor = 1

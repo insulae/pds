@@ -1,7 +1,8 @@
 <link rel="stylesheet" type="text/css" href="inicio.css">
 <div class="cont-aviones-fondo">
 	<div class="cont-aviones-botonera">
-  		<input type="text" class="form-control input-avion" placeholder="Patente">
+  		<input id="patente" type="text" class="form-control input-avion" placeholder="Patente">
+  		<button id="btn-buscar" type="button" class="btn btn-info btn-buscar">Buscar</button>
   		<span class="glyph-icon flaticon-circle-1 add-avion" data-toggle="modal" data-target="#modalAltaAvion"></span>
 	</div>
 	<div class="cont-aviones">
@@ -35,15 +36,13 @@
 
 
 
-
-
 <!--######################### MODAL AGREGAR AVION ########################## -->
   <!-- Modal -->
   <div class="modal" id="modalAltaAvion" role="dialog">
     <div class="modal-dialog"  style="width: 500px; top: 100px">
       <div class="modal-content">
         <div class="modal-header">
-        </span><b>Alta de Avión</b><span class="glyph-icon flaticon-transport"><button type="button" class="close" data-dismiss="modal">&times;</button>
+        <b>Alta de Avión</b><span class="glyph-icon flaticon-transport"></span><button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
             <input id="alta-avion-patente" type="text" class="form-inline input-avion" placeholder="Patente">

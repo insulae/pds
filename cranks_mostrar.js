@@ -1,9 +1,7 @@
 function cargaJS(){
 	dibujoGrafica();
 }
-function rompoJS(){
-	alert('ok');
-	chartCranksGraf.destroy();	
+function rompoJS(){	
 }
 
 
@@ -75,6 +73,7 @@ function dibujoGrafica(){
 		};
 	var options = {
 
+		
 		animation: false,
 		
 	    ///Boolean - Whether grid lines are shown across the chart

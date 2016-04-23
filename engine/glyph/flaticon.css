@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 07/04/2016 22:49
+  	Creation date: 20/04/2016 21:17
   	*/
 
 @font-face {
@@ -40,30 +40,31 @@ margin-left: 20px;
 .flaticon-cogwheel:before { content: "\f108"; }
 .flaticon-computer:before { content: "\f109"; }
 .flaticon-cone:before { content: "\f10a"; }
-.flaticon-flying:before { content: "\f10b"; }
-.flaticon-globe:before { content: "\f10c"; }
-.flaticon-graphic:before { content: "\f10d"; }
-.flaticon-graphic-1:before { content: "\f10e"; }
-.flaticon-lock:before { content: "\f10f"; }
-.flaticon-nature:before { content: "\f110"; }
-.flaticon-next:before { content: "\f111"; }
-.flaticon-people:before { content: "\f112"; }
-.flaticon-phone:before { content: "\f113"; }
-.flaticon-play:before { content: "\f114"; }
-.flaticon-power:before { content: "\f115"; }
-.flaticon-shape:before { content: "\f116"; }
-.flaticon-signal:before { content: "\f117"; }
-.flaticon-signs:before { content: "\f118"; }
-.flaticon-signs-1:before { content: "\f119"; }
-.flaticon-signs-2:before { content: "\f11a"; }
-.flaticon-speedometer:before { content: "\f11b"; }
-.flaticon-square:before { content: "\f11c"; }
-.flaticon-tool:before { content: "\f11d"; }
-.flaticon-tool-1:before { content: "\f11e"; }
-.flaticon-tool-2:before { content: "\f11f"; }
-.flaticon-tool-3:before { content: "\f120"; }
-.flaticon-toolbox:before { content: "\f121"; }
-.flaticon-transport:before { content: "\f122"; }
-.flaticon-transport-1:before { content: "\f123"; }
-.flaticon-travel:before { content: "\f124"; }
-.flaticon-video:before { content: "\f125"; }
+.flaticon-flash:before { content: "\f10b"; }
+.flaticon-flying:before { content: "\f10c"; }
+.flaticon-globe:before { content: "\f10d"; }
+.flaticon-graphic:before { content: "\f10e"; }
+.flaticon-graphic-1:before { content: "\f10f"; }
+.flaticon-lock:before { content: "\f110"; }
+.flaticon-nature:before { content: "\f111"; }
+.flaticon-next:before { content: "\f112"; }
+.flaticon-people:before { content: "\f113"; }
+.flaticon-phone:before { content: "\f114"; }
+.flaticon-play:before { content: "\f115"; }
+.flaticon-power:before { content: "\f116"; }
+.flaticon-shape:before { content: "\f117"; }
+.flaticon-signal:before { content: "\f118"; }
+.flaticon-signs:before { content: "\f119"; }
+.flaticon-signs-1:before { content: "\f11a"; }
+.flaticon-signs-2:before { content: "\f11b"; }
+.flaticon-speedometer:before { content: "\f11c"; }
+.flaticon-square:before { content: "\f11d"; }
+.flaticon-tool:before { content: "\f11e"; }
+.flaticon-tool-1:before { content: "\f11f"; }
+.flaticon-tool-2:before { content: "\f120"; }
+.flaticon-tool-3:before { content: "\f121"; }
+.flaticon-toolbox:before { content: "\f122"; }
+.flaticon-transport:before { content: "\f123"; }
+.flaticon-transport-1:before { content: "\f124"; }
+.flaticon-travel:before { content: "\f125"; }
+.flaticon-video:before { content: "\f126"; }

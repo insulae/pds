@@ -28,7 +28,7 @@
 	cursor: pointer;
 	border: solid 2px;
 	border-color: #000;
-	background-color: #565656;
+	background-color: #3c3c41;
 }
 .tr-crank-activo{
 	background-color: #8ae234;
@@ -70,7 +70,7 @@
 	margin-left:420px;
 	display: inline-block;
 	width: 45px;
-	background-color: #565656;
+	background-color: #3c3c41;
 	padding-left: 7px;
 }
 .cranks-cant label{

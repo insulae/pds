@@ -1,5 +1,5 @@
 function cargaJS(){
-	crearGraf();
+	//crearGraf();
 }
 function rompoJS(){
 	

@@ -1,13 +1,15 @@
 function cargaJS(){
 
+	
 	/* DIBUJO GRAFICA */
-	var getData = new TimeSeries();
-
+	var datos = [new TimeSeries(), new TimeSeries()];
+	//var datos = new TimeSeries();
 	testCometa = new EventSource('test_cometa.php');
 	testCometa.addEventListener('message', function(e) {
-		getData.append(new Date().getTime(), e.data);
+		var dataCometa = JSON.parse(e.data);
+		datos[0].append(new Date().getTime(), dataCometa[0]);
+		datos[1].append(new Date().getTime(), dataCometa[1]);
 	}, false);
-
 	/*
 	setInterval(function() {
 	  getData.append(new Date().getTime(), valor);
@@ -38,7 +40,10 @@ function cargaJS(){
 					     			{color:'#880000',lineWidth:2,value:-3333}
 					     			]
 		 			});
-				chart.addTimeSeries(getData, {lineWidth:3,strokeStyle:'#00ff00',fillStyle:'#000000'});
+				
+				//fillStyle:'#000000'
+				chart.addTimeSeries(datos[0],{lineWidth:3,strokeStyle:'#00ff00'});
+				chart.addTimeSeries(datos[1],{lineWidth:3,strokeStyle:'#00ffff'});
 				chart.streamTo(document.getElementById("graf1200"), 1000);
 		}
 	/* DIBUJO GRAFICA */

@@ -1,24 +1,9 @@
 <link rel="stylesheet" type="text/css" href="grabaciones_mostrar.css">
-	 	<div class="cont-graf">
-			<div style="margin:10px;">
-				<canvas id="graf1200" width="580" height="300">
-			</div>
 
-			<div class="cont-botonera">
-				<span class="glyph-icon flaticon-signs-1 botonico"></span>
-				<span class="glyph-icon flaticon-play botonico"></span>
-				<span class="glyph-icon flaticon-square botonico"></span>
-				<span class="glyph-icon flaticon-video botonico"></span>
-				<span class="glyph-icon flaticon-next botonico"></span>				  				  
-			</div>
-			<div type="button" class="graba-descripcion">
-				<label class="label-descripcion">
-					Grabación (17/02/2016):  Se cambió turbina... aslas asla sas lasl asl asla lasallas las lasl asl asllasdkasdas sl
-				</label>
-			</div>
-			<div id="graba-reloj" type="button" class="graba-reloj">00m01s</div>
-				  
-		</div>
+<div class="pagina-cont">
+		 	<div class="cont-graf">
+	 		<?php require("borrar.php")?>
+	 		</div>
 	
 <!-- CONTENEDOR RELOJES -->
 		<div class="cont-relojes-fondo">	
@@ -73,5 +58,5 @@
 						<label id="presion-titulo" class="presion-titulo">PRESION</label>
 					</div>
 				</div>
-			</div>
-		</div>
+			</div>	
+</div>		

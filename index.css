@@ -59,7 +59,7 @@
 
 /* ############# TABS ################### */
 .menu-tabs{
-	position: absolute;	
+	position: static;	
 	background-color: #2a2c31;
 	width: 100%;
 	
@@ -123,11 +123,11 @@
   	background-color: #3498db;
 }
 .tabno{
-	background-color:#565656;
+	background-color:#3c3c41;
 	cursor: auto;
 }
 .tabno:hover{
-	background-color:#565656;
+	background-color:#3c3c41;
 }
 
 

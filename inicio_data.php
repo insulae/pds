@@ -3,15 +3,25 @@ require('engine/base.php');
 session_start();
 switch(@$_REQUEST['accion']){
 
-	
+
+// ################################### avion ###################################	
+
 //TRAER AVIONES
 	case 'traerAviones':
+	
+	if(@$_POST['patente'] !=""){
+		$filtro = 'AND patente LIKE "%'.@$_POST['patente'].'%"';
+	}else{
+		$filtro=' ';
+	}
+		
 	$query = $db->query('
 		SELECT 
 			*
 		FROM avion
-		WHERE estado = "A"
-		ORDER BY patente ASC
+		WHERE estado = "A" '
+		.$filtro.
+		' ORDER BY patente ASC
 	');
 	//$datos = queryToArray($query);
 	$datos = json_encode(queryToObject($query));
@@ -42,6 +52,22 @@ switch(@$_REQUEST['accion']){
 		}
 		//TODO AGREGAR CONTROL VER QUE CONVIENE
 	break;
+	
+//ELIMINAR AVION
+	case 'eliminarAvion':
+		$query = $db->query('
+			UPDATE avion
+			SET estado = "B"
+			WHERE patente = "'.@$_POST['patente'].'"
+		');
+		if(mysqli_errno($db)){
+			echo mysqli_errno($db);
+		}
+		break;
+		
+
+
+// ################################### login ###################################
 	
 //LOGIN
 	case 'login':

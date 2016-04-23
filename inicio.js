@@ -2,14 +2,14 @@ function cargaJS(){
 
 	//ejecuto comprobacion de logeo al cargar
 	loginChequeo();
-	/* ################ LOGIN ################ */
-	
 	
 	/* carga tabla  */
 	traerAviones();
 }
 
-/* ################ LOGIN ################ */
+
+
+/*############################ LOGIN ##########################*/
 
 //login
 function loginInicio(){
@@ -103,33 +103,11 @@ $('#btn-deslogin').click(function(){
 	    }	
 	});
 });
+/*############################ LOGIN ##########################*/
 
 
-/* traer Aviones  */
-function traerAviones() {
-	$.ajax({		
-		url:   'inicio_data.php?accion=traerAviones',
-	    type:  'post',
-	    success:  function (datos) {
-	    	var crank = JSON.parse(datos);
-	    	
-	    	//limpio tabla
-	    	$('#aviones-tabla tbody').remove();
-	    	for (var i=0; i<crank.length; i++) {	    		
-	    		//me fijo si tiene apu para concatenar con motor
-	    		var motores = crank[i].motores;
-	    		if(crank[i].apu == 1){
-	    			motores = motores+"<small><small>+APU</small></small>";
-	    		}
-	    		var fila='<tr class="tr-avion"><td id="celda-avion">'+crank[i].patente+'</td>';
-	    		fila+='<td>'+motores+'</td>';
-	    		fila+='<td><span class="glyph-icon flaticon-close btn-accion-eliminar"></span><span class="glyph-icon flaticon-tool-2 btn-accion-editar"></span></td></tr>';
-	    		$('#aviones-tabla').append(fila);
-		    }
-	    }	
-	});
-}
 
+/*##################################### AVION AVION ##########################*/
 
 /* seleccionar avion */
 $('#aviones-tabla').on('click', '.tr-avion', function(event) {
@@ -147,6 +125,66 @@ $('#aviones-tabla').on('click', '.tr-avion', function(event) {
 
 /* agregar Avion  */
 $('#avion-agregar').click(function(){
+	agregarAvion();
+});
+
+/* eliminar Avion */
+$('#aviones-tabla').on('click', '.btn-accion-eliminar', function(event) {
+	 avionEliminar = $(this).parent().parent().find("#celda-avion").html();
+	$.confirm({
+	    title: 'Eliminación',
+	    content: 'Esta a punto de eliminar el avión: '+ avionEliminar,
+	    confirm: function(){
+	    	eliminarAvion(avionEliminar);
+	    }
+	});
+});
+
+$('#modalAltaAvion').on('hidden.bs.modal', function () {
+alert("ok");
+});
+
+
+
+/*###################### funcionses a base ######################*/
+
+$('#btn-buscar').click(function(){
+	traerAviones();
+});
+
+/* traer Aviones  */
+function traerAviones() {
+	$.ajax({		
+		url:   'inicio_data.php?accion=traerAviones',
+	    type:  'post',
+	    data: {
+	    	patente: $('#patente').val()
+	    },
+	    success:  function (datos) {
+	    	var crank = JSON.parse(datos);
+	    	
+	    	//limpio tabla
+	    	$('#aviones-tabla tbody').remove();
+	    	if(crank){
+		    	for (var i=0; i<crank.length; i++) {	    		
+		    		//me fijo si tiene apu para concatenar con motor
+		    		var motores = crank[i].motores;
+		    		if(crank[i].apu == 1){
+		    			motores = motores+"<small><small>+APU</small></small>";
+		    		}
+		    		var fila='<tr class="tr-avion"><td id="celda-avion">'+crank[i].patente+'</td>';
+		    			fila+='<td>'+motores+'</td>';
+		    			fila+='<td><span class="glyph-icon flaticon-tool-2 btn-accion-editar"></span><span class="glyph-icon flaticon-close btn-accion-eliminar"></span></td>';
+		    			fila+='</tr>';
+		    			
+		    		$('#aviones-tabla').append(fila);
+			    }
+	    	}
+	    }	
+	});
+}
+
+function agregarAvion(){
 	$.ajax({		
 		url:   'inicio_data.php?accion=agregarAvion',
 	    type:  'post',
@@ -155,15 +193,30 @@ $('#avion-agregar').click(function(){
 			motores: $('#alta-avion-motores').val(),
 			apu: $('#alta-avion-apu').val(),
 			observaciones: $('#alta-avion-observaiones').val()
-			}
-		}).done(function(resp) {
+			},
+		success: function(resp) {
 			resp = resp.trim();
 			if(resp == "0"){
 				traerAviones();
 				$('#modalAltaAvion').modal('toggle');
 			}	
-			else{
-				alert(resp);
-			}
+		}
 		});
-});
+}
+
+function eliminarAvion(avion){
+	$.ajax({		
+		url:   'inicio_data.php?accion=eliminarAvion',
+	    data:{
+	    	patente: avion
+	    },
+	    type:  'post',
+	    success:  function (resultado) {
+	    	
+	    	if(resultado.trim() !=""){
+	    		$.alert('<b>Error Numero:<br></b>'+resultado);
+	    	}
+	    	traerAviones();
+	    }	
+	});
+}

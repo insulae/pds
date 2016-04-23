@@ -8,11 +8,15 @@ function rompoJS(){
 }
 
 
-$('#play-check').click(function(){	
+$('#mostrar-amp').click(function(){	
 	dibujoGrafica(dataAmperajeMostrar);
+	$('#mostrar-amp').addClass('botAmp');
+	$('#mostrar-volt').removeClass('botVolt');
 });
-$('#stop-check').click(function(){	
+$('#mostrar-volt').click(function(){	
 	dibujoGrafica(dataVoltajeMostrar);
+	$('#mostrar-volt').addClass('botVolt');
+	$('#mostrar-amp').removeClass('botAmp');
 });
 /* ######################################## MODAL ######################################## */
 
@@ -53,7 +57,7 @@ function dibujoGrafica(dataMostrar){
 			scaleLineColor: "#fff",
 
 			// Number - Pixel width of the scale line
-			scaleLineWidth: 0.3,
+			scaleLineWidth: 0.5,
 
 			// Boolean - Whether to show labels on the scale
 			scaleShowLabels: true,
@@ -73,7 +77,7 @@ function dibujoGrafica(dataMostrar){
 			scaleShowGridLines: true,
 
 			// Number - Width of the grid lines
-			scaleGridLineWidth:0.1,
+			scaleGridLineWidth:0.2,
 
 			// String - Colour of the grid lines
 			scaleGridLineColor: "#fff",
