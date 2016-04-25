@@ -17,7 +17,8 @@
     <script src="engine/smoothie.js"></script>
     <script src='engine/Chart.Line.js'></script>
 	<script src='engine/Chart.Scatter.min.js'></script>
-	<script src='engine/date.format.js'></script>      
+	<script src='engine/date.format.js'></script>
+	<script src='engine/GrafPan.js'></script>
     
     
 </head>   

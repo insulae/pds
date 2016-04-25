@@ -2,7 +2,7 @@
 
 <div class="cont-graf">
 	<div style="margin:10px;">
-		<canvas id="check-graf" width="900" height="450"></canvas>
+		<div id="check-graf" style="height: 450px; width: 100%;">
 	</div>
 	<div class="cont-botonera">
 		<div class=botones>

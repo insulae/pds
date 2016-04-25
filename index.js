@@ -6,7 +6,7 @@ function rompoJS(){
 }
 //inicio
 var activo='inicio';
-var avion='';
+var avion='AA-AAA';
 var loginEstado='';
 
 //test

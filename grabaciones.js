@@ -35,7 +35,6 @@ function traerGraba(){
 	    		if(i % 2 == 0) {nro = 1;}else{nro = 2;}
 	    		var fila='<tr class="tr-graba">';
 	    			//fila+='<td>'+crank[i].patente+'</td>';
-	    			fila+='<td>'+graba[i].motor_apu+'</td>';
 	    			fila+='<td>'+graba[i].fyh+'</td>';
 	    			fila+='<td style="text-align:left; padding-left:10px">'+graba[i].observacion+'</td>';
 	    			fila+='<td><span class="glyph-icon flaticon-close icon-eliminar"></span></td>';

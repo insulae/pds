@@ -17,9 +17,8 @@
     	<thead>
 	      <tr class="graba-tabla-titulo">
 	        <!-- <th class="th-graba" style="width:100px" >AVION</th> -->
-	        <th class="th-graba" style="width:50px">Motor</th>
 	        <th class="th-graba" style="width:100px; text-align: center">Fecha</th>
-	        <th class="th-graba" style="width:500px; text-align: center">Observación</th>
+	        <th class="th-graba" style="width:550px; text-align: center">Observación</th>
 	        <th class="th-graba" style="width:100px; text-align: center"">Acción</th>
 	      </tr>
 	    </thead>
