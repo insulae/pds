@@ -26,7 +26,7 @@ function crearGraf(){
 		ToolTip: {
 			enabled: false
 		},
-		data: datosGrafica(), 
+		data: datosGrafica() 
 	});
 	
 	chart.render();
@@ -36,7 +36,8 @@ function datosGrafica(){
 
    var limit = 100; //limite de puntos a mostrar hasta 100000 no se inmuta
    var y = 0;
-   var data = []; var dataSeries = { type: "spline" };
+   var data = [];
+   var dataSeries = { type: "spline" };
    var dataPoints = [];
    for (var i = 0; i < limit; i += 1) {
 	   y = (Math.random() * (300)+500);	   

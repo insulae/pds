@@ -6,7 +6,7 @@
 
 			<div class="cont-botonera">
 			    <button type="button" class="btn btn-success" style="width: 150px; height: 60px;">Test Mode</button>
-			    <button type="button" class="btn btn-danger" style="width:80px; height: 60px; float: right;margin-right:5px;">Rec</button>
+			    <button id="btnRec" type="button" class="btn btn-danger" style="width:80px; height: 60px; float: right;margin-right:5px;">Rec</button>
 				<button type="button" class="btn btn-info" style="width:80px; height: 60px;float: right;margin-right:5px;">Freeze</button>
 				<button id="check" type="button" class="btn btn-primary" style="width:80px; height: 60px;float: right;margin-right:5px;">Check</button>			
 			</div>

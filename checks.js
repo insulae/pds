@@ -1,9 +1,8 @@
 //creo los array para la data de la grafica	
 var checksVoltaje = [];
 var checksAmperaje = [];
-var dataVoltajeMostrar = [];
-var dataAmperajeMostrar = [];
-	
+var datosGrafica="";
+var temaGrafica='';
 
 function cargaJS(){
 	
@@ -40,9 +39,6 @@ function traerChecks(){
 	    	$('#checks-tabla tbody').remove();	
 	    	checksVoltaje = [];
 	    	checksAmperaje = [];
-	    	dataVoltajeMostrar = [];
-	    	dataAmperajeMostrar = [];
-	    		
 
 	    	//parseo nuevos datos
 	    	var check = JSON.parse(datos);
@@ -58,29 +54,10 @@ function traerChecks(){
     			fila+='<td id="id-check" class="td-hidden">'+check[i].id_check+'</td></tr>';
 
 	    		$('#checks-tabla').append(fila);
-	    		
 	    		//construyo la data para la grafica
-	    			checksVoltaje.push({x: new Date(check[i].fyh), y: check[i].voltaje });
-	    			checksAmperaje.push({x: new Date(check[i].fyh), y: check[i].amperaje});
+	    			checksVoltaje.push({x: new Date(check[i].fyh), y: parseInt(check[i].voltaje) });
+	    			checksAmperaje.push({x: new Date(check[i].fyh), y: parseInt(check[i].amperaje)});
 		    }
-	    	//armo data de voltaje para enviar a grafica
-	    	dataAmperajeMostrar=[
-	    	                   	{
-	    	                   		label: '',
-	    	                   		strokeColor: '#8ae234',
-	    	                   		pointStrokeColor: "#8ae234",
-	    	                   		data: checksAmperaje
-	    	                   	}		
-	    	                   ];
-	    	//armo data de voltaje para enviar a grafica  
-	    	dataVoltajeMostrar=[
-	        	                   	{
-	        	                   		label: '',
-	        	                   		strokeColor: '#00ffff',
-	        	                   		pointStrokeColor: "#00ffff",
-	        	                   		data: checksVoltaje
-	        	                   	}		
-	        	                   ];
 	    }	
 	});
 }

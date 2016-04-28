@@ -1,24 +1,60 @@
 @CHARSET "UTF-8";
 
 .cont-graf{
-	position: absolute;
+	display:block;
   	border-radius: 10px 10px;
   	border-radius: 10px 10px;
   	background-color: #2a2c31;
-  	top:60px;
-  	margin-left: 10px;
+  	margin-top: 10px;
+  	padding:10px;
+  	margin-left: 5px;
+  	width: 930px;
+  	height: 420px;
 }
-.cont-botonera{
-	position:relative;
+
+.graf-cranks{
+	display:inline-block;
+	float: left;
+	height: 400px; 
+	width: 910px;
+}
+
+.cont-botonera1{
+	position:absolute;
   	border-radius: 10px 10px;
+  	background-color: #000;	
+	padding: 0.5em 0.5em;
+	margin: 0.5em 10%;
+	width: 90px;
+	height: 80px;
+	left:-70px;
+	text-align: center;
+}
+
+.btn-sensor{
+	display:inline-block;
+	height: 45px;
+	width:50px;
+	background-color: #ff0000;
+	text-align: center;
+	margin: 0 auto;
+	border-radius: 5px 5px;
+	border: 1px;
+	font-weight: bold;
+}
+
+.cont-botonera2{
+	position:absolute;
   	border-radius: 10px 10px;
   	background-color: #000;	
 	padding: 0.5em 0.5em;
 	margin: 0.5em 10%;
 	width: 800px;
-	left:-40px;
+	height: 80px;
+	left:40px;
 	text-align: center;
 }
+
 .label-observacion{
 	text-align: center;
 }

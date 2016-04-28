@@ -15,9 +15,6 @@
     <script src='engine/jquery-confirm.js'></script>      
     <script src="engine/bootstrap.min.js"></script>
     <script src="engine/smoothie.js"></script>
-    <script src='engine/Chart.Line.js'></script>
-	<script src='engine/Chart.Scatter.min.js'></script>
-	<script src='engine/date.format.js'></script>
 	<script src='engine/GrafPan.js'></script>
     
     
@@ -34,7 +31,7 @@
 			    <button id="tab-cranks" type="button" class="tab tabno">Cranks</button></a>
 			    <button id="tab-grabaciones" type="button" class="tab tabno">Grabaciones</button></a>
 			    <div id="tab-avion" type="button" class="tabavion"></div></a>
-				<span class="glyph-icon flaticon-cogwheel icon-conf"></span></a>	
+				<span id="configuracion" class="glyph-icon flaticon-cogwheel ico-conf"></span></a>	
 			</div>		
 		</div>
 		<div id="pagina">

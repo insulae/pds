@@ -9,6 +9,6 @@ while (true) {
 	echo "data: ]\n\n";
 	ob_end_flush();
 	flush();
-	sleep(1);
+	usleep(250000);
 }
 ?>

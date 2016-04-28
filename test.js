@@ -1,5 +1,7 @@
-function cargaJS(){
+var voltaje = [];
+var amperaje = [];
 
+function cargaJS(){
 	
 	/* DIBUJO GRAFICA */
 	var datos = [new TimeSeries(), new TimeSeries()];
@@ -9,12 +11,46 @@ function cargaJS(){
 		var dataCometa = JSON.parse(e.data);
 		datos[0].append(new Date().getTime(), dataCometa[0]);
 		datos[1].append(new Date().getTime(), dataCometa[1]);
+		if ($("#btnRec").hasClass("RecActivo")) {
+			voltaje.push(dataCometa[0]);
+			amperaje.push(dataCometa[1]);
+		}
 	}, false);
 	/*
 	setInterval(function() {
 	  getData.append(new Date().getTime(), valor);
 	}, 500);
 	*/
+
+	$("#btnRec").click(function () {
+		if ($("#btnRec").hasClass("RecActivo")) {
+			$("#btnRec").removeClass("RecActivo");
+			guardarValores();
+		} else {
+			$("#btnRec").addClass("RecActivo");
+			window.setTimeout(function () {
+				//alert("OK");
+				$("#btnRec").removeClass("RecActivo");
+				guardarValores();
+			}, 2000);
+		}
+	});
+
+	function guardarValores () {
+		//console.log(JSON.stringify(valores, "", " "));
+		$.ajax({		
+			url:   'test_data.php?accion=guardar',
+			type:  'post',
+			data: { 
+				voltaje : JSON.stringify(voltaje),
+				amperaje : JSON.stringify(amperaje)
+			},
+			success: function (datos) {
+				console.log("Se guardo Ok: " + datos);
+			}
+		});
+	}
+
 	function rango(range) {
 	  // TODO implement your calculation using range.min and range.max
 	  var min = 0;
@@ -42,8 +78,10 @@ function cargaJS(){
 		 			});
 				
 				//fillStyle:'#000000'
+				
 				chart.addTimeSeries(datos[0],{lineWidth:3,strokeStyle:'#00ff00'});
 				chart.addTimeSeries(datos[1],{lineWidth:3,strokeStyle:'#00ffff'});
+
 				chart.streamTo(document.getElementById("graf1200"), 1000);
 		}
 	/* DIBUJO GRAFICA */

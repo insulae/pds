@@ -16,8 +16,8 @@ var testCometa;
 //cranks
 
 //SETEO AVION PARA NO DEMORAR BORRAR
-//$('#tab-avion').text(avion);
-//$('#tab-test').removeClass('tabno');
+$('#tab-avion').text(avion);
+$('#tab-test').removeClass('tabno');
 
 //SETEO TAB INICIAL
 $('#pagina').load('inicio.php');
@@ -51,4 +51,12 @@ $('#tab-cranks').click(function(){
 
 $('#tab-grabaciones').click(function(){
 	tabSelect('grabaciones');
+});
+
+$('#configuracion').click(function(){
+	rompoJS();
+	$('#pagina').load('configuracion.php');
+	$.getScript('configuracion.js', function() {cargaJS();});
+	$(".menu-tabs button").removeClass("tabactivo");
+
 });

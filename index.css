@@ -64,11 +64,12 @@
 	width: 100%;
 	
 }
-.icon-conf{
+.ico-conf{
 	display: inline-block;
     transform: scaleY(2) scaleX(2);
 	margin-left:30px;
-	color:#fff;    
+	color:#fff;
+	cursor: pointer;    
 }
 .icon-conf:hover{
 	color:#35ff35;
