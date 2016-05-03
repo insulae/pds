@@ -1,93 +1,115 @@
-var voltaje = [];
-var amperaje = [];
+var registros = [];
 
 function cargaJS(){
 	
-	/* DIBUJO GRAFICA */
-	var datos = [new TimeSeries(), new TimeSeries()];
-	//var datos = new TimeSeries();
-	testCometa = new EventSource('test_cometa.php');
-	testCometa.addEventListener('message', function(e) {
-		var dataCometa = JSON.parse(e.data);
-		datos[0].append(new Date().getTime(), dataCometa[0]);
-		datos[1].append(new Date().getTime(), dataCometa[1]);
-		if ($("#btnRec").hasClass("RecActivo")) {
-			voltaje.push(dataCometa[0]);
-			amperaje.push(dataCometa[1]);
-		}
-	}, false);
-	/*
-	setInterval(function() {
-	  getData.append(new Date().getTime(), valor);
-	}, 500);
-	*/
+	crearGraf();
+	otrosValores();
+	
+	}
+function rompoJS(){
+	//limpio testSource
+	if(testCometa){
+		testCometa.close();
+		testCometa = null;
+	}
+	
+	//limpio gauges truchos
+	clearInterval(cargaValores);
+}
 
-	$("#btnRec").click(function () {
-		if ($("#btnRec").hasClass("RecActivo")) {
+$("#btnRec").click(function () {
+	if ($("#btnRec").hasClass("RecActivo")) {
+		$("#btnRec").removeClass("RecActivo");
+		guardarValores();
+		$('#btnRec').text("Rec");
+		$('#cartel').text("Test Mode");
+		$('#cartel').removeClass("cartel-rec");
+		
+	} else {
+		$("#btnRec").addClass("RecActivo");
+		$('#btnRec').text("600");
+		$('#cartel').text("Grabando");
+		$('#cartel').addClass("cartel-rec");
+		window.setTimeout(function () {
+			//alert("OK");
 			$("#btnRec").removeClass("RecActivo");
 			guardarValores();
-		} else {
-			$("#btnRec").addClass("RecActivo");
-			window.setTimeout(function () {
-				//alert("OK");
-				$("#btnRec").removeClass("RecActivo");
-				guardarValores();
-			}, 2000);
+		}, 10000);
+	}
+});
+
+
+function guardarValores () {
+	//console.log(JSON.stringify(valores, "", " "));
+	$.ajax({		
+		url:   'test_data.php?accion=guardar',
+		type:  'post',
+		data: { 
+			registros : JSON.stringify(registros)
+		},
+		success: function (datos) {
+			console.log("Se guardo Ok: " + datos);
 		}
 	});
+}
 
-	function guardarValores () {
-		//console.log(JSON.stringify(valores, "", " "));
-		$.ajax({		
-			url:   'test_data.php?accion=guardar',
-			type:  'post',
-			data: { 
-				voltaje : JSON.stringify(voltaje),
-				amperaje : JSON.stringify(amperaje)
-			},
-			success: function (datos) {
-				console.log("Se guardo Ok: " + datos);
-			}
-		});
+function rango(range) {
+  // TODO implement your calculation using range.min and range.max
+  var min = 0;
+  var max = 2500;
+  return {min: min, max: max};
+}
+
+/* DIBUJO GRAFICA */
+var datos = [new TimeSeries(), new TimeSeries()];
+//var datos = new TimeSeries();
+testCometa = new EventSource('test_cometa.php');
+
+testCometa.addEventListener('message', function(e) {
+	var dataCometa = JSON.parse(e.data);
+	console.log(dataCometa);
+	datos[0].append(new Date().getTime(), dataCometa.sensores.voltaje);
+	datos[1].append(new Date().getTime(), dataCometa.sensores.amperaje);
+	if ($("#btnRec").hasClass("RecActivo")) {
+		registros.push(dataCometa);
+		$('#btnRec').text(parseInt($('#btnRec').text())-1);
 	}
+}, false);
+/*
+setInterval(function() {
+  getData.append(new Date().getTime(), valor);
+}, 500);
+*/
+function crearGraf() {
+	var chart = new SmoothieChart({
+				millisPerPixel:43,
+				maxValueScale:0.89,
+				scaleSmoothing:0.274,
+				grid:{strokeStyle:'rgba(119,119,119,0.46)',
+				millisPerLine:2000,verticalSections:8},
+				labels:{fontSize:8,precision:1},
+				//timestampFormatter:SmoothieChart.timeFormatter,
+				//maxValue:0, minValue y max se remplasan con funcion rango
+				//minValue:800,
+				yRangeFunction:rango,
+				horizontalLines:[
+				     			{color:'#ffffff',lineWidth:1,value:0},
+				     			{color:'#880000',lineWidth:2,value:3333},
+				     			{color:'#880000',lineWidth:2,value:-3333}
+				     			]
+	 			});
+			
+			//fillStyle:'#000000'
+			
+			chart.addTimeSeries(datos[0],{lineWidth:3,strokeStyle:'#00ff00'});
+			chart.addTimeSeries(datos[1],{lineWidth:3,strokeStyle:'#00ffff'});
 
-	function rango(range) {
-	  // TODO implement your calculation using range.min and range.max
-	  var min = 0;
-	  var max = 800;
-	  return {min: min, max: max};
+			chart.streamTo(document.getElementById("graf1200"), 1000);
 	}
+/* DIBUJO GRAFICA */
 
-	function crearGraf() {
-		var chart = new SmoothieChart({
-					millisPerPixel:43,
-					maxValueScale:0.89,
-					scaleSmoothing:0.274,
-					grid:{strokeStyle:'rgba(119,119,119,0.46)',
-					millisPerLine:2000,verticalSections:8},
-					labels:{fontSize:8,precision:1},
-					//timestampFormatter:SmoothieChart.timeFormatter,
-					//maxValue:0, minValue y max se remplasan con funcion rango
-					//minValue:800,
-					yRangeFunction:rango,
-					horizontalLines:[
-					     			{color:'#ffffff',lineWidth:1,value:0},
-					     			{color:'#880000',lineWidth:2,value:3333},
-					     			{color:'#880000',lineWidth:2,value:-3333}
-					     			]
-		 			});
-				
-				//fillStyle:'#000000'
-				
-				chart.addTimeSeries(datos[0],{lineWidth:3,strokeStyle:'#00ff00'});
-				chart.addTimeSeries(datos[1],{lineWidth:3,strokeStyle:'#00ffff'});
 
-				chart.streamTo(document.getElementById("graf1200"), 1000);
-		}
-	/* DIBUJO GRAFICA */
-	
-	crearGraf();
-	
+function otrosValores(){
 	cargaValores = setInterval(function() {
 		/*########### simulacion corriente #############*/
 		var corriente = $.ajax({
@@ -220,14 +242,5 @@ function cargaJS(){
 	    }	
 	});
 	}, 3000);
-}
-function rompoJS(){
-	//limpio testSource
-	if(testCometa){
-		testCometa.close();
-		testCometa = null;
-	}
 	
-	//limpio gauges truchos
-	clearInterval(cargaValores);
 }

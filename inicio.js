@@ -19,15 +19,6 @@ function loginInicio(){
 		data:{ 
 			usuario: $('#login-usuario').val(),
 			clave: $('#login-clave').val()
-			},
-		success: function(usuario){
-			usuario = usuario.trim();
-				if(usuario != ""){
-					loginEstado = 1;
-				}	
-				else{
-					$('#login-error').css('visibility','visible');
-				}
 		}
 	});	
 }
@@ -53,31 +44,37 @@ function loginChequeo(){
 	$.ajax({		
 		url:   'inicio_data.php?accion=login_chequeo',
 	    type:  'post',
-	    success:  function (usuario) {
-	    	usuario = usuario.trim();
-	    	if(usuario != ""){
-				//escondo
-				$('#login-error').css('visibility','hidden');
-				$('#btn-login').css('visibility','hidden');
-				$('#login-usuario').css('visibility','hidden');
-				$('#login-clave').css('visibility','hidden');
-
-				//muestro
-				$('#login-label').text('Bievenido '+usuario);
-				$('#btn-deslogin').css('visibility','visible');
-				loginEstado = 1;
-				//cambio tabs si hay avion seleccionado
-				if(avion != ""){
-					$('#tab-checks').removeClass("tabno");
-					$('#tab-cranks').removeClass("tabno");
-					$('#tab-grabaciones').removeClass("tabno");					
-				}				
+	    success:  function (datos) {
+	    	if(datos.trim()){
+		    	datos = JSON.parse(datos);
+		    	id_usuario = datos.id_usuario;
+		    	if(parseInt(id_usuario) > 0){
+					//escondo
+					$('#login-error').css('visibility','hidden');
+					$('#btn-login').css('visibility','hidden');
+					$('#login-usuario').css('visibility','hidden');
+					$('#login-clave').css('visibility','hidden');
+	
+					//muestro
+					$('#login-label').text('Bievenido '+datos.usuario);
+					$('#btn-deslogin').css('visibility','visible');
+					loginEstado = 1;
+					if(parseInt(datos.tipo)== 1){
+						loginAdmin = 1;
+					}
+					//cambio tabs si hay avion seleccionado
+					if(avion != ""){
+						$('#tab-checks').removeClass("tabno");
+						$('#tab-cranks').removeClass("tabno");
+						$('#tab-grabaciones').removeClass("tabno");					
+					}				
+		    	}
 	    	}else{
 				$('#login-label').text('Admin Login');
 				$('#btn-login').css('visibility','visible');
 				$('#login-usuario').css('visibility','visible');
 				$('#login-clave').css('visibility','visible');
-				loginEstado = 0;
+				loginEstado = 0;				
 	    	}
 	    }	
 	});

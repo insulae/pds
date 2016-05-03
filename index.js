@@ -8,10 +8,12 @@ function rompoJS(){
 var activo='inicio';
 var avion='AA-AAA';
 var loginEstado='';
+var loginAdmin='';
 
 //test
 var cargaValores; //eliminar esta mierda
 var testCometa;
+var max_grabacion = 20;
 
 //cranks
 

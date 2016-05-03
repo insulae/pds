@@ -13,7 +13,8 @@ function crearGraf(){
 	var colorLinea=["red","blue","yellow"];
 	var chart = new CanvasJS.Chart("graf-cranks",
 	{
-		theme: 'voltaje',
+		theme: 'cranks',
+		width:910,
 		zoomEnabled: true,
 		//zoomType: "xy",
 		title:{
@@ -58,6 +59,7 @@ function datosGrafica(colorLinea){
 	    	    			puntos = crank[i].puntos;
 	    	    			datos={};
 			    			datos.type="spline";
+			    			datos.markerSize=0,
 			    			datos.lineThickness=1.5;
 			    			datos.dataPoints= puntos;
 			    			datos.color=colorLinea[i];

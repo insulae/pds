@@ -9,9 +9,10 @@ function rompoJS(){
 function crearGraf(){
 	
   	//creo la grafica
-	var chart = new CanvasJS.Chart("graf-graba",
+	var chart = new CanvasJS.Chart("graba-graf",
 	{
 		theme: 'voltaje',
+		width:910,
 		zoomEnabled: true,
 		title:{
 			text: "" 

@@ -12,7 +12,7 @@ while ($r = $q->fetch_object()) {
 */
 switch ($_REQUEST["accion"]) {
 	case "guardar":
-		echo json_encode(@$_REQUEST["voltaje"] . " - " . @$_REQUEST["amperaje"]);
+		echo json_encode(@$_REQUEST["registros"]);
 	break;
 	
 }

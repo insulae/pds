@@ -525,6 +525,62 @@
 					indexLabelLineThickness: 1
 				}
 			},
+			"cranks": {
+				Title: {
+					fontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+					fontSize: 33,
+					fontColor: "#3A3A3A",
+					fontWeight: "bold",
+					verticalAlign: "top",
+					margin: 5
+				},
+				Subtitle: {
+					fontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+					fontSize: 16,
+					fontColor: "#3A3A3A",
+					fontWeight: "bold",
+					verticalAlign: "top",
+					margin: 5
+				},
+				Axis: {
+					titleFontSize: 26,
+					//titleFontColor: "rgb(98,98,98)",
+					titleFontColor: "#666666",
+					//titleFontFamily: "arial black",
+					//titleFontFamily: "Verdana, Geneva, Calibri, sans-serif",
+					titleFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+					//titleFontWeight: "bold",
+
+					//labelFontFamily: "Times New Roman, Times, serif",
+					labelFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+					//labelFontFamily: "Helvetica Neue, Helvetica",
+					labelFontSize: 10, //pds
+					labelFontColor: "yellow", //pds
+					//labelFontWeight: "bold",
+					tickColor: "#BBBBBB",
+					tickThickness: 1, //pds
+					gridThickness: 0.5, //pds
+					gridColor: "#BBBBBB",
+					lineThickness: 2, //pds
+					lineColor: "#BBBBBB"
+				},
+				Legend: {
+					verticalAlign: "bottom",
+					horizontalAlign: "center",
+					fontFamily: isCanvasSupported ? "monospace, sans-serif,arial black" : "calibri"
+				},
+				DataSeries: {
+					//bevelEnabled: true,
+					indexLabelFontColor: "grey",
+					//indexLabelFontFamily: "Trebuchet MS, monospace, Courier New, Courier",
+					indexLabelFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+					//indexLabelFontWeight: "bold",
+					indexLabelFontSize: 18,
+					//indexLabelLineColor: "lightgrey",
+					indexLabelLineThickness: 1
+				}
+			},
+
 			
 			"theme1": {
 				Chart:

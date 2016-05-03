@@ -1,6 +1,8 @@
 function cargaJS(){
 	//alert(JSON.stringify(dataVoltajeMostrar, "", " "));
 	datosGrafica = checksVoltaje;
+	$('#btn-volt').addClass('btn-activo');
+	$('#ico-volt').addClass('ico-activo');
 	temaGrafica = 'voltaje';
 	dibujoGrafica();
 }
@@ -9,18 +11,22 @@ function rompoJS(){
 }
 
 
-$('#mostrar-amp').click(function(){
+$('#btn-amp').click(function(){
 	datosGrafica = checksAmperaje;
 	dibujoGrafica();
-	$('#mostrar-amp').addClass('botAmp');
-	$('#mostrar-volt').removeClass('botVolt');
+	$('#ico-amp').addClass('ico-activo');
+	$('#btn-amp').addClass('btn-activo');
+	$('#ico-volt').removeClass('ico-activo');
+	$('#btn-volt').removeClass('btn-activo');
 	temaGrafica = 'voltaje';
 });
-$('#mostrar-volt').click(function(){
+$('#btn-volt').click(function(){
 	datosGrafica = checksVoltaje;
 	dibujoGrafica();
-	$('#mostrar-volt').addClass('botVolt');
-	$('#mostrar-amp').removeClass('botAmp');
+	$('#ico-volt').addClass('ico-activo');
+	$('#btn-volt').addClass('btn-activo');
+	$('#ico-amp').removeClass('ico-activo');
+	$('#btn-amp').removeClass('btn-activo');
 	temaGrafica = 'voltaje';
 });
 /* ######################################## MODAL ######################################## */
@@ -46,10 +52,11 @@ function dibujoGrafica(){
 	  var chart = new CanvasJS.Chart("check-graf",
 			    {
 		  		zoomEnabled: true,
+		  		width: 910,
 		  		theme: temaGrafica,
 			     title:{
-			      text: "",
-			       horizontalAlign: "right"
+			     text: "",
+			     horizontalAlign: "right"
 			    },
 			    axisX:{
 			      valueFormatString: "DD-MM-YY",

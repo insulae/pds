@@ -80,8 +80,9 @@ switch(@$_REQUEST['accion']){
 		');
 		$datos = queryToObject($query);
 		if(@$datos[0]->usuario){
-			echo @$_SESSION['usuario'] = $datos[0]->usuario;
-			@$_SESSION['id_usuario'] = $datos[0]->id_usuario;
+			@$_SESSION['id_usuario'] = $datos[0]->id_usuario;			
+			@$_SESSION['usuario'] = $datos[0]->usuario;
+			@$_SESSION['tipo'] = $datos[0]->tipo;
 		}
 	break;
 	
@@ -96,7 +97,11 @@ switch(@$_REQUEST['accion']){
 //LOGIN CHEQUEO	
 	case 'login_chequeo':
 		if (@$_SESSION['id_usuario']){
-			echo @$_SESSION['usuario'];
+			$datos = new stdClass();
+			$datos->id_usuario = @$_SESSION['id_usuario'];
+			$datos->usuario = @$_SESSION['usuario'];
+			$datos->tipo = @$_SESSION['tipo'];
+			echo json_encode($datos);
 		}else{
 			echo false;
 		}

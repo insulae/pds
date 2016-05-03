@@ -64,14 +64,18 @@ function traerChecks(){
 
 /* eliminar Check */
 $('#checks-tabla').on('click', '.ico-eliminar', function(event) {
+	if(loginAdmin != 1){
+		$.alert('No posee permisos de administrador');
+		return;
+	}
 	celdaActiva = $(this).parent().parent();
 	celdaActiva.addClass('tr-check-activo');
 	 checkElimino = $(this).parent().parent().find("#id-check").html();
 		$.confirm({
 		    title: 'Eliminación',
-		    content: 'Esta a punto de eliminar el avión: '+ avion,
+		    content: 'Esta a punto de eliminar check Seleccionado',
 		    confirm: function(){
-		    	eliminarAvion(avion);
+		    	eliminarCheck(checkElimino);
 				celdaActiva.removeClass('tr-check-activo');
 		    },
 			cancel: function(){
@@ -79,6 +83,22 @@ $('#checks-tabla').on('click', '.ico-eliminar', function(event) {
 			}
 		});
 });
+
+function eliminarCheck(check){
+	$.ajax({		
+		url:   'checks_data.php?accion=eliminarCheck',
+	    data:{
+	    	id_check: check
+	    },
+	    type:  'post',
+	    success:  function (resultado) {
+	    	if(resultado.trim() !=""){
+	    		$.alert('<b>Error Numero:<br></b>'+resultado);
+	    	}
+	    	traerChecks();
+	    }	
+	});
+}
 
 /* filtro seleccion de checks */
 $('#btn-filtrar').click(function(){

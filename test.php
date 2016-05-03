@@ -1,14 +1,14 @@
 <link rel="stylesheet" type="text/css" href="test.css">
 	 	<div class="cont-graf">
 			<div style="margin:10px;">
-				<canvas id="graf1200" width="580" height="300">
+				<canvas id="graf1200" width="580" height="300"></canvas>
 			</div>
 
 			<div class="cont-botonera">
-			    <button type="button" class="btn btn-success" style="width: 150px; height: 60px;">Test Mode</button>
+			    <button id='cartel' type="button" class="btn cartel" style="width: 150px; height: 60px;">Test Mode</button>
 			    <button id="btnRec" type="button" class="btn btn-danger" style="width:80px; height: 60px; float: right;margin-right:5px;">Rec</button>
 				<button type="button" class="btn btn-info" style="width:80px; height: 60px;float: right;margin-right:5px;">Freeze</button>
-				<button id="check" type="button" class="btn btn-primary" style="width:80px; height: 60px;float: right;margin-right:5px;">Check</button>			
+				<button id="btnCheck" type="button" class="btn btn-primary" style="width:80px; height: 60px;float: right;margin-right:5px;">Check</button>			
 			</div>
 				  
 		</div>

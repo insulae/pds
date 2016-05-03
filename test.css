@@ -20,6 +20,12 @@
 	left:-50px;
 }
 
+.cartel{
+	background-color: #00bc8c;
+}
+.cartel-rec{
+	background-color: #d62c1a;
+}
 .cont-relojes-fondo{
 	position:absolute;
 	right:5px;
