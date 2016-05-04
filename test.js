@@ -14,72 +14,54 @@ function rompoJS(){
 	}
 	
 	//limpio gauges truchos
+	//TODO ELIMINAR cargaValores una vez que los gauges usen cometa
 	clearInterval(cargaValores);
 }
 
+//inicio grabacion
 $("#btnRec").click(function () {
 	if ($("#btnRec").hasClass("RecActivo")) {
 		$("#btnRec").removeClass("RecActivo");
-		guardarValores();
+		//grabacion frenada por usuario
+		terminoGrabacion();
 		$('#btnRec').text("Rec");
 		$('#cartel').text("Test Mode");
 		$('#cartel').removeClass("cartel-rec");
 		
 	} else {
 		$("#btnRec").addClass("RecActivo");
-		$('#btnRec').text("600");
+		$('#btnRec').text("240"); //seteo tiempo 240 1min
 		$('#cartel').text("Grabando");
 		$('#cartel').addClass("cartel-rec");
-		window.setTimeout(function () {
-			//alert("OK");
-			$("#btnRec").removeClass("RecActivo");
-			guardarValores();
-		}, 10000);
 	}
 });
 
-
-function guardarValores () {
-	//console.log(JSON.stringify(valores, "", " "));
-	$.ajax({		
-		url:   'test_data.php?accion=guardar',
-		type:  'post',
-		data: { 
-			registros : JSON.stringify(registros)
-		},
-		success: function (datos) {
-			console.log("Se guardo Ok: " + datos);
-		}
-	});
-}
-
-function rango(range) {
-  // TODO implement your calculation using range.min and range.max
-  var min = 0;
-  var max = 2500;
-  return {min: min, max: max};
-}
-
 /* DIBUJO GRAFICA */
+function rango(range) {
+	  var min = 0;
+	  var max = 2500;
+	  return {min: min, max: max};
+}
+
 var datos = [new TimeSeries(), new TimeSeries()];
 //var datos = new TimeSeries();
 testCometa = new EventSource('test_cometa.php');
 
 testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
-	console.log(dataCometa);
-	datos[0].append(new Date().getTime(), dataCometa.sensores.voltaje);
-	datos[1].append(new Date().getTime(), dataCometa.sensores.amperaje);
+	//console.log(dataCometa); //debug de lo que viene
+	datos[0].append(new Date().getTime(), dataCometa.sensores.vol);
+	datos[1].append(new Date().getTime(), dataCometa.sensores.amp);
 	if ($("#btnRec").hasClass("RecActivo")) {
 		registros.push(dataCometa);
 		$('#btnRec').text(parseInt($('#btnRec').text())-1);
+		//si el boton llego a 0 doy por finalizada la grabacion
+		if(parseInt($('#btnRec').text()) == 0){
+			terminoGrabacion();
+		}
 	}
 }, false);
-/*
-setInterval(function() {
-  getData.append(new Date().getTime(), valor);
-}, 500);
-*/
+
 function crearGraf() {
 	var chart = new SmoothieChart({
 				millisPerPixel:43,
@@ -107,6 +89,51 @@ function crearGraf() {
 			chart.streamTo(document.getElementById("graf1200"), 1000);
 	}
 /* DIBUJO GRAFICA */
+
+
+/* #################################################### GRABACION #################################################### */ 
+
+//accion al terminar grabacion
+function terminoGrabacion(){
+	//vuelvo boton a estado normal
+	$("#btnRec").removeClass("RecActivo");
+	$('#btnRec').text("Rec");
+	$('#cartel').text("Test Mode");
+	$('#cartel').removeClass("cartel-rec");
+	$('#modalAltaGraba').modal('show');
+}
+
+//accion de eliminar todo tipo de test (cierro modal)
+$('#descartar-graba').click(function(){
+	$('#modalAltaGraba').modal('hide');
+});
+
+//accion de guardar todo tipo de test (cierro modal)
+$('#guardar-graba').click(function(){
+	guardarGrabacion();
+	$('#modalAltaGraba').modal('hide');
+});
+
+//guardo grabacion en base
+function guardarGrabacion() {
+	//alert("entro");
+	//console.log(JSON.stringify(valores, "", " "));
+	$.ajax({		
+		url:   'test_data.php?accion=guardar',
+		type:  'post',
+		data: { 
+			registros : JSON.stringify(registros),
+			id_avion: id_avion,			
+			observacion: $('#observacion-graba').val()
+		},
+		success: function (datos) {
+			console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
+		}
+	});
+}
+
+/* #################################################### GRABACION #################################################### */
+
 
 
 function otrosValores(){

@@ -104,7 +104,9 @@
 	color:black;
 }
 
-
+.td-hidden{
+	display: none;
+}
 .cont-aviones th{
 	font-size: 1em;
 	width:70px; 

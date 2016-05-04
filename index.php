@@ -48,7 +48,7 @@
 </html>
 
 <?php 
-//TODO ver que script quiere traer las google fonts smoothie?
-//TODO ale cambiar funcion de login para que sea onclick y con enter
 //TODO pedir logo en alta calidad
+//TODO la apk no debe permitir apagar la pantalla, por lo menos cuando este grabando, el "cometa" muere?
+//TODO ver como hacer que la ventana modal no se cierre, tocar fuera de ella y cerrarse  hace perder todo el test
 ?>

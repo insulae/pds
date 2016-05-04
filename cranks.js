@@ -43,7 +43,8 @@ function traerCranks(){
 	    			fila+='<td>'+crank[i].fyh+'</td>';
 	    			fila+='<td style="text-align:left; padding-left:10px">'+crank[i].observacion+'</td>';
 	    			fila+='<td><span class="glyph-icon flaticon-close icon-eliminar"></span></td>';
-	    		fila+='<td id="id-crank" class="td-hidden">'+crank[i].id_crank+'</td></tr>';
+	    			fila+='<td id="id-crank" class="td-hidden">'+crank[i].id_crank+'</td>';
+	    			fila+='</tr>';
 
 	    		$('#cranks-tabla').append(fila);
 		    }

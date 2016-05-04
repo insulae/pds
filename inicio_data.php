@@ -42,7 +42,7 @@ switch(@$_REQUEST['accion']){
 				'.@$_POST['motores'].', 
 				'.@$_POST['apu'].', 
 				"'.@$_POST['observacion'].'"
-			);
+			)
 		');
 		if(mysqli_error($db)){
 			echo mysqli_error($db);
