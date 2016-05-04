@@ -3,7 +3,7 @@ var registros = [];
 function cargaJS(){
 	
 	crearGraf();
-	otrosValores();
+	//otrosValores();
 	
 	}
 function rompoJS(){
@@ -30,7 +30,7 @@ $("#btnRec").click(function () {
 		
 	} else {
 		$("#btnRec").addClass("RecActivo");
-		$('#btnRec').text("240"); //seteo tiempo 240 1min
+		$('#btnRec').text("24"); //seteo tiempo 240 1min
 		$('#cartel').text("Grabando");
 		$('#cartel').addClass("cartel-rec");
 	}
@@ -116,10 +116,9 @@ $('#guardar-graba').click(function(){
 
 //guardo grabacion en base
 function guardarGrabacion() {
-	//alert("entro");
-	//console.log(JSON.stringify(valores, "", " "));
+	//console.log(JSON.stringify(registros));
 	$.ajax({		
-		url:   'test_data.php?accion=guardar',
+		url:   'test_data.php?accion=guardarGrabacion',
 		type:  'post',
 		data: { 
 			registros : JSON.stringify(registros),
@@ -127,7 +126,8 @@ function guardarGrabacion() {
 			observacion: $('#observacion-graba').val()
 		},
 		success: function (datos) {
-			console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
+			//console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
+			registros = [];
 		}
 	});
 }

@@ -1,20 +1,39 @@
 <?php
 require('engine/base.php');
 
-if($_REQUEST['accion'] == 'traerGraba'){
-	$query = $db->query('
-		SELECT 
-			avion.patente,
-			rec.id_rec,
-			rec.observacion,
-			rec.fyh
-		FROM rec
-		INNER JOIN avion USING(id_avion)
-		WHERE avion.patente = "'.$_POST['avion'].'"
-		AND rec.fyh >= "'.$_POST['fdesde'].'"
-		AND rec.fyh <= "'.$_POST['fhasta'].'"	
-	');
-	//$datos = queryToArray($query);
-	$datos = json_encode(queryToObject($query));
-	echo $datos;
+switch($_REQUEST['accion']){
+	
+	//traer listado de las grabaciones
+	case 'traerGraba':
+		
+		$query = $db->query('
+			SELECT 
+				avion.patente,
+				rec.id_rec,
+				rec.observacion,
+				rec.fyh
+			FROM rec
+			INNER JOIN avion USING(id_avion)
+			WHERE avion.patente = "'.$_POST['avion'].'"
+			AND rec.fyh >= "'.$_POST['fdesde'].'"
+			AND rec.fyh <= "'.$_POST['fhasta'].'"	
+		');
+		//$datos = queryToArray($query);
+		$datos = json_encode(queryToObject($query));
+		echo $datos;
+	break;
+	
+	//traer datos de la grabacion
+	case 'traerDatos':
+		$query = $db->query('
+			SELECT
+				sensores,
+				fyh
+			FROM rec_item
+			WHERE id_rec = '.$_POST['id_rec']
+		);
+		//echo $datos = queryToArray($query);
+		$datos = json_encode(queryToObject($query));
+		echo $datos;
+	break;
 }

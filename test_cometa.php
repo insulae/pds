@@ -3,6 +3,7 @@ header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 
 include("engine/sensores.php");
+
  while (true) {
 	$cadena = com_virtual();
 	$registro = new stdClass(); 
@@ -14,9 +15,16 @@ include("engine/sensores.php");
 		$sensores[$sensor5] = hexdec(substr($cadena,22,4));
 		$sensores[$sensor6] = hexdec(substr($cadena,26,4));
 	
-	$registro->cadena = $cadena;
-	$registro->fyh = date("Y-m-d H:i:s");
+	
+	//ALTER TABLE rec_item MODIFY fyh DATETIME(3); <--- para que tome milisegundos
+
+	$t = microtime(true);
+	$micro = sprintf("%06d", ($t - floor($t)) * 1000000);
+	$d = new DateTime(date('Y-m-d H:i:s.' . $micro, $t));
+	
+	$registro->fyh = $d->format("Y-m-d H:i:s.u");		
 	$registro->sensores = $sensores;
+	//$registro->cadena = $cadena;
 
 	echo "data: " . json_encode($registro). "\n\n";
 	

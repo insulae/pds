@@ -1,3 +1,5 @@
+id_rec = '';
+
 function cargaJS(){
 	//datepicker
 	$('.graba-fecha').datepicker({
@@ -38,7 +40,7 @@ function traerGraba(){
 	    			fila+='<td>'+graba[i].fyh+'</td>';
 	    			fila+='<td style="text-align:left; padding-left:10px">'+graba[i].observacion+'</td>';
 	    			fila+='<td><span class="glyph-icon flaticon-close icon-eliminar"></span></td>';
-	    			fila+='<td id="id-graba" class="td-hidden">'+graba[i].id_crank+'</td></tr>';
+	    			fila+='<td id="id-graba" class="td-hidden">'+graba[i].id_rec+'</td></tr>';
 
 	    		$('#graba-tabla').append(fila);
 		    }
@@ -58,17 +60,9 @@ $('#graba-tabla').on('click', '.tr-graba', function(event) {
 		$(this).removeClass('tr-graba-activo');
 		$('#graba_cant').text(parseInt($('#graba_cant').text())-1);
 	}else{
-		//controlo la cant de graba seleccionados
-		if($('#graba_cant').text()< 5){
-			//selecciono
-			$(this).addClass('tr-graba-activo');
-			//alert($(this).find("#id-crank").html());
-			$('#graba_cant').text(parseInt($('#graba_cant').text())+1);
-			//cambio color para marcar maximo alcanzado
-			if($('#graba_cant').text() == 5){
-				$('.graba-cant label').addClass('graba-cant-full');
-			}
-		}
+		//cambio color para marcar maximo alcanzado
+		$(this).addClass('tr-graba-activo');
+		id_rec = $(this).find("#id-graba").html();
 	}
 	//$(this).addClass('tr-crank-activo').siblings().removeClass('tr-crank-activo');
 });

@@ -1,9 +1,9 @@
 function cargaJS(){
 	//alert(JSON.stringify(dataVoltajeMostrar, "", " "));
-	datosGrafica = checksVoltaje;
 	$('#btn-volt').addClass('btn-activo');
 	$('#ico-volt').addClass('ico-activo');
 	temaGrafica = 'voltaje';
+	datosGrafica = checksVoltaje;
 	dibujoGrafica();
 }
 
@@ -18,7 +18,7 @@ $('#btn-amp').click(function(){
 	$('#btn-amp').addClass('btn-activo');
 	$('#ico-volt').removeClass('ico-activo');
 	$('#btn-volt').removeClass('btn-activo');
-	temaGrafica = 'voltaje';
+	temaGrafica = 'amperaje';
 });
 $('#btn-volt').click(function(){
 	datosGrafica = checksVoltaje;

@@ -30,10 +30,8 @@ while ($r = $q->fetch_object()) {
 
 switch ($_REQUEST["accion"]) {
 	
-/* #################################################### GRABACION #################################################### */	
-	case "guardar":
-		//echo json_encode(@$_REQUEST["registros"]); //para debug de como llega el dato
-	
+/* #################################################### GRABACION #################################################### */
+	case "guardarGrabacion":
 		$registros = json_decode(stripslashes($_POST['registros']));
 		
 		//GRABO REC
@@ -47,61 +45,28 @@ switch ($_REQUEST["accion"]) {
 				"'.@$_POST['observacion'].'"
 			)
 		');
-		if(!mysqli_errno($db)){
-			$id_rec = mysqli_insert_id($db);
+		if(!$db->errno){
+			$id_rec = $db->insert_id;
 			foreach($registros as $registro){
-				
 				//GRABO REC_ITEM
 				$query = $db->query('
 					INSERT INTO rec_item(
 						id_rec,
-						cadena,
+						sensores,
 						fyh
 					)
 					VALUES (
 						'.$id_rec.',
-						"'.$registro->cadena.'",
+						"'.$db->real_escape_string(json_encode($registro->sensores)).'",
 						"'.$registro->fyh.'"
 					)
 				');
-				
-				if(!mysqli_errno($db)){
-					$id_rec_item = mysqli_insert_id($db);
-					
-					//grabo voltaje
-					$query = $db->query('
-						INSERT INTO rec_item_sensor(
-							id_rec_item,
-							nro_sensor,
-							dato
-						)
-						VALUES (
-							'.$id_rec_item.',
-							1,
-							"'.$registro->sensores->vol.'"
-						)
-					');
-					//grabo amperaje
-					$query = $db->query('
-						INSERT INTO rec_item_sensor(
-							id_rec_item,
-							nro_sensor,
-							dato
-						)
-						VALUES (
-							'.$id_rec_item.',
-							2,
-							"'.$registro->sensores->amp.'"
-						)
-					');
-				}
+				echo $db->error;
 			}
-		}else{
-			echo mysqli_error($db);
 		}
-		//TODO AGREGAR CONTROL VER QUE CONVIENE
 		
 	break;
+		//TODO AGREGAR CONTROL VER QUE CONVIENE
 /* #################################################### GRABACION #################################################### */
 	
 }
