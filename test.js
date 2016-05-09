@@ -50,7 +50,8 @@ testCometa = new EventSource('test_cometa.php');
 testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
 	//console.log(dataCometa); //debug de lo que viene
-	datos[0].append(new Date().getTime(), dataCometa.sensores.vol);
+	mostrarVoltaje(dataCometa.sensores.vol);
+	datos[0].append(new Date().getTime(), dataCometa.sensores.vol*62.5); //62.5 es para que se equipare a 2500 de amperaje
 	datos[1].append(new Date().getTime(), dataCometa.sensores.amp);
 	if ($("#btnRec").hasClass("RecActivo")) {
 		registros.push(dataCometa);
@@ -135,7 +136,28 @@ function guardarGrabacion() {
 /* #################################################### GRABACION #################################################### */
 
 
-
+/* ###################### VOLTAJE ################## */
+function mostrarVoltaje(dato){
+	var grado
+	if(dato >= 20){
+		grado = dato * 2.25; 
+	}else{
+		grado = dato * -2.25;
+	}
+	$("#voltaje-aguja").css("transform", "rotate("+grado+"deg)");
+	if( (dato >= 0 && dato < 20) || (dato >= 30 && dato < 40)){
+		$("#voltaje-valor").css("color", "red");
+	}
+	else if( (dato >= 20 && dato < 24) || (dato >= 29 && dato < 30)){
+		$("#voltaje-valor").css("color", "yellow");
+	}
+	else if(dato >= 24 && dato <=29){
+		$("#voltaje-valor").css("color", "#00ff00");
+	}
+	$("#voltaje-valor").text(dato);
+}
+/* ###################### VOLTAJE ################## */
+	
 function otrosValores(){
 	cargaValores = setInterval(function() {
 		/*########### simulacion corriente #############*/

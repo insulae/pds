@@ -36,4 +36,16 @@ switch($_REQUEST['accion']){
 		$datos = json_encode(queryToObject($query));
 		echo $datos;
 	break;
+	
+	//ELIMINAR Graba
+	case 'eliminarGraba':
+		$query = $db->query('
+			DELETE rec,rec_item FROM rec
+			INNER JOIN rec_item USING(id_rec)
+			WHERE id_rec = '.@$_POST['id_rec']
+		);
+		if(mysqli_errno($db)){
+			echo mysqli_errno($db);
+		}
+		break;	
 }

@@ -27,7 +27,7 @@
 			</div>
 			
 			<div id="voltaje" class="voltaje">
-					<img src="images/gaugeOK.svg" style="width: 120px">
+					<img src="images/voltaje.svg" style="width: 120px">
 			  	<div id="voltaje-aguja" class="voltaje-aguja">
 			  		<img src="images/agujaChica.svg" style="width: 9px">
   				</div>

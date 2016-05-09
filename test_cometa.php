@@ -38,7 +38,7 @@ include("engine/sensores.php");
  }
 function com_virtual(){
 		return "000106"
-		."0".rand(1,9)."0".rand(1,9)
+		."0".rand(0,0).rand(10,28) //random desde diez para que no rompa el formato de la cadena
 		."0".rand(1,9)."0".rand(1,9)
 		."0".rand(1,9)."0".rand(1,9)
 		."0".rand(1,9)."0".rand(1,9)
