@@ -1,5 +1,10 @@
 function cargaJS(){
 
+	//SETEO VARIABLES DE TEXTO
+	$('#patente').attr("placeholder",tex_patente);
+	$('#login-usuario').attr("placeholder",tex_login_usuario);
+	$('#login-clave').attr("placeholder",tex_login_clave);
+	
 	//ejecuto comprobacion de logeo al cargar
 	loginChequeo();
 	
@@ -56,7 +61,7 @@ function loginChequeo(){
 					$('#login-clave').css('visibility','hidden');
 	
 					//muestro
-					$('#login-label').text('Bievenido '+datos.usuario);
+					$('#login-label').text(tex_bienvenido+' '+datos.usuario);
 					$('#btn-deslogin').css('visibility','visible');
 					loginEstado = 1;
 					if(parseInt(datos.tipo)== 1){
@@ -70,7 +75,7 @@ function loginChequeo(){
 					}				
 		    	}
 	    	}else{
-				$('#login-label').text('Admin Login');
+				$('#login-label').text(tex_admin_login);
 				$('#btn-login').css('visibility','visible');
 				$('#login-usuario').css('visibility','visible');
 				$('#login-clave').css('visibility','visible');
@@ -86,7 +91,7 @@ $('#btn-deslogin').click(function(){
 		url:   'inicio_data.php?accion=des_login',
 	    type:  'post',
 	    success:  function () {
-			$('#login-label').text('Admin Login');
+			$('#login-label').text(tex_admin_login);
 			$('#btn-deslogin').css('visibility','hidden');
 			$('#btn-login').css('visibility','visible');
 			$('#login-usuario').css('visibility','visible');
@@ -131,7 +136,7 @@ $('#aviones-tabla').on('click', '.btn-accion-eliminar', function(event) {
 	 avionEliminar = $(this).parent().parent().find("#celda-avion").html();
 	$.confirm({
 	    title: 'Eliminación',
-	    content: 'Esta a punto de eliminar el avión: '+ avionEliminar,
+	    content: tex_eliminar_avion+' '+ avionEliminar,
 	    confirm: function(){
 	    	eliminarAvion(avionEliminar);
 	    }
@@ -139,7 +144,7 @@ $('#aviones-tabla').on('click', '.btn-accion-eliminar', function(event) {
 });
 
 $('#modalAltaAvion').on('hidden.bs.modal', function () {
-alert("ok");
+console.log("ok");
 });
 
 

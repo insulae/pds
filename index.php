@@ -16,7 +16,7 @@
     <script src="engine/bootstrap.min.js"></script>
     <script src="engine/smoothie.js"></script>
 	<script src='engine/GrafPan.js'></script>
-    
+	<script src='engine/idiomas_ext.js'></script>
     
 </head>   
   
@@ -25,21 +25,21 @@
 	<div id="contenedor" class="contenedor">
 		<div id="tabs">
 			<div class="menu-tabs">
-				<button id="tab-inicio" type="button" class="tab tabactivo">Inicio</button></a>
-				<button id="tab-test" type="button" class="tab tabno">Test</button>
-			    <button id="tab-checks" type="button" class="tab tabno">Checks</button></a>
-			    <button id="tab-cranks" type="button" class="tab tabno">Cranks</button></a>
-			    <button id="tab-grabaciones" type="button" class="tab tabno">Grabaciones</button></a>
-			    <div id="tab-avion" type="button" class="tabavion"></div></a>
-				<span id="configuracion" class="glyph-icon flaticon-cogwheel ico-conf"></span></a>	
-			</div>		
+				<button id="tab-inicio" type="button" class="tab tabactivo"><label tex="inicio"></button>
+				<button id="tab-test" type="button" class="tab tabno"><label tex="test"/></button>
+			    <button id="tab-checks" type="button" class="tab tabno"><label tex="checks"/></button>
+			    <button id="tab-cranks" type="button" class="tab tabno"><label tex="cranks"/></button>
+			    <button id="tab-grabaciones" type="button" class="tab tabno"><label tex="grabaciones"/></button>
+			    <div id="tab-avion" type="button" class="tabavion"></div>
+				<span id="configuracion" class="glyph-icon flaticon-cogwheel ico-conf"></span>	
+			</div>
 		</div>
 		<div id="pagina">
 		</div>
 	</div>
 
 <script>
-
+    
 /*############################ declaracion de variables #############################*/
 	
 </script>  

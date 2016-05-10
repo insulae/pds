@@ -1,0 +1,16 @@
+{
+"__" : "####################### INDEX ##########################",
+"inicio": "Inicio",
+"test": "Test",
+"checks": "Checks",
+"cranks": "Cranks",
+"grabaciones": "Grabaciones",
+
+"__" : "####################### INICIO ##########################",
+"buscar": "Buscar",
+"avion": "AVION",
+"motores": "Motores",
+"ingresar": "Ingresar",
+"salir": "Salir",
+ "login_error": "Datos no validos"
+}

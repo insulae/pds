@@ -32,7 +32,7 @@
 			  		<img src="images/agujaChica.svg" style="width: 9px">
   				</div>
 			  	<label id="voltaje-titulo" class="voltaje-titulo">VOLTAJE</label>
-			  	<label id="voltaje-valor" class="voltaje-valor">22</label>
+			  	<label id="voltaje-valor" class="voltaje-valor"></label>
 			</div>
 		</div>
 	<!-- RENGLON2 -->

@@ -25,6 +25,7 @@ $('#tab-test').removeClass('tabno');
 //SETEO TAB INICIAL
 $('#pagina').load('inicio.php');
 $.getScript('inicio.js', function() {cargaJS();});
+$.getScript('engine/idiomas.js');
 
 //TABS
 function tabSelect(tab){
@@ -32,6 +33,7 @@ function tabSelect(tab){
 	if(!($('#tab-'+tab).hasClass('tabno')) && avion !=""){
 		$('#pagina').load(tab+'.php');
 		$.getScript(tab+'.js', function() {cargaJS();});
+		$.getScript('engine/idiomas.js');
 		$('#tab-'+tab).addClass('tabactivo').siblings().removeClass('tabactivo');
 	}
 }

@@ -39,7 +39,7 @@ $("#btnRec").click(function () {
 /* DIBUJO GRAFICA */
 function rango(range) {
 	  var min = 0;
-	  var max = 2500;
+	  var max = 1500;
 	  return {min: min, max: max};
 }
 
@@ -51,7 +51,7 @@ testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
 	//console.log(dataCometa); //debug de lo que viene
 	mostrarVoltaje(dataCometa.sensores.vol);
-	datos[0].append(new Date().getTime(), dataCometa.sensores.vol*62.5); //62.5 es para que se equipare a 2500 de amperaje
+	datos[0].append(new Date().getTime(), dataCometa.sensores.vol*37.5); //62.5 es para que se equipare a 2500 de amperaje // 37.5 para 1500
 	datos[1].append(new Date().getTime(), dataCometa.sensores.amp);
 	if ($("#btnRec").hasClass("RecActivo")) {
 		registros.push(dataCometa);

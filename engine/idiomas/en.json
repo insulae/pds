@@ -1,0 +1,19 @@
+{
+"__" : "####################### INDEX ##########################",
+"inicio" : "Start",
+"test" : "Test",
+"checks": "Checks",
+"cranks": "Cranks",
+"grabaciones": "Records",
+
+"__" : "####################### INICIO ##########################",
+"buscar": "Search",
+"avion": "PLANE",
+"motores": "Engines",
+"ingresar": "Login",
+"salir": "Exit",
+ "login_error": "Data no valid",
+ "alta_avion": "Add a Plane",
+ "agregar_avion": "Add",
+ "__" : "##################### FIN DE ARCHIVO ####################"
+}
