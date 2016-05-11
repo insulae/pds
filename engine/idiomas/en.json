@@ -15,5 +15,17 @@
  "login_error": "Data no valid",
  "alta_avion": "Add a Plane",
  "agregar_avion": "Add",
+ 
+ "__" : "####################### TEST ##########################",
+ "test_cartel": "Test Mode",
+ "test_check": "Check",
+ "test_freeze": "Freeze",
+ "test_rec": "Rec",
+ "test_corriente": "AMPERAGE",
+ "test_voltaje": "VOLTAGE",
+ "test_bateria": "BATTERY",
+ "test_temperatura": "TEMP.",
+ "test_humedad": "HUMIDITY",
+ 
  "__" : "##################### FIN DE ARCHIVO ####################"
 }

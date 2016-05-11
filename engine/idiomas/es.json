@@ -13,4 +13,20 @@
 "ingresar": "Ingresar",
 "salir": "Salir",
  "login_error": "Datos no validos"
+ "alta_avion": "Agregar un avion",
+ "agregar_avion": "Agregar",
+ 
+ "__" : "####################### TEST ##########################",
+ "test_cartel": "Modo Test",
+ "test_check": "Chequeo",
+ "test_freeze": "Freeze",
+ "test_rec": "Grabar",
+ "test_corriente": "AMPERAJE",
+ "test_voltaje": "VOLTAJE",
+  "test_bateria": "BATERIA",
+ "test_temperatura": "TEMP.",
+ "test_humedad": "HUMEDAD",
+ 
+ 
+ "__" : "##################### FIN DE ARCHIVO ####################"
 }

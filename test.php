@@ -5,10 +5,10 @@
 	</div>
 
 	<div class="cont-botonera">
-	    <button id='cartel' type="button" class="btn cartel" style="width: 150px; height: 60px;">Test Mode</button>
-	    <button id="btnRec" type="button" class="btn btn-danger" style="width:80px; height: 60px; float: right;margin-right:5px;">Rec</button>
-		<button type="button" class="btn btn-info" style="width:80px; height: 60px;float: right;margin-right:5px;">Freeze</button>
-		<button id="btnCheck" type="button" class="btn btn-primary" style="width:80px; height: 60px;float: right;margin-right:5px;">Check</button>			
+	    <button id='cartel' type="button" class="btn cartel" style="width: 150px; height: 60px;"><label tex="test_cartel"/></button>
+	    <button id="btnRec" type="button" class="btn btn-danger" style="width:80px; height: 60px; float: right;margin-right:5px;"><label tex="test_rec"/></button>
+		<button type="button" class="btn btn-info" style="width:80px; height: 60px;float: right;margin-right:5px;"><label tex="test_freeze"/></button>
+		<button id="btnCheck" type="button" class="btn btn-primary" style="width:80px; height: 60px;float: right;margin-right:5px;"><label tex="test_check"/></button>			
 	</div>
 		  
 </div>
@@ -19,11 +19,13 @@
 	
 	<!-- RENGLON1 -->
 		<div class="relojes-renglon1">
-			<div class="corriente">
-				<img class="corriente-regla" src="images/corrienteVertical.svg">
-				<figure id="corriente-carga" class="corriente-carga"></figure>
-				<label id="corriente-valor" class="corriente-valor">---</label>
-				<label id="corriente-titulo" class="corriente-titulo">CORRIENTE</label>
+			<div id="corriente" class="corriente">
+					<img src="images/amperaje.svg" style="width: 120px">
+			  	<div id="corriente-aguja" class="corriente-aguja">
+			  		<img src="images/agujaChica.svg" style="width: 9px">
+  				</div>
+			  	<label id="corriente-titulo" class="corriente-titulo" tex="test_corriente"></label>
+			  	<label id="corriente-valor" class="corriente-valor"></label>
 			</div>
 			
 			<div id="voltaje" class="voltaje">
@@ -31,7 +33,7 @@
 			  	<div id="voltaje-aguja" class="voltaje-aguja">
 			  		<img src="images/agujaChica.svg" style="width: 9px">
   				</div>
-			  	<label id="voltaje-titulo" class="voltaje-titulo">VOLTAJE</label>
+			  	<label id="voltaje-titulo" class="voltaje-titulo" tex="test_voltaje"></label>
 			  	<label id="voltaje-valor" class="voltaje-valor"></label>
 			</div>
 		</div>
@@ -42,19 +44,19 @@
 				<figure id="bateria-carga" class="bateria-carga"></figure>
 				<img class="bateria-regla" src="images/bateriaVertical.svg">
 				<label id="bateria-valor" class="bateria-valor">--</label>
-				<label id="bateria-titulo" class="bateria-titulo">BATERIA</label>
+				<label id="bateria-titulo" class="bateria-titulo" tex="test_bateria"></label>
 			</div>
 			<div class="temperatura">
 				<img class="temperatura-regla" src="images/humedadVertical.svg">
 				<figure id="temperatura-carga" class="humedad-carga"></figure>
 				<label id="temperatura-valor" class="humedad-valor">--</label>
-				<label id="temperatura-titulo" class="humedad-titulo">TEMP °C</label>
+				<label id="temperatura-titulo" class="humedad-titulo" tex="test_temperatura"></label>
 			</div>
 			<div class="humedad">
 				<img class="humedad-regla" src="images/humedadVertical.svg">
 				<figure id="humedad-carga" class="humedad-carga"></figure>
 				<label id="humedad-valor" class="humedad-valor">--</label>
-				<label id="humedad-titulo" class="humedad-titulo">HUMEDAD</label>
+				<label id="humedad-titulo" class="humedad-titulo" tex="test_humedad"></label>
 			</div>
 		</div>
 		
@@ -63,7 +65,7 @@
 			<div id="presion" class="presion">
 				<img style="height: 30px;" src="images/barrahBlanca.svg">
 				<label id="presion-valor" class="presion-valor"></label>
-				<label id="presion-titulo" class="presion-titulo">PRESION</label>
+				<label id="presion-titulo" class="presion-titulo" tex="test_presion"></label>
 			</div>
 		</div>
 	</div>

@@ -45,8 +45,8 @@
         <label tex="alta_avion"/><button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-            <input id="alta-avion-patente" type="text" class="form-inline input-avion" placeholder="Patente">
-            <input id="alta-avion-motores" type="text" class="form-inline input-avion" placeholder="Cantidad de Motores">
+            <input id="alta-avion-patente" type="text" class="form-inline input-avion">
+            <input id="alta-avion-motores" type="text" class="form-inline input-avion">
             <br><br>
             <div class="form-group">
   				<select id="alta-avion-apu" class="form-control input-avion">
@@ -54,7 +54,7 @@
     				<option value="1">APU: SI</option>
   				</select>
 			</div>
-			<textarea id="alta-avion-observacion" class="form-inline input-avion" rows="3" placeholder="Observaciones" style="width: 405px; height: 50px; margin-bottom: 10px;"></textarea>
+			<textarea id="alta-avion-observacion" class="form-inline input-avion" rows="3" style="width: 405px; height: 50px; margin-bottom: 10px;"></textarea>
             <br><br>
             <button id="avion-agregar" type="button" class="btn btn-danger" style="width: 100px; height: 40px;"><label tex="agregar_avion"/></button>
         </div>

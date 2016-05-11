@@ -74,17 +74,17 @@
 }
 
 /* ###################################### CORRIENTE ############################ */
-.corriente{
+/* .corriente{
 	position:relative;
 	float:left;
 	margin: 10px;
 }
 .corriente-carga{
 	position:absolute;
-	/*rectangulo que dibuja la carga */
+	rectangulo que dibuja la carga
 	width: 35px;
-	height: 2px; /* 115px da el 100% para 120px de la regla */
-	background: #2b63dd; /* color > 200 #d7ddff */ 
+	height: 2px; 115px da el 100% para 120px de la regla
+	background: #2b63dd; color > 200 #d7ddff 
 	bottom:3px;
 	left:12px;
     transition: all 1s ease-in-out;
@@ -106,31 +106,67 @@
 .corriente-titulo{
 	position: absolute;
 	font-weight: bold;
-	font-size:0.8em;
+	font-size:0.9em;
 	color: #fff;
 	bottom:-20px;	
+} */
+
+.corriente {
+	position:relative;
+	float:left;
+	margin:10px;
+	height: 115px;
+    width: 115px;
+    top:10px;
+}
+
+.corriente-aguja {
+  position: absolute;
+  left: 47%;
+  top:0%;
+  transition: all 0.20s ease-in-out;
+}
+
+.corriente-titulo{
+	position: absolute;
+	font-weight: bold;
+	font-size:0.7em;
+	color: #fff;
+	bottom:6px;
+	margin-left: 28px;
+	
+}
+
+
+.corriente-valor{
+	position: absolute;
+	font-weight: bold;
+	font-size: 2.2em;
+	color: #fff;
+	left:30px;
+	bottom: 30px;
 }
 /* ###################################### VOLTAJE ############################ */
 .voltaje {
 	position:relative;
 	float:left;
 	margin:10px;
-	height: 120px;
-    width: 120px;
-    top:20px;
+	height: 115px;
+    width: 115px;
+    top:10px;
 }
 
 .voltaje-aguja {
   position: absolute;
   left: 47%;
   top:0%;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.20s ease-in-out;
 }
 
 .voltaje-titulo{
 	position: absolute;
 	font-weight: bold;
-	font-size:0.8em;
+	font-size:0.7em;
 	color: #fff;
 	bottom:6px;
 	margin-left: 35px;

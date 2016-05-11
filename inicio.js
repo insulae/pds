@@ -4,6 +4,9 @@ function cargaJS(){
 	$('#patente').attr("placeholder",tex_patente);
 	$('#login-usuario').attr("placeholder",tex_login_usuario);
 	$('#login-clave').attr("placeholder",tex_login_clave);
+	$('#alta-avion-patente').attr("placeholder",tex_alta_avion_patente);
+	$('#alta-avion-motores').attr("placeholder",tex_alta_avion_motores);
+	$('#alta-avion-observacion').attr("placeholder",tex_alta_avion_observacion);
 	
 	//ejecuto comprobacion de logeo al cargar
 	loginChequeo();

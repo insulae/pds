@@ -51,6 +51,7 @@ testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
 	//console.log(dataCometa); //debug de lo que viene
 	mostrarVoltaje(dataCometa.sensores.vol);
+	mostrarAmperaje(dataCometa.sensores.amp);
 	datos[0].append(new Date().getTime(), dataCometa.sensores.vol*37.5); //62.5 es para que se equipare a 2500 de amperaje // 37.5 para 1500
 	datos[1].append(new Date().getTime(), dataCometa.sensores.amp);
 	if ($("#btnRec").hasClass("RecActivo")) {
@@ -136,13 +137,13 @@ function guardarGrabacion() {
 /* #################################################### GRABACION #################################################### */
 
 
-/* ###################### VOLTAJE ################## */
+/* ###################### VOLTAJE GAUGE ################## */
 function mostrarVoltaje(dato){
 	var grado
 	if(dato >= 20){
-		grado = dato * 2.25; 
+		grado = dato * 3.25;  //para lograr 130º 130/40 = 3.25
 	}else{
-		grado = dato * -2.25;
+		grado = dato * -3.25;
 	}
 	$("#voltaje-aguja").css("transform", "rotate("+grado+"deg)");
 	if( (dato >= 0 && dato < 20) || (dato >= 30 && dato < 40)){
@@ -155,6 +156,33 @@ function mostrarVoltaje(dato){
 		$("#voltaje-valor").css("color", "#00ff00");
 	}
 	$("#voltaje-valor").text(dato);
+}
+
+/* ###################### AMPERAJE GAUGE ################## */
+function mostrarAmperaje(dato){
+	//dato = 1000;
+	var grado
+	if(dato >= 750){
+		grado = dato * 0.08666; //para lograr 130º 130/1500 = 
+	}else{
+		grado = dato * -0.08666;
+	}
+	$("#corriente-aguja").css("transform", "rotate("+grado+"deg)");
+	if(dato >= 0 && dato < 600){
+		$("#corriente-valor").css("color", "#00ff00");
+	}
+	else if(dato >= 600 && dato < 800){
+		$("#corriente-valor").css("color", "yellow");
+	}
+	else if(dato >= 800 && dato <=1500){
+		$("#corriente-valor").css("color", "red");		
+	}
+	if(dato >= 1000){
+		$("#corriente-valor").css("left", "20px");
+	}else{
+		$("#corriente-valor").css("left", "30px");
+	}
+	$("#corriente-valor").text(dato);
 }
 /* ###################### VOLTAJE ################## */
 	

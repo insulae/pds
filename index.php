@@ -16,7 +16,7 @@
     <script src="engine/bootstrap.min.js"></script>
     <script src="engine/smoothie.js"></script>
 	<script src='engine/GrafPan.js'></script>
-	<script src='engine/idiomas_ext.js'></script>
+	<script src='engine/idiomas.js'></script>
     
 </head>   
   
