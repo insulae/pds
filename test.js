@@ -1,42 +1,18 @@
 var registros = [];
 
-function cargaJS(){
-	
+function cargaJS(){	
 	crearGraf();
-	//otrosValores();
-	
-	}
+}
+
 function rompoJS(){
-	//limpio testSource
+	//limpio testCometa
 	if(testCometa){
 		testCometa.close();
 		testCometa = null;
 	}
-	
-	//limpio gauges truchos
-	//TODO ELIMINAR cargaValores una vez que los gauges usen cometa
-	clearInterval(cargaValores);
 }
 
-//inicio grabacion
-$("#btnRec").click(function () {
-	if ($("#btnRec").hasClass("RecActivo")) {
-		$("#btnRec").removeClass("RecActivo");
-		//grabacion frenada por usuario
-		terminoGrabacion();
-		$('#btnRec').text("Rec");
-		$('#cartel').text("Test Mode");
-		$('#cartel').removeClass("cartel-rec");
-		
-	} else {
-		$("#btnRec").addClass("RecActivo");
-		$('#btnRec').text("24"); //seteo tiempo 240 1min
-		$('#cartel').text("Grabando");
-		$('#cartel').addClass("cartel-rec");
-	}
-});
-
-/* DIBUJO GRAFICA */
+/* #################################################### DIBUJO GRAFICA #################################################### */
 function rango(range) {
 	  var min = 0;
 	  var max = 1500;
@@ -49,9 +25,14 @@ testCometa = new EventSource('test_cometa.php');
 
 testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
-	//console.log(dataCometa); //debug de lo que viene
-	mostrarVoltaje(dataCometa.sensores.vol);
-	mostrarAmperaje(dataCometa.sensores.amp);
+	console.log(e.data); //debug de lo que viene
+	//return true;
+	mostrarVoltaje(parseInt(dataCometa.sensores.vol));
+	mostrarAmperaje(parseInt(dataCometa.sensores.amp));
+	mostrarBateria(parseInt(dataCometa.sensores.bat));
+	mostrarTemperatura(parseInt(dataCometa.sensores.tem));
+	mostrarHumedad(parseInt(dataCometa.sensores.hum));
+	mostrarPresion(parseInt(dataCometa.sensores.pre));
 	datos[0].append(new Date().getTime(), dataCometa.sensores.vol*37.5); //62.5 es para que se equipare a 2500 de amperaje // 37.5 para 1500
 	datos[1].append(new Date().getTime(), dataCometa.sensores.amp);
 	if ($("#btnRec").hasClass("RecActivo")) {
@@ -89,11 +70,29 @@ function crearGraf() {
 			chart.addTimeSeries(datos[1],{lineWidth:3,strokeStyle:'#00ffff'});
 
 			chart.streamTo(document.getElementById("graf1200"), 1000);
-	}
-/* DIBUJO GRAFICA */
+}
+/* #################################################### DIBUJO GRAFICA #################################################### */
 
 
 /* #################################################### GRABACION #################################################### */ 
+
+//accion inicio grabacion
+$("#btnRec").click(function () {
+	if ($("#btnRec").hasClass("RecActivo")) {
+		$("#btnRec").removeClass("RecActivo");
+		//grabacion frenada por usuario
+		terminoGrabacion();
+		$('#btnRec').text("Rec");
+		$('#cartel').text("Test Mode");
+		$('#cartel').removeClass("cartel-rec");
+		
+	} else {
+		$("#btnRec").addClass("RecActivo");
+		$('#btnRec').text("24"); //seteo tiempo 240 1min
+		$('#cartel').text("Grabando");
+		$('#cartel').addClass("cartel-rec");
+	}
+});
 
 //accion al terminar grabacion
 function terminoGrabacion(){
@@ -184,140 +183,85 @@ function mostrarAmperaje(dato){
 	}
 	$("#corriente-valor").text(dato);
 }
-/* ###################### VOLTAJE ################## */
-	
-function otrosValores(){
-	cargaValores = setInterval(function() {
-		/*########### simulacion corriente #############*/
-		var corriente = $.ajax({
-			url:   'getData.php?data=corriente',
-		    type:  'post',
-		    success:  function (carga) {
-			   // alert(response);
-				cienxcien = 115/800; //calcularlo sacando la propiedad width del objeto 170 es 170px
-				valor=carga*cienxcien;
-				$("#corriente-carga").css("height", valor+"px"); //aplico el nuevo relleno
-				$("#corriente-valor").text(carga);
-						
-				if(carga <= 200){
-					$("#corriente-carga").css("background", "#2b63dd"); //aplico color rojo
-				}
-				else if(carga <= 800){
-					$("#corriente-carga").css("background", "#2bd7dd"); //aplico color amarillo
-				}
-			}
-		});
-		/*########### simulacion bateria #############*/
-		var valorbat = 80;
-		if($("#valorobjeto").val() == "bateria" || valorbat != "" ){
-			//carga= $("#valormanual").val();
-			carga=valorbat;
-		
-			cienxcien = 150/100; //calcularlo sacando la propiedad width del objeto 170 es 170px
-			valor=carga*cienxcien;
-			$("#bateria-carga").css("height", valor+"px"); //aplico el nuevo relleno
-			$("#bateria-valor").text(carga);
-					
-			if(carga <= 50){
-				$("#bateria-carga").css("background", "red"); //aplico color rojo
-			}
-			else if(carga <= 80){
-				$("#bateria-carga").css("background", "yellow"); //aplico color amarillo
-			}
-			else if(carga <= 100){
-				$("#bateria-carga").css("background", "green"); //aplico color verde
-			}
-		}
 
-		/*########### simulacion temperatura #############*/
 
-		var valortem = 30;
-		if($("#valorobjeto").val() == "temperatura" || valortem != "" ){
-			//carga= $("#valormanual").val();
-			carga = valortem;
-		
-			cienxcien = 150/100; //calcularlo sacando la propiedad width del objeto 170 es 170px
-			valor=carga*cienxcien;
-			$("#temperatura-carga").css("height", valor+"px"); //aplico el nuevo relleno
-			$("#temperatura-valor").text(carga);
-					
-			if(carga <= 50){
-				$("#temperatura-carga").css("background", "red"); //aplico color rojo
-			}
-			else if(carga <= 80){
-				$("#temperatura-carga").css("background", "yellow"); //aplico color amarillo
-			}
-			else if(carga <= 100){
-				$("#temperatura-carga").css("background", "green"); //aplico color verde
-			}
-		}
+/* ###################### BATERIA GAUGE ################## */
+function mostrarBateria(carga){
+	//carga= $("#valormanual").val();
 
-		/*########### simulacion humedad #############*/
-
-		var valorhum = 90;
-		if($("#valorobjeto").val() == "humedad" || valorhum != "" ){
-			//carga= $("#valormanual").val();
-			carga = valorhum;
+	cienxcien = 150/100; //calcularlo sacando la propiedad width del objeto 170 es 170px
+	valor=carga*cienxcien;
+	$("#bateria-carga").css("height", valor+"px"); //aplico el nuevo relleno
+	$("#bateria-valor").text(carga);
 			
-			cienxcien = 150/100; //calcularlo sacando la propiedad width del objeto 170 es 170px
-			valor=carga*cienxcien;
-			$("#humedad-carga").css("height", valor+"px"); //aplico el nuevo relleno
-			$("#humedad-valor").text(carga);
-					
-			if(carga <= 50){
-				$("#humedad-carga").css("background", "red"); //aplico color rojo
-			}
-			else if(carga <= 80){
-				$("#humedad-carga").css("background", "yellow"); //aplico color amarillo
-			}
-			else if(carga <= 100){
-				$("#humedad-carga").css("background", "green"); //aplico color verde
-			}
-		}
+	if(carga <= 50){
+		$("#bateria-carga").css("background", "red"); //aplico color rojo
+	}else if(carga <= 80){
+		$("#bateria-carga").css("background", "yellow"); //aplico color amarillo
+	}else if(carga <= 100){
+		$("#bateria-carga").css("background", "green"); //aplico color verde
+	}
+}
 
-		/*########### presion #############*/
-		
-		var valorpre = 8;
-		if($("#valorobjeto").val() == "presion" || valorpre != "" ){
-			//var valor = $("#valormanual").val(); //saco valor a rellenar
-			valor = valorpre;
-			 			
-			var diezpor100 = '15'; //seteo el 10% equivalente al 10% de los pixeles del svg
-			//para ajax var valor = Math.floor((Math.random()*10)); //saco valor a rellenar
-			porciento = valor / diezpor100;
-			
-			$("#presion").css("width", valor*diezpor100+"px"); //aplico el nuevo relleno
-			$("#presion-valor").text(valor*10+"%"); //aplico el nuevo relleno
-			//aplico color dependiendo porcentaje
-			//alert(porciento);
-			if(valor <= 5){
-				$("#presion").css("background", "#d9534f"); //aplico color rojo
-			}
-			else if(valor <= 8){
-				$("#presion").css("background", "#f0ad4e"); //aplico color amarillo
-			}
-			else if(valor <= 10){
-				$("#presion").css("background", "#5cb85c"); //aplico color verde
-			}
-			}
-	//Simulación para reloj voltaje
-	$.ajax({
-		url:   'getData.php?data=oscilacion',
-	    type:  'post',
-	    success:  function (response) {
-	    	$("#voltaje-aguja").css("transform", "rotate("+response+"deg)");
-	    	if(response == 0){
-	    		$("#voltaje-valor").css("color", "yellow");
-	    	}
-	    	else if(response > 0){
-	    		$("#voltaje-valor").css("color", "green");
-	    	}
-	    	else if(response < 0){
-	    		$("#voltaje-valor").css("color", "red");
-	    	}
-	    	$("#voltaje-valor").text(response);
-	    }	
-	});
-	}, 3000);
+/* ###################### TEMPERATURA GAUGE ################## */
+function mostrarTemperatura(carga){
+	//carga= $("#valormanual").val();
 	
+	cienxcien = 150/100; //calcularlo sacando la propiedad width del objeto 170 es 170px
+	valor=carga*cienxcien;
+	$("#temperatura-carga").css("height", valor+"px"); //aplico el nuevo relleno
+	$("#temperatura-valor").text(carga);
+			
+	if(carga <= 50){
+		$("#temperatura-carga").css("background", "red"); //aplico color rojo
+	}
+	else if(carga <= 80){
+		$("#temperatura-carga").css("background", "yellow"); //aplico color amarillo
+	}
+	else if(carga <= 100){
+		$("#temperatura-carga").css("background", "green"); //aplico color verde
+	}
+}
+
+/* ###################### HUMEDAD GAUGE ################## */
+function mostrarHumedad(carga){
+	//carga= $("#valormanual").val();
+	
+	cienxcien = 150/100; //calcularlo sacando la propiedad width del objeto 170 es 170px
+	valor=carga*cienxcien;
+	$("#humedad-carga").css("height", valor+"px"); //aplico el nuevo relleno
+	$("#humedad-valor").text(carga);
+			
+	if(carga <= 50){
+		$("#humedad-carga").css("background", "red"); //aplico color rojo
+	}
+	else if(carga <= 80){
+		$("#humedad-carga").css("background", "yellow"); //aplico color amarillo
+	}
+	else if(carga <= 100){
+		$("#humedad-carga").css("background", "green"); //aplico color verde
+	}	
+}
+
+/* ###################### PRESION GAUGE ################## */
+function mostrarPresion(carga){
+	//var valor = $("#valormanual").val(); //saco valor a rellenar
+	 			
+	var diezpor100 = '15'; //seteo el 10% equivalente al 10% de los pixeles del svg
+	//para ajax var valor = Math.floor((Math.random()*10)); //saco valor a rellenar
+	porciento = 10 / diezpor100;
+	
+	$("#presion").css("width", carga*diezpor100+"px"); //aplico el nuevo relleno
+	$("#presion-valor").text(carga*10+"%"); //aplico el nuevo relleno
+	//aplico color dependiendo porcentaje
+	//alert(porciento);
+	if(valor <= 5){
+		$("#presion").css("background", "#d9534f"); //aplico color rojo
+	}
+	else if(valor <= 8){
+		$("#presion").css("background", "#f0ad4e"); //aplico color amarillo
+	}
+	else if(valor <= 10){
+		$("#presion").css("background", "#5cb85c"); //aplico color verde
+	}
 }

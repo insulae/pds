@@ -12,7 +12,7 @@
 "motores": "Motores",
 "ingresar": "Ingresar",
 "salir": "Salir",
- "login_error": "Datos no validos"
+ "login_error": "Datos no validos",
  "alta_avion": "Agregar un avion",
  "agregar_avion": "Agregar",
  
@@ -26,7 +26,7 @@
   "test_bateria": "BATERIA",
  "test_temperatura": "TEMP.",
  "test_humedad": "HUMEDAD",
- 
+ "test_humedad": "PRESION",
  
  "__" : "##################### FIN DE ARCHIVO ####################"
 }

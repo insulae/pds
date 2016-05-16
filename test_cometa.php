@@ -2,18 +2,19 @@
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 
-include("engine/sensores.php");
+require ("sys/com/sensores.php");
 
  while (true) {
-	$cadena = com_virtual();
+	//$cadena = com_virtual();
+ 	$cadena = exec('python3 sys/com/serialpy.py');
 	$registro = new stdClass(); 
 	$sensores = Array();
-		$sensores[$sensor1] = hexdec(substr($cadena,6,4));
-		$sensores[$sensor2] = hexdec(substr($cadena,10,4));
-		$sensores[$sensor3] = hexdec(substr($cadena,14,4));
-		$sensores[$sensor4] = hexdec(substr($cadena,18,4));
-		$sensores[$sensor5] = hexdec(substr($cadena,22,4));
-		$sensores[$sensor6] = hexdec(substr($cadena,26,4));
+		$sensores[$sensor1] = hexdec(substr($cadena,8,4));
+		$sensores[$sensor2] = hexdec(substr($cadena,12,4));
+		$sensores[$sensor3] = hexdec(substr($cadena,16,4));
+		$sensores[$sensor4] = hexdec(substr($cadena,20,4));
+		$sensores[$sensor5] = hexdec(substr($cadena,24,4));
+		$sensores[$sensor6] = hexdec(substr($cadena,28,4));
 	
 	
 	//ALTER TABLE rec_item MODIFY fyh DATETIME(3); <--- para que tome milisegundos
@@ -28,9 +29,6 @@ include("engine/sensores.php");
 
 	echo "data: " . json_encode($registro). "\n\n";
 	
-// 	echo "data: [" . rand(1, 600) . "\n";
-// 	echo "data: ," . rand(200, 250) . "\n";
-// 	echo "data: ]\n\n";
 	ob_end_flush();
 	flush();
 	usleep(250000);
@@ -46,7 +44,9 @@ function com_virtual(){
 		."0".rand(1,9)."0".rand(1,9);
 }
 
-
+function com_real(){
+	$cadena = exec('python3 serialpy.py');
+}
 /*
 
 

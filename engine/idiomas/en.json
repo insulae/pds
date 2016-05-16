@@ -26,6 +26,7 @@
  "test_bateria": "BATTERY",
  "test_temperatura": "TEMP.",
  "test_humedad": "HUMIDITY",
+ "test_humedad": "PRESSURE",
  
  "__" : "##################### FIN DE ARCHIVO ####################"
 }
