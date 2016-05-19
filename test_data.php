@@ -36,31 +36,21 @@ switch ($_REQUEST["accion"]) {
 		
 		//GRABO REC
 		$query = $db->query('
-			INSERT INTO rec(
-				id_avion,
-				observacion
-			)
-			VALUES (
-				'.@$_POST['id_avion'].',
-				"'.@$_POST['observacion'].'"
-			)
-		');
+			INSERT INTO rec SET
+				id_avion = '.@$_POST['id_avion'].'
+				, observacion = "'.@$_POST['observacion'].'"
+			');
 		if(!$db->errno){
 			$id_rec = $db->insert_id;
 			foreach($registros as $registro){
 				//GRABO REC_ITEM
 				$query = $db->query('
-					INSERT INTO rec_item(
-						id_rec,
-						sensores,
-						fyh
-					)
-					VALUES (
-						'.$id_rec.',
-						"'.$db->real_escape_string(json_encode($registro->sensores)).'",
-						"'.$registro->fyh.'"
-					)
-				');
+					INSERT INTO rec_item SET
+						id_rec = '.$id_rec.'
+						, sensores = "'.$db->real_escape_string(json_encode($registro->sensores)).'" 
+						, fyh = "'.$registro->fyh.'"
+						, mseg = "'.str_pad($registro->mseg,3,0,STR_PAD_LEFT).'"
+					');
 				echo $db->error;
 			}
 		}

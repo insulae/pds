@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="test.css">
+
 <div class="cont-graf">
 	<div style="margin:10px;">
 		<canvas id="graf1200" width="580" height="300"></canvas>
@@ -47,10 +48,10 @@
 				<label id="bateria-titulo" class="bateria-titulo" tex="test_bateria"></label>
 			</div>
 			<div class="temperatura">
-				<img class="temperatura-regla" src="images/humedadVertical.svg">
-				<figure id="temperatura-carga" class="humedad-carga"></figure>
-				<label id="temperatura-valor" class="humedad-valor">--</label>
-				<label id="temperatura-titulo" class="humedad-titulo" tex="test_temperatura"></label>
+				<img class="temperatura-regla" src="images/temperaturaVertical.svg">
+				<figure id="temperatura-carga" class="temperatura-carga"></figure>
+				<label id="temperatura-valor" class="temperatura-valor">--</label>
+				<label id="temperatura-titulo" class="temperatura-titulo" tex="test_temperatura"></label>
 			</div>
 			<div class="humedad">
 				<img class="humedad-regla" src="images/humedadVertical.svg">
@@ -63,7 +64,7 @@
 	<!-- RENGLON3 -->		
 		<div class="relojes-renglon3">
 			<div id="presion" class="presion">
-				<img style="height: 30px;" src="images/barrahBlanca.svg">
+				<img style="height: 30px;" src="images/presion.svg">
 				<label id="presion-valor" class="presion-valor"></label>
 				<label id="presion-titulo" class="presion-titulo" tex="test_presion"></label>
 			</div>

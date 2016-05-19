@@ -5,7 +5,6 @@ switch($_REQUEST['accion']){
 	
 	//traer listado de las grabaciones
 	case 'traerGraba':
-		
 		$query = $db->query('
 			SELECT 
 				avion.patente,
@@ -14,9 +13,9 @@ switch($_REQUEST['accion']){
 				rec.fyh
 			FROM rec
 			INNER JOIN avion USING(id_avion)
-			WHERE avion.patente = "'.$_POST['avion'].'"
-			AND rec.fyh >= "'.$_POST['fdesde'].'"
-			AND rec.fyh <= "'.$_POST['fhasta'].'"	
+			WHERE avion.patente = "'.@$_POST['avion'].'"
+			AND rec.fyh >= "'.@$_POST['fdesde'].'"
+			AND rec.fyh <= "'.@$_POST['fhasta'].'"
 		');
 		//$datos = queryToArray($query);
 		$datos = json_encode(queryToObject($query));
@@ -28,9 +27,10 @@ switch($_REQUEST['accion']){
 		$query = $db->query('
 			SELECT
 				sensores,
-				fyh
+				fyh,
+				mseg
 			FROM rec_item
-			WHERE id_rec = '.$_POST['id_rec']
+			WHERE id_rec = '.@$_POST['id_rec']
 		);
 		//echo $datos = queryToArray($query);
 		$datos = json_encode(queryToObject($query));
@@ -41,7 +41,7 @@ switch($_REQUEST['accion']){
 	case 'eliminarGraba':
 		$query = $db->query('
 			DELETE rec,rec_item FROM rec
-			INNER JOIN rec_item USING(id_rec)
+			LEFT JOIN rec_item USING(id_rec)
 			WHERE id_rec = '.@$_POST['id_rec']
 		);
 		if(mysqli_errno($db)){

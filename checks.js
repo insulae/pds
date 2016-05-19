@@ -109,5 +109,7 @@ $('#btn-filtrar').click(function(){
 $('#btn-checks-mostrar').click(function(){
 	rompoJS();
 	$('#pagina').load('checks_mostrar.php');
-	$.getScript('checks_mostrar.js', function() {cargaJS();});
+	$('#pagina').ready(function() {
+		$.getScript('checks_mostrar.js', function() {cargaJS();});
+	});
 });

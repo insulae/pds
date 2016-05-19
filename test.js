@@ -1,15 +1,17 @@
 var registros = [];
+var cadena = "";
 
 function cargaJS(){	
 	crearGraf();
+	//cometa();
 }
 
 function rompoJS(){
 	//limpio testCometa
-	if(testCometa){
-		testCometa.close();
-		testCometa = null;
-	}
+	//if(testCometa){
+	//	testCometa.close();
+	//	testCometa = null;
+	//}
 }
 
 /* #################################################### DIBUJO GRAFICA #################################################### */
@@ -20,11 +22,18 @@ function rango(range) {
 }
 
 var datos = [new TimeSeries(), new TimeSeries()];
+
+//alert("Entro");
 //var datos = new TimeSeries();
+if(testCometa){
+	testCometa.close();
+	testCometa = null;
+}
 testCometa = new EventSource('test_cometa.php');
 
 testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
+	cadena = dataCometa;
 	console.log(e.data); //debug de lo que viene
 	//return true;
 	mostrarVoltaje(parseInt(dataCometa.sensores.vol));
@@ -44,6 +53,7 @@ testCometa.addEventListener('message', function(e) {
 		}
 	}
 }, false);
+
 
 function crearGraf() {
 	var chart = new SmoothieChart({
@@ -136,6 +146,33 @@ function guardarGrabacion() {
 /* #################################################### GRABACION #################################################### */
 
 
+/* #################################################### CHECKS #################################################### */
+
+//accion inicio grabacion
+$("#btnCheck").click(function () {
+
+});
+
+//guardo grabacion en base
+function guardarCheck() {
+	//console.log(JSON.stringify(registros));
+	$.ajax({		
+		url:   'test_data.php?accion=guardarCheck',
+		type:  'post',
+		data: { 
+			cadena : JSON.stringify(cadena),
+			id_avion: id_avion,			
+			observacion: $('#observacion-graba').val()
+		},
+		success: function (datos) {
+			//console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
+			registros = [];
+		}
+	});
+}
+/* #################################################### CHECKS #################################################### */
+
+
 /* ###################### VOLTAJE GAUGE ################## */
 function mostrarVoltaje(dato){
 	var grado
@@ -201,6 +238,13 @@ function mostrarBateria(carga){
 	}else if(carga <= 100){
 		$("#bateria-carga").css("background", "green"); //aplico color verde
 	}
+	if(carga >= 100){
+		$("#bateria-valor").css("left", "5px");
+	}else if(carga < 10){
+		$("#bateria-valor").css("left", "25px");
+	}else{
+		$("#bateria-valor").css("left", "15px");
+	}
 }
 
 /* ###################### TEMPERATURA GAUGE ################## */
@@ -220,6 +264,13 @@ function mostrarTemperatura(carga){
 	}
 	else if(carga <= 100){
 		$("#temperatura-carga").css("background", "green"); //aplico color verde
+	}
+	if(carga >= 100){
+		$("#temperatura-valor").css("left", "5px");
+	}else if(carga < 10){
+		$("#temperatura-valor").css("left", "25px");
+	}else{
+		$("#temperatura-valor").css("left", "15px");
 	}
 }
 
@@ -241,6 +292,13 @@ function mostrarHumedad(carga){
 	else if(carga <= 100){
 		$("#humedad-carga").css("background", "green"); //aplico color verde
 	}	
+	if(carga >= 100){
+		$("#humedad-valor").css("left", "5px");
+	}else if(carga < 10){
+		$("#humedad-valor").css("left", "25px");
+	}else{
+		$("#humedad-valor").css("left", "15px");
+	}	
 }
 
 /* ###################### PRESION GAUGE ################## */
@@ -255,13 +313,13 @@ function mostrarPresion(carga){
 	$("#presion-valor").text(carga*10+"%"); //aplico el nuevo relleno
 	//aplico color dependiendo porcentaje
 	//alert(porciento);
-	if(valor <= 5){
+	if(carga <= 5){
 		$("#presion").css("background", "#d9534f"); //aplico color rojo
 	}
-	else if(valor <= 8){
+	else if(carga <= 8){
 		$("#presion").css("background", "#f0ad4e"); //aplico color amarillo
 	}
-	else if(valor <= 10){
+	else if(carga <= 10){
 		$("#presion").css("background", "#5cb85c"); //aplico color verde
 	}
 }

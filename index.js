@@ -18,6 +18,9 @@ var max_grabacion = 20;
 
 //cranks
 
+//grabaciones
+
+
 //SETEO AVION PARA NO DEMORAR BORRAR
 $('#tab-avion').text(avion);
 $('#tab-test').removeClass('tabno');
@@ -32,9 +35,11 @@ function tabSelect(tab){
 	rompoJS();
 	if(!($('#tab-'+tab).hasClass('tabno')) && avion !=""){
 		$('#pagina').load(tab+'.php');
-		$.getScript(tab+'.js', function() {cargaJS();});
-		$.getScript('engine/idiomas.js');
-		$('#tab-'+tab).addClass('tabactivo').siblings().removeClass('tabactivo');
+		$('#pagina').ready(function() {
+			$.getScript('engine/idiomas.js');
+			$('#tab-'+tab).addClass('tabactivo').siblings().removeClass('tabactivo');
+			$.getScript(tab+'.js', function() {cargaJS();});
+		});
 	}
 }
 
@@ -61,7 +66,10 @@ $('#tab-grabaciones').click(function(){
 $('#configuracion').click(function(){
 	rompoJS();
 	$('#pagina').load('configuracion.php');
-	$.getScript('configuracion.js', function() {cargaJS();});
-	$(".menu-tabs button").removeClass("tabactivo");
+	$('#pagina').ready(function() {
+		$(".menu-tabs button").removeClass("tabactivo");
+		$.getScript('configuracion.js', function() {cargaJS();});
+	});
 
 });
+

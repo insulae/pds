@@ -61,19 +61,6 @@ $('#graba-tabla').on('click', '.tr-graba', function(event) {
 	id_rec = $(this).find("#id-graba").html();
 });
 
-$('#btn-graba-mostrar').click(function(){
-	if(id_rec !=""){
-		rompoJS();
-		$('#pagina').load('grabaciones_mostrar.php');
-		$.getScript('grabaciones_mostrar.js', function() {cargaJS();});		
-	}else{
-		$.alert('Debe seleccionar una grabación');
-	}
-
-});
-
-
-
 /* eliminar Graba */
 $('#graba-tabla').on('click', '.ico-eliminar', function(event) {
 	if(loginAdmin != 1){
@@ -111,3 +98,16 @@ function eliminarGraba(graba){
 	    }	
 	});
 }
+
+$('#btn-graba-mostrar').click(function(){
+	if(id_rec !=""){
+		rompoJS();
+		$('#pagina').load('grabaciones_mostrar.php');
+		$('#pagina').ready(function() {
+			$.getScript('grabaciones_mostrar.js', function() {cargaJS();});
+		});	
+	}else{
+		$.alert('Debe seleccionar una grabación');
+	}
+
+});

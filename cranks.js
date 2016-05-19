@@ -89,5 +89,7 @@ $('#btn-cranks-mostrar').click(function(){
 	});
 	rompoJS();
 	$('#pagina').load('cranks_mostrar.php');
-	$.getScript('cranks_mostrar.js', function() {cargaJS();});	
+	$('#pagina').ready(function() {
+		$.getScript('cranks_mostrar.js', function() {cargaJS();});
+	});
 });
