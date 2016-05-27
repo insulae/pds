@@ -29,7 +29,7 @@ function traerChecks(){
 		url:   'checks_data.php?accion=traerChecks',
 	    type:  'post',
 		data:{ 
-			avion: avion,
+			id_avion: id_avion,
 			fdesde: $('#checks-fdesde').val(),
 			fhasta: $('#checks-fhasta').val()
 		},
@@ -44,19 +44,20 @@ function traerChecks(){
 	    	var check = JSON.parse(datos);
     		
 	    	for (var i=0; i<check.length; i++) {
+	    		var sensores = JSON.parse(check[i].sensores);
 	    		var fila='<tr class="tr-check">';
     			//fila+='<td>'+check[i].patente+'</td>';
     			fila+='<td>'+check[i].fyh+'</td>';
-    			fila+='<td>'+check[i].voltaje+'</td>';
-    			fila+='<td>'+check[i].amperaje+'</td>';
+    			fila+='<td>'+sensores.vol+'</td>';
+    			fila+='<td>'+sensores.amp+'</td>';
     			fila+='<td style="text-align:left; padding-left:10px">'+check[i].observacion+'</td>';
     			fila+='<td><span class="glyph-icon flaticon-close ico-eliminar"></span></td>';
     			fila+='<td id="id-check" class="td-hidden">'+check[i].id_check+'</td></tr>';
 
 	    		$('#checks-tabla').append(fila);
 	    		//construyo la data para la grafica
-	    			checksVoltaje.push({x: new Date(check[i].fyh), y: parseInt(check[i].voltaje) });
-	    			checksAmperaje.push({x: new Date(check[i].fyh), y: parseInt(check[i].amperaje)});
+	    			checksVoltaje.push({label:"BAT: "+sensores.bat + "\nTEM: "+sensores.tem , x: new Date(check[i].fyh), y: parseInt(sensores.vol) });
+	    			checksAmperaje.push({label:"BAT: "+sensores.bat + "\nTEM: "+sensores.tem , x: new Date(check[i].fyh), y: parseInt(sensores.amp)});
 		    }
 	    }	
 	});
@@ -69,7 +70,7 @@ $('#checks-tabla').on('click', '.ico-eliminar', function(event) {
 		return;
 	}
 	celdaActiva = $(this).parent().parent();
-	celdaActiva.addClass('tr-check-activo');
+	celdaActiva.addClass('tr-check-elimino');
 	 checkElimino = $(this).parent().parent().find("#id-check").html();
 		$.confirm({
 		    title: 'Eliminación',

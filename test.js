@@ -1,5 +1,10 @@
 var registros = [];
 var cadena = "";
+var batultimo ="";
+var temultimo ="";
+var humultimo ="";
+var preultimo ="";
+var esFreeze ="";
 
 function cargaJS(){	
 	crearGraf();
@@ -34,14 +39,28 @@ testCometa = new EventSource('test_cometa.php');
 testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
 	cadena = dataCometa;
-	console.log(e.data); //debug de lo que viene
+	//console.log(e.data); //debug de lo que viene
 	//return true;
 	mostrarVoltaje(parseInt(dataCometa.sensores.vol));
 	mostrarAmperaje(parseInt(dataCometa.sensores.amp));
-	mostrarBateria(parseInt(dataCometa.sensores.bat));
-	mostrarTemperatura(parseInt(dataCometa.sensores.tem));
-	mostrarHumedad(parseInt(dataCometa.sensores.hum));
-	mostrarPresion(parseInt(dataCometa.sensores.pre));
+	console.log(batultimo);
+	if(batultimo != dataCometa.sensores.bat){
+		mostrarBateria(parseInt(dataCometa.sensores.bat));
+		batultimo = dataCometa.sensores.bat;
+	}
+	if(temultimo != dataCometa.sensores.tem){
+		mostrarTemperatura(parseInt(dataCometa.sensores.tem));
+		temultimo = dataCometa.sensores.tem;
+	}	
+	if(preultimo != dataCometa.sensores.pre){
+		mostrarPresion(parseInt(dataCometa.sensores.pre));
+		preultimo = dataCometa.sensores.pre;
+	}	
+	if(humultimo != dataCometa.sensores.hum){
+		mostrarHumedad(parseInt(dataCometa.sensores.hum));
+		humultimo = dataCometa.sensores.hum;
+	}		
+	
 	datos[0].append(new Date().getTime(), dataCometa.sensores.vol*37.5); //62.5 es para que se equipare a 2500 de amperaje // 37.5 para 1500
 	datos[1].append(new Date().getTime(), dataCometa.sensores.amp);
 	if ($("#btnRec").hasClass("RecActivo")) {
@@ -146,31 +165,49 @@ function guardarGrabacion() {
 /* #################################################### GRABACION #################################################### */
 
 
-/* #################################################### CHECKS #################################################### */
+/* #################################################### CHECKS & FREEZE #################################################### */
 
-//accion inicio grabacion
+//accion inicio CHECK
 $("#btnCheck").click(function () {
-
+	esFreeze = 0;
+	$('#modalAltaCheck').modal('show');
+});
+//accion inicio FREEZE
+$("#btnFreeze").click(function () {
+	esFreeze = 1;
+	$('#modalAltaCheck').modal('show');
 });
 
-//guardo grabacion en base
-function guardarCheck() {
-	//console.log(JSON.stringify(registros));
+//accion de eliminar CHECK/FREEZE (cierro modal)
+$('#descartar-check').click(function(){
+	$('#modalAltaCheck').modal('hide');
+});
+
+//accion de guardar CHECK/FREEZE(cierro modal)
+$('#guardar-check').click(function(){
+	var cadenaCheck = cadena;
+	guardarCheck(cadenaCheck, esFreeze);
+	$('#modalAltaCheck').modal('hide');
+});
+
+//guardo check/freeze en base
+function guardarCheck(cadena, esFreeze) {
+	console.log(JSON.stringify(cadena));
 	$.ajax({		
 		url:   'test_data.php?accion=guardarCheck',
 		type:  'post',
 		data: { 
-			cadena : JSON.stringify(cadena),
-			id_avion: id_avion,			
-			observacion: $('#observacion-graba').val()
+			cadena : JSON.stringify(cadena)
+			,id_avion: id_avion			
+			,observacion: $('#observacion-check').val()
+			,freeze: esFreeze
 		},
 		success: function (datos) {
-			//console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
-			registros = [];
+			console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
 		}
 	});
 }
-/* #################################################### CHECKS #################################################### */
+/* #################################################### CHECKS AND FREEZE #################################################### */
 
 
 /* ###################### VOLTAJE GAUGE ################## */
@@ -226,7 +263,7 @@ function mostrarAmperaje(dato){
 function mostrarBateria(carga){
 	//carga= $("#valormanual").val();
 
-	cienxcien = 150/100; //calcularlo sacando la propiedad width del objeto 170 es 170px
+	cienxcien = 170/100; //calcularlo sacando la propiedad width del objeto 170 es 170px
 	valor=carga*cienxcien;
 	$("#bateria-carga").css("height", valor+"px"); //aplico el nuevo relleno
 	$("#bateria-valor").text(carga);
@@ -251,18 +288,18 @@ function mostrarBateria(carga){
 function mostrarTemperatura(carga){
 	//carga= $("#valormanual").val();
 	
-	cienxcien = 150/100; //calcularlo sacando la propiedad width del objeto 170 es 170px
+	cienxcien = 130/100; //calcularlo sacando la propiedad width del objeto 170 es 170px (en este caso 100 positivo y 70 negativo)
 	valor=carga*cienxcien;
 	$("#temperatura-carga").css("height", valor+"px"); //aplico el nuevo relleno
 	$("#temperatura-valor").text(carga);
 			
-	if(carga <= 50){
+	if(carga >= 60 || carga < -20){
 		$("#temperatura-carga").css("background", "red"); //aplico color rojo
 	}
-	else if(carga <= 80){
+	else if((carga >= 40 && carga <= 60) || (carga >= -20 && carga < 10)){
 		$("#temperatura-carga").css("background", "yellow"); //aplico color amarillo
 	}
-	else if(carga <= 100){
+	else if(carga >= 10 && carga < 40){
 		$("#temperatura-carga").css("background", "green"); //aplico color verde
 	}
 	if(carga >= 100){
@@ -305,12 +342,11 @@ function mostrarHumedad(carga){
 function mostrarPresion(carga){
 	//var valor = $("#valormanual").val(); //saco valor a rellenar
 	 			
-	var diezpor100 = '15'; //seteo el 10% equivalente al 10% de los pixeles del svg
-	//para ajax var valor = Math.floor((Math.random()*10)); //saco valor a rellenar
-	porciento = 10 / diezpor100;
+	cienxcien = 156/100; //calcularlo sacando la propiedad width del objeto 30px
+	valor=carga*cienxcien;
 	
-	$("#presion").css("width", carga*diezpor100+"px"); //aplico el nuevo relleno
-	$("#presion-valor").text(carga*10+"%"); //aplico el nuevo relleno
+	$("#presion").css("width", valor+"px"); //aplico el nuevo relleno
+	$("#presion-valor").text(carga+"%"); //aplico el nuevo relleno
 	//aplico color dependiendo porcentaje
 	//alert(porciento);
 	if(carga <= 5){

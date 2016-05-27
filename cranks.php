@@ -16,6 +16,7 @@
 		    <button id="btn-cranks-mostrar" type="button" class="btn btn-danger btn-mostrar">Mostrar selección</button>		    
 		</div>
 	</div>
+	<div class="cont-tabla">
 	<table id="cranks-tabla" class="cranks-tabla" style="text-align: center;">
     	<thead>
 	      <tr class="cranks-tabla-titulo">
@@ -23,10 +24,11 @@
 	        <th class="th-crank" style="width:50px">Motor</th>
 	        <th class="th-crank" style="width:100px; text-align: center">Fecha</th>
 	        <th class="th-crank" style="width:500px; text-align: center">Observación</th>
-	        <th class="th-crank" style="width:100px; text-align: center">Acción</th>
+	        <th class="th-crank" style="width:60px; text-align: center">Acción</th>
 	      </tr>
 	    </thead>
 	    <tbody>
 		</tbody>
 	</table>
+	</div>
 </div>

@@ -8,7 +8,7 @@
 	<div class="cont-botonera">
 	    <button id='cartel' type="button" class="btn cartel" style="width: 150px; height: 60px;"><label tex="test_cartel"/></button>
 	    <button id="btnRec" type="button" class="btn btn-danger" style="width:80px; height: 60px; float: right;margin-right:5px;"><label tex="test_rec"/></button>
-		<button type="button" class="btn btn-info" style="width:80px; height: 60px;float: right;margin-right:5px;"><label tex="test_freeze"/></button>
+		<button id="btnFreeze" type="button" class="btn btn-info" style="width:80px; height: 60px;float: right;margin-right:5px;"><label tex="test_freeze"/></button>
 		<button id="btnCheck" type="button" class="btn btn-primary" style="width:80px; height: 60px;float: right;margin-right:5px;"><label tex="test_check"/></button>			
 	</div>
 		  
@@ -73,40 +73,35 @@
 </div>
 
 <!--######################### MODAL AGREGAR GRABACION ########################## -->
-  <!-- Modal -->
-  <div class="modal" id="modalAltaGraba" role="dialog" data-backdrop="static" 
-   data-keyboard="false">
+  <div class="modal" id="modalAltaGraba" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog"  style="width: 500px; top: 100px">
       <div class="modal-content">
         <div class="modal-header">
-        Guardar Grabación
+       	 Guardar Grabación
         </div>
         <div class="modal-body">
             <div class="form-group">
-			<textarea id="observacion-graba" class="form-inline input-guardar" rows="4" placeholder="Observaciones" style="width: 450px; height: 70px; margin-bottom: 10px"></textarea>
-            <button id="guardar-graba" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Guardar</button>
-            <button id="descartar-graba" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Descartar</button>
-        </div>
-      </div>
-      
-    </div>
+				<textarea id="observacion-graba" class="form-inline input-guardar" rows="4" placeholder="Observaciones" style="width: 450px; height: 70px; margin-bottom: 10px"></textarea>
+            	<button id="guardar-graba" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Guardar</button>
+            	<button id="descartar-graba" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Descartar</button>
+        	</div>
+      	</div>
+    	</div>
+  	</div>
   </div>
-  
   <!--######################### MODAL AGREGAR FREEZE/CHECK ########################## -->
   <!-- Modal -->
-  <div class="modal" id="modalAltaCheck" role="dialog" data-backdrop="static" 
-   data-keyboard="false">
+  <div class="modal" id="modalAltaCheck" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index: 1042 !important;">
     <div class="modal-dialog"  style="width: 500px; top: 100px">
       <div class="modal-content">
         <div class="modal-header">
-        Guardar Freeze/Check
+       	 Guardar Freeze/Check
         </div>
         <div class="modal-body">
 			<textarea id="observacion-check" class="form-inline input-guardar" rows="4" placeholder="Observaciones" style="width: 450px; height: 70px; margin-bottom: 10px"></textarea>
             <button id="guardar-check" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Guardar</button>
             <button id="descartar-check" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Descartar</button>
         </div>
-      </div>
-      
+      </div>      
     </div>
   </div>

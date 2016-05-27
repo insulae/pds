@@ -13,7 +13,7 @@
 	background-color: black;
 	margin: 10px;
 	padding: 10px;
-	width:450px;
+	width:550px;
 	height: 250px;
 	overflow-y:auto;
 }
@@ -55,7 +55,7 @@
 
 .tr-usuario{
 	text-align: center;
-	font-size: 1.5em;
+	font-size: 1.4em;
 	height: 60px;
 	background: #3c3c41;
 	cursor: pointer;
@@ -63,20 +63,23 @@
 
 .tr-usuario-activo{
 	text-align: center;
-	font-size: 1.5em;
+	font-size: 1.4em;
 	height: 60px;
 	background: #8ae234;
 	cursor: pointer;
 	color:black;
 }
+.td-hidden{
+	display: none;
+}
 
 
 .cont-usuarios th{
-	font-size: 1em;
+	font-size: 1.2em;
 	width:70px; 
 	text-align: center;
 	background-color: #375a7f;
-	font-weight: normal;
+	font-weight: bold;
 	border-bottom: 2px;
 	border-bottom-style: solid;
 	border-color: #000;

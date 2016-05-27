@@ -10,6 +10,13 @@
   	height: 500px;
   	width: 920px;
 }
+.cont-tabla{
+	position:relative;
+	background-color: black;
+	width:900px;
+	height: 420px;
+	overflow-y:auto;
+}
 .graba-tabla{
 	width: 100%;
 }
@@ -33,6 +40,12 @@
 .tr-graba-activo{
 	background-color: #8ae234;
 	color:#000;
+}
+.tr-graba-elimino{
+	background: #f13131;
+	cursor: pointer;
+	color:#000;
+	font-weight: bold;
 }
 
 .td-hidden{

@@ -7,15 +7,15 @@ switch($_REQUEST['accion']){
 	case 'traerGraba':
 		$query = $db->query('
 			SELECT 
-				avion.patente,
-				rec.id_rec,
-				rec.observacion,
-				rec.fyh
+				rec.id_rec
+				,rec.observacion
+				,rec.fyh
 			FROM rec
 			INNER JOIN avion USING(id_avion)
-			WHERE avion.patente = "'.@$_POST['avion'].'"
+			WHERE id_avion = '.@$_POST['id_avion'].'
 			AND rec.fyh >= "'.@$_POST['fdesde'].'"
 			AND rec.fyh <= "'.@$_POST['fhasta'].'"
+			AND crank = 0
 		');
 		//$datos = queryToArray($query);
 		$datos = json_encode(queryToObject($query));

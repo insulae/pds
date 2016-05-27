@@ -50,14 +50,19 @@ $('#btn-volt').click(function(){
 /* DIBUJO GRAFICA */
 function dibujoGrafica(){
 	  var chart = new CanvasJS.Chart("check-graf",
-			    {
+			  {
+			    tooltip:{
+			    	fontColor:"red"
+			    	,fontSize:50
+			    	,backgroundColor:"#000"
+			    },	
 		  		zoomEnabled: true,
 		  		width: 910,
 		  		theme: temaGrafica,
 			     title:{
 			     text: "",
 			     horizontalAlign: "right"
-			    },
+			    },		    
 			    axisX:{
 			      valueFormatString: "DD-MM-YY",
 			      title: "",
@@ -70,7 +75,7 @@ function dibujoGrafica(){
 			    },			    
 			    legend: {
 			      verticalAlign: "bottom",
-			      horizontalAlign: "left"
+			      horizontalAlign: "left"			    	  
 
 			    },
 			    data: [
@@ -80,8 +85,8 @@ function dibujoGrafica(){
 			     markerBorderColor:"#fce94f",
 			     markerType: "circle",
 			     markerSize: 10,
-			     dataPoints: datosGrafica
-			    }]		     
+			     dataPoints: datosGrafica			     
+			    }]	     
 			 });
 
 			chart.render();

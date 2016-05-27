@@ -2,6 +2,7 @@
 require('engine/base.php');
 
 switch ($_REQUEST['accion']) {
+
 	case 'traerChecks':
 		$filtro = "";
 		if($_POST['fdesde'] != ""){
@@ -10,40 +11,29 @@ switch ($_REQUEST['accion']) {
 		if($_POST['fhasta'] != ""){
 			$filtro += ' AND check.fyh <= "'.$_POST['fhasta'].'"';
 		}
-		//TODO agregar llave secundaria en check_sensor (id_check nr_sensor)
+		
 		$query = $db->query('
-	 
-			SELECT 
-				id_check,
-				c.fyh,
-				c.observacion,
-				(select check_sensor.dato
-					FROM check_sensor
-					WHERE nro_sensor = 1
-					AND check_sensor.id_check = c.id_check
-				) AS voltaje,
-				(select check_sensor.dato
-					FROM check_sensor
-					WHERE nro_sensor = 2
-					AND check_sensor.id_check = c.id_check
-				) AS amperaje
-			FROM checks AS c
-			INNER JOIN avion USING(id_avion)
-			WHERE `avion`.patente = "'.$_POST['avion'].'"
-				AND c.fyh >= "'.$_POST['fdesde'].'"
-				AND c.fyh <= "'.$_POST['fhasta'].'"	
+			SELECT
+				id_check
+				, observacion
+				, sensores
+				, fyh
+			FROM checks
+			WHERE id_avion = '.$_POST['id_avion'].'
+				AND fyh >= "'.$_POST['fdesde'].'"
+				AND fyh <= "'.$_POST['fhasta'].'"
+			ORDER BY fyh DESC
 		');
-		//echo mysqli_error($db);
-		//$datos = queryToArray($query);
+	
+		//echo $datos = queryToArray($query);
 		$datos = json_encode(queryToObject($query));
 		echo $datos;
 	break;
-
+		
 	//ELIMINAR Check	
 	case 'eliminarCheck':
 		$query = $db->query('
-			DELETE checks,check_sensor FROM checks
-			INNER JOIN check_sensor USING(id_check)
+			DELETE checks FROM checks
 			WHERE id_check = '.@$_POST['id_check']
 		);
 		if(mysqli_errno($db)){

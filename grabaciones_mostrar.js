@@ -77,9 +77,9 @@ function traerDatos() {
 			//console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
 			var datos = JSON.parse(datos);
 	    	for (var i=0; i<datos.length; i++) {
-	    		datos[i].sensores= JSON.parse(datos[i].sensores);
-	    		grabaVoltaje.push({x: new Date((datos[i].fyh+"."+datos[i].mseg)), y: parseInt(datos[i].sensores.vol) });
-	    		grabaAmperaje.push({x: new Date((datos[i].fyh+"."+datos[i].mseg)), y: parseInt(datos[i].sensores.amp)});
+	    		sensores= JSON.parse(datos[i].sensores);
+	    		grabaVoltaje.push({x: new Date((datos[i].fyh+"."+datos[i].mseg)), y: parseInt(sensores.vol) });
+	    		grabaAmperaje.push({x: new Date((datos[i].fyh+"."+datos[i].mseg)), y: parseInt(sensores.amp)});
 	    	}
 	    datosGrafica = grabaVoltaje;
 	    dibujoGrafica();	

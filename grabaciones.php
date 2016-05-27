@@ -13,6 +13,7 @@
 		    <button id="btn-graba-mostrar" type="button" class="btn btn-danger btn-mostrar">Mostrar selección</button>
 		</div>
 	</div>
+	<div class="cont-tabla">
 	<table id="graba-tabla" class="graba-tabla" style="text-align: center;">
     	<thead>
 	      <tr class="graba-tabla-titulo">
@@ -25,4 +26,5 @@
 	    <tbody>
 		</tbody>
 	</table>
+	</div>
 </div>

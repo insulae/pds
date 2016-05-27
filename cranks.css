@@ -10,8 +10,15 @@
   	height: 500px;
   	width: 920px;
 }
+.cont-tabla{
+	position:relative;
+	background-color: black;
+	width:900px;
+	height: 420px;
+	overflow-y:auto;
+}
 .cranks-tabla{
-	width: 100%;
+	width: 880px;
 }
 .cranks-tabla-titulo{
 	border: solid 2px; 

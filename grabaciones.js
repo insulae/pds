@@ -1,4 +1,4 @@
-id_rec = '';
+var id_rec = '';
 
 function cargaJS(){
 	//datepicker
@@ -20,9 +20,9 @@ function traerGraba(){
 		url:   'grabaciones_data.php?accion=traerGraba',
 	    type:  'post',
 		data:{ 
-			avion: avion,
-			fdesde: $('#graba-fdesde').val(),
-			fhasta: $('#graba-fhasta').val()
+			id_avion: id_avion
+			,fdesde: $('#graba-fdesde').val()
+			,fhasta: $('#graba-fhasta').val()
 		},
 	    success:  function (datos) {
 	    	//limpio tabla
@@ -39,7 +39,7 @@ function traerGraba(){
 	    			//fila+='<td>'+crank[i].patente+'</td>';
 	    			fila+='<td>'+graba[i].fyh+'</td>';
 	    			fila+='<td style="text-align:left; padding-left:10px">'+graba[i].observacion+'</td>';
-	    			fila+='<td><span class="glyph-icon flaticon-close ico-eliminar"></span></td>';
+	    			fila+='<td><span id="graba-eliminar" class="glyph-icon flaticon-close ico-eliminar"></span></td>';
 	    			fila+='<td id="id-graba" class="td-hidden">'+graba[i].id_rec+'</td></tr>';
 
 	    		$('#graba-tabla').append(fila);
@@ -54,11 +54,12 @@ $('#btn-filtrar').click(function(){
 	traerGraba();
 });
 
-/* seleccionar avion */
+
+/* seleccionar grabacion */
 $('#graba-tabla').on('click', '.tr-graba', function(event) {
-	
 	$(this).addClass('tr-graba-activo').siblings().removeClass('tr-graba-activo');
 	id_rec = $(this).find("#id-graba").html();
+	//ugly patch
 });
 
 /* eliminar Graba */
@@ -68,16 +69,18 @@ $('#graba-tabla').on('click', '.ico-eliminar', function(event) {
 		return;
 	}
 	celdaActiva = $(this).parent().parent();
-	celdaActiva.addClass('tr-graba-activo');
+	celdaActiva.addClass('tr-graba-elimino');
 	 grabaElimino = $(this).parent().parent().find("#id-graba").html();
 		$.confirm({
 		    title: 'Eliminación',
 		    content: 'Esta a punto de eliminar la grabación Seleccionada',
 		    confirm: function(){
 		    	eliminarGraba(grabaElimino);
+				celdaActiva.removeClass('tr-graba-elimino');
 				celdaActiva.removeClass('tr-graba-activo');
 		    },
 			cancel: function(){
+				celdaActiva.removeClass('tr-graba-elimino');
 				celdaActiva.removeClass('tr-graba-activo');
 			}
 		});

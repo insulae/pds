@@ -39,6 +39,7 @@ switch ($_REQUEST["accion"]) {
 			INSERT INTO rec SET
 				id_avion = '.@$_POST['id_avion'].'
 				, observacion = "'.@$_POST['observacion'].'"
+				, crank = 0
 			');
 		if(!$db->errno){
 			$id_rec = $db->insert_id;
@@ -56,8 +57,28 @@ switch ($_REQUEST["accion"]) {
 		}
 		
 	break;
-		//TODO AGREGAR CONTROL VER QUE CONVIENE
+	//TODO AGREGAR CONTROL VER QUE CONVIENE
 /* #################################################### GRABACION #################################################### */
+
+/* #################################################### GRABACION #################################################### */
+	case "guardarCheck":
+		$cadena = json_decode(stripslashes($_POST['cadena']));
+	
+		//GRABO REC
+		$query = $db->query('
+			INSERT INTO checks SET
+				id_avion = '.@$_POST['id_avion'].'
+				, observacion = "'.@$_POST['observacion'].'"
+				, sensores = "'.$db->real_escape_string(json_encode($cadena->sensores)).'"
+				, fyh = "'.$cadena->fyh.'"
+				, freeze = '.@$_POST['freeze'].'
+			');
+		echo $db->error;	
+	break;
+	//TODO AGREGAR CONTROL VER QUE CONVIENE
+/* #################################################### GRABACION #################################################### */
+	
+
 	
 }
 ?>

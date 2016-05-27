@@ -14,18 +14,20 @@
 			<button id="btn-checks-mostrar" type="button" class="btn btn-danger btn-mostrar">Mostrar</button>		    
 		</div>
 	</div>
-	<table id="checks-tabla" class="checks-tabla" style="text-align: center;">
-    	<thead>
-	      <tr class="checks-tabla-titulo">
-	        <!-- <th class="th-check" style="width:100px" >AVION</th> -->
-	        <th class="th-check" style="width:100px">Fecha</th>
-	        <th class="th-check" style="width:70px; text-align: center">Voltaje</th>
-	        <th class="th-check" style="width:70px; text-align: center"">Amperaje</th>
-	        <th class="th-check" style="width:500px; text-align: center">Observación</th>
-	        <th class="th-check" style="width:80px; text-align: center">Acción</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-		</tbody>
-	</table>
+	<div class="cont-tabla">
+		<table id="checks-tabla" class="checks-tabla" style="text-align: center;">
+	    	<thead>
+		      <tr class="checks-tabla-titulo">
+		        <!-- <th class="th-check" style="width:100px" >AVION</th> -->
+		        <th class="th-check" style="width:100px">Fecha</th>
+		        <th class="th-check" style="width:70px; text-align: center">Voltaje</th>
+		        <th class="th-check" style="width:70px; text-align: center"">Amperaje</th>
+		        <th class="th-check" style="width:500px; text-align: center">Observación</th>
+		        <th class="th-check" style="width:80px; text-align: center">Acción</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+			</tbody>
+		</table>
+	</div>		
 </div>

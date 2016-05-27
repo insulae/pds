@@ -486,12 +486,12 @@
 			"voltaje": {
 				Chart:
 					{
-						colorSet: "colorVoltaje"
+						//colorSet: "colorVoltaje"
 					},
 				Title: {
 					fontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
 					fontSize: 33,
-					fontColor: "#3A3A3A",
+					fontColor: "#fff",
 					fontWeight: "bold",
 					verticalAlign: "top",
 					margin: 5
@@ -499,7 +499,7 @@
 				Subtitle: {
 					fontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
 					fontSize: 16,
-					fontColor: "#3A3A3A",
+					fontColor: "#fff",
 					fontWeight: "bold",
 					verticalAlign: "top",
 					margin: 5
@@ -517,19 +517,19 @@
 					labelFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
 					//labelFontFamily: "Helvetica Neue, Helvetica",
 					labelFontSize: 10, //pds
-					labelFontColor: "yellow", //pds
+					labelFontColor: "#fff118", //pds
 					//labelFontWeight: "bold",
 					tickColor: "#BBBBBB",
 					tickThickness: 1, //pds
 					gridThickness: 0.5, //pds
 					gridColor: "#BBBBBB",
 					lineThickness: 2, //pds
-					lineColor: "#BBBBBB"
+					lineColor: "#BBBBBB"						
 				},
 				Legend: {
-					verticalAlign: "bottom",
-					horizontalAlign: "center",
-					fontFamily: isCanvasSupported ? "monospace, sans-serif,arial black" : "calibri"
+					verticalAlign: "bottom"
+					,horizontalAlign: "center"
+					,fontFamily: isCanvasSupported ? "monospace, sans-serif,arial black" : "calibri"
 				},
 				DataSeries: {
 					//bevelEnabled: true,

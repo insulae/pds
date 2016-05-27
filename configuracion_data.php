@@ -1,4 +1,5 @@
 <?php
+
 require('engine/base.php');
 session_start();
 switch(@$_REQUEST['accion']){
@@ -9,8 +10,7 @@ switch(@$_REQUEST['accion']){
 //TRAER USUARIOS
 	case 'traerUsuarios':
 		$query = $db->query('
-			SELECT 
-				*
+			SELECT *
 			FROM usuario
 		');
 		$datos = json_encode(queryToObject($query));
@@ -53,3 +53,5 @@ switch(@$_REQUEST['accion']){
 			echo mysqli_errno($db);
 		}
 		break;
+}
+?>

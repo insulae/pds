@@ -4,13 +4,13 @@ function cargaJS(){
 }
 
 
-/*##################################### AVION AVION ##########################*/
+/*##################################### usuario usuario ##########################*/
 
-/* seleccionar avion */
-$('#aviones-tabla').on('click', '.tr-avion', function(event) {
-	  $(this).addClass('tr-avion-activo').siblings().removeClass('tr-avion-activo');
-	  avion = $(this).find("#celda-avion").html();
-	  $('#tab-avion').text(avion);
+/* seleccionar usuario */
+$('#usuarios-tabla').on('click', '.tr-usuario', function(event) {
+	  $(this).addClass('tr-usuario-activo').siblings().removeClass('tr-usuario-activo');
+	  usuario = $(this).find("#celda-usuario").html();
+	  $('#tab-usuario').text(usuario);
 	  $('#tab-test').removeClass('tabno');
 	  if (loginEstado == 1){
 			$('#tab-checks').removeClass("tabno");
@@ -20,24 +20,24 @@ $('#aviones-tabla').on('click', '.tr-avion', function(event) {
 });
 
 
-/* agregar Avion  */
-$('#avion-agregar').click(function(){
-	agregarAvion();
+/* agregar usuario  */
+$('#usuario-agregar').click(function(){
+	agregarUsuario();
 });
 
-/* eliminar Avion */
-$('#aviones-tabla').on('click', '.btn-accion-eliminar', function(event) {
-	 avionEliminar = $(this).parent().parent().find("#celda-avion").html();
+/* eliminar usuario */
+$('#usuarios-tabla').on('click', '.btn-accion-eliminar', function(event) {
+	 usuarioEliminar = $(this).parent().parent().find("#celda-usuario").html();
 	$.confirm({
 	    title: 'Eliminación',
-	    content: 'Esta a punto de eliminar el avión: '+ avionEliminar,
+	    content: 'Esta a punto de eliminar el avión: '+ usuarioEliminar,
 	    confirm: function(){
-	    	eliminarAvion(avionEliminar);
+	    	eliminarUsuario(usuarioEliminar);
 	    }
 	});
 });
 
-$('#modalAltaAvion').on('hidden.bs.modal', function () {
+$('#modalAltaUsuario').on('hidden.bs.modal', function () {
 alert("ok");
 });
 
@@ -46,25 +46,27 @@ alert("ok");
 /*###################### funcionses a base ######################*/
 
 $('#btn-buscar').click(function(){
-	traerAviones();
+	traerUsuarios();
 });
 
-/* traer Aviones  */
+/* traer Usuarios  */
 function traerUsuarios() {
 	$.ajax({		
-		url:   'inicio_data.php?accion=traerUsuarios',
+		url:   'configuracion_data.php?accion=traerUsuarios',
 	    type:  'post',
 	    success:  function (datos) {
 	    	var usuario = JSON.parse(datos);
-	    	console.log(JSON.stringify(datos));
+	    	//console.log(JSON.stringify(datos));
 	    	//limpio tabla
-	    	$('#usuario-tabla tbody').remove();
+	    	$('#usuarios-tabla tbody').remove();
 	    	if(usuario){
-		    	for (var i=0; i<usuario.length; i++) {	    		
-		    		var fila='<tr class="tr-usuario"><td id="celda-usuario">'+usuario[i].nombre+'</td>';
-		    			fila+='<td>'+usuario[i].usuario+'</td>';
+		    	for (var i=0; i < usuario.length; i++) {
+		    		var fila='<tr class="tr-usuario">';
+		    			fila+='<td id="celda-usuario" style="font-size: 0.8em;">'+usuario[i].nombre+'</td>';
+		    			fila+='<td style="padding-right:20px">'+usuario[i].usuario+'</td>';
 		    			fila+='<td>'+usuario[i].tipo+'</td>';
 		    			fila+='<td><span class="glyph-icon flaticon-tool-2 btn-accion-editar"></span><span class="glyph-icon flaticon-close btn-accion-eliminar"></span></td>';
+		    			fila+='<td id="id-usurio" class="td-hidden">'+usuario[i].id_usuario+'</td>';
 		    			fila+='</tr>';
 		    			
 		    		$('#usuarios-tabla').append(fila);
@@ -74,7 +76,7 @@ function traerUsuarios() {
 	});
 }
 
-function agregarAvion(){
+function agregarUsuario(){
 	$.ajax({		
 		url:   'inicio_data.php?accion=agregarAvion',
 	    type:  'post',
@@ -94,11 +96,11 @@ function agregarAvion(){
 		});
 }
 
-function eliminarAvion(avion){
+function eliminarUsuario(usuario){
 	$.ajax({		
-		url:   'inicio_data.php?accion=eliminarAvion',
+		url:   'inicio_data.php?accion=eliminarUsuario',
 	    data:{
-	    	patente: avion
+	    	patente: usuario
 	    },
 	    type:  'post',
 	    success:  function (resultado) {
@@ -106,7 +108,7 @@ function eliminarAvion(avion){
 	    	if(resultado.trim() !=""){
 	    		$.alert('<b>Error Numero:<br></b>'+resultado);
 	    	}
-	    	traerAviones();
+	    	traerUsuarios();
 	    }	
 	});
 }

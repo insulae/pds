@@ -2,7 +2,7 @@
 require('engine/base.php');
 
 switch($_REQUEST['accion']){
-	case 'traerCranks':
+	case 'traerCranksbkp':
 		$filtro = "";
 		if(@$_POST['fdesde'] != ""){
 			$filtro += 'AND crank.fyh >= "'.@$_POST['fdesde'].'"';
@@ -27,7 +27,26 @@ switch($_REQUEST['accion']){
 		$datos = json_encode(queryToObject($query));
 		echo $datos;
 	break;
-	
+
+	//traer listado de las grabaciones
+	case 'traerCranks':
+		$query = $db->query('
+			SELECT
+				IF(motor_apu = 0, "APU", motor_apu) AS motor_apu
+				,rec.id_rec
+				,rec.observacion
+				,rec.fyh
+			FROM rec
+			INNER JOIN avion USING(id_avion)
+			WHERE id_avion = "'.@$_POST['id_avion'].'"
+			AND rec.fyh >= "'.@$_POST['fdesde'].'"
+			AND rec.fyh <= "'.@$_POST['fhasta'].'"
+			AND crank = 1
+		');
+		//$datos = queryToArray($query);
+		$datos = json_encode(queryToObject($query));
+		echo $datos;
+		break;
 	
 	case 'traerCranksDatos':
 		$res = Array();

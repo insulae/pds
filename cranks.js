@@ -22,9 +22,9 @@ function traerCranks(){
 		url:   'cranks_data.php?accion=traerCranks',
 	    type:  'post',
 		data:{ 
-			avion: avion,
-			fdesde: $('#cranks-fdesde').val(),
-			fhasta: $('#cranks-fhasta').val()
+			id_avion: id_avion
+			,fdesde: $('#cranks-fdesde').val()
+			,fhasta: $('#cranks-fhasta').val()
 		},
 	    success:  function (datos) {
 	    	//limpio tabla

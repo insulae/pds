@@ -4,7 +4,7 @@ header('Cache-Control: no-cache');
 
 require ("sys/com/sensores.php");
 
-$usb = 'ttyUSB0';
+/* $usb = 'ttyUSB0';
 `stty -F /dev/$usb 9600`;
 `stty -F /dev/$usb -parity`;
 `stty -F /dev/$usb cs8`;
@@ -13,13 +13,13 @@ $f = fopen("/dev/$usb", "r+");
 if(!$f) {
 	echo "error opening file\n";
 	exit;
-}
+} */
 
 //$i=0;
  while (true) {
-	//$cadena = com_virtual();
+	$cadena = com_virtual();
 	//$cadena = trim(fgets($f, 31)); //cadena real fgets
-	$cadena = exec("python3 sys/com/serialpy.py");
+	//$cadena = exec("python3 sys/com/serialpy.py");
 	//echo "data: " . $cadena . "\n\n";
 
  	
@@ -65,17 +65,17 @@ if(!$f) {
 	
 	ob_end_flush();
 	flush();
-	usleep(250000);
-	//usleep(1000000);
+	//usleep(250000);
+	usleep(1000000);
  }
 function com_virtual(){
 		return "'b000106"
-		."0".rand(0,4).rand(1,6) //random desde diez para que no rompa el formato de la cadena
-		."0".rand(0,0)."0".rand(0,2)
-		."0".rand(0,0)."0".rand(1,8)
-		."000".rand(-1,4)
-		."000".rand(1,8)
-		."000".rand(1,3);
+		."0".rand(0,5).rand(0,9).rand(0,9) //random desde diez para que no rompa el formato de la cadena
+		."00".rand(1,2).rand(1,8)
+		."00".rand(0,6).rand(0,4)
+		."00".rand(0,3).rand(0,9)
+		."00".rand(5,6).rand(0,4)
+		."00".rand(0,6).rand(0,4);
 }
 /*
 observacion

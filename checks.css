@@ -10,8 +10,15 @@
   	height: 500px;
   	width: 920px;
 }
+.cont-tabla{
+	position:relative;
+	background-color: black;
+	width:900px;
+	height: 420px;
+	overflow-y:auto;
+}
 .checks-tabla{
-	width: 100%;
+	width: 880px;
 }
 .checks-tabla-titulo{
 	border: solid 2px; 
@@ -20,6 +27,7 @@
 	background-color: #375a7f;
 	font-weight: bold;
 }
+
 .th-check{
 	text-align: center;
 }
@@ -33,7 +41,7 @@
 .td-hidden{
 	display: none;
 }
-.tr-check-activo{
+.tr-check-elimino{
 	background: #f13131;
 	cursor: pointer;
 	color:#000;
