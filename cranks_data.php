@@ -2,37 +2,12 @@
 require('engine/base.php');
 
 switch($_REQUEST['accion']){
-	case 'traerCranksbkp':
-		$filtro = "";
-		if(@$_POST['fdesde'] != ""){
-			$filtro += 'AND crank.fyh >= "'.@$_POST['fdesde'].'"';
-		}
-		if(@$_POST['fhasta'] != ""){
-			$filtro += ' AND crank.fyh <= "'.@$_POST['fhasta'].'"';
-		}
-		$query = $db->query('
-			SELECT 
-				avion.patente,
-				crank.id_crank,
-				crank.motor_apu,
-				crank.observacion,
-				crank.fyh
-			FROM crank
-			INNER JOIN avion USING(id_avion)
-			WHERE avion.patente = "'.@$_POST['avion'].'"
-			AND crank.fyh >= "'.@$_POST['fdesde'].'"
-			AND crank.fyh <= "'.@$_POST['fhasta'].'"	
-		');
-		//$datos = queryToArray($query);
-		$datos = json_encode(queryToObject($query));
-		echo $datos;
-	break;
 
 	//traer listado de las grabaciones
 	case 'traerCranks':
 		$query = $db->query('
 			SELECT
-				IF(motor_apu = 0, "APU", motor_apu) AS motor_apu
+				IF(rec.motor_apu = 0, "APU", rec.motor_apu) AS motor_apu
 				,rec.id_rec
 				,rec.observacion
 				,rec.fyh
@@ -42,6 +17,7 @@ switch($_REQUEST['accion']){
 			AND rec.fyh >= "'.@$_POST['fdesde'].'"
 			AND rec.fyh <= "'.@$_POST['fhasta'].'"
 			AND crank = 1
+			ORDER BY rec.fyh DESC
 		');
 		//$datos = queryToArray($query);
 		$datos = json_encode(queryToObject($query));
@@ -69,31 +45,35 @@ switch($_REQUEST['accion']){
 		]
 		*/
 		$qcr=$db->query('
-				SELECT * FROM crank
-				WHERE id_crank IN(4,5,7)
+				SELECT * FROM rec
+				WHERE id_rec IN(2,3,4)
 		');
 		while ($rcr = $qcr->fetch_object()){
 			$row = new stdClass();
 			$row->observaciones = "rcr->Observacion";
-			$row->id_crank = $rcr->id_crank;
+			$row->id_rec = $rcr->id_rec;
 			$i=1;
 			
+			//CONCAT(fyh.".".mesg) AS fyh
 			$qcranks = $db->query('
-				SELECT cis.*
-				FROM crank_item_sensor AS cis
-				INNER JOIN crank_item USING(id_crank_item)
-				INNER JOIN crank USING(id_crank)
-				INNER JOIN avion USING (id_avion)
-				WHERE avion.patente = "'.@$_POST['avion'].'"
-				AND nro_sensor IN('.@$_POST['sensor'].')
-				AND id_crank IN('.$rcr->id_crank.')
+				SELECT 
+					id_rec
+					,sensores
+					,fyh 
+				FROM rec_item
+				WHERE id_rec IN('.$rcr->id_rec.')
 			');
-			
 			$row->puntos = Array();
 			while ($r = $qcranks->fetch_object()) {
+				$sensores = json_decode($r->sensores);
+				if(@$_POST['sensor'] == 1){
+					$sensor = $sensores->vol;
+				}else if(@$_POST['sensor'] == 2){
+					$sensor = $sensores->amp;
+				}
 				$punto = new stdClass();
 				$punto->x = $i*0.25;
-				$punto->y = round($r->dato);
+				$punto->y = $sensor;
 				array_push($row->puntos,$punto);
 				$i++;
 			}

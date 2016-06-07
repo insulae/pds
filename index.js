@@ -1,22 +1,26 @@
 //DECLARACION DE VARIABLES "GLOBALES"
 function cargaJS(){
+	//no funciona esto en index
 }
 function rompoJS(){
 	
 }
+//VARIABLES SETEABLES DESDE INTERFAZ
+var crankDif = 500;
+
 //inicio
 var activo='inicio';
 var avion='AA-AAA';
+var avion_motores = '';
+var avion_apu='';
 var id_avion='2';
 var loginEstado='';
 var loginAdmin='';
 
 //test
-var cargaValores; //eliminar esta mierda
 var testCometa;
-var max_grabacion = 20;
-
-//cranks
+var duracionRec = 20000; //en milisegundos
+var duracionCrank = 5000; //en milisegundos
 
 //grabaciones
 

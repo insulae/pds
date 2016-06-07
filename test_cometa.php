@@ -28,9 +28,12 @@ if(!$f) {
 		//$sensores[$sensor1] = $i++;
 		
 		//python
+		//$xor = substr($cadena,17,2)
+		
 		$sensores[$sensor1] = hexdec(substr($cadena,8,4));
 		$sensores[$sensor2] = hexdec(substr($cadena,12,4));
 		$sensores[$sensor3] = hexdec(substr($cadena,16,4));
+		
 		$sensores[$sensor4] = hexdec(substr($cadena,20,4));
 		$sensores[$sensor5] = hexdec(substr($cadena,24,4));
 		$sensores[$sensor6] = hexdec(substr($cadena,28,4));
@@ -77,6 +80,11 @@ function com_virtual(){
 		."00".rand(5,6).rand(0,4)
 		."00".rand(0,6).rand(0,4);
 }
+
+// function com_real(){
+// 	$cadena = exec("python3 sys/com/serialpy.py");
+	
+// }
 /*
 observacion
 fyh_inicio

@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.9899495"
-     inkscape:cx="93.326388"
-     inkscape:cy="43.304352"
+     inkscape:zoom="2.8"
+     inkscape:cx="44.371556"
+     inkscape:cy="64.449675"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -48,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -84,18 +84,6 @@
        transform="matrix(0.98369767,0.17983017,-0.1522692,0.98833906,0,0)"
        sodipodi:open="true" />
     <path
-       style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:2.0385797;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path4748-6-7-9"
-       sodipodi:type="arc"
-       sodipodi:cx="296.3483"
-       sodipodi:cy="708.47363"
-       sodipodi:rx="40.509937"
-       sodipodi:ry="43.81488"
-       sodipodi:start="5.3407075"
-       sodipodi:end="0"
-       d="m 320.15944,673.02665 a 40.509937,43.81488 0 0 1 16.69879,35.44698 l -40.50993,0 z"
-       transform="matrix(0.93021194,-0.36702281,0.44240063,0.89681753,0,0)" />
-    <path
        style="opacity:1;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:2.0385797;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4748-6-7"
        sodipodi:type="arc"
@@ -107,6 +95,18 @@
        sodipodi:end="0"
        d="m -210.88823,686.47754 a 72.753693,71.39492 0 0 1 29.99014,57.7597 l -72.75369,0 z"
        transform="matrix(0.371263,-0.92852775,0.90183475,0.43208112,0,0)" />
+    <path
+       style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:2.0385797;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4748-6-7-9"
+       sodipodi:type="arc"
+       sodipodi:cx="227.52834"
+       sodipodi:cy="697.26343"
+       sodipodi:rx="50.825672"
+       sodipodi:ry="47.987881"
+       sodipodi:start="5.3407075"
+       sodipodi:end="0"
+       d="m 257.40292,658.44042 a 50.825672,47.987881 0 0 1 20.95109,38.82301 l -50.82567,0 z"
+       transform="matrix(0.95221782,-0.30541976,0.51877826,0.85490883,0,0)" />
     <circle
        style="opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:2.0385797;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4748"

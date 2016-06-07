@@ -1,15 +1,6 @@
 <?php
 require("engine/base.php");
 /*
-$q = $db->query("
-SELECT * FROM avion
-");
-
-if (mysql_error()) die(mysql_error());
-while ($r = $q->fetch_object()) {
-	echo $r->patente . "<br />";
-}
-
 24] => stdClass Object
         (
             [cadena] => 000106090609050605060608070105
@@ -39,7 +30,8 @@ switch ($_REQUEST["accion"]) {
 			INSERT INTO rec SET
 				id_avion = '.@$_POST['id_avion'].'
 				, observacion = "'.@$_POST['observacion'].'"
-				, crank = 0
+				, crank = '.@$_POST['crank'].'
+				, motor_apu = '.@$_POST['motor_apu'].'
 			');
 		if(!$db->errno){
 			$id_rec = $db->insert_id;
@@ -52,8 +44,10 @@ switch ($_REQUEST["accion"]) {
 						, fyh = "'.$registro->fyh.'"
 						, mseg = "'.str_pad($registro->mseg,3,0,STR_PAD_LEFT).'"
 					');
-				echo $db->error;
+			echo $db->error;
 			}
+		}else{
+			echo $db->error;
 		}
 		
 	break;

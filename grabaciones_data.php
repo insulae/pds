@@ -16,6 +16,7 @@ switch($_REQUEST['accion']){
 			AND rec.fyh >= "'.@$_POST['fdesde'].'"
 			AND rec.fyh <= "'.@$_POST['fhasta'].'"
 			AND crank = 0
+			ORDER BY fyh DESC					
 		');
 		//$datos = queryToArray($query);
 		$datos = json_encode(queryToObject($query));
@@ -30,8 +31,8 @@ switch($_REQUEST['accion']){
 				fyh,
 				mseg
 			FROM rec_item
-			WHERE id_rec = '.@$_POST['id_rec']
-		);
+			WHERE id_rec = '.@$_POST['id_rec'].'
+		');
 		//echo $datos = queryToArray($query);
 		$datos = json_encode(queryToObject($query));
 		echo $datos;

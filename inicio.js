@@ -119,6 +119,8 @@ $('#aviones-tabla').on('click', '.tr-avion', function(event) {
 	  $(this).addClass('tr-avion-activo').siblings().removeClass('tr-avion-activo');
 	  avion = $(this).find("#celda-avion").html();
 	  id_avion = $(this).find("#id-avion").html();
+	  avion_motores = $(this).find("#avion_motores").html();
+	  avion_apu = $(this).find("#avion_apu").html();
 	  $('#tab-avion').text(avion);
 	  $('#tab-test').removeClass('tabno');
 	  if (loginEstado == 1){
@@ -173,7 +175,7 @@ function traerAviones() {
 	    	$('#aviones-tabla tbody').remove();
 	    	if(datos){
 		    	for (var i=0; i<datos.length; i++) {	    		
-		    		//me fijo si tiene apu para concatenar con motor
+		    		//me fijo si tiene apu para concatenar con motor		    		
 		    		var motores = datos[i].motores;
 		    		if(datos[i].apu == 1){
 		    			motores = motores+"<small><small>+APU</small></small>";
@@ -182,6 +184,8 @@ function traerAviones() {
 		    			fila+='<td>'+motores+'</td>';
 		    			fila+='<td><span class="glyph-icon flaticon-tool-2 btn-accion-editar"></span><span class="glyph-icon flaticon-close btn-accion-eliminar"></span></td>';
 		    			fila+='<td id="id-avion" class="td-hidden">'+datos[i].id_avion+'</td>';
+		    			fila+='<td id="avion_motores" class="td-hidden">'+datos[i].motores+'</td>';
+		    			fila+='<td id="avion_apu" class="td-hidden">'+datos[i].apu+'</td>';
 		    			fila+='</tr>';
 		    			
 		    		$('#aviones-tabla').append(fila);

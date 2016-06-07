@@ -89,6 +89,26 @@
     	</div>
   	</div>
   </div>
+<!--######################### MODAL AGREGAR CRANK ########################## -->
+  <div class="modal" id="modalAltaCrank" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog"  style="width: 500px; top: 100px">
+      <div class="modal-content">
+        <div class="modal-header">
+       	 Guardar Crank
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+				<textarea id="observacion-crank" class="form-inline input-guardar" rows="4" placeholder="Observaciones" style="width: 455px; height: 70px; margin-bottom: 10px"></textarea>
+  				<select id="motor-crank" class="form-control input-avion">
+  				</select>
+				<br><br>			
+            	<button id="guardar-crank" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Guardar</button>
+            	<button id="descartar-crank" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Descartar</button>
+        	</div>
+      	</div>
+    	</div>
+  	</div>
+  </div>  
   <!--######################### MODAL AGREGAR FREEZE/CHECK ########################## -->
   <!-- Modal -->
   <div class="modal" id="modalAltaCheck" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index: 1042 !important;">
@@ -98,7 +118,8 @@
        	 Guardar Freeze/Check
         </div>
         <div class="modal-body">
-			<textarea id="observacion-check" class="form-inline input-guardar" rows="4" placeholder="Observaciones" style="width: 450px; height: 70px; margin-bottom: 10px"></textarea>
+            <div class="form-group">
+			<textarea id="observacion-check" class="form-inline input-guardar" rows="4" placeholder="Observaciones" style="width: 430px; height: 70px; margin-bottom: 10px"></textarea>
             <button id="guardar-check" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Guardar</button>
             <button id="descartar-check" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Descartar</button>
         </div>

@@ -21,7 +21,7 @@
     	<thead>
 	      <tr class="cranks-tabla-titulo">
 	        <!-- <th class="th-crank" style="width:100px" >AVION</th> -->
-	        <th class="th-crank" style="width:50px">Motor</th>
+	        <th class="th-crank" style="width:50px;">Motor</th>
 	        <th class="th-crank" style="width:100px; text-align: center">Fecha</th>
 	        <th class="th-crank" style="width:500px; text-align: center">Observación</th>
 	        <th class="th-crank" style="width:60px; text-align: center">Acción</th>

@@ -1,10 +1,19 @@
-var registros = [];
+var regRec = [];
+var regCrank = [];
 var cadena = "";
-var batultimo ="";
 var temultimo ="";
 var humultimo ="";
+var batultimo="";
 var preultimo ="";
 var esFreeze ="";
+
+//rec
+var recActivo = 0;
+//crank
+var crankActivo = 0;
+var guardandoCrank = 0;
+var ampAnt = 0;
+var graboCrank;
 
 function cargaJS(){	
 	crearGraf();
@@ -12,38 +21,51 @@ function cargaJS(){
 }
 
 function rompoJS(){
-	//limpio testCometa
-	//if(testCometa){
-	//	testCometa.close();
-	//	testCometa = null;
-	//}
+	//mato testCometa si es que hay una instancia al abrir TEST
+	if(testCometa){
+		testCometa.close();
+		testCometa = null;
+	}
 }
 
 /* #################################################### DIBUJO GRAFICA #################################################### */
+
+//mato testCometa si es que hay una instancia al abrir TEST
+//if(testCometa){
+//	testCometa.close();
+//	testCometa = null;
+//}
+
+
+//ver si aplicamos para el autorango
 function rango(range) {
 	  var min = 0;
 	  var max = 1500;
 	  return {min: min, max: max};
 }
 
+
 var datos = [new TimeSeries(), new TimeSeries()];
 
-//alert("Entro");
-//var datos = new TimeSeries();
-if(testCometa){
-	testCometa.close();
-	testCometa = null;
-}
 testCometa = new EventSource('test_cometa.php');
 
+//bandera para primer amperaje
+var ampBan = 0;
+
+//traigo datos
 testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
 	cadena = dataCometa;
 	//console.log(e.data); //debug de lo que viene
 	//return true;
+	//console.log(batultimo);
+	
+	//cargo valores a voltaje y amperaje
 	mostrarVoltaje(parseInt(dataCometa.sensores.vol));
-	mostrarAmperaje(parseInt(dataCometa.sensores.amp));
-	console.log(batultimo);
+	var amperaje = dataCometa.sensores.amp;
+	mostrarAmperaje(parseInt(amperaje));
+	
+	//cambio gauges si hay cambio
 	if(batultimo != dataCometa.sensores.bat){
 		mostrarBateria(parseInt(dataCometa.sensores.bat));
 		batultimo = dataCometa.sensores.bat;
@@ -59,18 +81,55 @@ testCometa.addEventListener('message', function(e) {
 	if(humultimo != dataCometa.sensores.hum){
 		mostrarHumedad(parseInt(dataCometa.sensores.hum));
 		humultimo = dataCometa.sensores.hum;
-	}		
+	}
 	
+	//dibujo lineas del grafico
 	datos[0].append(new Date().getTime(), dataCometa.sensores.vol*37.5); //62.5 es para que se equipare a 2500 de amperaje // 37.5 para 1500
 	datos[1].append(new Date().getTime(), dataCometa.sensores.amp);
+	
+	
+	//##### grabacion de REC si esta activo
 	if ($("#btnRec").hasClass("RecActivo")) {
-		registros.push(dataCometa);
+		regRec.push(dataCometa);
 		$('#btnRec').text(parseInt($('#btnRec').text())-1);
 		//si el boton llego a 0 doy por finalizada la grabacion
 		if(parseInt($('#btnRec').text()) == 0){
 			terminoGrabacion();
 		}
 	}
+	
+	// ########### CONTROL DE ACTIVACION DE CRANK Y CREACION DE DATOS DEL CRANK ##########
+	if(parseInt(amperaje-ampAnt)>crankDif && ampAnt > 0 && crankActivo == 0 && guardandoCrank ==0){
+			crankActivo = 1;
+			graboCrank = true;
+			seteoCartel();
+			setTimeout(function(){graboCrank = false},duracionCrank);
+	}
+	ampAnt = amperaje;
+	
+	// GRABO CRANK
+	if(crankActivo == 1){
+		//console.log("grabo crank: "+ cadena);
+		if(graboCrank){
+			regCrank.push(cadena);	
+		}else{
+			crankActivo = 0;
+			guardandoCrank = 1;
+			seteoCartel()
+			//lleno combo motor
+			for (var i = 1; i <= avion_motores; i++) {
+				
+				$('#motor-crank').append('<option value=' + i+ '>' + i+ '</option>');
+			}
+			if(avion_apu == 1){
+				$('#motor-crank').append('<option value="0">APU</option>');
+			}
+			//levanto Alta Crank
+			$('#modalAltaCrank').modal('show');
+		}
+	}		
+	// ########### FIN CRANK ############
+	
 }, false);
 
 
@@ -103,7 +162,55 @@ function crearGraf() {
 /* #################################################### DIBUJO GRAFICA #################################################### */
 
 
+
+/* #################################################### CRANK #################################################### */
+
+//accion de eliminar todo tipo de test (cierro modal)
+$('#descartar-crank').click(function(){
+	guardandoCrank= 0;	
+	$('#modalAltaCrank').modal('hide');
+});
+
+//accion de guardar todo tipo de test (cierro modal)
+$('#guardar-crank').click(function(){
+	guardarGrabacion(1,regCrank); //0 indica que no es crank
+	guardandoCrank = 0;	
+	$('#modalAltaCrank').modal('hide');
+});
+/* #################################################### CRANK #################################################### */
+
+
+
+
+
+
 /* #################################################### GRABACION #################################################### */ 
+
+
+//seteo cartel para crank y rec
+function seteoCartel(){
+	
+	//hay crank y rec
+	if(crankActivo==1 && recActivo ==1){
+		$('#cartel').text(tex_cartel_rec_crank);
+		$('#cartel').addClass("cartel-rec");
+		
+	//hay solo crank		
+	}else if(crankActivo==1 && recActivo ==0){
+		$('#cartel').text(tex_cartel_soloCrank);
+		$('#cartel').addClass("cartel-rec");
+		
+	//hay solo rec
+	}else if(crankActivo==0 && recActivo ==1){
+		$('#cartel').text(tex_cartel_soloRec);
+		$('#cartel').addClass("cartel-rec");
+	
+	//no hay nada
+	}else if(crankActivo==0 && recActivo ==0){
+		$('#cartel').text(tex_cartel);
+		$('#cartel').removeClass("cartel-rec");		
+	}
+}
 
 //accion inicio grabacion
 $("#btnRec").click(function () {
@@ -112,14 +219,13 @@ $("#btnRec").click(function () {
 		//grabacion frenada por usuario
 		terminoGrabacion();
 		$('#btnRec').text("Rec");
-		$('#cartel').text("Test Mode");
-		$('#cartel').removeClass("cartel-rec");
-		
+		recActivo = 0;
+		seteoCartel();
 	} else {
 		$("#btnRec").addClass("RecActivo");
 		$('#btnRec').text("24"); //seteo tiempo 240 1min
-		$('#cartel').text("Grabando");
-		$('#cartel').addClass("cartel-rec");
+		recActivo = 1;
+		seteoCartel();
 	}
 });
 
@@ -128,8 +234,8 @@ function terminoGrabacion(){
 	//vuelvo boton a estado normal
 	$("#btnRec").removeClass("RecActivo");
 	$('#btnRec').text("Rec");
-	$('#cartel').text("Test Mode");
-	$('#cartel').removeClass("cartel-rec");
+	recActivo = 0;
+	seteoCartel();
 	$('#modalAltaGraba').modal('show');
 }
 
@@ -140,29 +246,43 @@ $('#descartar-graba').click(function(){
 
 //accion de guardar todo tipo de test (cierro modal)
 $('#guardar-graba').click(function(){
-	guardarGrabacion();
+	guardarGrabacion(0,regRec); //0 indica que no es crank
 	$('#modalAltaGraba').modal('hide');
 });
 
 //guardo grabacion en base
-function guardarGrabacion() {
+function guardarGrabacion(tipo,registros) {
+	if(tipo == 0){
+		observacion = $('#observacion-graba').val();
+		motor_apu = 0;
+	}else if(tipo == 1){
+		observacion = $('#observacion-crank').val();
+		motor_apu = $('#motor-crank').val();
+	}
 	//console.log(JSON.stringify(registros));
 	$.ajax({		
-		url:   'test_data.php?accion=guardarGrabacion',
-		type:  'post',
-		data: { 
-			registros : JSON.stringify(registros),
-			id_avion: id_avion,			
-			observacion: $('#observacion-graba').val()
+		url:   'test_data.php?accion=guardarGrabacion'
+		,type:  'post'
+		,data: { 
+			registros : JSON.stringify(registros)
+			,id_avion: id_avion			
+			,observacion: observacion
+			,crank:	tipo //0 = grabacion, 1 = crank
+			,motor_apu: motor_apu
 		},
 		success: function (datos) {
 			//console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
-			registros = [];
+			if(tipo == 0){
+				regRec = [];	
+			}else if(tipo == 1){
+				regCrank = [];	
+			}
 		}
 	});
 }
 
 /* #################################################### GRABACION #################################################### */
+
 
 
 /* #################################################### CHECKS & FREEZE #################################################### */
@@ -212,14 +332,14 @@ function guardarCheck(cadena, esFreeze) {
 
 /* ###################### VOLTAJE GAUGE ################## */
 function mostrarVoltaje(dato){
-	var grado
+	var grado;
 	if(dato >= 20){
-		grado = dato * 3.25;  //para lograr 130º 130/40 = 3.25
-	}else{
-		grado = dato * -3.25;
+		grado = parseInt(dato-20)* 6.50;  //para lograr 130º 130/40 = 3.25
+	}else if(dato < 20){
+		grado = parseInt(20-dato)* -6.50;
 	}
 	$("#voltaje-aguja").css("transform", "rotate("+grado+"deg)");
-	if( (dato >= 0 && dato < 20) || (dato >= 30 && dato < 40)){
+	if( (dato >= 0 && dato < 20) || (dato >= 30 && dato <= 40)){
 		$("#voltaje-valor").css("color", "red");
 	}
 	else if( (dato >= 20 && dato < 24) || (dato >= 29 && dato < 30)){
@@ -229,16 +349,19 @@ function mostrarVoltaje(dato){
 		$("#voltaje-valor").css("color", "#00ff00");
 	}
 	$("#voltaje-valor").text(dato);
+	if(dato == 0){
+		$("#voltaje-valor").text("00");
+	}
 }
 
 /* ###################### AMPERAJE GAUGE ################## */
 function mostrarAmperaje(dato){
 	//dato = 1000;
-	var grado
+	var grado;
 	if(dato >= 750){
-		grado = dato * 0.08666; //para lograr 130º 130/1500 = 
-	}else{
-		grado = dato * -0.08666;
+		grado = parseInt(dato-750)*0.17333; //para lograr 130º 130/1500 = 
+	}else if(dato < 750){
+		grado = parseInt(750-dato)*-0.17333;
 	}
 	$("#corriente-aguja").css("transform", "rotate("+grado+"deg)");
 	if(dato >= 0 && dato < 600){

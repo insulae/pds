@@ -40,7 +40,8 @@ function traerGraba(){
 	    			fila+='<td>'+graba[i].fyh+'</td>';
 	    			fila+='<td style="text-align:left; padding-left:10px">'+graba[i].observacion+'</td>';
 	    			fila+='<td><span id="graba-eliminar" class="glyph-icon flaticon-close ico-eliminar"></span></td>';
-	    			fila+='<td id="id-graba" class="td-hidden">'+graba[i].id_rec+'</td></tr>';
+	    			fila+='<td id="id-graba" class="td-hidden">'+graba[i].id_rec+'</td>';
+	    			fila+='</tr>';
 
 	    		$('#graba-tabla').append(fila);
 		    }

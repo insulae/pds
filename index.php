@@ -51,4 +51,5 @@
 //TODO pedir logo en alta calidad
 //TODO la apk no debe permitir apagar la pantalla, por lo menos cuando este grabando, el "cometa" muere?
 //TODO ver como hacer que la ventana modal no se cierre, tocar fuera de ella y cerrarse  hace perder todo el test
+//TODO hacer que las modales solo se cierren de los botones y nada mas
 ?>

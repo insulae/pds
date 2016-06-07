@@ -1,3 +1,4 @@
+cranksSelec = [];
 function cargaJS(){
 	//datepicker
 	$('.cranks-fecha').datepicker({
@@ -43,7 +44,7 @@ function traerCranks(){
 	    			fila+='<td>'+crank[i].fyh+'</td>';
 	    			fila+='<td style="text-align:left; padding-left:10px">'+crank[i].observacion+'</td>';
 	    			fila+='<td><span class="glyph-icon flaticon-close icon-eliminar"></span></td>';
-	    			fila+='<td id="id-crank" class="td-hidden">'+crank[i].id_crank+'</td>';
+	    			fila+='<td id="id-crank" class="td-hidden">'+crank[i].id_rec+'</td>';
 	    			fila+='</tr>';
 
 	    		$('#cranks-tabla').append(fila);
@@ -83,8 +84,8 @@ $('#btn-cranks-mostrar').click(function(){
 	
 	$("#cranks-tabla tr").each(function (){
 		if($(this).hasClass('tr-crank-activo')){
-			//VER ESTO CON ALE PARA VER SI ASI CONVIENE
-			//http://jsfiddle.net/UZzd5/ EL DATO A GUARDAR //alert($(this).find("#id-crank").html());
+			//VER ESTO CON ALE PARA VER SI ASI CONVIENE alert($(this).find("#id-crank").html());
+			cranksSelec.push($(this).find("#id-crank").html());
 		}
 	});
 	rompoJS();
