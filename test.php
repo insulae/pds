@@ -77,13 +77,13 @@
     <div class="modal-dialog"  style="width: 500px; top: 100px">
       <div class="modal-content">
         <div class="modal-header">
-       	 Guardar Grabación
+       	 <label tex="titulo_guardar_graba"/>
         </div>
         <div class="modal-body">
             <div class="form-group">
-				<textarea id="observacion-graba" class="form-inline input-guardar" rows="4" placeholder="Observaciones" style="width: 450px; height: 70px; margin-bottom: 10px"></textarea>
-            	<button id="guardar-graba" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Guardar</button>
-            	<button id="descartar-graba" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Descartar</button>
+				<textarea id="observacion-graba" class="form-inline input-guardar" rows="4" style="width: 450px; height: 70px; margin-bottom: 10px"></textarea>
+            	<button id="guardar-graba" type="button" class="btn btn-danger" style="width: 100px; height: 40px;"><label tex="guardar_graba"/></button>
+            	<button id="descartar-graba" type="button" class="btn btn-danger" style="width: 100px; height: 40px;"><label tex="descartar_graba"/></button>
         	</div>
       	</div>
     	</div>
@@ -94,16 +94,16 @@
     <div class="modal-dialog"  style="width: 500px; top: 100px">
       <div class="modal-content">
         <div class="modal-header">
-       	 Guardar Crank
+       	 <label tex="titulo_guardar_crank"/>
         </div>
         <div class="modal-body">
             <div class="form-group">
-				<textarea id="observacion-crank" class="form-inline input-guardar" rows="4" placeholder="Observaciones" style="width: 455px; height: 70px; margin-bottom: 10px"></textarea>
+				<textarea id="observacion-crank" class="form-inline input-guardar" rows="4" style="width: 455px; height: 70px; margin-bottom: 10px"></textarea>
   				<select id="motor-crank" class="form-control input-avion">
   				</select>
 				<br><br>			
-            	<button id="guardar-crank" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Guardar</button>
-            	<button id="descartar-crank" type="button" class="btn btn-danger" style="width: 100px; height: 40px;">Descartar</button>
+            	<button id="guardar-crank" type="button" class="btn btn-danger" style="width: 100px; height: 40px;"><label tex="guardar_crank"/></button>
+            	<button id="descartar-crank" type="button" class="btn btn-danger" style="width: 100px; height: 40px;"><label tex="descartar_crank"/></button>
         	</div>
       	</div>
     	</div>

@@ -125,6 +125,7 @@
   left: 47%;
   top:0%;
   transition: all 0.20s ease-in-out;
+  transform: rotate(-130deg);
 }
 
 .corriente-titulo{
@@ -144,7 +145,7 @@
 	font-size: 2.2em;
 	color: #fff;
 	text-shadow: -1px 0 #5B1010, 0 1px #5B1010, 1px 0 #5B1010, 0 -1px #5B1010;
-	left:30px;
+	left:35px;
 	bottom: 30px;
 }
 /* ###################################### VOLTAJE ############################ */
@@ -162,6 +163,7 @@
   left: 47%;
   top:0%;
   transition: all 0.20s ease-in-out;
+  transform: rotate(-130deg);
 }
 
 .voltaje-titulo{
@@ -179,7 +181,7 @@
 	font-size: 2.5em;
 	color: #fff;
 	text-shadow: -1px 0 #5B1010, 0 1px #5B1010, 1px 0 #5B1010, 0 -1px #5B1010;	
-	left:38px;
+	left:35px;
 	bottom: 30px;
 }
 /* ###################################### BATERIA ############################ */
@@ -304,6 +306,7 @@
 	float:left;
 	/*background: #000;*/
 	height:28px;
+	background: red;
     transition-timing-function: linear;
     transition: width 0.25s;
 }

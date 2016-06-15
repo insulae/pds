@@ -9,8 +9,8 @@
 		<div>
 		    <input id="graba-fdesde" type="text" class="input-login graba-fecha" placeholder="  Fec. Desde" value="2016-01-01">
 		    <input id="graba-fhasta" type="text" class="input-login graba-fecha" placeholder="  Fec. Hasta" value="2016-12-12">
-		    <button id="btn-filtrar" type="button" class="btn btn-info btn-filtrar">Filtrar</button>		    
-		    <button id="btn-graba-mostrar" type="button" class="btn btn-danger btn-mostrar">Mostrar selección</button>
+		    <button id="btn-filtrar" type="button" class="btn btn-info btn-filtrar"><label tex="rec_filtrar"/></button>		    
+		    <button id="btn-graba-mostrar" type="button" class="btn btn-danger btn-mostrar"><label tex="rec_mostrar"/></button>
 		</div>
 	</div>
 	<div class="cont-tabla">
@@ -18,9 +18,9 @@
     	<thead>
 	      <tr class="graba-tabla-titulo">
 	        <!-- <th class="th-graba" style="width:100px" >AVION</th> -->
-	        <th class="th-graba" style="width:100px; text-align: center">Fecha</th>
-	        <th class="th-graba" style="width:550px; text-align: center">Observación</th>
-	        <th class="th-graba" style="width:100px; text-align: center"">Acción</th>
+	        <th class="th-graba" style="width:100px; text-align: center"><label tex="rec_fecha"/></th>
+	        <th class="th-graba" style="width:550px; text-align: center"><label tex="rec_observacion"/></th>
+	        <th class="th-graba" style="width:100px; text-align: center""><label tex="rec_accion"/></th>
 	      </tr>
 	    </thead>
 	    <tbody>

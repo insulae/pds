@@ -27,8 +27,7 @@ switch($_REQUEST['accion']){
 	case 'traerCranksDatos':
 		$res = Array();
 		/*
-		[
-			{
+		[{
 				observacion: "Texto",
 				puntos : [
 						{x:1, y:2},
@@ -41,16 +40,15 @@ switch($_REQUEST['accion']){
 				{x:1, y:2},
 				{x:2, y:2}
 				]
-			}
-		]
+			}]
 		*/
 		$qcr=$db->query('
 				SELECT * FROM rec
-				WHERE id_rec IN(2,3,4)
+				WHERE id_rec IN('.implode(",",@$_POST['cranksSelec']).')
 		');
 		while ($rcr = $qcr->fetch_object()){
 			$row = new stdClass();
-			$row->observaciones = "rcr->Observacion";
+			$row->observaciones = $rcr->observacion;
 			$row->id_rec = $rcr->id_rec;
 			$i=1;
 			

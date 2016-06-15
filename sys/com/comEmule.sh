@@ -13,9 +13,9 @@ rand3=$(( ( RANDOM % 7 )  + 1 ))
 rand4=$(( ( RANDOM % 7 )  + 1 ))
 rand5=$(( ( RANDOM % 7 )  + 1 ))
 rand6=$(( ( RANDOM % 7 )  + 1 ))
-	echo "000106040"$rand1"002"$rand2"00"$rand5$rand3"00"$rand3$rand4"00"$rand6$rand5"000"$rand6 > /dev/ttyUSB0
+	echo "000106040"$rand1"002"$rand2"00"$rand5$rand3"00"$rand3$rand4"00"$rand6$rand5"000"$rand6 > ../../pdsDATA
 	echo "000106040"$rand1"002"$rand2"00"$rand5$rand3"00"$rand3$rand4"00"$rand6$rand5"000"$rand6
 #	echo $rand1 > /dev/ttyUSB0
 #	echo $rand1
-	sleep 0.25
+	sleep 0.1
 done

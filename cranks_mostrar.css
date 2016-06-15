@@ -59,6 +59,13 @@
 	text-align: center;
 }
 .cranks-iconos{
+	display: inline-block;
+    transform: scaleY(1.2) scaleX(1.2);
+}
+.cranks-iconos:hover{
+	cursor:pointer;
+}
+.crank-icono{
 	padding-top:10px;
 	display: inline-block;
     transform: scaleY(1.3) scaleX(1.3);

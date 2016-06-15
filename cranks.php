@@ -9,11 +9,11 @@
 		<div>
 		    <input id="cranks-fdesde" type="text" class="input-login cranks-fecha" placeholder="  Fec. Desde" value="2016-01-01">
 		    <input id="cranks-fhasta" type="text" class="input-login cranks-fecha" placeholder="  Fec. Hasta" value="2016-12-12">
-		    <button id="btn-filtrar" type="button" class="btn btn-info btn-filtrar">Filtrar</button>		    
+		    <button id="btn-filtrar" type="button" class="btn btn-info btn-filtrar"><label tex="cranks_filtrar"/></button>		    
 		    <div class="cranks-cant">
 		    	<label id="cranks_cant">0</label><label>/5</label>
 		    </div>
-		    <button id="btn-cranks-mostrar" type="button" class="btn btn-danger btn-mostrar">Mostrar selección</button>		    
+		    <button id="btn-cranks-mostrar" type="button" class="btn btn-danger btn-mostrar"><label tex="cranks_mostrar"/></button>		    
 		</div>
 	</div>
 	<div class="cont-tabla">
@@ -21,10 +21,10 @@
     	<thead>
 	      <tr class="cranks-tabla-titulo">
 	        <!-- <th class="th-crank" style="width:100px" >AVION</th> -->
-	        <th class="th-crank" style="width:50px;">Motor</th>
-	        <th class="th-crank" style="width:100px; text-align: center">Fecha</th>
-	        <th class="th-crank" style="width:500px; text-align: center">Observación</th>
-	        <th class="th-crank" style="width:60px; text-align: center">Acción</th>
+	        <th class="th-crank" style="width:50px;"><label tex="cranks_motor"/></th>
+	        <th class="th-crank" style="width:100px; text-align: center"><label tex="cranks_fecha"/></th>
+	        <th class="th-crank" style="width:500px; text-align: center"><label tex="cranks_observacion"/></th>
+	        <th class="th-crank" style="width:60px; text-align: center"><label tex="cranks_accion"/></th>
 	      </tr>
 	    </thead>
 	    <tbody>

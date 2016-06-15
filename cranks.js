@@ -1,8 +1,9 @@
 cranksSelec = [];
+cranksObservaciones = [];
 function cargaJS(){
 	//datepicker
 	$('.cranks-fecha').datepicker({
-		language: 'es',
+		language: idioma_cod,
 		endDate: '0d',
 		autoclose:true,
 		todayHighlight: true,
@@ -42,11 +43,10 @@ function traerCranks(){
 	    			//fila+='<td>'+crank[i].patente+'</td>';
 	    			fila+='<td>'+crank[i].motor_apu+'</td>';
 	    			fila+='<td>'+crank[i].fyh+'</td>';
-	    			fila+='<td style="text-align:left; padding-left:10px">'+crank[i].observacion+'</td>';
-	    			fila+='<td><span class="glyph-icon flaticon-close icon-eliminar"></span></td>';
+	    			fila+='<td id="obs-crank" style="text-align:left; padding-left:10px">'+crank[i].observacion+'</td>';
+	    			fila+='<td><span class="glyph-icon flaticon-close ico-eliminar"></span></td>';
 	    			fila+='<td id="id-crank" class="td-hidden">'+crank[i].id_rec+'</td>';
 	    			fila+='</tr>';
-
 	    		$('#cranks-tabla').append(fila);
 		    }
 	    }	
@@ -80,17 +80,62 @@ $('#cranks-tabla').on('click', '.tr-crank', function(event) {
 	//$(this).addClass('tr-crank-activo').siblings().removeClass('tr-crank-activo');
 });
 
+/* eliminar Cranks */
+$('#cranks-tabla').on('click', '.ico-eliminar', function(event) {
+	if(loginAdmin != 1){
+		$.alert('No posee permisos de administrador');
+		return;
+	}
+	celdaActiva = $(this).parent().parent();
+	celdaActiva.addClass('tr-crank-elimino');
+	 crankElimino = $(this).parent().parent().find("#id-crank").html();
+		$.confirm({
+		    title: tex_alert_cranks_titulo,
+		    confirmButton: tex_alert_confirmar,
+		    cancelButton: tex_alert_cancelar,
+		    content: tex_alert_cranks_contenido,
+		    confirm: function(){
+		    	eliminarCrank(crankElimino);
+				celdaActiva.removeClass('tr-crank-elimino');
+				celdaActiva.removeClass('tr-crank-activo');
+		    },
+			cancel: function(){
+				celdaActiva.removeClass('tr-crank-elimino');
+				celdaActiva.removeClass('tr-crank-activo');
+			}
+		});
+});
+
+function eliminarCrank(crank){
+	$.ajax({		
+		url:   'cranks_data.php?accion=eliminarCrank',
+	    data:{
+	    	id_rec: crank
+	    },
+	    type:  'post',
+	    success:  function (resultado) {
+	    	if(resultado.trim() !=""){
+	    		$.alert('<b>Error Numero:<br></b>'+resultado);
+	    	}
+	    	traerCranks();
+	    }	
+	});
+}
+
 $('#btn-cranks-mostrar').click(function(){
 	
 	$("#cranks-tabla tr").each(function (){
 		if($(this).hasClass('tr-crank-activo')){
 			//VER ESTO CON ALE PARA VER SI ASI CONVIENE alert($(this).find("#id-crank").html());
 			cranksSelec.push($(this).find("#id-crank").html());
+			cranksObservaciones.push($(this).find("#obs-crank").html());
 		}
 	});
-	rompoJS();
-	$('#pagina').load('cranks_mostrar.php');
-	$('#pagina').ready(function() {
-		$.getScript('cranks_mostrar.js', function() {cargaJS();});
-	});
+	if($('#cranks_cant').text() > 0){
+		rompoJS();
+		$('#pagina').load('cranks_mostrar.php');
+		$('#pagina').ready(function() {
+			$.getScript('cranks_mostrar.js', function() {cargaJS();});
+		});
+	}
 });

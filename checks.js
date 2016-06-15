@@ -8,7 +8,8 @@ function cargaJS(){
 	
 	//datepicker
 	$('.checks-fecha').datepicker({
-		language: 'es',
+		language: idioma_cod,
+		startDate:'30d',
 		endDate: '0d',
 		autoclose:true,
 		todayHighlight: true,
@@ -73,9 +74,11 @@ $('#checks-tabla').on('click', '.ico-eliminar', function(event) {
 	celdaActiva.addClass('tr-check-elimino');
 	 checkElimino = $(this).parent().parent().find("#id-check").html();
 		$.confirm({
-		    title: 'Eliminación',
-		    content: 'Esta a punto de eliminar check Seleccionado',
-		    confirm: function(){
+		    	title: tex_alert_checks_titulo,
+		    	confirmButton: tex_alert_confirmar,
+		    	cancelButton: tex_alert_cancelar,
+		    	content: tex_alert_checks_contenido,
+		    	confirm: function(){
 		    	eliminarCheck(checkElimino);
 				celdaActiva.removeClass('tr-check-activo');
 		    },

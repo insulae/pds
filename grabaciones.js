@@ -73,8 +73,10 @@ $('#graba-tabla').on('click', '.ico-eliminar', function(event) {
 	celdaActiva.addClass('tr-graba-elimino');
 	 grabaElimino = $(this).parent().parent().find("#id-graba").html();
 		$.confirm({
-		    title: 'Eliminación',
-		    content: 'Esta a punto de eliminar la grabación Seleccionada',
+		    title: tex_alert_rec_titulo,
+		    confirmButton: tex_alert_confirmar,
+		    cancelButton: tex_alert_cancelar,
+		    content: tex_alert_rec_contenido,
 		    confirm: function(){
 		    	eliminarGraba(grabaElimino);
 				celdaActiva.removeClass('tr-graba-elimino');

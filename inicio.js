@@ -140,8 +140,8 @@ $('#avion-agregar').click(function(){
 $('#aviones-tabla').on('click', '.btn-accion-eliminar', function(event) {
 	 avionEliminar = $(this).parent().parent().find("#celda-avion").html();
 	$.confirm({
-	    title: 'Eliminación',
-	    content: tex_eliminar_avion+' '+ avionEliminar,
+	    title: tex_eliminar_avion_tit,
+	    content: tex_eliminar_avion_msg+' '+ avionEliminar,
 	    confirm: function(){
 	    	eliminarAvion(avionEliminar);
 	    }

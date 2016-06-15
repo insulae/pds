@@ -7,11 +7,9 @@
  * Copyright 2013-2015 jquery-confirm
  * Licensed under MIT (https://github.com/craftpip/jquery-confirm/blob/master/LICENSE)
  */
-
 if (typeof jQuery === 'undefined') {
     throw new Error('jquery-confirm requires jQuery');
 }
-
 var jconfirm, Jconfirm;
 (function ($) {
     "use strict";
@@ -296,10 +294,10 @@ var jconfirm, Jconfirm;
              */
             this.$btnc = this.$el.find('.buttons');
             if (this.confirmButton && $.trim(this.confirmButton) !== '') {
-                this.$confirmButton = $('<button type="button" class="btn pete">' + this.confirmButton + '</button>').appendTo(this.$btnc).addClass(this.confirmButtonClass);
+                this.$confirmButton = $('<button id="alert_confirmar" type="button" class="btn">' + this.confirmButton + '</button>').appendTo(this.$btnc).addClass(this.confirmButtonClass);
             }
             if (this.cancelButton && $.trim(this.cancelButton) !== '') {
-                this.$cancelButton = $('<button type="button" class="btn">' + this.cancelButton + '</button>').appendTo(this.$btnc).addClass(this.cancelButtonClass);
+                this.$cancelButton = $('<button id="alert_cancelar" type="button" class="btn">' + this.cancelButton + '</button>').appendTo(this.$btnc).addClass(this.cancelButtonClass);
             }
             if (!this.confirmButton && !this.cancelButton) {
                 this.$btnc.hide();
@@ -560,8 +558,9 @@ var jconfirm, Jconfirm;
         },
         icon: '',    
         opacity: 0.2,
-        confirmButton: 'Aceptar',
-        cancelButton: 'Cancelar',
+        opacity: 0.2,
+        confirmButton: "Confirm",
+        cancelButton: "Cancel",
         confirmButtonClass: 'btn-default',
         cancelButtonClass: 'btn-default',
         theme: 'black',

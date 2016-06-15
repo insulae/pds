@@ -12,11 +12,11 @@
     <link rel="stylesheet" type="text/css" href="index.css">
 
     <script src="engine/jquery.min.js"></script>
-    <script src='engine/jquery-confirm.js'></script>      
+    <script src='engine/idiomas.js'></script>
+    <script src='engine/jquery-confirm.js'></script>
     <script src="engine/bootstrap.min.js"></script>
     <script src="engine/smoothie.js"></script>
 	<script src='engine/GrafPan.js'></script>
-	<script src='engine/idiomas.js'></script>
     
 </head>   
   
@@ -25,7 +25,7 @@
 	<div id="contenedor" class="contenedor">
 		<div id="tabs">
 			<div class="menu-tabs">
-				<button id="tab-inicio" type="button" class="tab tabactivo"><label tex="inicio"></button>
+				<button id="tab-inicio" type="button" class="tab tabactivo"><label tex="inicio"/></button>
 				<button id="tab-test" type="button" class="tab tabno"><label tex="test"/></button>
 			    <button id="tab-checks" type="button" class="tab tabno"><label tex="checks"/></button>
 			    <button id="tab-cranks" type="button" class="tab tabno"><label tex="cranks"/></button>
@@ -52,4 +52,7 @@
 //TODO la apk no debe permitir apagar la pantalla, por lo menos cuando este grabando, el "cometa" muere?
 //TODO ver como hacer que la ventana modal no se cierre, tocar fuera de ella y cerrarse  hace perder todo el test
 //TODO hacer que las modales solo se cierren de los botones y nada mas
+//TODO CONFIG touch /var/run/pdsDATA && chmod 777 /var/run/pdsDATA && ln -sf /var/run/pdsDATA /var/www/html/pds/sys/com/pdsDATA
+//TODO CONFIG chmod 777 /dev/ttyAMA0
+//TODO eliminar todo el seteo de avion de desarrollo
 ?>

@@ -15,7 +15,13 @@ var guardandoCrank = 0;
 var ampAnt = 0;
 var graboCrank;
 
-function cargaJS(){	
+function cargaJS(){
+	
+	//SETEO VARIABLES DE TEXTO
+	$('#observacion-graba').attr("placeholder",tex_observacion_graba);
+	$('#observacion-crank').attr("placeholder",tex_observacion_crank);
+	
+	//creo grafica
 	crearGraf();
 	//cometa();
 }
@@ -56,6 +62,7 @@ var ampBan = 0;
 testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
 	cadena = dataCometa;
+	//console.log(cadena);
 	//console.log(e.data); //debug de lo que viene
 	//return true;
 	//console.log(batultimo);
@@ -332,14 +339,7 @@ function guardarCheck(cadena, esFreeze) {
 
 /* ###################### VOLTAJE GAUGE ################## */
 function mostrarVoltaje(dato){
-	var grado;
-	if(dato >= 20){
-		grado = parseInt(dato-20)* 6.50;  //para lograr 130º 130/40 = 3.25
-	}else if(dato < 20){
-		grado = parseInt(20-dato)* -6.50;
-	}
-	$("#voltaje-aguja").css("transform", "rotate("+grado+"deg)");
-	if( (dato >= 0 && dato < 20) || (dato >= 30 && dato <= 40)){
+	if( (dato >= 0 && dato < 20) || (dato >= 30)){
 		$("#voltaje-valor").css("color", "red");
 	}
 	else if( (dato >= 20 && dato < 24) || (dato >= 29 && dato < 30)){
@@ -349,28 +349,43 @@ function mostrarVoltaje(dato){
 		$("#voltaje-valor").css("color", "#00ff00");
 	}
 	$("#voltaje-valor").text(dato);
-	if(dato == 0){
-		$("#voltaje-valor").text("00");
+	
+	//controlo vacio y overflow
+	if(dato <= 0){
+		$("#voltaje-valor").css("left", "47px");
+		$("#voltaje-valor").text("--");
+		dato = 0;
+	//overflow
+	}else if(dato > 40){
+		$("#voltaje-valor").text("O.F.");
+		$("#voltaje-valor").css("left", "30px");
+		dato = 40;
+	//reseteo a inicial
+	}else{
+		$("#voltaje-valor").css("left", "35px");
 	}
+	
+	//calculo el grado a mover
+	var grado;
+	if(dato >= 20){
+		grado = parseInt(dato-20)* 6.50;  //para lograr 130º 130/40 = 3.25
+	}else if(dato < 20){
+		grado = parseInt(20-dato)* -6.50;
+	}		
+	$("#voltaje-aguja").css("transform", "rotate("+grado+"deg)");	
 }
 
 /* ###################### AMPERAJE GAUGE ################## */
 function mostrarAmperaje(dato){
-	//dato = 1000;
-	var grado;
-	if(dato >= 750){
-		grado = parseInt(dato-750)*0.17333; //para lograr 130º 130/1500 = 
-	}else if(dato < 750){
-		grado = parseInt(750-dato)*-0.17333;
-	}
+	console.log(dato);
 	$("#corriente-aguja").css("transform", "rotate("+grado+"deg)");
-	if(dato >= 0 && dato < 600){
+	if(dato > 0 && dato < 600){
 		$("#corriente-valor").css("color", "#00ff00");
 	}
 	else if(dato >= 600 && dato < 800){
 		$("#corriente-valor").css("color", "yellow");
 	}
-	else if(dato >= 800 && dato <=1500){
+	else if(dato >= 800){
 		$("#corriente-valor").css("color", "red");		
 	}
 	if(dato >= 1000){
@@ -379,6 +394,30 @@ function mostrarAmperaje(dato){
 		$("#corriente-valor").css("left", "30px");
 	}
 	$("#corriente-valor").text(dato);
+	
+	//controlo vacio y overflow
+	if(dato <= 0){
+		dato = 0;
+		$("#corriente-valor").css("left", "47px");
+		$("#corriente-valor").text("--");
+	//overflow
+	}else if(dato > 1500){
+		$("#corriente-valor").text("O.F.");
+		$("#corriente-valor").css("left", "30px");
+		dato = 1500;
+	//reseteo a inicial
+	}else{
+		$("#corriente-valor").css("left", "35px");
+	}	
+
+	//calculo el grado a mover
+	var grado;
+	if(dato >= 750){
+		grado = parseInt(dato-750)*0.17333; //para lograr 130º 130/1500 = 
+	}else if(dato < 750){
+		grado = parseInt(750-dato)*-0.17333;
+	}	
+	$("#corriente-aguja").css("transform", "rotate("+grado+"deg)");
 }
 
 
@@ -470,15 +509,5 @@ function mostrarPresion(carga){
 	
 	$("#presion").css("width", valor+"px"); //aplico el nuevo relleno
 	$("#presion-valor").text(carga+"%"); //aplico el nuevo relleno
-	//aplico color dependiendo porcentaje
-	//alert(porciento);
-	if(carga <= 5){
-		$("#presion").css("background", "#d9534f"); //aplico color rojo
-	}
-	else if(carga <= 8){
-		$("#presion").css("background", "#f0ad4e"); //aplico color amarillo
-	}
-	else if(carga <= 10){
-		$("#presion").css("background", "#5cb85c"); //aplico color verde
-	}
+	$("#presion").css("background", "red"); //aplico color rojo
 }

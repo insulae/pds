@@ -8,9 +8,20 @@ function rompoJS(){
 }
 
 /* DIBUJO GRAFICA */
+var colorLinea=["#fce94f","#13E2E0","#73d216", "#FA1717", "#EC96FE"];
+
+var j = cranksSelec.length-1;
+for (var i = 0; i <cranksSelec.length; i++) {
+	$("#cranks-iconos").append('<span id="crank-'+i+'" class="glyph-icon flaticon-graphic cranks-iconos" style="color:'+colorLinea[i]+'">'+parseInt(i+1)+'</span>');
+	$('#crank-'+[i]).attr("indice",j);
+	$('#crank-'+[i]).click(function(){
+		$('#crank-observacion').text(cranksObservaciones[$(this).attr("indice")]);
+		console.log($(this).attr("indice"));
+	});	
+	j--;
+}
 function crearGraf(){
   	//creo la grafica
-	var colorLinea=["red","blue","yellow"];
 	var chart = new CanvasJS.Chart("graf-cranks",
 	{
 		theme: 'cranks',
@@ -45,8 +56,9 @@ function datosGrafica(colorLinea){
 	    type:  'post',
 	    async: false,
 		data:{ 
-			avion: avion,
-			sensor: $("#btn-sensor").attr("sensor")
+			avion: avion
+			,sensor: $("#btn-sensor").attr("sensor")
+			,cranksSelec: cranksSelec
 		},
 	    success:  function (datos) {	    	
 	    	//parseo nuevos datos

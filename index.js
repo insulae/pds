@@ -7,6 +7,7 @@ function rompoJS(){
 }
 //VARIABLES SETEABLES DESDE INTERFAZ
 var crankDif = 500;
+var idioma_cod = navigator.language.substr (0, 2);
 
 //inicio
 var activo='inicio';
