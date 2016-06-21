@@ -7,8 +7,8 @@
 <div class="cont-cranks-fondo">
 	<div class="cont-cranks-botonera">
 		<div>
-		    <input id="cranks-fdesde" type="text" class="input-login cranks-fecha" placeholder="  Fec. Desde" value="2016-01-01">
-		    <input id="cranks-fhasta" type="text" class="input-login cranks-fecha" placeholder="  Fec. Hasta" value="2016-12-12">
+		    <label tex="desde"/>: <input id="cranks-fdesde" type="text" class="input-login cranks-fecha" value="">
+		    <label tex="hasta"/>: <input id="cranks-fhasta" type="text" class="input-login cranks-fecha" value="">
 		    <button id="btn-filtrar" type="button" class="btn btn-info btn-filtrar"><label tex="cranks_filtrar"/></button>		    
 		    <div class="cranks-cant">
 		    	<label id="cranks_cant">0</label><label>/5</label>

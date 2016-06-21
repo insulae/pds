@@ -7,8 +7,8 @@
 <div class="cont-graba-fondo">
 	<div class="cont-graba-botonera">
 		<div>
-		    <input id="graba-fdesde" type="text" class="input-login graba-fecha" placeholder="  Fec. Desde" value="2016-01-01">
-		    <input id="graba-fhasta" type="text" class="input-login graba-fecha" placeholder="  Fec. Hasta" value="2016-12-12">
+		    <label tex="desde"/>: <input id="graba-fdesde" type="text" class="input-login graba-fecha" placeholder="  Fec. Desde" value="">
+		    <label tex="hasta"/>: <input id="graba-fhasta" type="text" class="input-login graba-fecha" placeholder="  Fec. Hasta" value="">
 		    <button id="btn-filtrar" type="button" class="btn btn-info btn-filtrar"><label tex="rec_filtrar"/></button>		    
 		    <button id="btn-graba-mostrar" type="button" class="btn btn-danger btn-mostrar"><label tex="rec_mostrar"/></button>
 		</div>

@@ -9,7 +9,7 @@
 	<table id="aviones-tabla">
     	<thead>
 	      <tr style="height: 40px;">
-	        <th style="width:180px"><label tex="avion"/></th>
+	        <th style="width:230px"><label tex="avion"/></th>
 	        <th><label tex="motores"/></th>
 	        <th style="width: 200px"><span class="glyph-icon flaticon-arrows-1 icon-acciones"></span></th>
 	      </tr>

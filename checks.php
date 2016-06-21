@@ -7,8 +7,8 @@
 <div class="cont-checks-fondo">
 	<div class="cont-checks-botonera">
 		<div>
-		    <input id="checks-fdesde" type="text" class="input-login checks-fecha" placeholder="  Fec. Desde" value="2016-01-01">
-		    <input id="checks-fhasta" type="text" class="input-login checks-fecha" placeholder="  Fec. Hasta" value="2016-12-12">
+		    <label tex="desde"/>: <input id="checks-fdesde" type="text" class="input-login checks-fecha">
+		    <label tex="hasta"/>: <input id="checks-fhasta" type="text" class="input-login checks-fecha">
 		    <button id="btn-filtrar" type="button" class="btn btn-info btn-filtrar"><label tex="checks_filtrar"/></button>		    
 		   <!--  <button id="btn-checks-mostrar" data-toggle="modal" data-target="#modalChecksVer" type="button" class="btn btn-danger btn-mostrar">Mostrar</button> -->		    
 			<button id="btn-checks-mostrar" type="button" class="btn btn-danger btn-mostrar"><label tex="checks_mostrar"/></button>		    

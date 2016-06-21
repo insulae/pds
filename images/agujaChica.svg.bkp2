@@ -10,8 +10,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="3mm"
-   height="38mm"
-   viewBox="0 0 10.629921 134.64568"
+   height="42mm"
+   viewBox="0 0 10.629921 148.81891"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="1.9738373"
-     inkscape:cy="93.121089"
+     inkscape:zoom="3.959798"
+     inkscape:cx="-80.944254"
+     inkscape:cy="96.573503"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -35,8 +35,8 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1366"
-     inkscape:window-height="727"
+     inkscape:window-width="1600"
+     inkscape:window-height="859"
      inkscape:window-x="0"
      inkscape:window-y="22"
      inkscape:window-maximized="1"
@@ -59,7 +59,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-55.200752,-905.67382)">
+     transform="translate(-55.200752,-891.5006)">
     <rect
        style="opacity:1;fill:#ffffff;fill-opacity:0;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
        id="rect7450"
@@ -85,7 +85,7 @@
        d="m -1242.8572,815.21935 307.6356,-526.1849 307.63559,-526.18494 301.87171,529.51268 301.871722,529.51271 -609.507282,-3.32778 z"
        inkscape:transform-center-x="-0.0018644065"
        inkscape:transform-center-y="-3.4043574"
-       transform="matrix(0.00764804,-1.1920418e-4,4.7063915e-5,0.01937105,65.320812,912.10264)"
+       transform="matrix(0.00764804,-1.1920418e-4,4.7063915e-5,0.01937105,65.320812,897.92942)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
   </g>

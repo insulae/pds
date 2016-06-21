@@ -1,14 +1,24 @@
 var id_rec = '';
 
 function cargaJS(){
+	//seteo fechas para datepicker
+	var todayTime = new Date();
+	var ano = todayTime.getFullYear();
+    var mes = todayTime.getMonth()-1;
+    var dia = todayTime.getDate();
 	//datepicker
 	$('.graba-fecha').datepicker({
-		language: 'es',
+		language: idioma_cod,
 		endDate: '0d',
+		defaultViewDate: { year: ano, month: mes, day: dia },
 		autoclose:true,
 		todayHighlight: true,
 		format: 'yyyy-mm-dd'
 	});
+	
+	$('#graba-fdesde').val(ano+'-'+parseInt(mes+1)+'-'+dia);
+	$('#graba-fhasta').val(ano+'-'+parseInt(mes+2)+'-'+dia);
+	//cargo tabla
 	
 	//cargo tabla
 	traerGraba();
@@ -113,7 +123,7 @@ $('#btn-graba-mostrar').click(function(){
 			$.getScript('grabaciones_mostrar.js', function() {cargaJS();});
 		});	
 	}else{
-		$.alert('Debe seleccionar una grabación');
+		$.alert(tex_alert_rec_seleccion);
 	}
 
 });

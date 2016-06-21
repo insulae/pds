@@ -6,16 +6,23 @@ var temaGrafica='';
 
 function cargaJS(){
 	
+	//seteo fechas para datepicker
+	var todayTime = new Date();
+	var ano = todayTime.getFullYear();
+    var mes = todayTime.getMonth()-1;
+    var dia = todayTime.getDate();
 	//datepicker
 	$('.checks-fecha').datepicker({
 		language: idioma_cod,
-		startDate:'30d',
 		endDate: '0d',
+		defaultViewDate: { year: ano, month: mes, day: dia },
 		autoclose:true,
 		todayHighlight: true,
 		format: 'yyyy-mm-dd'
 	});
 	
+	$('#checks-fdesde').val(ano+'-'+parseInt(mes+1)+'-'+dia);
+	$('#checks-fhasta').val(ano+'-'+parseInt(mes+2)+'-'+dia);
 	//cargo tabla
 	traerChecks();
 	

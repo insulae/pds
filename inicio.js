@@ -182,7 +182,7 @@ function traerAviones() {
 		    		}
 		    		var fila='<tr class="tr-avion"><td id="celda-avion">'+datos[i].patente+'</td>';
 		    			fila+='<td>'+motores+'</td>';
-		    			fila+='<td><span class="glyph-icon flaticon-tool-2 btn-accion-editar"></span><span class="glyph-icon flaticon-close btn-accion-eliminar"></span></td>';
+		    			fila+='<td><span class="glyph-icon flaticon-close btn-accion-eliminar"></span></td>'; //ico editar: <span class="glyph-icon flaticon-tool-2 btn-accion-editar"></span>
 		    			fila+='<td id="id-avion" class="td-hidden">'+datos[i].id_avion+'</td>';
 		    			fila+='<td id="avion_motores" class="td-hidden">'+datos[i].motores+'</td>';
 		    			fila+='<td id="avion_apu" class="td-hidden">'+datos[i].apu+'</td>';

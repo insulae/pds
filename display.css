@@ -1,0 +1,107 @@
+@CHARSET "UTF-8";
+
+.cont-relojes{
+	position:relative;
+	background-color: black;
+	width:480px;
+	height: 320px;
+}
+.relojes-renglon1{
+	zoom:1.5;
+}
+
+
+/* ###################################### CORRIENTE ############################ */
+
+.corriente {
+	position:relative;
+	float:left;
+	margin:2px;
+	margin-top:20px;
+	height: 115px;
+    width: 115px;
+}
+
+.corriente-aguja {
+  position: absolute;
+  left: 47%;
+  top:0%;
+  transition: all 0.20s ease-in-out;
+  transform: rotate(-130deg);
+}
+
+.corriente-titulo{
+	position: absolute;
+	font-weight: bold;
+	font-size:0.7em;
+	color: #fff;
+	bottom:6px;
+	margin-left: 23px;
+	
+}
+
+.corriente-valor{
+	position: absolute;
+	font-weight: bold;
+	font-size: 1.9em;
+	color: #fff;
+	text-shadow: -1px 0 #5B1010, 0 1px #5B1010, 1px 0 #5B1010, 0 -1px #5B1010;
+	left:35px;
+	bottom: 40px;
+}
+/* ###################################### VOLTAJE ############################ */
+.voltaje {
+	position:relative;
+	float:left;
+	margin:2px;
+	margin-top:20px;
+	padding-left:5px;
+	height: 115px;
+    width: 115px;
+}
+
+.voltaje-aguja {
+  position: absolute;
+  left: 47%;
+  top:0%;
+  transition: all 0.20s ease-in-out;
+  transform: rotate(-130deg);
+}
+
+.voltaje-titulo{
+	position: absolute;
+	font-weight: bold;
+	font-size:0.7em;
+	color: #fff;
+	bottom:6px;
+	margin-left: 32px;
+}
+
+.voltaje-valor{
+	position: absolute;
+	font-weight: bold;
+	font-size: 2.3em;
+	color: #fff;
+	text-shadow: -1px 0 #5B1010, 0 1px #5B1010, 1px 0 #5B1010, 0 -1px #5B1010;	
+	left:30px;
+	bottom: 40px;
+}
+/* ###################################### BATERIA ############################ */
+.bateria {
+	position:relative;
+	float:left;
+	margin:2px;
+	margin-top:15px;
+	margin-left:5px;
+}
+.cartel {
+	position:absolute;
+	width:400px;
+	margin-left:40px;
+	border-radius: 5px 5px;
+	bottom:40px;
+	color:white;
+	text-align:center;
+	font-weight: bold;
+	background-color: red;
+}

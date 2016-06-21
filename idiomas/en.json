@@ -58,5 +58,8 @@
 "rec_observacion": "Observation",
 "rec_accion": "Action",
 
+"__" : "####################### GENERAL ##########################",
+"desde": "From",
+"hasta": "To",
  "__" : "##################### FIN DE ARCHIVO ####################"
 }

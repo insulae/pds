@@ -26,10 +26,12 @@ var tex_alert_checks_contenido = "You are 'a punto de eliminar el check Seleccio
 //cranks
 var tex_alert_cranks_titulo = "Delete Crank";
 var tex_alert_cranks_contenido = "You are 'a punto de eliminar el crank Seleccionado'";
+var tex_alert_cranks_seleccion = 'You must pick a crank at least';
 
 //rec
 var tex_alert_rec_titulo = "Delete Rec";
 var tex_alert_rec_contenido = "You are 'a punto de eliminar la grabación Seleccionada'";
+var tex_alert_rec_seleccion = 'You must pick a record ';
 
 //jquery-confirm (alertas)
 var tex_alert_confirmar = "Confirm";

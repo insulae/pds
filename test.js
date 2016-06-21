@@ -6,9 +6,10 @@ var humultimo ="";
 var batultimo="";
 var preultimo ="";
 var esFreeze ="";
-
+var banErrorCOM = 0;
 //rec
 var recActivo = 0;
+
 //crank
 var crankActivo = 0;
 var guardandoCrank = 0;
@@ -55,9 +56,6 @@ var datos = [new TimeSeries(), new TimeSeries()];
 
 testCometa = new EventSource('test_cometa.php');
 
-//bandera para primer amperaje
-var ampBan = 0;
-
 //traigo datos
 testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
@@ -68,75 +66,94 @@ testCometa.addEventListener('message', function(e) {
 	//console.log(batultimo);
 	
 	//cargo valores a voltaje y amperaje
-	mostrarVoltaje(parseInt(dataCometa.sensores.vol));
-	var amperaje = dataCometa.sensores.amp;
-	mostrarAmperaje(parseInt(amperaje));
-	
-	//cambio gauges si hay cambio
-	if(batultimo != dataCometa.sensores.bat){
-		mostrarBateria(parseInt(dataCometa.sensores.bat));
-		batultimo = dataCometa.sensores.bat;
-	}
-	if(temultimo != dataCometa.sensores.tem){
-		mostrarTemperatura(parseInt(dataCometa.sensores.tem));
-		temultimo = dataCometa.sensores.tem;
-	}	
-	if(preultimo != dataCometa.sensores.pre){
-		mostrarPresion(parseInt(dataCometa.sensores.pre));
-		preultimo = dataCometa.sensores.pre;
-	}	
-	if(humultimo != dataCometa.sensores.hum){
-		mostrarHumedad(parseInt(dataCometa.sensores.hum));
-		humultimo = dataCometa.sensores.hum;
-	}
-	
-	//dibujo lineas del grafico
-	datos[0].append(new Date().getTime(), dataCometa.sensores.vol*37.5); //62.5 es para que se equipare a 2500 de amperaje // 37.5 para 1500
-	datos[1].append(new Date().getTime(), dataCometa.sensores.amp);
-	
-	
-	//##### grabacion de REC si esta activo
-	if ($("#btnRec").hasClass("RecActivo")) {
-		regRec.push(dataCometa);
-		$('#btnRec').text(parseInt($('#btnRec').text())-1);
-		//si el boton llego a 0 doy por finalizada la grabacion
-		if(parseInt($('#btnRec').text()) == 0){
-			terminoGrabacion();
-		}
-	}
-	
-	// ########### CONTROL DE ACTIVACION DE CRANK Y CREACION DE DATOS DEL CRANK ##########
-	if(parseInt(amperaje-ampAnt)>crankDif && ampAnt > 0 && crankActivo == 0 && guardandoCrank ==0){
-			crankActivo = 1;
-			graboCrank = true;
+	if(cadena != "errorCOM"){
+		if(banErrorCOM == 1){
+			banErrorCOM = 0
 			seteoCartel();
-			setTimeout(function(){graboCrank = false},duracionCrank);
-	}
-	ampAnt = amperaje;
-	
-	// GRABO CRANK
-	if(crankActivo == 1){
-		//console.log("grabo crank: "+ cadena);
-		if(graboCrank){
-			regCrank.push(cadena);	
-		}else{
-			crankActivo = 0;
-			guardandoCrank = 1;
-			seteoCartel()
-			//lleno combo motor
-			for (var i = 1; i <= avion_motores; i++) {
-				
-				$('#motor-crank').append('<option value=' + i+ '>' + i+ '</option>');
-			}
-			if(avion_apu == 1){
-				$('#motor-crank').append('<option value="0">APU</option>');
-			}
-			//levanto Alta Crank
-			$('#modalAltaCrank').modal('show');
 		}
-	}		
-	// ########### FIN CRANK ############
+		mostrarVoltaje(parseInt(dataCometa.sensores.vol));
+		var amperaje = dataCometa.sensores.amp;
+		mostrarAmperaje(parseInt(amperaje));
 	
+		//cambio gauges si hay cambio
+		if(batultimo != dataCometa.sensores.bat){
+			mostrarBateria(parseInt(dataCometa.sensores.bat));
+			batultimo = dataCometa.sensores.bat;
+		}
+		if(temultimo != dataCometa.sensores.tem){
+			mostrarTemperatura(parseInt(dataCometa.sensores.tem));
+			temultimo = dataCometa.sensores.tem;
+		}	
+		if(preultimo != dataCometa.sensores.pre){
+			mostrarPresion(parseInt(dataCometa.sensores.pre));
+			preultimo = dataCometa.sensores.pre;
+		}	
+		if(humultimo != dataCometa.sensores.hum){
+			mostrarHumedad(parseInt(dataCometa.sensores.hum));
+			humultimo = dataCometa.sensores.hum;
+		}
+
+		//dibujo lineas del grafico
+			//62.5 es para que se equipare a 2500 de amperaje // 37.5 para 1500	
+		datos[0].append(new Date().getTime(), dataCometa.sensores.vol*37.5); 
+		datos[1].append(new Date().getTime(), dataCometa.sensores.amp);		
+		
+		
+		//##### grabacion de REC si esta activo
+		if ($("#btnRec").hasClass("RecActivo")) {
+			regRec.push(dataCometa);
+			$('#btnRec').text(parseInt($('#btnRec').text())-1);
+			//si el boton llego a 0 doy por finalizada la grabacion
+			if(parseInt($('#btnRec').text()) == 0){
+				terminoGrabacion();
+			}
+		}
+	
+		// ########### CONTROL DE ACTIVACION DE CRANK Y CREACION DE DATOS DEL CRANK ##########
+		if(parseInt(amperaje-ampAnt)>crankDif && ampAnt > 0 && crankActivo == 0 && guardandoCrank ==0){
+				crankActivo = 1;
+				graboCrank = true;
+				seteoCartel();
+				setTimeout(function(){graboCrank = false},duracionCrank);
+		}
+		ampAnt = amperaje;
+	
+		// GRABO CRANK
+		if(crankActivo == 1){
+			//console.log("grabo crank: "+ cadena);
+			if(graboCrank){
+				regCrank.push(cadena);	
+			}else{
+				crankActivo = 0;
+				guardandoCrank = 1;
+				seteoCartel();
+				//lleno combo motor
+				for (var i = 1; i <= avion_motores; i++) {
+				
+					$('#motor-crank').append('<option value=' + i+ '>' + i+ '</option>');
+				}
+				if(avion_apu == 1){
+					$('#motor-crank').append('<option value="0">APU</option>');
+				}
+				//levanto Alta Crank
+				$('#modalAltaCrank').modal('show');
+			}
+		}		
+		// ########### FIN CRANK ############
+		
+	}else{
+		if(banErrorCOM != 1){
+			mostrarVoltaje("");
+			mostrarAmperaje("");
+			mostrarBateria("");
+			mostrarTemperatura("");
+			mostrarHumedad("");
+			mostrarPresion("");
+			seteoCartel();
+			banErrorCOM = 1;
+			ampAnt = 0;
+		}
+	}	
 }, false);
 
 
@@ -196,26 +213,31 @@ $('#guardar-crank').click(function(){
 
 //seteo cartel para crank y rec
 function seteoCartel(){
-	
-	//hay crank y rec
-	if(crankActivo==1 && recActivo ==1){
-		$('#cartel').text(tex_cartel_rec_crank);
-		$('#cartel').addClass("cartel-rec");
+	if(cadena == "errorCOM"){
+		$('#cartel').addClass("cartel-error");
+		$('#cartel').text("ERROR COM");
+	}else{
+		$('#cartel').removeClass("cartel-error");
+		//hay crank y rec
+		if(crankActivo==1 && recActivo ==1){
+			$('#cartel').text(tex_cartel_rec_crank);
+			$('#cartel').addClass("cartel-rec");
 		
-	//hay solo crank		
-	}else if(crankActivo==1 && recActivo ==0){
-		$('#cartel').text(tex_cartel_soloCrank);
-		$('#cartel').addClass("cartel-rec");
+		//hay solo crank		
+		}else if(crankActivo==1 && recActivo ==0){
+			$('#cartel').text(tex_cartel_soloCrank);
+			$('#cartel').addClass("cartel-rec");
 		
-	//hay solo rec
-	}else if(crankActivo==0 && recActivo ==1){
-		$('#cartel').text(tex_cartel_soloRec);
-		$('#cartel').addClass("cartel-rec");
+		//hay solo rec
+		}else if(crankActivo==0 && recActivo ==1){
+			$('#cartel').text(tex_cartel_soloRec);
+			$('#cartel').addClass("cartel-rec");
 	
-	//no hay nada
-	}else if(crankActivo==0 && recActivo ==0){
-		$('#cartel').text(tex_cartel);
-		$('#cartel').removeClass("cartel-rec");		
+		//no hay nada
+		}else if(crankActivo==0 && recActivo ==0){
+			$('#cartel').text(tex_cartel);
+			$('#cartel').removeClass("cartel-rec");		
+		}
 	}
 }
 
@@ -319,7 +341,7 @@ $('#guardar-check').click(function(){
 
 //guardo check/freeze en base
 function guardarCheck(cadena, esFreeze) {
-	console.log(JSON.stringify(cadena));
+	//console.log(JSON.stringify(cadena));
 	$.ajax({		
 		url:   'test_data.php?accion=guardarCheck',
 		type:  'post',
@@ -330,7 +352,7 @@ function guardarCheck(cadena, esFreeze) {
 			,freeze: esFreeze
 		},
 		success: function (datos) {
-			console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
+			//console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
 		}
 	});
 }
@@ -356,6 +378,9 @@ function mostrarVoltaje(dato){
 		$("#voltaje-valor").text("--");
 		dato = 0;
 	//overflow
+	}else if(dato > 0 && dato < 10){
+		$("#voltaje-valor").css("left", "40px");
+		$("#voltaje-valor").text("0"+dato);
 	}else if(dato > 40){
 		$("#voltaje-valor").text("O.F.");
 		$("#voltaje-valor").css("left", "30px");
@@ -368,17 +393,16 @@ function mostrarVoltaje(dato){
 	//calculo el grado a mover
 	var grado;
 	if(dato >= 20){
-		grado = parseInt(dato-20)* 6.50;  //para lograr 130º 130/40 = 3.25
+		grado = parseInt(dato-20)* 6.80;  //para lograr 130º 130/40 = 3.25 //135 137/20 =
 	}else if(dato < 20){
-		grado = parseInt(20-dato)* -6.50;
+		grado = parseInt(20-dato)* -6.80;
 	}		
-	$("#voltaje-aguja").css("transform", "rotate("+grado+"deg)");	
+	$("#voltaje-aguja").css("transform", "rotate("+grado+"deg)");
 }
 
 /* ###################### AMPERAJE GAUGE ################## */
 function mostrarAmperaje(dato){
-	console.log(dato);
-	$("#corriente-aguja").css("transform", "rotate("+grado+"deg)");
+	//console.log(dato);
 	if(dato > 0 && dato < 600){
 		$("#corriente-valor").css("color", "#00ff00");
 	}
@@ -388,11 +412,7 @@ function mostrarAmperaje(dato){
 	else if(dato >= 800){
 		$("#corriente-valor").css("color", "red");		
 	}
-	if(dato >= 1000){
-		$("#corriente-valor").css("left", "20px");
-	}else{
-		$("#corriente-valor").css("left", "30px");
-	}
+	//muestro los cambios
 	$("#corriente-valor").text(dato);
 	
 	//controlo vacio y overflow
@@ -406,17 +426,26 @@ function mostrarAmperaje(dato){
 		$("#corriente-valor").css("left", "30px");
 		dato = 1500;
 	//reseteo a inicial
+	}else if(dato >= 1000){
+		$("#corriente-valor").css("left", "20px");
+	}else if(dato > 99 && dato < 1000){
+		$("#corriente-valor").css("left", "30px");
+	}else if(dato > 0 && dato < 10){
+		$("#corriente-valor").text("0"+dato);
+		$("#corriente-valor").css("left", "40px");
 	}else{
-		$("#corriente-valor").css("left", "35px");
-	}	
+		$("#corriente-valor").css("left", "40px");
+	}
 
 	//calculo el grado a mover
 	var grado;
 	if(dato >= 750){
-		grado = parseInt(dato-750)*0.17333; //para lograr 130º 130/1500 = 
+		grado = parseInt(dato-750)*0.18266; //para lograr 130º 130/1500 //137/750=
 	}else if(dato < 750){
-		grado = parseInt(750-dato)*-0.17333;
+		grado = parseInt(750-dato)*-0.18266;
 	}	
+	
+	//muestro los cambios
 	$("#corriente-aguja").css("transform", "rotate("+grado+"deg)");
 }
 
@@ -424,12 +453,15 @@ function mostrarAmperaje(dato){
 /* ###################### BATERIA GAUGE ################## */
 function mostrarBateria(carga){
 	//carga= $("#valormanual").val();
+	if(isNaN(carga)){
+		$("#bateria-valor").text("--");
+	}else{
+		cienxcien = 170/100; //calcularlo sacando la propiedad width del objeto 170 es 170px
+		valor=carga*cienxcien;
+		$("#bateria-carga").css("height", valor+"px"); //aplico el nuevo relleno
+		$("#bateria-valor").text(carga);
+	}
 
-	cienxcien = 170/100; //calcularlo sacando la propiedad width del objeto 170 es 170px
-	valor=carga*cienxcien;
-	$("#bateria-carga").css("height", valor+"px"); //aplico el nuevo relleno
-	$("#bateria-valor").text(carga);
-			
 	if(carga <= 50){
 		$("#bateria-carga").css("background", "red"); //aplico color rojo
 	}else if(carga <= 80){
@@ -449,11 +481,14 @@ function mostrarBateria(carga){
 /* ###################### TEMPERATURA GAUGE ################## */
 function mostrarTemperatura(carga){
 	//carga= $("#valormanual").val();
-	
-	cienxcien = 130/100; //calcularlo sacando la propiedad width del objeto 170 es 170px (en este caso 100 positivo y 70 negativo)
-	valor=carga*cienxcien;
-	$("#temperatura-carga").css("height", valor+"px"); //aplico el nuevo relleno
-	$("#temperatura-valor").text(carga);
+	if(isNaN(carga)){
+		$("#temperatura-valor").text("--");
+	}else{
+		cienxcien = 130/100; //calcularlo sacando la propiedad width del objeto 170 es 170px (en este caso 100 positivo y 70 negativo)
+		valor=carga*cienxcien;
+		$("#temperatura-carga").css("height", valor+"px"); //aplico el nuevo relleno
+		$("#temperatura-valor").text(carga);
+	}
 			
 	if(carga >= 60 || carga < -20){
 		$("#temperatura-carga").css("background", "red"); //aplico color rojo
@@ -476,12 +511,14 @@ function mostrarTemperatura(carga){
 /* ###################### HUMEDAD GAUGE ################## */
 function mostrarHumedad(carga){
 	//carga= $("#valormanual").val();
-	
+	if(isNaN(carga)){
+		$("#humedad-valor").text("--");
+	}else{
 	cienxcien = 150/100; //calcularlo sacando la propiedad width del objeto 170 es 170px
 	valor=carga*cienxcien;
 	$("#humedad-carga").css("height", valor+"px"); //aplico el nuevo relleno
 	$("#humedad-valor").text(carga);
-			
+	}
 	if(carga <= 50){
 		$("#humedad-carga").css("background", "red"); //aplico color rojo
 	}
@@ -503,11 +540,14 @@ function mostrarHumedad(carga){
 /* ###################### PRESION GAUGE ################## */
 function mostrarPresion(carga){
 	//var valor = $("#valormanual").val(); //saco valor a rellenar
-	 			
-	cienxcien = 156/100; //calcularlo sacando la propiedad width del objeto 30px
-	valor=carga*cienxcien;
-	
-	$("#presion").css("width", valor+"px"); //aplico el nuevo relleno
-	$("#presion-valor").text(carga+"%"); //aplico el nuevo relleno
-	$("#presion").css("background", "red"); //aplico color rojo
+	if(isNaN(carga)){
+		$("#temperatura-valor").text("--");
+		$("#presion").css("width", "0px"); //aplico el nuevo relleno
+	}else{	
+		cienxcien = 156/100; //calcularlo sacando la propiedad width del objeto 30px
+		valor=carga*cienxcien;
+		$("#presion").css("width", valor+"px"); //aplico el nuevo relleno
+		$("#presion-valor").text(carga+"%"); //aplico el nuevo relleno
+		$("#presion").css("background", "red"); //aplico color rojo
+	}
 }

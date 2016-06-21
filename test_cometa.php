@@ -10,7 +10,7 @@ require ("sys/com/sensores.php");
 	$cadena = exec('head -n 1 pdsDATA');
 	//$cadena = 'ERROR'; // test de error
 	
-	if($cadena != "ERROR"){
+	if($cadena != "errorCOM"){
 		$registro = new stdClass(); 
 		
 			//python
@@ -42,12 +42,12 @@ require ("sys/com/sensores.php");
 			echo "data: " . json_encode($registro). "\n\n";	//produccion
 			
 	}else{
-		echo "data: error \n\n";	//produccion
+		echo "data: " . json_encode("errorCOM"). "\n\n";	//produccion
 	}
 	
 	ob_end_flush();
 	flush();
-	usleep(80000);
+	usleep(50000);
 	//usleep(100000);	
 	//usleep(1000000);
  }

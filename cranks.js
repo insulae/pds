@@ -1,14 +1,24 @@
 cranksSelec = [];
 cranksObservaciones = [];
 function cargaJS(){
+	//seteo fechas para datepicker
+	var todayTime = new Date();
+	var ano = todayTime.getFullYear();
+    var mes = todayTime.getMonth()-1;
+    var dia = todayTime.getDate();
 	//datepicker
 	$('.cranks-fecha').datepicker({
 		language: idioma_cod,
 		endDate: '0d',
+		defaultViewDate: { year: ano, month: mes, day: dia },
 		autoclose:true,
 		todayHighlight: true,
 		format: 'yyyy-mm-dd'
 	});
+	
+	$('#cranks-fdesde').val(ano+'-'+parseInt(mes+1)+'-'+dia);
+	$('#cranks-fhasta').val(ano+'-'+parseInt(mes+2)+'-'+dia);
+	//cargo tabla
 	
 	//cargo tabla
 	traerCranks();
@@ -137,5 +147,8 @@ $('#btn-cranks-mostrar').click(function(){
 		$('#pagina').ready(function() {
 			$.getScript('cranks_mostrar.js', function() {cargaJS();});
 		});
+	}else{
+		$.alert(tex_alert_cranks_seleccion);
 	}
+
 });
