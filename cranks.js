@@ -1,6 +1,7 @@
 cranksSelec = [];
 cranksObservaciones = [];
 function cargaJS(){
+	cargaIdioma();
 	//seteo fechas para datepicker
 	var todayTime = new Date();
 	var ano = todayTime.getFullYear();
@@ -10,7 +11,7 @@ function cargaJS(){
 	$('.cranks-fecha').datepicker({
 		language: idioma_cod,
 		endDate: '0d',
-		defaultViewDate: { year: ano, month: mes, day: dia },
+//		defaultViewDate: { year: ano, month: mes, day: dia },
 		autoclose:true,
 		todayHighlight: true,
 		format: 'yyyy-mm-dd'
@@ -144,11 +145,10 @@ $('#btn-cranks-mostrar').click(function(){
 	if($('#cranks_cant').text() > 0){
 		rompoJS();
 		$('#pagina').load('cranks_mostrar.php');
-		$('#pagina').ready(function() {
-			$.getScript('cranks_mostrar.js', function() {cargaJS();});
-		});
 	}else{
 		$.alert(tex_alert_cranks_seleccion);
 	}
 
 });
+
+cargaJS();

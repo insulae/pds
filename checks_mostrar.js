@@ -92,3 +92,5 @@ function dibujoGrafica(){
 			chart.render();
 }
 /* DIBUJO GRAFICA */
+
+cargaJS();

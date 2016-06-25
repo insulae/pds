@@ -20,8 +20,7 @@ switch ($_REQUEST['accion']) {
 				, fyh
 			FROM checks
 			WHERE id_avion = '.$_POST['id_avion'].'
-				AND fyh >= "'.$_POST['fdesde'].'"
-				AND fyh <= "'.$_POST['fhasta'].'"
+				AND fyh BETWEEN "'.@$_POST['fdesde'].' 00:00:00" AND "'.@$_POST['fhasta'].' 23:59:59"
 			ORDER BY fyh DESC
 		');
 	

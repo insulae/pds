@@ -4,7 +4,7 @@
 	position: absolute;
   	border-radius: 10px 10px;
   	background-color: #2a2c31;
-  	top:60px;
+  	top:10px;
    	margin-left: 10px;
   	padding: 10px;
   	height: 500px;
@@ -69,11 +69,12 @@
 }
 
 .btn-mostrar{
-	margin-left:400px;
+	position:absolute;
+	right:10px;
 	padding:0 auto;
 	width:140px; 
 	height: 45px; 
-	margin-bottom: 2px;
+	top:5px;
 }
 
 .ico-eliminar{

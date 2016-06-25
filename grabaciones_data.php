@@ -13,14 +13,15 @@ switch($_REQUEST['accion']){
 			FROM rec
 			INNER JOIN avion USING(id_avion)
 			WHERE id_avion = '.@$_POST['id_avion'].'
-			AND rec.fyh >= "'.@$_POST['fdesde'].'"
-			AND rec.fyh <= "'.@$_POST['fhasta'].'"
+			AND rec.fyh BETWEEN "'.@$_POST['fdesde'].' 00:00:00" AND "'.@$_POST['fhasta'].' 23:59:59"
 			AND crank = 0
 			ORDER BY fyh DESC					
 		');
+		if($db->errno) echo $db->error;
 		//$datos = queryToArray($query);
 		$datos = json_encode(queryToObject($query));
 		echo $datos;
+		
 	break;
 	
 	//traer datos de la grabacion

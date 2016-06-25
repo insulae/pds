@@ -1,50 +1,46 @@
 //DECLARACION DE VARIABLES "GLOBALES"
 function cargaJS(){
 	//no funciona esto en index
+	resolucion('banghoAv2');
 }
 function rompoJS(){
 	
 }
 //VARIABLES SETEABLES DESDE INTERFAZ
-var crankDif = 500;
+var crankDif = 50;
 var idioma_cod = navigator.language.substr (0, 2);
 
 //inicio
 var activo='inicio';
-var avion='AA-AAA';
+var avion='';
+var id_avion='';
 var avion_motores = '';
 var avion_apu='';
-var id_avion='2';
 var loginEstado='';
 var loginAdmin='';
 
 //test
 var testCometa;
-var duracionRec = 20000; //en milisegundos
-var duracionCrank = 5000; //en milisegundos
+var duracionRec = 2000; //en milisegundos
+var duracionCrank = 2000; //en milisegundos
 
 //grabaciones
 
 
 //SETEO AVION PARA NO DEMORAR BORRAR
-$('#tab-avion').text(avion);
-$('#tab-test').removeClass('tabno');
+//$('#tab-avion').text(avion);
+//$('#tab-test').removeClass('tabno');
 
 //SETEO TAB INICIAL
 $('#pagina').load('inicio.php');
-$.getScript('inicio.js', function() {cargaJS();});
-$.getScript('engine/idiomas.js');
+//$.getScript('engine/idiomas.js');
 
 //TABS
 function tabSelect(tab){
 	rompoJS();
 	if(!($('#tab-'+tab).hasClass('tabno')) && avion !=""){
 		$('#pagina').load(tab+'.php');
-		$('#pagina').ready(function() {
-			$.getScript('engine/idiomas.js');
-			$('#tab-'+tab).addClass('tabactivo').siblings().removeClass('tabactivo');
-			$.getScript(tab+'.js', function() {cargaJS();});
-		});
+		$('#tab-'+tab).addClass('tabactivo').siblings().removeClass('tabactivo');
 	}
 }
 
@@ -78,3 +74,4 @@ $('#configuracion').click(function(){
 
 });
 
+cargaJS();

@@ -1,4 +1,5 @@
 function cargaJS(){
+	
 	//alert(JSON.stringify(dataVoltajeMostrar, "", " "));
 	$("#btn-sensor").attr("sensor", 1);
 	crearGraf();
@@ -101,3 +102,5 @@ $('#btn-sensor').click(function(){
 	}
 	crearGraf();
 });
+
+cargaJS();

@@ -73,7 +73,7 @@
 </div>
 
 <!--######################### MODAL AGREGAR GRABACION ########################## -->
-  <div class="modal" id="modalAltaGraba" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal" id="modalAltaGraba" role="dialog" data-backdrop="static" data-keyboard="false" data-backdrop="false">
     <div class="modal-dialog"  style="width: 500px; top: 100px">
       <div class="modal-content">
         <div class="modal-header">
@@ -126,3 +126,4 @@
       </div>      
     </div>
   </div>
+  <script src="test.js"></script>

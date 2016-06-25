@@ -1,6 +1,7 @@
 var id_rec = '';
 
 function cargaJS(){
+	cargaIdioma();
 	//seteo fechas para datepicker
 	var todayTime = new Date();
 	var ano = todayTime.getFullYear();
@@ -119,11 +120,10 @@ $('#btn-graba-mostrar').click(function(){
 	if(id_rec !=""){
 		rompoJS();
 		$('#pagina').load('grabaciones_mostrar.php');
-		$('#pagina').ready(function() {
-			$.getScript('grabaciones_mostrar.js', function() {cargaJS();});
-		});	
 	}else{
 		$.alert(tex_alert_rec_seleccion);
 	}
 
 });
+
+cargaJS();

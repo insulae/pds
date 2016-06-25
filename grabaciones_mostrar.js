@@ -88,3 +88,4 @@ function traerDatos() {
 }
 /* DIBUJO GRAFICA */
 
+cargaJS();

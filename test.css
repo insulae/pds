@@ -4,7 +4,7 @@
 	position: absolute;
   	border-radius: 10px 10px;
   	background-color: #2a2c31;
-  	top:60px;
+  	top:10px;
   	margin-left: 5px;
 }
 
@@ -31,7 +31,7 @@
 .cont-relojes-fondo{
 	position:absolute;
 	right:5px;
-	top:60px;
+	top:10px;
 	border-radius: 10px 10px;
   	background-color: #2a2c31;
   	zoom:1;

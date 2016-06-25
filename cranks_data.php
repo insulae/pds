@@ -14,8 +14,7 @@ switch($_REQUEST['accion']){
 			FROM rec
 			INNER JOIN avion USING(id_avion)
 			WHERE id_avion = "'.@$_POST['id_avion'].'"
-			AND rec.fyh >= "'.@$_POST['fdesde'].'"
-			AND rec.fyh <= "'.@$_POST['fhasta'].'"
+			AND rec.fyh BETWEEN "'.@$_POST['fdesde'].' 00:00:00" AND "'.@$_POST['fhasta'].' 23:59:59"
 			AND crank = 1
 			ORDER BY rec.fyh DESC
 		');

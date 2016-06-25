@@ -1,5 +1,5 @@
 function cargaJS(){
-
+	cargaIdioma();
 	//SETEO VARIABLES DE TEXTO
 	$('#patente').attr("placeholder",tex_patente);
 	$('#login-usuario').attr("placeholder",tex_login_usuario);
@@ -13,6 +13,7 @@ function cargaJS(){
 	
 	/* carga tabla  */
 	traerAviones();
+	
 }
 
 
@@ -231,3 +232,5 @@ function eliminarAvion(avion){
 	    }	
 	});
 }
+
+cargaJS();

@@ -11,3 +11,5 @@
 			<button id='btn-amp' class='btn-amp'><span id="ico-amp" class="glyph-icon flaticon-flash ico-boton">Amp</span></button>
 		</div>
 	</div>
+</div>
+<script src="grabaciones_mostrar.js"></script>

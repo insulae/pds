@@ -6,7 +6,7 @@ var tex_login_clave = "Password";
 var tex_bienvenido = "Welcome";
 var tex_admin_login = "Login";
 var tex_eliminar_avion_tit = "Elimination";
-var tex_eliminar_avion_msg = "The plane will be removed";
+var tex_eliminar_avion_msg = "The aircraft will be removed";
 var tex_alta_avion_patente = "Patent";
 var tex_alta_avion_motores = "Amount of engines";
 var tex_alta_avion_observacion = "Observations";
@@ -37,4 +37,3 @@ var tex_alert_rec_seleccion = 'You must pick a record ';
 var tex_alert_confirmar = "Confirm";
 
 var tex_alert_cancelar = "Cancel";
-

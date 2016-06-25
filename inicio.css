@@ -1,11 +1,13 @@
 @CHARSET "UTF-8";
-
 /* ################# AVION ################# */
+.modal-open {
+  overflow-y: auto;
+}
 .cont-aviones-fondo{
 	position: absolute;
   	border-radius: 10px 10px;
   	background-color: #2a2c31;
-  	top:60px;
+  	top:10px;
   	margin-left: 5px;
 }
 .cont-aviones{
@@ -148,7 +150,7 @@
   	border-radius: 10px 10px;
   	border-radius: 10px 10px;
   	background-color: #2a2c31;
-  	top:60px;
+  	top:10px;
   	right:10px;
   	margin-left: 5px;
 }

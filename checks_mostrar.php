@@ -11,3 +11,4 @@
 			<button id='btn-amp' class='btn-amp'><span id="ico-amp" class="glyph-icon flaticon-flash ico-boton">Amp</span></button>
 		</div>
 	</div>
+<script src="checks_mostrar.js"></script>

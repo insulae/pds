@@ -17,7 +17,7 @@ var ampAnt = 0;
 var graboCrank;
 
 function cargaJS(){
-	
+	cargaIdioma();
 	//SETEO VARIABLES DE TEXTO
 	$('#observacion-graba').attr("placeholder",tex_observacion_graba);
 	$('#observacion-crank').attr("placeholder",tex_observacion_crank);
@@ -103,6 +103,7 @@ testCometa.addEventListener('message', function(e) {
 		if ($("#btnRec").hasClass("RecActivo")) {
 			regRec.push(dataCometa);
 			$('#btnRec').text(parseInt($('#btnRec').text())-1);
+			//setTimeout(function(){graboRec = false},duracionRec);
 			//si el boton llego a 0 doy por finalizada la grabacion
 			if(parseInt($('#btnRec').text()) == 0){
 				terminoGrabacion();
@@ -137,6 +138,7 @@ testCometa.addEventListener('message', function(e) {
 				}
 				//levanto Alta Crank
 				$('#modalAltaCrank').modal('show');
+				$('.modal-backdrop').remove();
 			}
 		}		
 		// ########### FIN CRANK ############
@@ -252,7 +254,7 @@ $("#btnRec").click(function () {
 		seteoCartel();
 	} else {
 		$("#btnRec").addClass("RecActivo");
-		$('#btnRec').text("24"); //seteo tiempo 240 1min
+		$('#btnRec').text(duracionRec); //seteo tiempo 240 1min
 		recActivo = 1;
 		seteoCartel();
 	}
@@ -266,6 +268,7 @@ function terminoGrabacion(){
 	recActivo = 0;
 	seteoCartel();
 	$('#modalAltaGraba').modal('show');
+	$('.modal-backdrop').remove();
 }
 
 //accion de eliminar todo tipo de test (cierro modal)
@@ -300,7 +303,7 @@ function guardarGrabacion(tipo,registros) {
 			,motor_apu: motor_apu
 		},
 		success: function (datos) {
-			//console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
+			console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
 			if(tipo == 0){
 				regRec = [];	
 			}else if(tipo == 1){
@@ -320,11 +323,13 @@ function guardarGrabacion(tipo,registros) {
 $("#btnCheck").click(function () {
 	esFreeze = 0;
 	$('#modalAltaCheck').modal('show');
+	$('.modal-backdrop').remove();
 });
 //accion inicio FREEZE
 $("#btnFreeze").click(function () {
 	esFreeze = 1;
 	$('#modalAltaCheck').modal('show');
+	$('.modal-backdrop').remove();
 });
 
 //accion de eliminar CHECK/FREEZE (cierro modal)
@@ -551,3 +556,4 @@ function mostrarPresion(carga){
 		$("#presion").css("background", "red"); //aplico color rojo
 	}
 }
+cargaJS();

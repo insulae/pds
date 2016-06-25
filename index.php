@@ -17,13 +17,14 @@
     <script src="engine/bootstrap.min.js"></script>
     <script src="engine/smoothie.js"></script>
 	<script src='engine/GrafPan.js'></script>
+	<script src="engine/resoluciones.js"></script>
     
 </head>   
   
-<body style="background-color: #000;">
+<body id="body" style="background-color: #000;">
 
 	<div id="contenedor" class="contenedor">
-		<div id="tabs">
+		<div id="tabs" class="tabs">
 			<div class="menu-tabs">
 				<button id="tab-inicio" type="button" class="tab tabactivo"><label tex="inicio"/></button>
 				<button id="tab-test" type="button" class="tab tabno"><label tex="test"/></button>
@@ -34,17 +35,11 @@
 				<span id="configuracion" class="glyph-icon flaticon-cogwheel ico-conf"></span>	
 			</div>
 		</div>
-		<div id="pagina">
+		<div id="pagina" class="pagina">
 		</div>
-	</div>
-
-<script>
-    
-/*############################ declaracion de variables #############################*/
-	
-</script>  
-<script src="index.js"></script>
+	</div>    	 
 </body>
+<script src="index.js"></script>
 </html>
 
 <?php 
@@ -52,7 +47,8 @@
 //TODO la apk no debe permitir apagar la pantalla, por lo menos cuando este grabando, el "cometa" muere?
 //TODO ver como hacer que la ventana modal no se cierre, tocar fuera de ella y cerrarse  hace perder todo el test
 //TODO hacer que las modales solo se cierren de los botones y nada mas
-//TODO CONFIG touch /var/run/pdsDATA && chmod 777 /var/run/pdsDATA && ln -sf /var/run/pdsDATA /var/www/html/pds/sys/com/pdsDATA
+//TODO CONFIG touch /var/run/pdsDATA && chmod 777 /var/run/pdsDATA && ln -sf /var/run/pdsDATA /var/www/html/pds/pdsDATA
 //TODO CONFIG chmod 777 /dev/ttyAMA0
 //TODO eliminar todo el seteo de avion de desarrollo
+//TODO SOLapas en login muestra los tabs sin seleccionar
 ?>

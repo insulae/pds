@@ -31,3 +31,4 @@
 		</table>
 	</div>		
 </div>
+<script src="checks.js"></script>

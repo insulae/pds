@@ -20,7 +20,7 @@
 	        <!-- <th class="th-graba" style="width:100px" >AVION</th> -->
 	        <th class="th-graba" style="width:100px; text-align: center"><label tex="rec_fecha"/></th>
 	        <th class="th-graba" style="width:550px; text-align: center"><label tex="rec_observacion"/></th>
-	        <th class="th-graba" style="width:100px; text-align: center""><label tex="rec_accion"/></th>
+	        <th class="th-graba" style="width:100px; text-align: center"><label tex="rec_accion"/></th>
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -28,3 +28,4 @@
 	</table>
 	</div>
 </div>
+<script src="grabaciones.js"></script>

@@ -35,16 +35,26 @@
 
 /* CSS para index y estilos comunes a todas las paginas */
 .contenedor{
-	position:relative;
 	width: 950px; 
-	height: 600px;
-	border-style: solid;
-	border-color: #2a2c31;
+	height: 570px;
 	margin:0 auto;
-	background-image: url(images/fondo.png);
-	zoom:1;
 }
-
+.pagina{
+	position:relative;
+	background-image: url(images/fondo.png);
+	width: 950px; 
+	height: 550px;
+	margin:0 auto;
+	border-style: solid;
+	border-color: #2a2c31;	
+}
+/* ############# RESOLUCIONES ################### */
+.banghoAv2{ 
+	/*-webkit-transform: perspective(0) scale(1.16);*/        
+	-webkit-transform-origin: top left;
+	transform: scale(1.24);
+	left:-110px;
+}
 /* ############# TABLAS GLOBALES ################### */
 
 .fila1{
@@ -58,10 +68,15 @@
 
 
 /* ############# TABS ################### */
+.tabs{
+position:relative;
+margin: 0 auto;	
+width: 950px;
+}
 .menu-tabs{
-	position: static;	
+	padding-left:2px;
+	position:relative;
 	background-color: #2a2c31;
-	width: 100%;
 	
 }
 .ico-conf{

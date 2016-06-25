@@ -49,7 +49,7 @@ switch ($_REQUEST["accion"]) {
 		}else{
 			echo $db->error;
 		}
-		
+		echo 'ok';
 	break;
 	//TODO AGREGAR CONTROL VER QUE CONVIENE
 /* #################################################### GRABACION #################################################### */

@@ -5,7 +5,7 @@ var datosGrafica="";
 var temaGrafica='';
 
 function cargaJS(){
-	
+	cargaIdioma();
 	//seteo fechas para datepicker
 	var todayTime = new Date();
 	var ano = todayTime.getFullYear();
@@ -15,7 +15,6 @@ function cargaJS(){
 	$('.checks-fecha').datepicker({
 		language: idioma_cod,
 		endDate: '0d',
-		defaultViewDate: { year: ano, month: mes, day: dia },
 		autoclose:true,
 		todayHighlight: true,
 		format: 'yyyy-mm-dd'
@@ -120,7 +119,6 @@ $('#btn-filtrar').click(function(){
 $('#btn-checks-mostrar').click(function(){
 	rompoJS();
 	$('#pagina').load('checks_mostrar.php');
-	$('#pagina').ready(function() {
-		$.getScript('checks_mostrar.js', function() {cargaJS();});
-	});
 });
+
+cargaJS();
