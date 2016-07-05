@@ -14,7 +14,7 @@ rand4=$(( ( RANDOM % 7 )  + 1 ))
 rand5=$(( ( RANDOM % 7 )  + 1 ))
 rand6=$(( ( RANDOM % 7 )  + 1 ))
 	echo "F0A5030"$rand1"1102"$rand2"10002BB" > ../../pdsDATA
-	echo "F0A5030133222200017B"
+	echo "F0A5030"$rand1"1102"$rand2"10002BB"
 #	echo $rand1 > /dev/ttyUSB0
 #	echo $rand1
 	sleep 1

@@ -1,7 +1,7 @@
 //DECLARACION DE VARIABLES "GLOBALES"
 function cargaJS(){
 	//no funciona esto en index
-	resolucion('banghoAv2');
+	//resolucion('banghoAv2');
 }
 function rompoJS(){
 	
@@ -21,8 +21,8 @@ var loginAdmin='';
 
 //test
 var testCometa;
-var duracionRec = 2000; //en milisegundos
-var duracionCrank = 2000; //en milisegundos
+var duracionRec = 20000; //en milisegundos
+var duracionCrank = 20000; //en milisegundos
 
 //grabaciones
 

@@ -26,11 +26,11 @@
 	<div id="contenedor" class="contenedor">
 		<div id="tabs" class="tabs">
 			<div class="menu-tabs">
-				<button id="tab-inicio" type="button" class="tab tabactivo"><label tex="inicio"/></button>
-				<button id="tab-test" type="button" class="tab tabno"><label tex="test"/></button>
-			    <button id="tab-checks" type="button" class="tab tabno"><label tex="checks"/></button>
-			    <button id="tab-cranks" type="button" class="tab tabno"><label tex="cranks"/></button>
-			    <button id="tab-grabaciones" type="button" class="tab tabno"><label tex="grabaciones"/></button>
+				<button id="tab-inicio" type="button" class="tab tabactivo"><label tex="inicio"></label></button>
+				<button id="tab-test" type="button" class="tab tabno"><label tex="test"></label></button>
+			    <button id="tab-checks" type="button" class="tab tabno"><label tex="checks"></label></button>
+			    <button id="tab-cranks" type="button" class="tab tabno"><label tex="cranks"></label></button>
+			    <button id="tab-grabaciones" type="button" class="tab tabno"><label tex="grabaciones"></label></button>
 			    <div id="tab-avion" type="button" class="tabavion"></div>
 				<span id="configuracion" class="glyph-icon flaticon-cogwheel ico-conf"></span>	
 			</div>
@@ -47,8 +47,10 @@
 //TODO la apk no debe permitir apagar la pantalla, por lo menos cuando este grabando, el "cometa" muere?
 //TODO ver como hacer que la ventana modal no se cierre, tocar fuera de ella y cerrarse  hace perder todo el test
 //TODO hacer que las modales solo se cierren de los botones y nada mas
-//TODO CONFIG touch /var/run/pdsDATA && chmod 777 /var/run/pdsDATA && ln -sf /var/run/pdsDATA /var/www/html/pds/pdsDATA
-//TODO CONFIG chmod 777 /dev/ttyAMA0
-//TODO eliminar todo el seteo de avion de desarrollo
-//TODO SOLapas en login muestra los tabs sin seleccionar
+//TODO CONFIG agregar a /etc/rc.local:
+//TODO CONFIG /bin/sh /var/www/html/pds/sys/seteos.sh
+//TODO CONFIG /bin/sh /var/www/html/pds/sys/APup.sh
+//TODO XOR
+//TODO CRANK COMPARAR CON LAS 3 MUESTRAS SIGUIENTES
+//TODO CABLE DE RED
 ?>
