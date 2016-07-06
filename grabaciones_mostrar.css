@@ -7,7 +7,7 @@
   	background-color: #2a2c31;
   	padding: 1px;
   	width: 930px;
-  	height: 430px;
+  	height: 420px;
   	margin-left: 10px;
   	top:10px;
 }
@@ -18,54 +18,68 @@
 	height: 430px;
 	background-color: #000000;
 }
-.cont-botonera{
+
+.cont-botonera1{
+	display:inline-block;
+	top:425px;
 	position:absolute;
   	border-radius: 10px 10px;
+  	background-color: #000;	
+	padding: 0.5em 0.5em;
+	margin: 0.5em 10%;
+	width: 190px;
+	height: 80px;
+	left:-70px;
+	text-align: center;
+}
+
+.btn-vol{
+	display:left;
+	height: 45px;
+	width:50px;
+	background-color: #14e900;
+	text-align: center;
+	margin: 0 auto;
+	border-radius: 5px 5px;
+	border: 1px;
+	font-weight: bold;
+	color:black;
+}
+.btn-amp{
+	display:left;
+	height: 45px;
+	width:50px;
+	background-color: #14e9ff;
+	text-align: center;
+	margin: 0 auto;
+	border-radius: 5px 5px;
+	border: 1px;
+	font-weight: bold;
+	color:black;
+}
+.btn-apagado{
+	background-color: grey;
+}
+
+.cont-botonera2{
+	position:absolute;
+	top:425px;
   	border-radius: 10px 10px;
   	background-color: #000;	
-	padding-top: 10px;
-	margin-bottom:5px;
-	margin: 0 auto;
-	width: 800px;
-	height:70px;
+	padding: 0.5em 0.5em;
+	margin: 0.5em 10%;
+	width: 700px;
+	height: 80px;
+	left:125px;
 	text-align: center;
-	margin-top: 5px;
-	top:435px;
-	left:70px;
 }
 
-.btn-volt, .btn-amp{
-	display:inline-block;
-	height: 50px;
-	width:175px;
-	background-color: #3c3c41;
-	border-radius: 5px 5px;
-	border: 2px solid;
-	border-color: #2e3436;
-	margin-left: 30px;
-}
-.btn-volt:hover, .btn-amp:hover{
-	border: 2px solid;
-	border-color: #fff;
-	background-color: #8ae234;
+.label-observacion{
+	text-align: center;
 }
 
-
-.ico-boton{
-    display: inline-block;
-    transform: scaleY(2) scaleX(2);
-    padding-right: 20px;
-    color: #fff;
-}
-.ico-boton:hover{
-	color: #000;
-}
-
-.ico-activo{
-	color: #000;
-}
-.btn-activo{
-	background-color: #8ae234;
-	border: 2px solid;
-	border-color: #fff;
+.graba-icono{
+	padding-top:10px;
+	display: inline-block;
+    transform: scaleY(1.3) scaleX(1.3);
 }

@@ -45,12 +45,11 @@
 <?php 
 //TODO pedir logo en alta calidad
 //TODO la apk no debe permitir apagar la pantalla, por lo menos cuando este grabando, el "cometa" muere?
-//TODO ver como hacer que la ventana modal no se cierre, tocar fuera de ella y cerrarse  hace perder todo el test
-//TODO hacer que las modales solo se cierren de los botones y nada mas
-//TODO CONFIG agregar a /etc/rc.local:
-//TODO CONFIG /bin/sh /var/www/html/pds/sys/seteos.sh
-//TODO CONFIG /bin/sh /var/www/html/pds/sys/APup.sh
 //TODO XOR
 //TODO CRANK COMPARAR CON LAS 3 MUESTRAS SIGUIENTES
 //TODO CABLE DE RED
+
+//TODO CONFIG agregar a /etc/rc.local:
+//TODO CONFIG /bin/sh /var/www/html/pds/sys/seteos.sh
+//TODO CONFIG /bin/sh /var/www/html/pds/sys/APup.sh
 ?>

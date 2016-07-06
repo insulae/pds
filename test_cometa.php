@@ -4,18 +4,21 @@ header('Cache-Control: no-cache');
 
 require ("sys/com/sensores.php");
 
- while (true) {
+$errorCom = 0;
+while (true) {
 	
 	//$cadena = com_virtual();
 	$cadena = exec('head -n 1 pdsDATA');
 	//$cadena = 'ERROR'; // test de error
 	
-	if($cadena != "errorCOM"){
+	//controlo checksum
+	$errorXor = getXor($cadena);
+	
+	
+	if($cadena != "errorCOM" || $cadena == "" || $errorXor = 1){
 		$registro = new stdClass(); 
 		
-			//python
-			$xor = substr($cadena,17,2);
-					
+		
 			//genero sensores
 			$sensores = Array();
 			$sensores[$sensor1] = (hexdec(substr($cadena,6,4)))*0.0327073; //voltaje es *0.03...
@@ -42,15 +45,38 @@ require ("sys/com/sensores.php");
 			echo "data: " . json_encode($registro). "\n\n";	//produccion
 			
 	}else{
-		echo "data: " . json_encode("errorCOM"). "\n\n";	//produccion
+		if($errorCom > 3){
+			echo "data: " . json_encode("errorCOM"). "\n\n";	//produccio
+			$errorCom == 0;
+		}else{
+			$errorCom++;
+		}
 	}
 	
 	ob_end_flush();
 	flush();
-	usleep(50000);
+	usleep(120000);
 	//usleep(100000);	
 	//usleep(1000000);
- }
+}
+//xor
+function getXOR($cadena) {
+	$xorLocal = 0;
+	$datos = substr($cadena,17,-2);
+	$xorArduino = substr($cadena,17,2);
+	
+	for ($i=0; $i<strlen($datos); $i++) {
+		$xorLocal = $xorLocal ^ $datos[$i];
+	}
+	
+	if($xorLocal != $xorArduino){
+		return 1;
+	}else{
+		return 0;
+	}
+}
+	
+
 function com_virtual(){
 		return "'b000106"
 		."0".rand(0,5).rand(0,9).rand(0,9) //random desde diez para que no rompa el formato de la cadena

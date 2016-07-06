@@ -14,6 +14,7 @@ var recActivo = 0;
 var crankActivo = 0;
 var guardandoCrank = 0;
 var ampAnt = 0;
+var contAmp = 0;
 var graboCrank;
 
 function cargaJS(){
@@ -45,11 +46,11 @@ function rompoJS(){
 
 
 //ver si aplicamos para el autorango
-function rango(range) {
-	  var min = 0;
-	  var max = 1500;
-	  return {min: min, max: max};
-}
+//function rango(range) {
+//	  var min = 0;
+//	  var max = 1500;
+//	  return {min: min, max: max};
+//}
 
 
 var datos = [new TimeSeries(), new TimeSeries()];
@@ -61,9 +62,10 @@ testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
 	cadena = dataCometa;
 	//console.log(cadena);
-	//console.log(e.data); //debug de lo que viene
+	console.log(e.data); //debug de lo que viene
 	//return true;
 	//console.log(batultimo);
+	
 	
 	//cargo valores a voltaje y amperaje
 	if(cadena != "errorCOM"){
@@ -71,10 +73,19 @@ testCometa.addEventListener('message', function(e) {
 			banErrorCOM = 0
 			seteoCartel();
 		}
-		mostrarVoltaje(parseInt(dataCometa.sensores.vol));
+		
+		var voltaje = dataCometa.sensores.vol;
 		var amperaje = dataCometa.sensores.amp;
-		mostrarAmperaje(parseInt(amperaje));
-	
+		if(parseInt(voltaje) != 0){
+			mostrarVoltaje(parseInt(voltaje));
+			mostrarAmperaje(parseInt(amperaje));
+			
+			//dibujo lineas del grafico	
+			datos[0].append(new Date().getTime(), dataCometa.sensores.vol); 
+			datos[1].append(new Date().getTime(), dataCometa.sensores.amp);		
+			//console.log(dataCometa.sensores.vol + "---" + dataCometa.sensores.amp);
+			
+		}
 		//cambio gauges si hay cambio
 		if(batultimo != dataCometa.sensores.bat){
 			mostrarBateria(parseInt(dataCometa.sensores.bat));
@@ -92,16 +103,13 @@ testCometa.addEventListener('message', function(e) {
 			mostrarHumedad(parseInt(dataCometa.sensores.hum));
 			humultimo = dataCometa.sensores.hum;
 		}
-
-		//dibujo lineas del grafico
-			//62.5 es para que se equipare a 2500 de amperaje // 37.5 para 1500	
-		datos[0].append(new Date().getTime(), dataCometa.sensores.vol*37.5); 
-		datos[1].append(new Date().getTime(), dataCometa.sensores.amp);		
-		
 		
 		//##### grabacion de REC si esta activo
 		if ($("#btnRec").hasClass("RecActivo")) {
-			regRec.push(dataCometa);
+			if(parseInt(voltaje)!=0){
+				regRec.push(dataCometa);	
+			}
+			
 			$('#btnRec').text(parseInt($('#btnRec').text())-1);
 			//setTimeout(function(){graboRec = false},duracionRec);
 			//si el boton llego a 0 doy por finalizada la grabacion
@@ -111,19 +119,33 @@ testCometa.addEventListener('message', function(e) {
 		}
 	
 		// ########### CONTROL DE ACTIVACION DE CRANK Y CREACION DE DATOS DEL CRANK ##########
-		if(parseInt(amperaje-ampAnt)>crankDif && ampAnt > 0 && crankActivo == 0 && guardandoCrank ==0){
-				crankActivo = 1;
-				graboCrank = true;
+		
+		//controlo diferencial 3 veces para evitar ruidos y recien disparo crank
+		if(parseInt(amperaje-ampAnt)>crankDif && ampAnt > 0){
+			contAmp++;
+		}
+		if(contAmp == 0){
+			ampAnt = amperaje;
+		}
+		
+		if(contAmp > 2 && crankActivo == 0 && guardandoCrank == 0){
+				//console.log("crank");
+				crankActivo = 1;		//seteo que hay crank
+				contAmp = 0;	
+				ampAnt = 0;
+				//reseteo conteo de cadenas por ruido que dispare crank
+				graboCrank = true;		//seteo que grabo
 				seteoCartel();
 				setTimeout(function(){graboCrank = false},duracionCrank);
 		}
-		ampAnt = amperaje;
 	
 		// GRABO CRANK
 		if(crankActivo == 1){
 			//console.log("grabo crank: "+ cadena);
 			if(graboCrank){
-				regCrank.push(cadena);	
+				if(parseInt(voltaje)!=0){
+					regCrank.push(cadena);	
+				}
 			}else{
 				crankActivo = 0;
 				guardandoCrank = 1;
@@ -163,27 +185,26 @@ function crearGraf() {
 	var chart = new SmoothieChart({
 				millisPerPixel:43,
 				maxValueScale:0.89,
-				scaleSmoothing:0.274,
+				scaleSmoothing:0.5,
 				grid:{strokeStyle:'rgba(119,119,119,0.46)',
 				millisPerLine:2000,verticalSections:8},
 				labels:{fontSize:8,precision:1},
+				//yRangeFunction:rango,
 				//timestampFormatter:SmoothieChart.timeFormatter,
-				//maxValue:0, minValue y max se remplasan con funcion rango
-				//minValue:800,
-				yRangeFunction:rango,
+				//maxValue:1500,
+				minValue:0,
 				horizontalLines:[
-				     			{color:'#ffffff',lineWidth:1,value:0},
-				     			{color:'#880000',lineWidth:2,value:3333},
-				     			{color:'#880000',lineWidth:2,value:-3333}
+				     			{color:'#00ff00',lineWidth:0.3,value:50},
 				     			]
 	 			});
 			
 			//fillStyle:'#000000'
+			interpolation:'bezier'
 			
 			chart.addTimeSeries(datos[0],{lineWidth:3,strokeStyle:'#00ff00'});
 			chart.addTimeSeries(datos[1],{lineWidth:3,strokeStyle:'#00ffff'});
 
-			chart.streamTo(document.getElementById("graf1200"), 1000);
+			chart.streamTo(document.getElementById("testGraf"), 1000);
 }
 /* #################################################### DIBUJO GRAFICA #################################################### */
 

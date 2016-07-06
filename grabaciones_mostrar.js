@@ -1,12 +1,12 @@
 var grabaVoltaje = [];
 var grabaAmperaje = [];
 var datosGrafica="";
+var datosGrafica2="";
 var temaGrafica='';
+var colorLinea="";
+
 function cargaJS(){
-	$('#btn-volt').addClass('btn-activo');
-	$('#ico-volt').addClass('ico-activo');
 	temaGrafica = 'voltaje';
-	
 	traerDatos();
 }
 function rompoJS(){
@@ -14,24 +14,31 @@ function rompoJS(){
 }
 
 $('#btn-amp').click(function(){
-	datosGrafica = grabaAmperaje;
-	dibujoGrafica();
-	$('#ico-amp').addClass('ico-activo');
-	$('#btn-amp').addClass('btn-activo');
-	$('#ico-volt').removeClass('ico-activo');
-	$('#btn-volt').removeClass('btn-activo');
-	temaGrafica = 'amperaje';
+	if($('#btn-amp').hasClass('btn-apagado')){
+		datosGrafica = grabaAmperaje;
+		datosGrafica2 = grabaVoltaje;
+		dibujoGrafica();
+		$('#btn-amp').removeClass('btn-apagado');
+	}else{
+		colorLinea="#14E9FF";
+		datosGrafica = grabaAmperaje;
+		dibujoGraficaSola();
+		$('#btn-vol').addClass('btn-apagado');
+	}
 });
-$('#btn-volt').click(function(){
-	datosGrafica = grabaVoltaje;
-	dibujoGrafica();
-	$('#ico-volt').addClass('ico-activo');
-	$('#btn-volt').addClass('btn-activo');
-	$('#ico-amp').removeClass('ico-activo');
-	$('#btn-amp').removeClass('btn-activo');
-	temaGrafica = 'voltaje';
+$('#btn-vol').click(function(){
+	if($('#btn-vol').hasClass('btn-apagado')){
+		datosGrafica = grabaAmperaje;
+		datosGrafica2 = grabaVoltaje;
+		dibujoGrafica();
+		$('#btn-vol').removeClass('btn-apagado');
+	}else{
+		colorLinea="#14E900";
+		datosGrafica = grabaVoltaje;
+		dibujoGraficaSola();
+		$('#btn-amp').addClass('btn-apagado');
+	}
 });
-
 /* DIBUJO GRAFICA */
 function dibujoGrafica(){
   	//creo la grafica
@@ -46,11 +53,16 @@ function dibujoGrafica(){
 		animationEnabled: false,
 		axisX:{
 			labelAngle: 30,
-			 valueFormatString: "mm:ss.ff"
+			 valueFormatString: "mm:ss"
 		},
 		axisY :{
-			includeZero:false
+			includeZero:false,
+			title: "AMP"
 		},
+		axisY2 :{
+			includeZero:false,
+			title: "VOLT"
+		},		
 		ToolTip: {
 			enabled: false
 		},
@@ -59,11 +71,53 @@ function dibujoGrafica(){
 			     type: "spline",
 			     color: "#14E9FF",
 			     dataPoints: datosGrafica
-		}]	 
+			    },
+			    {
+			     type: "spline",
+			     color: "#14E900",
+			     axisYType: "secondary",
+			     dataPoints: datosGrafica2
+			    }
+			  ]	 
 	});
 	
 	chart.render();
 } 
+
+function dibujoGraficaSola(){
+  	//creo la grafica
+	var chart = new CanvasJS.Chart("graba-graf",
+	{
+		theme: 'voltaje',
+		width:910,
+		zoomEnabled: true,
+		title:{
+			text: "" 
+		},
+		animationEnabled: false,
+		axisX:{
+			labelAngle: 30,
+			 valueFormatString: "mm:ss"
+		},
+		axisY :{
+			includeZero:false,
+		},
+		ToolTip: {
+			enabled: false
+		},
+	    data: [
+			    {
+			     type: "spline",
+			     color: colorLinea,
+			     dataPoints: datosGrafica
+			    }
+			  ]	 
+	});
+	
+	chart.render();
+}
+
+
 
 function traerDatos() {
 	//console.log(JSON.stringify(valores, "", " "));
@@ -81,7 +135,8 @@ function traerDatos() {
 	    		grabaVoltaje.push({x: new Date((datos[i].fyh+"."+datos[i].mseg)), y: parseInt(sensores.vol) });
 	    		grabaAmperaje.push({x: new Date((datos[i].fyh+"."+datos[i].mseg)), y: parseInt(sensores.amp)});
 	    	}
-	    datosGrafica = grabaVoltaje;
+	    datosGrafica = grabaAmperaje;
+	    datosGrafica2 = grabaVoltaje;
 	    dibujoGrafica();	
 		}
 	});

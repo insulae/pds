@@ -1,13 +1,18 @@
 //DECLARACION DE VARIABLES "GLOBALES"
 function cargaJS(){
 	//no funciona esto en index
-	//resolucion('banghoAv2');
+	direccion=window.location.href;
+	dispositivo = direccion.search("bangho");
+	if(dispositivo > 0){
+		resolucion('banghoAv2');	
+	}
+	
 }
 function rompoJS(){
 	
 }
 //VARIABLES SETEABLES DESDE INTERFAZ
-var crankDif = 50;
+var crankDif = 100;
 var idioma_cod = navigator.language.substr (0, 2);
 
 //inicio
