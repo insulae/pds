@@ -27,7 +27,7 @@ var loginAdmin='';
 //test
 var testCometa;
 var duracionRec = 20000; //en milisegundos
-var duracionCrank = 20000; //en milisegundos
+var duracionCrank = 10000; //en milisegundos
 
 //grabaciones
 

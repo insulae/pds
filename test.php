@@ -2,7 +2,8 @@
 
 <div class="cont-graf">
 	<div style="margin:10px;">
-		<canvas id="testGraf" width="580" height="300"></canvas>
+		<!-- <canvas id="testGraf" width="580" height="300"></canvas> -->
+		<div id="testGraf" style="height: 300px; width:580px;"></div>
 	</div>
 
 	<div class="cont-botonera">

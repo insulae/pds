@@ -7,6 +7,8 @@ var batultimo="";
 var preultimo ="";
 var esFreeze ="";
 var banErrorCOM = 0;
+var amperaje ="";
+var voltaje ="";
 //rec
 var recActivo = 0;
 
@@ -24,7 +26,8 @@ function cargaJS(){
 	$('#observacion-crank').attr("placeholder",tex_observacion_crank);
 	
 	//creo grafica
-	crearGraf();
+	//crearGraf();
+	graficaCanvas();
 	//cometa();
 }
 
@@ -62,7 +65,7 @@ testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
 	cadena = dataCometa;
 	//console.log(cadena);
-	console.log(e.data); //debug de lo que viene
+	//console.log(e.data); //debug de lo que viene
 	//return true;
 	//console.log(batultimo);
 	
@@ -74,8 +77,8 @@ testCometa.addEventListener('message', function(e) {
 			seteoCartel();
 		}
 		
-		var voltaje = dataCometa.sensores.vol;
-		var amperaje = dataCometa.sensores.amp;
+		voltaje = dataCometa.sensores.vol;
+		amperaje = dataCometa.sensores.amp;
 		if(parseInt(voltaje) != 0){
 			mostrarVoltaje(parseInt(voltaje));
 			mostrarAmperaje(parseInt(amperaje));
@@ -131,9 +134,6 @@ testCometa.addEventListener('message', function(e) {
 		if(contAmp > 2 && crankActivo == 0 && guardandoCrank == 0){
 				//console.log("crank");
 				crankActivo = 1;		//seteo que hay crank
-				contAmp = 0;	
-				ampAnt = 0;
-				//reseteo conteo de cadenas por ruido que dispare crank
 				graboCrank = true;		//seteo que grabo
 				seteoCartel();
 				setTimeout(function(){graboCrank = false},duracionCrank);
@@ -147,7 +147,7 @@ testCometa.addEventListener('message', function(e) {
 					regCrank.push(cadena);	
 				}
 			}else{
-				crankActivo = 0;
+				crankActivo=0;
 				guardandoCrank = 1;
 				seteoCartel();
 				//lleno combo motor
@@ -214,14 +214,18 @@ function crearGraf() {
 
 //accion de eliminar todo tipo de test (cierro modal)
 $('#descartar-crank').click(function(){
-	guardandoCrank= 0;	
+	guardandoCrank= 0;
+	contAmp = 0;
+	ampAnt=0;
 	$('#modalAltaCrank').modal('hide');
 });
 
 //accion de guardar todo tipo de test (cierro modal)
 $('#guardar-crank').click(function(){
 	guardarGrabacion(1,regCrank); //0 indica que no es crank
-	guardandoCrank = 0;	
+	guardandoCrank = 0;
+	contAmp = 0;
+	ampAnt=0;
 	$('#modalAltaCrank').modal('hide');
 });
 /* #################################################### CRANK #################################################### */
@@ -578,3 +582,104 @@ function mostrarPresion(carga){
 	}
 }
 cargaJS();
+
+
+/* ###################### TEST GRAFICA CANVASJS ################## */
+
+function graficaCanvas() {
+	var amp = []; // dataPoints
+	var vol = []; // dataPoints
+
+	var chart = new CanvasJS.Chart("testGraf",{
+		title :{
+			theme: 'amperaje',
+			width:580
+		},		
+		axisX:{
+			valueFormatString: "",
+			gridThickness: 0.2,
+			gridColor: "grey",
+			valueFormatString: " "
+		},
+		axisY:{
+			gridThickness: 0.2,
+			gridColor: "grey",
+// 			title: "AMP",
+// 			titleFontFamily:"lato",
+// 			titleFontWeight: "bold",
+// 			titleFontSize: 15,
+			titleFontColor: "#14E9FF",
+			labelFontFamily: "lato",
+			labelFontWeight: "bold",
+			labelFontSize: 9,
+			labelFontColor: "#14E9FF",
+			includeZero:true
+		},
+		axisY2:{
+// 			title: "VOLT",
+// 			titleFontFamily:"lato",
+// 			titleFontWeight: "bold",
+// 			titleFontSize: 15,
+			titleFontColor: "#14E00",
+			labelFontFamily: "lato",
+			labelFontWeight: "bold",
+			labelFontSize: 9,
+			labelFontColor: "#14E900",
+			includeZero:true
+		},				
+		data: [{
+			type: "spline",
+			lineThickness: 4,
+		     color: "#14E9FF",
+			dataPoints: amp 
+		},
+		{
+			type: "spline",
+			lineThickness: 4,
+			color: "#14E900",
+			axisYType: "secondary",
+			dataPoints: vol 
+		}
+		]
+	});
+
+	var xVal = 0;
+	var yVal = 100;	
+	var updateInterval = 100;
+	var dataLength = 100; // number of dataPoints visible at any point
+
+	var updateChart = function (count) {
+		count = count || 1;
+		// count is number of times loop runs to generate random dataPoints.
+		if(voltaje != 0){
+			for (var j = 0; j < count; j++) {	
+				yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
+				amp.push({
+					x: xVal,
+					y: amperaje
+				});
+				vol.push({
+					x: xVal,
+					y: voltaje
+					
+				});
+				xVal++;			
+			};
+			if (amp.length > dataLength)
+			{
+				amp.shift();
+				vol.shift();				
+			}
+			
+			chart.render();
+		}
+
+	};
+
+	// generates first set of dataPoints
+	updateChart(dataLength); 
+
+	// update chart after specified time. 
+	setInterval(function(){updateChart()}, updateInterval); 
+
+}
