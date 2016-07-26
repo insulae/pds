@@ -603,15 +603,17 @@
 			},			
 			"cranks": {
 				Title: {
-					fontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+					fontFamily: "lato",
 					fontSize: 33,
 					fontColor: "#3A3A3A",
 					fontWeight: "bold",
 					verticalAlign: "top",
 					margin: 5
+					
+					
 				},
 				Subtitle: {
-					fontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+					fontFamily: "lato",
 					fontSize: 16,
 					fontColor: "#3A3A3A",
 					fontWeight: "bold",
@@ -624,11 +626,11 @@
 					titleFontColor: "#666666",
 					//titleFontFamily: "arial black",
 					//titleFontFamily: "Verdana, Geneva, Calibri, sans-serif",
-					titleFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+					titlefontFamily: "lato",
 					//titleFontWeight: "bold",
 
 					//labelFontFamily: "Times New Roman, Times, serif",
-					labelFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+					labelfontFamily: "lato",
 					//labelFontFamily: "Helvetica Neue, Helvetica",
 					labelFontSize: 10, //pds
 					labelFontColor: "yellow", //pds
@@ -643,13 +645,13 @@
 				Legend: {
 					verticalAlign: "bottom",
 					horizontalAlign: "center",
-					fontFamily: isCanvasSupported ? "monospace, sans-serif,arial black" : "calibri"
+					fontFamily: "lato",
 				},
 				DataSeries: {
 					//bevelEnabled: true,
 					indexLabelFontColor: "grey",
 					//indexLabelFontFamily: "Trebuchet MS, monospace, Courier New, Courier",
-					indexLabelFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+					indexLabelFontFamily: "lato",
 					//indexLabelFontWeight: "bold",
 					indexLabelFontSize: 18,
 					//indexLabelLineColor: "lightgrey",

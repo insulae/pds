@@ -23,7 +23,7 @@
 	</div>			
 </div>
 <div class="cont-botonera2">
-	<label id="graba-observacion" class="label-observacion">AGREGAR LA OBSERVACION Y FECHA AQUI</label><br>			
+	<label id="rec-observacion" class="label-observacion"></label><br>			
 </div>						
 
 <script src="grabaciones_mostrar.js"></script>

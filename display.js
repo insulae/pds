@@ -11,7 +11,7 @@ var ampAnt = 0;
 
 /* #################################################### DIBUJO GRAFICA #################################################### */
 
-testCometa = new EventSource('test_cometa.php');
+testCometa = new EventSource('test_cometa.php?display=true');
 
 //traigo datos
 testCometa.addEventListener('message', function(e) {

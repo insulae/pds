@@ -15,7 +15,6 @@
     <script src='engine/idiomas.js'></script>
     <script src='engine/jquery-confirm.js'></script>
     <script src="engine/bootstrap.min.js"></script>
-    <script src="engine/smoothie.js"></script>
 	<script src='engine/GrafPan.js'></script>
 	<script src="engine/resoluciones.js"></script>
     
@@ -45,11 +44,18 @@
 <?php 
 //TODO pedir logo en alta calidad
 //TODO la apk no debe permitir apagar la pantalla, por lo menos cuando este grabando, el "cometa" muere?
-//TODO XOR
-//TODO CRANK COMPARAR CON LAS 3 MUESTRAS SIGUIENTES
-//TODO CABLE DE RED
 
 //TODO CONFIG agregar a /etc/rc.local:
 //TODO CONFIG /bin/sh /var/www/html/pds/sys/seteos.sh
 //TODO CONFIG /bin/sh /var/www/html/pds/sys/APup.sh
+
+//TODO CONFIG agregar en .config/openbox/autostart:
+//TODO CONFIG usr/bin/python /var/www/html/pds/sys/com/serialGet.py &
+//TODO CONFIGepiphany-browser -a --profile ~/.config http://localhost/pds/display.php --display=:0 &
+
+
+//TODO CONFIG agregar en rc.xml:
+//TODO CONFIG <application name="epiphany-browser"><decor>no</decor></application>
+
+
 ?>

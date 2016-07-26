@@ -1,4 +1,6 @@
 var id_rec = '';
+var rec_observacion = '';
+var rec_fecha = '';
 
 function cargaJS(){
 	cargaIdioma();
@@ -48,8 +50,8 @@ function traerGraba(){
 	    		if(i % 2 == 0) {nro = 1;}else{nro = 2;}
 	    		var fila='<tr class="tr-graba">';
 	    			//fila+='<td>'+crank[i].patente+'</td>';
-	    			fila+='<td>'+graba[i].fyh+'</td>';
-	    			fila+='<td style="text-align:left; padding-left:10px">'+graba[i].observacion+'</td>';
+	    			fila+='<td id="fecha-graba">'+graba[i].fyh+'</td>';
+	    			fila+='<td id="observacion-graba" style="text-align:left; padding-left:10px">'+graba[i].observacion+'</td>';
 	    			fila+='<td><span id="graba-eliminar" class="glyph-icon flaticon-close ico-eliminar"></span></td>';
 	    			fila+='<td id="id-graba" class="td-hidden">'+graba[i].id_rec+'</td>';
 	    			fila+='</tr>';
@@ -71,7 +73,8 @@ $('#btn-filtrar').click(function(){
 $('#graba-tabla').on('click', '.tr-graba', function(event) {
 	$(this).addClass('tr-graba-activo').siblings().removeClass('tr-graba-activo');
 	id_rec = $(this).find("#id-graba").html();
-	//ugly patch
+	rec_observacion = $(this).find("#observacion-graba").html();
+	rec_fecha = $(this).find("#fecha-graba").html();
 });
 
 /* eliminar Graba */

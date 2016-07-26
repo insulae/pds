@@ -63,8 +63,8 @@ function traerChecks(){
 
 	    		$('#checks-tabla').append(fila);
 	    		//construyo la data para la grafica
-	    			checksVoltaje.push({label:"BAT: "+sensores.bat + "\nTEM: "+sensores.tem , x: new Date(check[i].fyh), y: parseInt(sensores.vol) });
-	    			checksAmperaje.push({label:"BAT: "+sensores.bat + "\nTEM: "+sensores.tem , x: new Date(check[i].fyh), y: parseInt(sensores.amp)});
+	    			checksVoltaje.push({label:"BAT: "+sensores.bat + "\nTEM: "+sensores.tem , x: new Date(check[i].fyh), y: sensores.vol});
+	    			checksAmperaje.push({label:"BAT: "+sensores.bat + "\nTEM: "+sensores.tem , x: new Date(check[i].fyh), y: sensores.amp});
 		    }
 	    }	
 	});

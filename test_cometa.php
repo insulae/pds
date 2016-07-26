@@ -4,6 +4,14 @@ header('Cache-Control: no-cache');
 
 require ("sys/com/sensores.php");
 
+
+//seteo el ciclo del cometa si es pantalla o no
+if($_REQUEST[display] == true){
+	$refresco = 900000;
+}else{
+	$refresco = 100000;
+}
+
 $errorCom = 0;
 while (true) {
 	
@@ -57,7 +65,7 @@ while (true) {
 	
 	ob_end_flush();
 	flush();
-	usleep(120000);
+	usleep($refresco);
 	//usleep(100000);	
 	//usleep(1000000);
 }

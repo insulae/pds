@@ -7,6 +7,7 @@ var colorLinea="";
 
 function cargaJS(){
 	temaGrafica = 'voltaje';
+	$('#rec-observacion').text(rec_fecha+": "+rec_observacion);
 	traerDatos();
 }
 function rompoJS(){
@@ -42,7 +43,7 @@ $('#btn-vol').click(function(){
 /* DIBUJO GRAFICA */
 function dibujoGrafica(){
   	//creo la grafica
-	var chart = new CanvasJS.Chart("graba-graf",
+	var grafica = new CanvasJS.Chart("graba-graf",
 	{
 		theme: 'voltaje',
 		width:910,
@@ -53,15 +54,31 @@ function dibujoGrafica(){
 		animationEnabled: false,
 		axisX:{
 			labelAngle: 30,
-			 valueFormatString: "mm:ss"
+			valueFormatString: "mm:ss",
 		},
 		axisY :{
-			includeZero:false,
-			title: "AMP"
+ 			title: "AMP",
+ 			titleFontFamily:"lato",
+ 			titleFontWeight: "bold",
+ 			titleFontSize: 15,
+			titleFontColor: "#14E9FF",
+			labelFontFamily: "lato",
+			labelFontWeight: "bold",
+			labelFontSize: 12,
+			labelFontColor: "#14E9FF",
+			includeZero:false
 		},
 		axisY2 :{
-			includeZero:false,
-			title: "VOLT"
+ 			title: "VOLT",
+ 			titleFontFamily:"lato",
+ 			titleFontWeight: "bold",
+ 			titleFontSize: 15,
+			titleFontColor: "#14E900",
+			labelFontFamily: "lato",
+			labelFontWeight: "bold",
+			labelFontSize: 12,
+			labelFontColor: "#14E900",
+			includeZero:false
 		},		
 		ToolTip: {
 			enabled: false
@@ -70,23 +87,25 @@ function dibujoGrafica(){
 			    {
 			     type: "spline",
 			     color: "#14E9FF",
-			     dataPoints: datosGrafica
+			     dataPoints: datosGrafica,
+			     markerSize: "0"
 			    },
 			    {
 			     type: "spline",
 			     color: "#14E900",
 			     axisYType: "secondary",
-			     dataPoints: datosGrafica2
+			     dataPoints: datosGrafica2,
+			     markerSize: "0"
 			    }
 			  ]	 
 	});
 	
-	chart.render();
+	grafica.render();
 } 
 
 function dibujoGraficaSola(){
   	//creo la grafica
-	var chart = new CanvasJS.Chart("graba-graf",
+	var grafica = new CanvasJS.Chart("graba-graf",
 	{
 		theme: 'voltaje',
 		width:910,
@@ -109,12 +128,13 @@ function dibujoGraficaSola(){
 			    {
 			     type: "spline",
 			     color: colorLinea,
-			     dataPoints: datosGrafica
+			     dataPoints: datosGrafica,
+			     markerSize: "0"
 			    }
 			  ]	 
 	});
 	
-	chart.render();
+	grafica.render();
 }
 
 
@@ -132,8 +152,8 @@ function traerDatos() {
 			var datos = JSON.parse(datos);
 	    	for (var i=0; i<datos.length; i++) {
 	    		sensores= JSON.parse(datos[i].sensores);
-	    		grabaVoltaje.push({x: new Date((datos[i].fyh+"."+datos[i].mseg)), y: parseInt(sensores.vol) });
-	    		grabaAmperaje.push({x: new Date((datos[i].fyh+"."+datos[i].mseg)), y: parseInt(sensores.amp)});
+	    		grabaVoltaje.push({x: new Date((datos[i].fyh+"."+datos[i].mseg)), y: sensores.vol});
+	    		grabaAmperaje.push({x: new Date((datos[i].fyh+"."+datos[i].mseg)), y: sensores.amp});
 	    	}
 	    datosGrafica = grabaAmperaje;
 	    datosGrafica2 = grabaVoltaje;

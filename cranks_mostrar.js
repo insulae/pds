@@ -1,11 +1,22 @@
+var grafica;
+var datosGrafVol=[];
+var datosGrafAmp=[];
+var graficaDoble;
+
 function cargaJS(){
-	
 	//alert(JSON.stringify(dataVoltajeMostrar, "", " "));
 	$("#btn-sensor").attr("sensor", 1);
-	crearGraf();
+	
+	//selecciono grafica a mostrar
+	if(cranksSelec.length == 1){
+		traerDatosDoble(cranksSelec[0]);
+		crearGrafDoble();
+	}else{
+		crearGraf();	
+	}
 }
 function rompoJS(){
-	
+	grafica = null;
 }
 
 /* DIBUJO GRAFICA */
@@ -17,14 +28,12 @@ for (var i = 0; i <cranksSelec.length; i++) {
 	$('#crank-'+[i]).attr("indice",j);
 	$('#crank-'+[i]).click(function(){
 		$('#crank-observacion').text(cranksObservaciones[$(this).attr("indice")]);
-		console.log($(this).attr("indice"));
 	});	
 	j--;
 }
 function crearGraf(){
   	//creo la grafica
-	var chart = new CanvasJS.Chart("graf-cranks",
-	{
+	grafica = new CanvasJS.Chart("graf-cranks",{
 		theme: 'cranks',
 		width:910,
 		zoomEnabled: true,
@@ -34,7 +43,7 @@ function crearGraf(){
 		},
 		animationEnabled: false,
 		axisX:{
-			labelAngle: 30
+			//labelAngle: 30
 		},
 		axisY :{
 			includeZero:false
@@ -44,12 +53,10 @@ function crearGraf(){
 		},
 		   data: datosGrafica(colorLinea)
 	});
-	chart.render();
+	grafica.render();
 } 
-
 function datosGrafica(colorLinea){
-
-		
+	
 	/* traer Cranks */
 	var enviarDatos;
 	$.ajax({		
@@ -57,7 +64,7 @@ function datosGrafica(colorLinea){
 	    type:  'post',
 	    async: false,
 		data:{ 
-			avion: avion
+			id_avion: id_avion
 			,sensor: $("#btn-sensor").attr("sensor")
 			,cranksSelec: cranksSelec
 		},
@@ -77,7 +84,7 @@ function datosGrafica(colorLinea){
 			    			datos.dataPoints= puntos;
 			    			datos.color=colorLinea[i];
 			    			vector.push(datos);
-	    	    	}		
+	    	    	}
 	    	 }
 			vector.push(datos);
 			enviarDatos= vector;
@@ -87,7 +94,90 @@ function datosGrafica(colorLinea){
 	});
 	return enviarDatos;
 }
+
+function crearGrafDoble(){
+  	//creo la grafica
+	graficaDoble = new CanvasJS.Chart("graf-cranks",
+	{
+		theme: 'voltaje',
+		width:910,
+		zoomEnabled: true,
+		title:{
+			text: "" 
+		},
+		animationEnabled: false,
+		axisX:{
+			labelAngle: 30,
+			valueFormatString: "mm:ss",
+		},
+		axisY :{
+ 			title: "AMP",
+ 			titleFontFamily:"lato",
+ 			titleFontWeight: "bold",
+ 			titleFontSize: 15,
+			titleFontColor: "#14E9FF",
+			labelFontFamily: "lato",
+			labelFontWeight: "bold",
+			labelFontSize: 12,
+			labelFontColor: "#14E9FF",
+			includeZero:false
+		},
+		axisY2 :{
+ 			title: "VOLT",
+ 			titleFontFamily:"lato",
+ 			titleFontWeight: "bold",
+ 			titleFontSize: 15,
+			titleFontColor: "#14E900",
+			labelFontFamily: "lato",
+			labelFontWeight: "bold",
+			labelFontSize: 12,
+			labelFontColor: "#14E900",
+			includeZero:false
+		},		
+		ToolTip: {
+			enabled: false
+		},
+	    data: [
+			    {
+			     type: "spline",
+			     color: "#14E9FF",
+			     dataPoints: datosGrafAmp,
+			     markerSize: "0"
+			    },
+			    {
+			     type: "spline",
+			     color: "#14E900",
+			     axisYType: "secondary",
+			     dataPoints: datosGrafVol,
+			     markerSize: "0"
+			    }
+			  ]	 
+	});
+	
+} 
+
+function traerDatosDoble(id_rec) {
+	//console.log(JSON.stringify(valores, "", " "));
+	$.ajax({		
+		url:   'cranks_data.php?accion=traerDatosDoble',
+		type:  'post',
+		data: { 
+			id_rec : id_rec		
+		},
+		success: function (datos) {
+			//console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
+			var datos = JSON.parse(datos);
+	    	for (var i=0; i<datos.length; i++) {
+	    		sensores= JSON.parse(datos[i].sensores);
+	    		datosGrafVol.push({x: new Date((datos[i].fyh+"."+datos[i].mseg)), y: sensores.vol});
+	    		datosGrafAmp.push({x: new Date((datos[i].fyh+"."+datos[i].mseg)), y: sensores.amp});
+	    	}	
+	    	graficaDoble.render();
+		}
+	});
+}
 /* DIBUJO GRAFICA */
+
 
 $('#btn-sensor').click(function(){
 	if($("#btn-sensor").attr("sensor") == 1){

@@ -49,7 +49,7 @@ switch ($_REQUEST["accion"]) {
 		}else{
 			echo $db->error;
 		}
-		echo 'ok';
+		echo $db->real_escape_string(json_encode($registro->sensores));
 	break;
 	//TODO AGREGAR CONTROL VER QUE CONVIENE
 /* #################################################### GRABACION #################################################### */

@@ -25,22 +25,7 @@ switch($_REQUEST['accion']){
 	
 	case 'traerCranksDatos':
 		$res = Array();
-		/*
-		[{
-				observacion: "Texto",
-				puntos : [
-						{x:1, y:2},
-						{x:2, y:2}
-				]
-			},
-			{
-				observacion: "Texto",
-				puntos : [
-				{x:1, y:2},
-				{x:2, y:2}
-				]
-			}]
-		*/
+
 		$qcr=$db->query('
 				SELECT * FROM rec
 				WHERE id_rec IN('.implode(",",@$_POST['cranksSelec']).')
@@ -79,4 +64,17 @@ switch($_REQUEST['accion']){
 		$datos = json_encode($res);
 		echo $datos;
 	break;
+	case 'traerDatosDoble':
+		$query = $db->query('
+			SELECT
+				sensores,
+				fyh,
+				mseg
+			FROM rec_item
+			WHERE id_rec = '.@$_POST['id_rec'].'
+		');
+		//echo $datos = queryToArray($query);
+		$datos = json_encode(queryToObject($query));
+		echo $datos;
+		break;	
 }

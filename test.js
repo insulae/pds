@@ -9,6 +9,14 @@ var esFreeze ="";
 var banErrorCOM = 0;
 var amperaje ="";
 var voltaje ="";
+
+//grafica
+var grafica;
+var cantPuntosMostrar = 80;
+var amp = []; // dataPoints
+var vol = []; // dataPoints
+var xVal = 0;
+
 //rec
 var recActivo = 0;
 
@@ -37,26 +45,11 @@ function rompoJS(){
 		testCometa.close();
 		testCometa = null;
 	}
+	grafica=null;
+	updateGrafica=null;	
 }
 
-/* #################################################### DIBUJO GRAFICA #################################################### */
-
-//mato testCometa si es que hay una instancia al abrir TEST
-//if(testCometa){
-//	testCometa.close();
-//	testCometa = null;
-//}
-
-
-//ver si aplicamos para el autorango
-//function rango(range) {
-//	  var min = 0;
-//	  var max = 1500;
-//	  return {min: min, max: max};
-//}
-
-
-var datos = [new TimeSeries(), new TimeSeries()];
+/* #################################################### COMETA #################################################### */
 
 testCometa = new EventSource('test_cometa.php');
 
@@ -65,7 +58,7 @@ testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
 	cadena = dataCometa;
 	//console.log(cadena);
-	//console.log(e.data); //debug de lo que viene
+	console.log(e.data); //debug de lo que viene
 	//return true;
 	//console.log(batultimo);
 	
@@ -77,18 +70,29 @@ testCometa.addEventListener('message', function(e) {
 			seteoCartel();
 		}
 		
+		//seteo voltaje y amperaje para graficas
 		voltaje = dataCometa.sensores.vol;
 		amperaje = dataCometa.sensores.amp;
-		if(parseInt(voltaje) != 0){
+		
+		//controlo que no venga basura
+		if( (voltaje != 0) || (amperaje != -1334) ){
 			mostrarVoltaje(parseInt(voltaje));
 			mostrarAmperaje(parseInt(amperaje));
 			
-			//dibujo lineas del grafico	
-			datos[0].append(new Date().getTime(), dataCometa.sensores.vol); 
-			datos[1].append(new Date().getTime(), dataCometa.sensores.amp);		
-			//console.log(dataCometa.sensores.vol + "---" + dataCometa.sensores.amp);
+			// actualizo grafica
 			
+			amp.push({x: xVal, y: amperaje});
+			vol.push({x: xVal, y: voltaje});
+			xVal++;
+			//muevo grafica
+			if (amp.length > cantPuntosMostrar){
+				amp.shift();
+				vol.shift();	
+			}
+			grafica.render();	
 		}
+		
+				
 		//cambio gauges si hay cambio
 		if(batultimo != dataCometa.sensores.bat){
 			mostrarBateria(parseInt(dataCometa.sensores.bat));
@@ -109,7 +113,7 @@ testCometa.addEventListener('message', function(e) {
 		
 		//##### grabacion de REC si esta activo
 		if ($("#btnRec").hasClass("RecActivo")) {
-			if(parseInt(voltaje)!=0){
+			if( (parseInt(voltaje) != 0) || (parseInt(amperaje) != -1334) ){
 				regRec.push(dataCometa);	
 			}
 			
@@ -143,7 +147,7 @@ testCometa.addEventListener('message', function(e) {
 		if(crankActivo == 1){
 			//console.log("grabo crank: "+ cadena);
 			if(graboCrank){
-				if(parseInt(voltaje)!=0){
+				if( (voltaje != 0) || (amperaje != -1334) ){
 					regCrank.push(cadena);	
 				}
 			}else{
@@ -179,34 +183,6 @@ testCometa.addEventListener('message', function(e) {
 		}
 	}	
 }, false);
-
-
-function crearGraf() {
-	var chart = new SmoothieChart({
-				millisPerPixel:43,
-				maxValueScale:0.89,
-				scaleSmoothing:0.5,
-				grid:{strokeStyle:'rgba(119,119,119,0.46)',
-				millisPerLine:2000,verticalSections:8},
-				labels:{fontSize:8,precision:1},
-				//yRangeFunction:rango,
-				//timestampFormatter:SmoothieChart.timeFormatter,
-				//maxValue:1500,
-				minValue:0,
-				horizontalLines:[
-				     			{color:'#00ff00',lineWidth:0.3,value:50},
-				     			]
-	 			});
-			
-			//fillStyle:'#000000'
-			interpolation:'bezier'
-			
-			chart.addTimeSeries(datos[0],{lineWidth:3,strokeStyle:'#00ff00'});
-			chart.addTimeSeries(datos[1],{lineWidth:3,strokeStyle:'#00ffff'});
-
-			chart.streamTo(document.getElementById("testGraf"), 1000);
-}
-/* #################################################### DIBUJO GRAFICA #################################################### */
 
 
 
@@ -568,6 +544,7 @@ function mostrarHumedad(carga){
 }
 
 /* ###################### PRESION GAUGE ################## */
+
 function mostrarPresion(carga){
 	//var valor = $("#valormanual").val(); //saco valor a rellenar
 	if(isNaN(carga)){
@@ -581,16 +558,11 @@ function mostrarPresion(carga){
 		$("#presion").css("background", "red"); //aplico color rojo
 	}
 }
-cargaJS();
 
-
-/* ###################### TEST GRAFICA CANVASJS ################## */
+/* ######################################### TEST GRAFICA CANVASJS #################################### */
 
 function graficaCanvas() {
-	var amp = []; // dataPoints
-	var vol = []; // dataPoints
-
-	var chart = new CanvasJS.Chart("testGraf",{
+	grafica = new CanvasJS.Chart("testGraf",{
 		title :{
 			theme: 'amperaje',
 			width:580
@@ -643,43 +615,40 @@ function graficaCanvas() {
 		]
 	});
 
-	var xVal = 0;
-	var yVal = 100;	
-	var updateInterval = 100;
-	var dataLength = 100; // number of dataPoints visible at any point
-
-	var updateChart = function (count) {
-		count = count || 1;
-		// count is number of times loop runs to generate random dataPoints.
-		if(voltaje != 0){
-			for (var j = 0; j < count; j++) {	
-				yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
-				amp.push({
-					x: xVal,
-					y: amperaje
-				});
-				vol.push({
-					x: xVal,
-					y: voltaje
-					
-				});
-				xVal++;			
-			};
-			if (amp.length > dataLength)
-			{
-				amp.shift();
-				vol.shift();				
-			}
-			
-			chart.render();
-		}
-
-	};
-
-	// generates first set of dataPoints
-	updateChart(dataLength); 
-
-	// update chart after specified time. 
-	setInterval(function(){updateChart()}, updateInterval); 
+//	var xVal = 0;
+//	var yVal = 100;	
+//	var updateInterval = 100;
+//	var dataLength = 100; // number of dataPoints visible at any point
+//
+//	var updateGrafica = function (count) {
+//		count = count || 1;
+//		// count is number of times loop runs to generate random dataPoints.
+//		if(voltaje != 0){
+//			for (var j = 0; j < count; j++){		
+//				//seteo valores a la grafica
+//				amp.push({x: xVal, y: amperaje});
+//				vol.push({x: xVal, y: voltaje});
+//				xVal++;			
+//			};
+//			//muevo grafica
+//			if (amp.length > dataLength){
+//				amp.shift();
+//				vol.shift();				
+//			}
+//			grafica.render();
+//		}
+//
+//	};
+//
+//	updateGrafica(dataLength); 
+//	setInterval(function(){updateGrafica()}, updateInterval); 
 
 }
+/* ######################################### TEST GRAFICA CANVASJS #################################### */
+
+
+
+
+cargaJS();
+
+
