@@ -3,11 +3,12 @@
 .cont-relojes{
 	position:relative;
 	background-color: black;
+	border: 0px solid white;
 	width:480px;
 	height: 320px;
 }
 .relojes-renglon1{
-	zoom:1.5;
+	zoom:1.39;
 }
 
 
@@ -17,7 +18,7 @@
 	position:relative;
 	float:left;
 	margin:2px;
-	margin-top:20px;
+	margin-top:5px;
 	height: 115px;
     width: 115px;
 }
@@ -33,10 +34,10 @@
 .corriente-titulo{
 	position: absolute;
 	font-weight: bold;
-	font-size:0.7em;
+	font-size:1em;
 	color: #fff;
-	bottom:6px;
-	margin-left: 23px;
+	bottom:8px;
+	margin-left: 38px;
 	
 }
 
@@ -54,7 +55,7 @@
 	position:relative;
 	float:left;
 	margin:2px;
-	margin-top:20px;
+	margin-top:5px;
 	padding-left:5px;
 	height: 115px;
     width: 115px;
@@ -71,10 +72,10 @@
 .voltaje-titulo{
 	position: absolute;
 	font-weight: bold;
-	font-size:0.7em;
+	font-size:1em;
 	color: #fff;
-	bottom:6px;
-	margin-left: 32px;
+	bottom:8px;
+	margin-left: 38px;
 }
 
 .voltaje-valor{
@@ -91,17 +92,43 @@
 	position:relative;
 	float:left;
 	margin:2px;
-	margin-top:15px;
+	margin-top:2px;
 	margin-left:5px;
 }
 .cartel {
 	position:absolute;
-	width:400px;
-	margin-left:40px;
+	width:425px;
+	margin-left:5px;
 	border-radius: 5px 5px;
-	bottom:40px;
+	bottom:28px;
 	color:white;
 	text-align:center;
 	font-weight: bold;
-	background-color: red;
+	background-color: green;
+}
+
+/* ###################################### BOTONERA ############################ */
+.botonera {
+	position:absolute;
+	top:170px;
+	color:white;
+	text-align:center;
+	font-weight: bold;
+	
+}
+.qrWifi{
+	display:inline-block;
+	position:absolute;
+	width:100px;
+	margin-left:25px;
+	top:-5px;
+}
+.ico-apagado{
+	display:inline-block;
+	position:absolute;
+	left:100px;
+	top:5px;
+	color:red;
+	cursor: pointer;
+	zoom:3;
 }

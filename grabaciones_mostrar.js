@@ -47,6 +47,7 @@ function dibujoGrafica(){
 	{
 		theme: 'voltaje',
 		width:910,
+		height:365,
 		zoomEnabled: true,
 		title:{
 			text: "" 

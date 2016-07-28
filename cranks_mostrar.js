@@ -36,6 +36,7 @@ function crearGraf(){
 	grafica = new CanvasJS.Chart("graf-cranks",{
 		theme: 'cranks',
 		width:910,
+		height:365,
 		zoomEnabled: true,
 		//zoomType: "xy",
 		title:{
@@ -51,6 +52,7 @@ function crearGraf(){
 		ToolTip: {
 			enabled: false
 		},
+		//hola mami
 		   data: datosGrafica(colorLinea)
 	});
 	grafica.render();
@@ -183,12 +185,12 @@ $('#btn-sensor').click(function(){
 	if($("#btn-sensor").attr("sensor") == 1){
 			$("#btn-sensor").attr("sensor", 2);
 			$("#btn-sensor").text('Amp');
-			$("#btn-sensor").css('background-color','#bb3fbf');			
+			$("#btn-sensor").css('background-color','#13E2E0');			
 			
 	}else{
 		$("#btn-sensor").attr("sensor", 1);
 		$("#btn-sensor").text('Volt');
-		$("#btn-sensor").css('background-color','#ff0000');		
+		$("#btn-sensor").css('background-color','#73d216');		
 	}
 	crearGraf();
 });

@@ -1,40 +1,48 @@
 @CHARSET "UTF-8";
 
-.cont-graf{
-	position: absolute;
+@media all and (orientation:portrait) { /* portrait */
+	.cont-graba-fondo{
+		zoom:0.64;
+		height: 460px;
+	}
+}
+@media all and (orientation:landscape) { /* portrait */
+	.cont-graba-fondo{
+		height: 460px;
+	}
+}
+.cont-graba-fondo{
+	display:inline-block;
   	border-radius: 10px 10px;
   	border-radius: 10px 10px;
   	background-color: #2a2c31;
-  	padding: 1px;
-  	width: 930px;
-  	height: 420px;
-  	margin-left: 10px;
-  	top:10px;
+  	margin-top: 10px;
+  	padding:10px;
+  	margin-left: 5px;
+  	width: 925px;
 }
+
 .graba-graf{
-	position:absolute;
-	display:inline;
-	width: 920px;
-	height: 430px;
-	background-color: #000000;
+	display:relative;
+	float: left; 
+	width: 910px;
+	height:365px;
 }
 
 .cont-botonera1{
-	display:inline-block;
-	top:425px;
 	position:absolute;
   	border-radius: 10px 10px;
   	background-color: #000;	
 	padding: 0.5em 0.5em;
 	margin: 0.5em 10%;
 	width: 190px;
-	height: 80px;
-	left:-70px;
+	height: 75px;
 	text-align: center;
+	left:-80px;
+	top:380px;
 }
 
 .btn-vol{
-	display:left;
 	height: 45px;
 	width:50px;
 	background-color: #14e900;
@@ -63,13 +71,13 @@
 
 .cont-botonera2{
 	position:absolute;
-	top:425px;
+	top:380px;
   	border-radius: 10px 10px;
   	background-color: #000;	
 	padding: 0.5em 0.5em;
 	margin: 0.5em 10%;
 	width: 700px;
-	height: 80px;
+	height: 75px;
 	left:125px;
 	text-align: center;
 }

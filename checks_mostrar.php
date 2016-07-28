@@ -1,14 +1,15 @@
 <link rel="stylesheet" type="text/css" href="checks_mostrar.css">
 
-<div class="cont-graf">
-	<div style="margin:10px;">
-		<div id="check-graf" style="width: 99%;">
-	</div>
-</div>					
-	<div class="cont-botonera">
-		<div class=botones>
-			<button id='btn-volt' class='btn-volt'><span id="ico-volt" class="glyph-icon flaticon-flash ico-boton">Volt</span></button>
-			<button id='btn-amp' class='btn-amp'><span id="ico-amp" class="glyph-icon flaticon-flash ico-boton">Amp</span></button>
+<div class="cont-checks-fondo">
+		<div id="check-graf" class="graf-checks"></div>
+
+		<div class="cont-botonera1">
+			<div class="check-icono">
+				<button id='btn-sensor' class='btn-sensor'>Volt</button>
+			</div>
 		</div>
-	</div>
-<script src="checks_mostrar.js"></script>
+		<div class="cont-botonera2">
+			<label id="check-observacion" class="label-observacion"></label><br>
+		<div id="checks-iconos" class="checks-iconos"></div>
+</div>	
+<script src="checks_mostrar.js"></script

@@ -1,34 +1,32 @@
+var datosGrafica;
 function cargaJS(){
 	//alert(JSON.stringify(dataVoltajeMostrar, "", " "));
-	$('#btn-volt').addClass('btn-activo');
-	$('#ico-volt').addClass('ico-activo');
-	temaGrafica = 'voltaje';
+	$("#btn-sensor").attr("sensor", 1);
 	datosGrafica = checksVoltaje;
-	dibujoGrafica();
+	dibujoGrafica("#73d216");
+	$('#check-observacion').text("Desde: "+fdesde+" - "+ "Hasta: "+fhasta);
 }
 
 function rompoJS(){
 }
 
+$('#btn-sensor').click(function(){
+	if($("#btn-sensor").attr("sensor") == 1){
+			$("#btn-sensor").attr("sensor", 2);
+			$("#btn-sensor").text('Amp');
+			$("#btn-sensor").css('background-color','#13E2E0');
+			datosGrafica = checksAmperaje;
+			dibujoGrafica("#13E2E0");
+			
+	}else{
+		$("#btn-sensor").attr("sensor", 1);
+		$("#btn-sensor").text('Volt');
+		$("#btn-sensor").css('background-color','#73d216');	
+		datosGrafica = checksVoltaje;
+		dibujoGrafica("#73d216");
+	}
+});
 
-$('#btn-amp').click(function(){
-	datosGrafica = checksAmperaje;
-	dibujoGrafica();
-	$('#ico-amp').addClass('ico-activo');
-	$('#btn-amp').addClass('btn-activo');
-	$('#ico-volt').removeClass('ico-activo');
-	$('#btn-volt').removeClass('btn-activo');
-	temaGrafica = 'amperaje';
-});
-$('#btn-volt').click(function(){
-	datosGrafica = checksVoltaje;
-	dibujoGrafica();
-	$('#ico-volt').addClass('ico-activo');
-	$('#btn-volt').addClass('btn-activo');
-	$('#ico-amp').removeClass('ico-activo');
-	$('#btn-amp').removeClass('btn-activo');
-	temaGrafica = 'voltaje';
-});
 /* ######################################## MODAL ######################################## */
 
 //NO SIRVE SE GUARDA PARA VER COMO SE USA LAS MODALES
@@ -48,44 +46,37 @@ $('#btn-volt').click(function(){
 
 
 /* DIBUJO GRAFICA */
-function dibujoGrafica(){
+function dibujoGrafica(colorCheck){
 	  var chart = new CanvasJS.Chart("check-graf",
 			  {
-			    tooltip:{
-			    	fontColor:"red"
-			    	,fontSize:50
-			    	,backgroundColor:"#000"
-			    },	
-		  		zoomEnabled: true,
-		  		width: 910,
-		  		theme: temaGrafica,
-			     title:{
-			     text: "",
-			     horizontalAlign: "right"
-			    },		    
-			    axisX:{
-			      valueFormatString: "DD-MM-YY",
-			      title: "",
-			      gridThickness: 0.5
-			      //minimum: 5000,
-			      //maximum: 100000
-			    },
-			    axisY:{
-			      title: ""
-			    },			    
-			    legend: {
-			      verticalAlign: "bottom",
-			      horizontalAlign: "left"			    	  
-
-			    },
+			theme: 'cranks',
+			width:910,
+			height:365,
+			zoomEnabled: true,
+			//zoomType: "xy",
+			title:{
+				text: "" 
+			},
+			animationEnabled: false,
+			axisX:{
+				valueFormatString: "DD-MM-YY",
+				gridThickness: 0.5
+			},
+			axisY :{
+				includeZero:false
+			},
+			ToolTip: {
+				enabled: false
+			},
 			    data: [
 			    {
+			    //amp:#13E2E0, vol: #73d216
 			     type: "scatter",
-			     color: "#14E9FF",
-			     markerBorderColor:"#fce94f",
+			     color: colorCheck,
+			     markerBorderColor:colorCheck,
 			     markerType: "circle",
 			     markerSize: 10,
-			     dataPoints: datosGrafica			     
+			     dataPoints: datosGrafica		     
 			    }]	     
 			 });
 

@@ -25,15 +25,31 @@ while (true) {
 	
 	if($cadena != "errorCOM" || $cadena == "" || $errorXor = 1){
 		$registro = new stdClass(); 
-		
-		
-			//genero sensores
+
+
+			//GENERO SENSORES
 			$sensores = Array();
-			$sensores[$sensor1] = (hexdec(substr($cadena,6,4)))*0.0327073; //voltaje es *0.03...
-				$sensores[$sensor1] = round($sensores[$sensor1],1);
- 			$sensores[$sensor2] = ((hexdec(substr($cadena,10,4)))*2.605)-1334; //amperaje es -1334
- 				$sensores[$sensor2] = round($sensores[$sensor2],1);
- 			$sensores[$sensor3] = hexdec(substr($cadena,14,4));	
+			
+			
+			// CALCULO VOLTAJE
+			$voltaje = (hexdec(substr($cadena,6,4)))*0.0333377; //voltaje es *0.03...
+			$sensores[$sensor1] = round($voltaje,1);
+
+			// CALCULO AMPERAJE
+ 			$sensores[$sensor2] = ((hexdec(substr($cadena,10,4)))*2.605)-1344; //mantener aqui ultimo valor
+			$sensores[$sensor2] = round($sensores[$sensor2],1);
+
+			// CALCULO BATERIA
+			if($voltaje >= 25.4){
+ 				$bateria = 100;
+ 			}else if($voltaje < 20){
+ 				$bateria = 0;
+ 			}else{
+ 				$bateria=($voltaje*14.07)-258;
+	 			$bateria = round($bateria,1);
+ 			}
+			$sensores[$sensor3] = $bateria; 	
+ 			//$sensores[$sensor3] = hexdec(substr($cadena,14,4));
 			//$sensores[$sensor4] = hexdec(substr($cadena,20,4));
 			//$sensores[$sensor5] = hexdec(substr($cadena,24,4));
 			//$sensores[$sensor6] = hexdec(substr($cadena,28,4));

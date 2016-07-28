@@ -31,7 +31,8 @@
 		<label id="login-error" class="login-error"><label tex="login_error"></label></label>
 	</div>
 </div>
-<div class="cont-logo" style="left:550px"><img src="images/logo.png"  width="300px"></div>
+
+<!-- <div class="cont-logo" style="left:550px"><img src="images/logo.png"  width="300px"></div> -->
 
 
 

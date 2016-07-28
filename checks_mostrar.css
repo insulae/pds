@@ -1,71 +1,78 @@
 @CHARSET "UTF-8";
 
-.cont-graf{
-	position: absolute;
+@media all and (orientation:portrait) { /* portrait */
+	.cont-checks-fondo{
+		zoom:0.64;
+		height: 460px;
+	}
+}
+@media all and (orientation:landscape) { /* portrait */
+	.cont-checks-fondo{
+		height: 460px;
+	}
+}
+.cont-checks-fondo{
+	display:inline-block;
   	border-radius: 10px 10px;
   	border-radius: 10px 10px;
   	background-color: #2a2c31;
-  	padding: 1px;
-  	width: 930px;
-  	height: 430px;
-  	margin-left: 10px;
-  	top:10px;
+  	margin-top: 10px;
+  	padding:10px;
+  	margin-left: 5px;
+  	width: 925px;
 }
-.check-graf{
-	position:absolute;
-	display:inline;
-	width: 920px;
-	height: 430px;
-	background-color: #000000;
+
+.graf-checks{
+	display:relative;
+	float: left; 
+	width: 910px;
+	height:370px;
 }
-.cont-botonera{
+
+.cont-botonera1{
 	position:absolute;
-  	border-radius: 10px 10px;
   	border-radius: 10px 10px;
   	background-color: #000;	
-	padding-top: 10px;
-	margin-bottom:5px;
-	margin: 0 auto;
-	width: 800px;
-	height:70px;
+	padding: 0.5em 0.5em;
+	width: 100px;
+	height: 70px;
 	text-align: center;
-	margin-top: 5px;
-	top:435px;
-	left:70px;
+	top:390px;
 }
 
-.btn-volt, .btn-amp{
-	display:inline-block;
-	height: 50px;
-	width:175px;
-	background-color: #3c3c41;
+.btn-sensor{
+	height: 30px;
+	width:40px;
+	background-color: #73d216;
+	text-align: center;
 	border-radius: 5px 5px;
-	border: 2px solid;
-	border-color: #2e3436;
-	margin-left: 30px;
-}
-.btn-volt:hover, .btn-amp:hover{
-	border: 2px solid;
-	border-color: #fff;
-	background-color: #8ae234;
+	border: 1px;
+	font-weight: bold;
 }
 
+.cont-botonera2{
+	position:absolute;
+  	border-radius: 10px 10px;
+  	background-color: #000;	
+	width: 800px;
+	height: 70px;
+	text-align: center;
+	margin-left:110px;
+	top:390px;
+}
 
-.ico-boton{
-    display: inline-block;
-    transform: scaleY(2) scaleX(2);
-    padding-right: 20px;
-    color: #fff;
+.label-observacion{
+	text-align: center;
 }
-.ico-boton:hover{
-	color: #000;
+.checks-iconos{
+	display: inline-block;
+    transform: scaleY(1.2) scaleX(1.2);
 }
-
-.ico-activo{
-	color: #000;
+.checks-iconos:hover{
+	cursor:pointer;
 }
-.btn-activo{
-	background-color: #8ae234;
-	border: 2px solid;
-	border-color: #fff;
+.check-icono{
+	padding-top:10px;
+	display: inline-block;
+    transform: scaleY(1.5) scaleX(1.5);
 }

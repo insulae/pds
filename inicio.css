@@ -1,23 +1,66 @@
 @CHARSET "UTF-8";
 /* ################# AVION ################# */
+
+/* vertical */
+@media all and (orientation:portrait) { /* portrait */
+	.cont-aviones-fondo{
+		display:inline-block;
+		position: left;
+	  	border-radius: 10px 10px;
+	  	background-color: #2a2c31;
+	  	margin-top:5px;
+	  	margin-left: 80px;
+	}
+	.cont-login-fondo{
+		display:inline-block;
+		position: left;
+	  	border-radius: 10px 10px;
+	  	border-radius: 10px 10px;
+	  	background-color: #2a2c31;
+	  	margin-top:5px;
+	  	margin-left: 100px;
+	}	
+}
+
+/* horizontal */
+@media all and (orientation:landscape) { /* landscape */
+	.cont-aviones-fondo{
+		position: absolute;
+	  	border-radius: 10px 10px;
+	  	background-color: #2a2c31;
+	  	top:10px;
+	  	margin-left: 5px;
+	}
+	.cont-login-fondo{
+		position: absolute;
+	  	border-radius: 10px 10px;
+	  	border-radius: 10px 10px;
+	  	background-color: #2a2c31;
+	  	top:10px;
+	  	right:10px;
+	  	margin-left: 5px;
+	}	
+}
+
 .modal-open {
   overflow-y: auto;
 }
-.cont-aviones-fondo{
+/* .cont-aviones-fondo{
 	position: absolute;
   	border-radius: 10px 10px;
   	background-color: #2a2c31;
   	top:10px;
   	margin-left: 5px;
-}
+} */
 .cont-aviones{
 	position:relative;
 	background-color: black;
-	margin: 10px;
+	left: 10px;
 	padding: 10px;
 	width:450px;
 	height: 380px;
 	overflow-y:auto;
+	bottom:10px;
 }
 
 
@@ -32,7 +75,7 @@
 
 .cont-logo{
 	position:relative;
-	top:350px;
+	top:32ou0px;
 	left:620px;
 	height: 50px;
 	width: 50px;
@@ -145,7 +188,7 @@
 }
 
 /* ################# LOGIN ################# */
-.cont-login-fondo{
+/* .cont-login-fondo{
 	position: absolute;
   	border-radius: 10px 10px;
   	border-radius: 10px 10px;
@@ -153,7 +196,7 @@
   	top:10px;
   	right:10px;
   	margin-left: 5px;
-}
+} */
 .cont-login{
 	position:relative;
 	background-color: black;

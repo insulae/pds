@@ -1,11 +1,42 @@
 @CHARSET "UTF-8";
 
-.cont-graf{
-	position: absolute;
-  	border-radius: 10px 10px;
-  	background-color: #2a2c31;
-  	top:10px;
-  	margin-left: 5px;
+/* vertical */
+@media all and (orientation:portrait) { /* portrait */
+	.cont-graf{
+		display:inline-block;
+		position: left;
+	  	border-radius: 10px 10px;
+	  	background-color: #2a2c31;
+	  	margin-top:10px;
+	}
+	
+	.cont-relojes-fondo{
+		display:inline-block;
+		position:left;
+		margin-top:10px;
+		border-radius: 10px 10px;
+	  	background-color: #2a2c31;
+	  	margin-left:150px;
+	}
+}
+
+/* horizontal */
+@media all and (orientation:landscape) { /* landscape */
+	.cont-graf{
+		position: absolute;
+	  	border-radius: 10px 10px;
+	  	background-color: #2a2c31;
+	  	top:10px;
+	  	margin-left: 5px;
+	}
+	
+	.cont-relojes-fondo{
+		position:absolute;
+		right:5px;
+		top:10px;
+		border-radius: 10px 10px;
+	  	background-color: #2a2c31;
+	}
 }
 
 .cont-botonera{
@@ -14,8 +45,8 @@
   	background-color: #000;	
 	padding: 1em 1em;
 	margin: 1em 10%;
-	width: 580px;
-	left:-50px;
+	width: 550px;
+	left:-35px;
 }
 
 .cartel{
@@ -28,21 +59,14 @@
 	background-color: #fce94f;
 	color: #000;
 }		
-.cont-relojes-fondo{
-	position:absolute;
-	right:5px;
-	top:10px;
-	border-radius: 10px 10px;
-  	background-color: #2a2c31;
-  	zoom:1;
-}
 
 .cont-relojes{
 	position:relative;
 	background-color: black;
 	margin: 10px;
 	width:300px;
-	height: 450px;
+	height: 440px;
+	zoom:1;
 }
 .relojes-renglon1{
 	float:left;
@@ -70,7 +94,7 @@
  
 .relojes-renglon3{
 	float:left;
-	margin: 10px;
+	margin: 1px;
 	margin-left: 30px;
 }
 
@@ -125,7 +149,7 @@
   position: absolute;
   left: 47%;
   top:0%;
-  transition: all 0.20s ease-in-out;
+  transition: all 0.20s linear;
   transform: rotate(-130deg);
 }
 
@@ -163,7 +187,7 @@
   position: absolute;
   left: 47%;
   top:0%;
-  transition: all 0.20s ease-in-out;
+  transition: all 0.20s linear; /*ease-in-out*/
   transform: rotate(-130deg);
 }
 
@@ -182,8 +206,17 @@
 	font-size: 2.5em;
 	color: #fff;
 	text-shadow: -1px 0 #5B1010, 0 1px #5B1010, 1px 0 #5B1010, 0 -1px #5B1010;	
-	left:35px;
+	left:25px;
 	bottom: 30px;
+}
+.voltaje-valor-dec{
+	position: absolute;
+	font-weight: bold;
+	font-size: 2em;
+	color: #fff;
+	text-shadow: -1px 0 #5B1010, 0 1px #5B1010, 1px 0 #5B1010, 0 -1px #5B1010;	
+	left:70px;
+	bottom:33px;
 }
 /* ###################################### BATERIA ############################ */
 

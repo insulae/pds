@@ -3,7 +3,7 @@
 <div class="cont-graf">
 	<div style="margin:10px;">
 		<!-- <canvas id="testGraf" width="580" height="300"></canvas> -->
-		<div id="testGraf" style="height: 300px; width:580px;"></div>
+		<div id="testGraf" style="height: 300px; width:570px;"></div>
 	</div>
 
 	<div class="cont-botonera">
@@ -37,6 +37,7 @@
   				</div>
 			  	<label id="voltaje-titulo" class="voltaje-titulo" tex="test_voltaje"></label>
 			  	<label id="voltaje-valor" class="voltaje-valor"></label>
+			  	<label id="voltaje-valor-dec" class="voltaje-valor-dec"></label>
 			</div>
 		</div>
 	<!-- RENGLON2 -->

@@ -3,6 +3,8 @@ var checksVoltaje = [];
 var checksAmperaje = [];
 var datosGrafica="";
 var temaGrafica='';
+var fdesde;
+var fhasta;
 
 function cargaJS(){
 	cargaIdioma();
@@ -42,6 +44,10 @@ function traerChecks(){
 		},
 	    success:  function (datos) {
 	    	
+	    	//seteo las fechas para mostrar en grafica
+	    	fdesde=$('#checks-fdesde').val();
+	    	fhasta=$('#checks-fhasta').val();
+	    	
 	    	//limpio tabla y arrays
 	    	$('#checks-tabla tbody').remove();	
 	    	checksVoltaje = [];
@@ -63,8 +69,8 @@ function traerChecks(){
 
 	    		$('#checks-tabla').append(fila);
 	    		//construyo la data para la grafica
-	    			checksVoltaje.push({label:"BAT: "+sensores.bat + "\nTEM: "+sensores.tem , x: new Date(check[i].fyh), y: sensores.vol});
-	    			checksAmperaje.push({label:"BAT: "+sensores.bat + "\nTEM: "+sensores.tem , x: new Date(check[i].fyh), y: sensores.amp});
+	    			checksVoltaje.push({x: new Date(check[i].fyh), y: sensores.vol});
+	    			checksAmperaje.push({x: new Date(check[i].fyh), y: sensores.amp});
 		    }
 	    }	
 	});

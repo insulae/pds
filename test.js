@@ -75,8 +75,8 @@ testCometa.addEventListener('message', function(e) {
 		amperaje = dataCometa.sensores.amp;
 		
 		//controlo que no venga basura
-		if( (voltaje != 0) || (amperaje != -1334) ){
-			mostrarVoltaje(parseInt(voltaje));
+		if( (voltaje != 0) || (amperaje != -1344) ){
+			mostrarVoltaje(voltaje);
 			mostrarAmperaje(parseInt(amperaje));
 			
 			// actualizo grafica
@@ -113,7 +113,7 @@ testCometa.addEventListener('message', function(e) {
 		
 		//##### grabacion de REC si esta activo
 		if ($("#btnRec").hasClass("RecActivo")) {
-			if( (parseInt(voltaje) != 0) || (parseInt(amperaje) != -1334) ){
+			if( (parseInt(voltaje) != 0) || (parseInt(amperaje) != -1000) ){
 				regRec.push(dataCometa);	
 			}
 			
@@ -147,7 +147,7 @@ testCometa.addEventListener('message', function(e) {
 		if(crankActivo == 1){
 			//console.log("grabo crank: "+ cadena);
 			if(graboCrank){
-				if( (voltaje != 0) || (amperaje != -1334) ){
+				if( (voltaje != 0) || (amperaje != -1000) ){
 					regCrank.push(cadena);	
 				}
 			}else{
@@ -367,33 +367,47 @@ function guardarCheck(cadena, esFreeze) {
 
 /* ###################### VOLTAJE GAUGE ################## */
 function mostrarVoltaje(dato){
+	
+	//armado de decimal
+	console.log(dato - parseInt(dato));
+	var decimal = parseInt(Math.round((dato - parseInt(dato))*10));
+	decimal = "."+decimal;
+	dato = parseInt(dato);
+	
+	//seteo color
 	if( (dato >= 0 && dato < 20) || (dato >= 30)){
 		$("#voltaje-valor").css("color", "red");
+		$("#voltaje-valor-dec").css("color", "red");
 	}
-	else if( (dato >= 20 && dato < 24) || (dato >= 29 && dato < 30)){
+	else if( (dato >= 20 && dato <= 24) || (dato >= 29 && dato < 30)){
 		$("#voltaje-valor").css("color", "yellow");
+		$("#voltaje-valor-dec").css("color", "yellow");
 	}
-	else if(dato >= 24 && dato <=29){
+	else if(dato > 24 && dato <=29){
 		$("#voltaje-valor").css("color", "#00ff00");
+		$("#voltaje-valor-dec").css("color", "#00ff00");
 	}
 	$("#voltaje-valor").text(dato);
+	$("#voltaje-valor-dec").text(decimal);
 	
 	//controlo vacio y overflow
 	if(dato <= 0){
-		$("#voltaje-valor").css("left", "47px");
+		$("#voltaje-valor").css("left", "37px"); //int37
 		$("#voltaje-valor").text("--");
 		dato = 0;
 	//overflow
 	}else if(dato > 0 && dato < 10){
-		$("#voltaje-valor").css("left", "40px");
+		$("#voltaje-valor").css("left", "30px"); //int30
 		$("#voltaje-valor").text("0"+dato);
+		$("#voltaje-valor-dec").text(decimal);
 	}else if(dato > 40){
+		$("#voltaje-valor").css("left", "30px"); //int30
 		$("#voltaje-valor").text("O.F.");
-		$("#voltaje-valor").css("left", "30px");
+		$("#voltaje-valor-dec").text("");
 		dato = 40;
 	//reseteo a inicial
 	}else{
-		$("#voltaje-valor").css("left", "35px");
+		$("#voltaje-valor").css("left", "25px"); //int35
 	}
 	
 	//calculo el grado a mover
@@ -409,7 +423,7 @@ function mostrarVoltaje(dato){
 /* ###################### AMPERAJE GAUGE ################## */
 function mostrarAmperaje(dato){
 	//console.log(dato);
-	if(dato > 0 && dato < 600){
+	if(dato >= 0 && dato < 600){
 		$("#corriente-valor").css("color", "#00ff00");
 	}
 	else if(dato >= 600 && dato < 800){
@@ -424,8 +438,8 @@ function mostrarAmperaje(dato){
 	//controlo vacio y overflow
 	if(dato <= 0){
 		dato = 0;
-		$("#corriente-valor").css("left", "47px");
-		$("#corriente-valor").text("--");
+		$("#corriente-valor").css("left", "50px");
+		$("#corriente-valor").text("0");
 	//overflow
 	}else if(dato > 1500){
 		$("#corriente-valor").text("O.F.");

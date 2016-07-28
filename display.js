@@ -31,6 +31,7 @@ testCometa.addEventListener('message', function(e) {
 		mostrarVoltaje(parseInt(dataCometa.sensores.vol));
 		var amperaje = dataCometa.sensores.amp;
 		mostrarAmperaje(parseInt(amperaje));
+		mostrarBateria(dataCometa.sensores.bat);
 			
 		// ########### CONTROL DE ACTIVACION DE CRANK Y CREACION DE DATOS DEL CRANK ##########
 		if(parseInt(amperaje-ampAnt)>crankDif && ampAnt > 0 && crankActivo == 0){
@@ -146,8 +147,17 @@ function mostrarAmperaje(dato){
 	$("#corriente-aguja").css("transform", "rotate("+grado+"deg)");
 }
 
+/* ###################### BATERIA GAUGE ################## */
+function mostrarBateria(dato){
+	if(dato == 100){
+		$("#bateria_graf").attr("src", "images/bateria_display_6.png");
+	}else{
+		$("#bateria_graf").attr("src", "images/bateria_display_5.png");
+	}
+}
+
 function seteoCartel(){
-	if(cadena == "errorCOM"){
+/*	if(cadena == "errorCOM"){
 		$('#cartel').addClass("cartel-error");
 		$('#cartel').text("ERROR COM");
 	}else{
@@ -172,6 +182,6 @@ function seteoCartel(){
 			$('#cartel').text(tex_cartel);
 			$('#cartel').removeClass("cartel-rec");		
 		}
-	}
+	}*/
 }
 

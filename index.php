@@ -4,7 +4,9 @@
 <head>
 	<meta charset="utf-8">
     <title>PDS</title>
-   <!--  <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+   <!--  <meta name="viewport" content="width=device-width, initial-scale=1">-->
+   <meta name="viewport" content="width=device-width" />
+   
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" type="text/css" href="engine/bootstrap.css" media="screen">
     <link rel="stylesheet" type="text/css" href="engine/jquery-confirm.css" media="screen">
@@ -16,7 +18,6 @@
     <script src='engine/jquery-confirm.js'></script>
     <script src="engine/bootstrap.min.js"></script>
 	<script src='engine/GrafPan.js'></script>
-	<script src="engine/resoluciones.js"></script>
     
 </head>   
   

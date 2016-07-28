@@ -33,28 +33,102 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
-/* CSS para index y estilos comunes a todas las paginas */
+/* vertical */
+@media all and (orientation:portrait) { /* portrait */
+	.contenedor{
+		width: 600px; 
+		height:940px;
+		
+		/* transform: scale(1.1); */
+		
+	}
+	.pagina{
+		display:inline-block;
+		position:absolute;
+		width: 600px; 
+		height: 940px;
+ 		-webkit-transform-origin: top left;
+		/* transform: scale(1.1); */
+		
+	}	
+	.menu-tabs{
+ 		-webkit-transform-origin: top left;
+		/* transform: scale(1.1); */
+				
+	}	
+}
+
+/* horizontal */
+@media all and (orientation:landscape) { /* landscape */
+	.contenedor{
+		width: 940px; 
+		height: 475px;
+		margin:0 auto;
+		-webkit-transform-origin: top;
+	}
+	.pagina{
+		position:relative;
+		/*background-image: url(images/fondo.png);*/
+		width: 940px; 
+		height: 475px;
+		-webkit-transform-origin: top;
+	}	
+	.menu-tabs{
+		margin-bottom:10px;
+		-webkit-transform-origin: top;
+	}	
+}
+
+/* OJO LA RESOLUCION VA LIGADA EN LOS ANDROID? APARENTEMENTE CON LA LINEA 
+<meta name="viewport" content="width=device-width" />
+QUE ESTA EN INDEX.PHP
+*/
+/* ################################ RESOLUCION WIN10 ALTA 1366 X 768 BANGHO, NOTEBOOK ############################3*/
+
+@media screen and (min-height: 1000px) and (orientation:portrait){
+	.pagina{
+		transform: scale(1.2);
+		left:15px;
+		
+	}	
+	.menu-tabs{
+		transform: scale(1.2);
+		left:15px;
+		margin-bottom:15px;
+	}	
+}
+
+@media screen and (min-width: 1365px) and (orientation:landscape){
+	.pagina{
+		-webkit-transform-origin: top;
+		transform: scale(1.24);
+		
+	}	
+	.menu-tabs{
+		-webkit-transform-origin: top;
+		transform: scale(1.24);			
+		
+	}	
+}
+
+
+/* ################################ FIN FIN FIN RESOLUCION FIN FIN FIN ############################3*/
+.pagina{
+	background-image: url(images/fondo.png);	
+	margin:0 auto;
+	border-style: solid;
+	border-color: #2a2c31;	
+}
+
+
+/* 
 .contenedor{
 	width: 950px; 
 	height: 570px;
 	margin:0 auto;
 }
-.pagina{
-	position:relative;
-	background-image: url(images/fondo.png);
-	width: 950px; 
-	height: 550px;
-	margin:0 auto;
-	border-style: solid;
-	border-color: #2a2c31;	
-}
-/* ############# RESOLUCIONES ################### */
-.banghoAv2{ 
-	/*-webkit-transform: perspective(0) scale(1.16);*/        
-	-webkit-transform-origin: top left;
-	transform: scale(1.24);
-	left:-110px;
-}
+*/
+
 /* ############# TABLAS GLOBALES ################### */
 
 .fila1{
@@ -68,11 +142,7 @@
 
 
 /* ############# TABS ################### */
-.tabs{
-position:relative;
-margin: 0 auto;	
-width: 950px;
-}
+
 .menu-tabs{
 	padding-left:2px;
 	position:relative;
@@ -83,6 +153,7 @@ width: 950px;
 	display: inline-block;
     transform: scaleY(2) scaleX(2);
 	margin-left:30px;
+	margin-top:10px;
 	color:#fff;
 	cursor: pointer;    
 }

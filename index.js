@@ -1,11 +1,5 @@
 //DECLARACION DE VARIABLES "GLOBALES"
 function cargaJS(){
-	//no funciona esto en index
-	direccion=window.location.href;
-	dispositivo = direccion.search("bangho");
-	if(dispositivo > 0){
-		resolucion('banghoAv2');	
-	}
 	
 }
 function rompoJS(){
