@@ -1,5 +1,6 @@
 var regRec = [];
 var regCrank = [];
+var cadenaAmp = []; //para salvar las 3 cadenas que me detectaron el crank
 var cadena = "";
 var temultimo ="";
 var humultimo ="";
@@ -9,6 +10,7 @@ var esFreeze ="";
 var banErrorCOM = 0;
 var amperaje ="";
 var voltaje ="";
+var conCiclos=10;
 
 //grafica
 var grafica;
@@ -58,7 +60,7 @@ testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
 	cadena = dataCometa;
 	//console.log(cadena);
-	console.log(e.data); //debug de lo que viene
+	//console.log(e.data); //debug de lo que viene
 	//return true;
 	//console.log(batultimo);
 	
@@ -75,7 +77,7 @@ testCometa.addEventListener('message', function(e) {
 		amperaje = dataCometa.sensores.amp;
 		
 		//controlo que no venga basura
-		if( (voltaje != 0) || (amperaje != -1344) ){
+		if( (voltaje != 0) || (amperaje > -1000) ){
 			mostrarVoltaje(voltaje);
 			mostrarAmperaje(parseInt(amperaje));
 			
@@ -113,14 +115,25 @@ testCometa.addEventListener('message', function(e) {
 		
 		//##### grabacion de REC si esta activo
 		if ($("#btnRec").hasClass("RecActivo")) {
-			if( (parseInt(voltaje) != 0) || (parseInt(amperaje) != -1000) ){
+			if( (parseInt(voltaje) != 0) || (parseInt(amperaje) > -1000) ){
 				regRec.push(dataCometa);	
+				console.log("push"); //insulae
 			}
 			
-			$('#btnRec').text(parseInt($('#btnRec').text())-1);
-			//setTimeout(function(){graboRec = false},duracionRec);
+			
+			if(conCiclos == 10){
+				relojMostrar = reloj(($('#btnRec').attr("duracion")/10)-1);
+				console.log($('#btnRec').attr("duracion"));
+				$('#btnRec').text(relojMostrar);
+				$('#btnRec').attr("duracion", $('#btnRec').attr("duracion") - 10);
+				conCiclos = 1;
+			}
+			else{
+				conCiclos++;
+			}
+			
 			//si el boton llego a 0 doy por finalizada la grabacion
-			if(parseInt($('#btnRec').text()) == 0){
+			if($('#btnRec').attr("duracion") == 0){
 				terminoGrabacion();
 			}
 		}
@@ -129,6 +142,12 @@ testCometa.addEventListener('message', function(e) {
 		
 		//controlo diferencial 3 veces para evitar ruidos y recien disparo crank
 		if(parseInt(amperaje-ampAnt)>crankDif && ampAnt > 0){
+			
+			//salvo los 3 primeros cranks
+			if(contAmp<3){
+				cadenaAmp[contAmp]=cadena;
+			}
+			//cuento el diferencial
 			contAmp++;
 		}
 		if(contAmp == 0){
@@ -138,6 +157,12 @@ testCometa.addEventListener('message', function(e) {
 		if(contAmp > 2 && crankActivo == 0 && guardandoCrank == 0){
 				//console.log("crank");
 				crankActivo = 1;		//seteo que hay crank
+				
+				//se activo crank guardo las 3 primeras cadenas
+				regCrank.push(cadenaAmp[0]);
+				regCrank.push(cadenaAmp[1]);
+				regCrank.push(cadenaAmp[2]);
+
 				graboCrank = true;		//seteo que grabo
 				seteoCartel();
 				setTimeout(function(){graboCrank = false},duracionCrank);
@@ -147,7 +172,7 @@ testCometa.addEventListener('message', function(e) {
 		if(crankActivo == 1){
 			//console.log("grabo crank: "+ cadena);
 			if(graboCrank){
-				if( (voltaje != 0) || (amperaje != -1000) ){
+				if( (voltaje != 0) || (amperaje > -1000) ){
 					regCrank.push(cadena);	
 				}
 			}else{
@@ -184,6 +209,22 @@ testCometa.addEventListener('message', function(e) {
 	}	
 }, false);
 
+
+function reloj(TotalSegundos) {
+	var relojHora = Math.floor( TotalSegundos / 3600 );  
+	var relojMinutos = Math.floor( (TotalSegundos % 3600) / 60 );
+	var relojSegundos = TotalSegundos % 60;
+	 
+	//Anteponiendo un 0 a los minutos si son menos de 10 
+	relojMinutos = relojMinutos < 10 ? '0' + relojMinutos : relojMinutos;
+	 
+	//Anteponiendo un 0 a los segundos si son menos de 10 
+	relojSegundos = relojSegundos < 10 ? '0' + relojSegundos : relojSegundos;
+	 
+	//var relojFinal = relojHora + ":" + relojMinutos + ":" + relojSegundos;  // 2:41:30
+	var relojFinal = relojMinutos + ":" + relojSegundos;  // 2:41:30
+	return relojFinal;
+}
 
 
 /* #################################################### CRANK #################################################### */
@@ -250,12 +291,13 @@ $("#btnRec").click(function () {
 		$("#btnRec").removeClass("RecActivo");
 		//grabacion frenada por usuario
 		terminoGrabacion();
+		console.log("botonCanelo"); //insulae
 		$('#btnRec').text("Rec");
 		recActivo = 0;
 		seteoCartel();
 	} else {
 		$("#btnRec").addClass("RecActivo");
-		$('#btnRec').text(duracionRec); //seteo tiempo 240 1min
+		$('#btnRec').attr("duracion",duracionRec);
 		recActivo = 1;
 		seteoCartel();
 	}
@@ -280,7 +322,9 @@ $('#descartar-graba').click(function(){
 //accion de guardar todo tipo de test (cierro modal)
 $('#guardar-graba').click(function(){
 	guardarGrabacion(0,regRec); //0 indica que no es crank
+	console.log(regRec); //insulae
 	$('#modalAltaGraba').modal('hide');
+	
 });
 
 //guardo grabacion en base
@@ -293,6 +337,7 @@ function guardarGrabacion(tipo,registros) {
 		motor_apu = $('#motor-crank').val();
 	}
 	//console.log(JSON.stringify(registros));
+	var alertGuarda = $.alert("Guardando datos, por favor espere");
 	$.ajax({		
 		url:   'test_data.php?accion=guardarGrabacion'
 		,type:  'post'
@@ -302,6 +347,7 @@ function guardarGrabacion(tipo,registros) {
 			,observacion: observacion
 			,crank:	tipo //0 = grabacion, 1 = crank
 			,motor_apu: motor_apu
+			
 		},
 		success: function (datos) {
 			console.log("Se guardo Ok: " + datos); //para debug de como va el arreglo
@@ -310,6 +356,7 @@ function guardarGrabacion(tipo,registros) {
 			}else if(tipo == 1){
 				regCrank = [];	
 			}
+			alertGuarda.close();
 		}
 	});
 }
@@ -369,7 +416,6 @@ function guardarCheck(cadena, esFreeze) {
 function mostrarVoltaje(dato){
 	
 	//armado de decimal
-	console.log(dato - parseInt(dato));
 	var decimal = parseInt(Math.round((dato - parseInt(dato))*10));
 	decimal = "."+decimal;
 	dato = parseInt(dato);

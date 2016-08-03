@@ -3,10 +3,11 @@
 <div class="cont-cranks-fondo">
 	<div id="graf-cranks" class="graf-cranks"></div>
 
-	<div class="crank-icono">
-		<button id='btn-sensor' class='btn-sensor'>Volt</button>
-	</div>	
-			
+	<div class="cont-botonera1">
+		<div class="crank-icono">
+			<button id='btn-sensor' class='btn-sensor'>Volt</button>
+		</div>
+	</div>
 	<div class="cont-botonera2">
 		<label id="crank-observacion" class="label-observacion">Seleccióne crank para mostrar Observación</label><br>
 	<div id="cranks-iconos" class="cranks-iconos"></div>			

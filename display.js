@@ -26,12 +26,15 @@ testCometa.addEventListener('message', function(e) {
 	if(cadena != "errorCOM"){
 		if(banErrorCOM == 1){
 			banErrorCOM = 0
-			seteoCartel();
+			seteoCartel();	
 		}
-		mostrarVoltaje(parseInt(dataCometa.sensores.vol));
-		var amperaje = dataCometa.sensores.amp;
-		mostrarAmperaje(parseInt(amperaje));
-		mostrarBateria(dataCometa.sensores.bat);
+		
+		if( (voltaje != 0) || (amperaje > -1000) ){
+			mostrarVoltaje(parseInt(dataCometa.sensores.vol));
+			var amperaje = dataCometa.sensores.amp;
+			mostrarAmperaje(parseInt(amperaje));
+			mostrarBateria(dataCometa.sensores.bat);			
+		}
 			
 		// ########### CONTROL DE ACTIVACION DE CRANK Y CREACION DE DATOS DEL CRANK ##########
 		if(parseInt(amperaje-ampAnt)>crankDif && ampAnt > 0 && crankActivo == 0){
@@ -62,10 +65,10 @@ function mostrarVoltaje(dato){
 	if( (dato >= 0 && dato < 20) || (dato >= 30)){
 		$("#voltaje-valor").css("color", "red");
 	}
-	else if( (dato >= 20 && dato < 24) || (dato >= 29 && dato < 30)){
+	else if( (dato >= 20 && dato <= 24) || (dato >= 29 && dato < 30)){
 		$("#voltaje-valor").css("color", "yellow");
 	}
-	else if(dato >= 24 && dato <=29){
+	else if(dato > 24 && dato <=29){
 		$("#voltaje-valor").css("color", "#00ff00");
 	}
 	$("#voltaje-valor").text(dato);
@@ -85,7 +88,7 @@ function mostrarVoltaje(dato){
 		dato = 40;
 	//reseteo a inicial
 	}else{
-		$("#voltaje-valor").css("left", "40px");
+		$("#voltaje-valor").css("left", "45px");
 	}
 
 	//calculo el grado a mover
@@ -116,8 +119,8 @@ function mostrarAmperaje(dato){
 	//controlo vacio y overflow
 	if(dato <= 0){
 		dato = 0;
-		$("#corriente-valor").css("left", "47px");
-		$("#corriente-valor").text("--");
+		$("#corriente-valor").css("left", "45px");
+		$("#corriente-valor").text("0");
 	//overflow
 	}else if(dato > 1500){
 		$("#corriente-valor").text("O.F.");
@@ -151,8 +154,18 @@ function mostrarAmperaje(dato){
 function mostrarBateria(dato){
 	if(dato == 100){
 		$("#bateria_graf").attr("src", "images/bateria_display_6.png");
-	}else{
+	}else if(dato > 80){
 		$("#bateria_graf").attr("src", "images/bateria_display_5.png");
+	}else if(dato > 60){
+		$("#bateria_graf").attr("src", "images/bateria_display_4.png");
+	}else if(dato > 40){
+		$("#bateria_graf").attr("src", "images/bateria_display_3.png");
+	}else if(dato > 20){
+		$("#bateria_graf").attr("src", "images/bateria_display_2.png");
+	}else if(dato > 5){
+		$("#bateria_graf").attr("src", "images/bateria_display_1.png");		
+	}else if(dato > 0){
+		$("#bateria_graf").attr("src", "images/bateria_display_0.png");	
 	}
 }
 

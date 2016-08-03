@@ -33,7 +33,7 @@ while (true) {
 			
 			// CALCULO VOLTAJE
 			$voltaje = (hexdec(substr($cadena,6,4)))*0.0333377; //voltaje es *0.03...
-			$sensores[$sensor1] = round($voltaje,1);
+			$sensores[$sensor1] = round($voltaje,3);
 
 			// CALCULO AMPERAJE
  			$sensores[$sensor2] = ((hexdec(substr($cadena,10,4)))*2.605)-1344; //mantener aqui ultimo valor

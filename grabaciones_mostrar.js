@@ -54,7 +54,6 @@ function dibujoGrafica(){
 		},
 		animationEnabled: false,
 		axisX:{
-			labelAngle: 30,
 			valueFormatString: "mm:ss",
 		},
 		axisY :{

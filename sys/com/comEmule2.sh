@@ -17,5 +17,5 @@ rand6=$(( ( RANDOM % 7 )  + 1 ))
 	echo "F0A5030"$rand1"1102"$rand2"10002BB"
 #	echo $rand1 > /dev/ttyUSB0
 #	echo $rand1
-	sleep 0.05
+	sleep 1.05
 done

@@ -20,7 +20,7 @@ var loginAdmin='';
 
 //test
 var testCometa;
-var duracionRec = 20000; //en milisegundos
+var duracionRec = 12000; // 10u = 1seg
 var duracionCrank = 10000; //en milisegundos
 
 //grabaciones
