@@ -53,5 +53,17 @@ switch(@$_REQUEST['accion']){
 			echo mysqli_errno($db);
 		}
 		break;
+		
+//HACER BACKUP
+case 'backup':
+	$respuesta = shell_exec('sys/sh/backup.sh');
+	echo $respuesta;
+	break;
+	
+//ULTIMO BACKUP
+case 'ultimo_backup':
+	$respuesta = shell_exec('sys/sh/backup.sh');
+	echo $respuesta;
+	break;
 }
 ?>

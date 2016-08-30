@@ -50,4 +50,11 @@
       </div>
     </div>
   </div>
+  
+  	<div class="cont-respaldo">
+		<button id="btn-backup" type="button" class="btn-info btn-backup"><label tex="conf_backup"></label></button>
+		<br>
+		<label tex="ultimo_backup"></label>: <div id="archivo_backup"></div>
+	</div>
+
 <!--######################### MODAL AGREGAR usuario ########################## -->

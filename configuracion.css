@@ -5,7 +5,7 @@
 	position: absolute;
   	border-radius: 10px 10px;
   	background-color: #2a2c31;
-  	top:60px;
+  	top:10px;
   	margin-left: 5px;
 }
 .cont-usuarios{
@@ -107,4 +107,24 @@
 .icon-acciones{
 	display: inline-block;
     transform: scaleY(1.4) scaleX(1.4);
+}
+
+/* ################# RESPALDO ################# */
+.cont-respaldo{
+	position:absolute;
+  	border-radius: 10px 10px;
+  	background-color: #2a2c31;
+  	top:10px;
+	right: 10px;
+	height: 80px;
+	width:340px;
+	padding: 10px;
+}
+.btn-backup{
+	width:150px; 
+	height: 35px; 
+	margin-bottom: 10px;
+	border-radius: 5px 5px 5px 5px;
+	border:0px;
+	
 }

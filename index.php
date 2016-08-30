@@ -12,12 +12,16 @@
     <link rel="stylesheet" type="text/css" href="engine/jquery-confirm.css" media="screen">
     <link rel="stylesheet" type="text/css" href="engine/glyph/flaticon.css">
     <link rel="stylesheet" type="text/css" href="index.css">
+	<link href="engine/datepicker/bootstrap-datepicker3.min.css" rel="stylesheet">
 
     <script src="engine/jquery.min.js"></script>
     <script src='engine/idiomas.js'></script>
     <script src='engine/jquery-confirm.js'></script>
     <script src="engine/bootstrap.min.js"></script>
 	<script src='engine/GrafPan.js'></script>
+	<script src="engine/datepicker/bootstrap-datepicker.min.js"></script>
+	<script src="engine/datepicker/bootstrap-datepicker-lang.js"></script>    
+	
     
 </head>   
   

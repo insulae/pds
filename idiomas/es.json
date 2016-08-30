@@ -58,6 +58,10 @@
 "rec_observacion": "Observación",
 "rec_accion": "Action",
 
+"__" : "####################### CONFIGURACION ##########################",
+"conf_backup": "Hacer Respaldo",
+"ultimo_backup": "Ultimo respaldo",
+
 "__" : "####################### GENERAL ##########################",
 "desde": "Desde",
 "hasta": "Hasta",

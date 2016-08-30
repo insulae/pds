@@ -109,13 +109,13 @@ function dibujoGraficaSola(){
 	{
 		theme: 'voltaje',
 		width:910,
+		height:365,
 		zoomEnabled: true,
 		title:{
 			text: "" 
 		},
 		animationEnabled: false,
 		axisX:{
-			labelAngle: 30,
 			 valueFormatString: "mm:ss"
 		},
 		axisY :{

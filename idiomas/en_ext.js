@@ -33,6 +33,9 @@ var tex_alert_rec_titulo = "Delete Rec";
 var tex_alert_rec_contenido = "You are 'a punto de eliminar la grabación Seleccionada'";
 var tex_alert_rec_seleccion = 'You must pick a record ';
 
+//configuracion
+var tex_haciendo_backup = "Making Backup, please wait";
+
 //jquery-confirm (alertas)
 var tex_alert_confirmar = "Confirm";
 

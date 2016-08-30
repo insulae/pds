@@ -155,7 +155,8 @@ QUE ESTA EN INDEX.PHP
 	margin-left:30px;
 	margin-top:10px;
 	color:#fff;
-	cursor: pointer;    
+	cursor: pointer;
+	visibility:hidden;    
 }
 .icon-conf:hover{
 	color:#35ff35;

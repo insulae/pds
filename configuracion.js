@@ -1,6 +1,8 @@
 function cargaJS(){
 	/* carga tabla  */
 	traerUsuarios();
+	cargaIdioma();
+	ultimoBackup();
 }
 
 
@@ -42,8 +44,37 @@ alert("ok");
 });
 
 
+/* CREAR BACKUP */
+$('#btn-backup').click(function(){
+	var alertGuarda = $.alert({
+			title: tex_haciendo_backup,
+			content:false,
+			confirmButton: false, 
+			closeIcon: false,
+		});
+	$.ajax({		
+		url:   'configuracion_data.php?accion=backup'
+		,type:  'post'
+		,success: function (archivo) {
+			console.log("Se creo archivo: " + archivo);
+			$(location).attr('href','http://localhost/pds/sys/backups/'+archivo);
+			alertGuarda.close();
+		}
+	});
+});
 
-/*###################### funcionses a base ######################*/
+function ultimoBackup(){
+	$.ajax({		
+		url:   'configuracion_data.php?accion=ultimo_backup'
+		,type:  'post'
+		,success: function (archivo) {
+			$(archivo_backup).replaceWith('<a href="sys/backups/'+archivo+'">'+archivo+'</a>');
+			//alertGuarda.close();
+		}
+	});	
+}
+
+/*###################### funciones a base ######################*/
 
 $('#btn-buscar').click(function(){
 	traerUsuarios();

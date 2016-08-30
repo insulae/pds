@@ -1,9 +1,5 @@
 <link rel="stylesheet" type="text/css" href="grabaciones.css">
 
-<link href="engine/datepicker/bootstrap-datepicker3.min.css" rel="stylesheet">
-<script src="engine/datepicker/bootstrap-datepicker.min.js"></script>
-<script src="engine/datepicker/bootstrap-datepicker-lang.js"></script>
-
 <div class="cont-graba-fondo">
 	<div class="cont-graba-botonera">
 		<div>

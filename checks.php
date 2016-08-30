@@ -1,9 +1,5 @@
 <link rel="stylesheet" type="text/css" href="checks.css">
 
-<link href="engine/datepicker/bootstrap-datepicker3.min.css" rel="stylesheet">
-<script src="engine/datepicker/bootstrap-datepicker.min.js"></script>
-<script src="engine/datepicker/bootstrap-datepicker-lang.js"></script>
-
 <div class="cont-checks-fondo">
 	<div class="cont-checks-botonera">
 		<div>

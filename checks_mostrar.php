@@ -12,4 +12,4 @@
 			<label id="check-observacion" class="label-observacion"></label><br>
 		<div id="checks-iconos" class="checks-iconos"></div>
 </div>	
-<script src="checks_mostrar.js"></script
+<script src="checks_mostrar.js"></script>

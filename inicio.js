@@ -67,6 +67,8 @@ function loginChequeo(){
 					//muestro
 					$('#login-label').text(tex_bienvenido+' '+datos.usuario);
 					$('#btn-deslogin').css('visibility','visible');
+					$('#configuracion').css('visibility','visible');
+					
 					loginEstado = 1;
 					if(parseInt(datos.tipo)== 1){
 						loginAdmin = 1;
@@ -83,6 +85,7 @@ function loginChequeo(){
 				$('#btn-login').css('visibility','visible');
 				$('#login-usuario').css('visibility','visible');
 				$('#login-clave').css('visibility','visible');
+				$('#configuracion').css('visibility','hidden');
 				loginEstado = 0;				
 	    	}
 	    }	
@@ -96,10 +99,12 @@ $('#btn-deslogin').click(function(){
 	    type:  'post',
 	    success:  function () {
 			$('#login-label').text(tex_admin_login);
+			$('#configuracion').css('visibility','hidden');
 			$('#btn-deslogin').css('visibility','hidden');
 			$('#btn-login').css('visibility','visible');
 			$('#login-usuario').css('visibility','visible');
 			$('#login-clave').css('visibility','visible');
+			
 			
 			//cambio tabs
 			$('#tab-checks').addClass("tabno");

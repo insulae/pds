@@ -33,8 +33,10 @@ var tex_alert_rec_titulo = "Eliminar Grabación";
 var tex_alert_rec_contenido = "Esta a punto de eliminar la grabación Seleccionada'";
 var tex_alert_rec_seleccion = 'Debe seleccionar una grabación';
 
+//configuracion
+var tex_haciendo_backup = "Haciendo Respaldo, por favor espere";
+
 //jquery-confirm (alertas)
-var tex_alert_confirmar = "Confirmar";
+var tex_alert_confirmar = "Confirm";
 
-var tex_alert_cancelar = "Cancelar";
-
+var tex_alert_cancelar = "Cancel";
