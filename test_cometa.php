@@ -12,34 +12,43 @@ if($_REQUEST[display] == true){
 	$refresco = 100000;
 }
 
-$errorCom = 0;
+$error = 0;
 while (true) {
-	
-	//$cadena = com_virtual();
-	$cadena = exec('head -n 1 pdsDATA');
-	//$cadena = 'ERROR'; // test de error
-	
-	//controlo checksum
-	$errorXor = getXor($cadena);
-	
-	
-	if($cadena != "errorCOM" || $cadena == "" || $errorXor = 1){
-		$registro = new stdClass(); 
 
+	//$cadena = com_virtual();
+	$cadena = trim(exec('head -n 1 pdsDATA'));
+	//$cadena = 'ERRORADA'; // test de error
+
+
+	if($cadena != "ERRORADA" && $cadena != ""){
+		list($tiempo, $sensor, $sensorxx, $voltaje, $amperaje) = split(',', $cadena);
+		$registro = new stdClass();
 
 			//GENERO SENSORES
 			$sensores = Array();
+
+
 			
 			
-			// CALCULO VOLTAJE
-			$voltaje = (hexdec(substr($cadena,6,4)))*0.0333377; //voltaje es *0.03...
+/*************************************** CALCULO VOLTAJE ********************************************/
+			$voltaje = $voltaje-26470;
 			$sensores[$sensor1] = round($voltaje,3);
+/*************************************** CALCULO VOLTAJE ********************************************/
+			
+			
+			
+/*************************************** CALCULO AMPERAJE ********************************************/
+ 			$amperaje = $amperaje-26470;
+			$sensores[$sensor2] = round($amperaje,1);
+/*************************************** CALCULO AMPERAJE ********************************************/
 
-			// CALCULO AMPERAJE
- 			$sensores[$sensor2] = ((hexdec(substr($cadena,10,4)))*2.605)-1344; //mantener aqui ultimo valor
-			$sensores[$sensor2] = round($sensores[$sensor2],1);
-
-			// CALCULO BATERIA
+			
+			
+			
+			
+			
+			
+/*************************************** CALCULO BATERIA ********************************************/
 			if($voltaje >= 25.4){
  				$bateria = 100;
  			}else if($voltaje < 20){
@@ -49,11 +58,7 @@ while (true) {
 	 			$bateria = round($bateria,1);
  			}
 			$sensores[$sensor3] = $bateria; 	
- 			//$sensores[$sensor3] = hexdec(substr($cadena,14,4));
-			//$sensores[$sensor4] = hexdec(substr($cadena,20,4));
-			//$sensores[$sensor5] = hexdec(substr($cadena,24,4));
-			//$sensores[$sensor6] = hexdec(substr($cadena,28,4));
- 		
+/*************************************** CALCULO BATERIA ********************************************/ 		
 
 			//genero y cargo fecha
 			$d = new DateTime(date('Y-m-d H:i:s'));
@@ -67,15 +72,15 @@ while (true) {
 			//cargo sensores
 			$registro->sensores = $sensores;
 
-			//echo "data: " . $cadena . "\n\n"; //debug
+			echo "data: " . $cadena . "\n\n"; //debug
 			echo "data: " . json_encode($registro). "\n\n";	//produccion
 			
 	}else{
-		if($errorCom > 3){
-			echo "data: " . json_encode("errorCOM"). "\n\n";	//produccio
-			$errorCom == 0;
+		if($error > 3){
+			echo "data: " . json_encode("errorLectura"). "\n\n";	//produccio
+			$error == 0;
 		}else{
-			$errorCom++;
+			$error++;
 		}
 	}
 	
@@ -84,22 +89,6 @@ while (true) {
 	usleep($refresco);
 	//usleep(100000);	
 	//usleep(1000000);
-}
-//xor
-function getXOR($cadena) {
-	$xorLocal = 0;
-	$datos = substr($cadena,17,-2);
-	$xorArduino = substr($cadena,17,2);
-	
-	for ($i=0; $i<strlen($datos); $i++) {
-		$xorLocal = $xorLocal ^ $datos[$i];
-	}
-	
-	if($xorLocal != $xorArduino){
-		return 1;
-	}else{
-		return 0;
-	}
 }
 	
 
@@ -135,4 +124,5 @@ presion
 	}
 ]
 */
+
 ?>

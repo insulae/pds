@@ -55,7 +55,7 @@
 //TODO CONFIG /bin/sh /var/www/html/pds/sys/APup.sh
 
 //TODO CONFIG agregar en .config/openbox/autostart:
-//TODO CONFIG usr/bin/python /var/www/html/pds/sys/com/serialGet.py &
+//TODO CONFIG usr/bin/python /var/www/html/pds/sys/gpu_analog_chain.py &
 //TODO CONFIGepiphany-browser -a --profile ~/.config http://localhost/pds/display.php --display=:0 &
 
 

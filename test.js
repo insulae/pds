@@ -7,7 +7,7 @@ var humultimo ="";
 var batultimo="";
 var preultimo ="";
 var esFreeze ="";
-var banErrorCOM = 0;
+var banErrorLectura = 0;
 var amperaje ="";
 var voltaje ="";
 var conCiclos=10;
@@ -54,21 +54,20 @@ function rompoJS(){
 /* #################################################### COMETA #################################################### */
 
 testCometa = new EventSource('test_cometa.php');
-
 //traigo datos
 testCometa.addEventListener('message', function(e) {
 	var dataCometa = JSON.parse(e.data);
 	cadena = dataCometa;
-	//console.log(cadena);
+	console.log(cadena);
 	//console.log(e.data); //debug de lo que viene
 	//return true;
 	//console.log(batultimo);
 	
 	
 	//cargo valores a voltaje y amperaje
-	if(cadena != "errorCOM"){
-		if(banErrorCOM == 1){
-			banErrorCOM = 0
+	if(cadena != "errorLectura"){
+		if(banErrorLectura == 1){
+			banErrorLectura = 0
 			seteoCartel();
 		}
 		
@@ -195,7 +194,7 @@ testCometa.addEventListener('message', function(e) {
 		// ########### FIN CRANK ############
 		
 	}else{
-		if(banErrorCOM != 1){
+		if(banErrorLectura != 1){
 			mostrarVoltaje("");
 			mostrarAmperaje("");
 			mostrarBateria("");
@@ -203,7 +202,7 @@ testCometa.addEventListener('message', function(e) {
 			mostrarHumedad("");
 			mostrarPresion("");
 			seteoCartel();
-			banErrorCOM = 1;
+			banErrorLectura = 1;
 			ampAnt = 0;
 		}
 	}	
@@ -257,9 +256,9 @@ $('#guardar-crank').click(function(){
 
 //seteo cartel para crank y rec
 function seteoCartel(){
-	if(cadena == "errorCOM"){
+	if(cadena == "errorLectura"){
 		$('#cartel').addClass("cartel-error");
-		$('#cartel').text("ERROR COM");
+		$('#cartel').text("ERROR");
 	}else{
 		$('#cartel').removeClass("cartel-error");
 		//hay crank y rec
@@ -414,12 +413,11 @@ function guardarCheck(cadena, esFreeze) {
 
 /* ###################### VOLTAJE GAUGE ################## */
 function mostrarVoltaje(dato){
-	
+
 	//armado de decimal
 	var decimal = parseInt(Math.round((dato - parseInt(dato))*10));
 	decimal = "."+decimal;
 	dato = parseInt(dato);
-	
 	//seteo color
 	if( (dato >= 0 && dato < 20) || (dato >= 30)){
 		$("#voltaje-valor").css("color", "red");
@@ -433,14 +431,12 @@ function mostrarVoltaje(dato){
 		$("#voltaje-valor").css("color", "#00ff00");
 		$("#voltaje-valor-dec").css("color", "#00ff00");
 	}
-	$("#voltaje-valor").text(dato);
-	$("#voltaje-valor-dec").text(decimal);
 	
 	//controlo vacio y overflow
 	if(dato <= 0){
+		dato = 0;
 		$("#voltaje-valor").css("left", "37px"); //int37
 		$("#voltaje-valor").text("--");
-		dato = 0;
 	//overflow
 	}else if(dato > 0 && dato < 10){
 		$("#voltaje-valor").css("left", "30px"); //int30
@@ -453,7 +449,11 @@ function mostrarVoltaje(dato){
 		dato = 40;
 	//reseteo a inicial
 	}else{
+		dato = "00";
+		decimal = ".0";
 		$("#voltaje-valor").css("left", "25px"); //int35
+		$("#voltaje-valor").css("color", "red");
+		$("#voltaje-valor-dec").css("color", "red");
 	}
 	
 	//calculo el grado a mover
@@ -462,7 +462,13 @@ function mostrarVoltaje(dato){
 		grado = parseInt(dato-20)* 6.80;  //para lograr 130º 130/40 = 3.25 //135 137/20 =
 	}else if(dato < 20){
 		grado = parseInt(20-dato)* -6.80;
-	}		
+	}
+	
+	//muestro los cambios
+	$("#voltaje-valor").text(dato);
+	$("#voltaje-valor-dec").text(decimal);
+	
+	//muevo aguja
 	$("#voltaje-aguja").css("transform", "rotate("+grado+"deg)");
 }
 
@@ -478,8 +484,6 @@ function mostrarAmperaje(dato){
 	else if(dato >= 800){
 		$("#corriente-valor").css("color", "red");		
 	}
-	//muestro los cambios
-	$("#corriente-valor").text(dato);
 	
 	//controlo vacio y overflow
 	if(dato <= 0){
@@ -512,6 +516,9 @@ function mostrarAmperaje(dato){
 	}	
 	
 	//muestro los cambios
+	$("#corriente-valor").text(dato);
+	
+	//muevo aguja
 	$("#corriente-aguja").css("transform", "rotate("+grado+"deg)");
 }
 
@@ -710,5 +717,3 @@ function graficaCanvas() {
 
 
 cargaJS();
-
-
