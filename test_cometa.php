@@ -2,8 +2,6 @@
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 
-require ("sys/com/sensores.php");
-
 
 //seteo el ciclo del cometa si es pantalla o no
 if($_REQUEST[display] == true){
