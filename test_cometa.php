@@ -2,7 +2,6 @@
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 
-
 //seteo el ciclo del cometa si es pantalla o no
 if($_REQUEST[display] == true){
 	$refresco = 900000;
@@ -19,25 +18,27 @@ while (true) {
 
 
 	if($cadena != "ERRORADA" && $cadena != ""){
-		list($tiempo, $sensor, $sensorxx, $voltaje, $amperaje) = split(',', $cadena);
+
 		$registro = new stdClass();
-
-			//GENERO SENSORES
-			$sensores = Array();
+		$sensores = Array();
 
 
-			
-			
+
+/*************************************** SENSORES ********************************************/			
+		list($tiempo, $voltaje, $amperaje, $xx, $xxx) = split(',', $cadena);
+/*************************************** SENSORES ********************************************/		
+					
+					
 /*************************************** CALCULO VOLTAJE ********************************************/
-			$voltaje = $voltaje-26470;
-			$sensores[$sensor1] = round($voltaje,3);
+			$voltaje = $voltaje;
+			$sensores[vol] = round($voltaje,3);
 /*************************************** CALCULO VOLTAJE ********************************************/
 			
 			
 			
 /*************************************** CALCULO AMPERAJE ********************************************/
- 			$amperaje = $amperaje-26470;
-			$sensores[$sensor2] = round($amperaje,1);
+ 			$amperaje = $amperaje;
+			$sensores[amp] = round($amperaje,1);
 /*************************************** CALCULO AMPERAJE ********************************************/
 
 			
@@ -55,7 +56,7 @@ while (true) {
  				$bateria=($voltaje*14.07)-258;
 	 			$bateria = round($bateria,1);
  			}
-			$sensores[$sensor3] = $bateria; 	
+			$sensores[bat] = $bateria; 	
 /*************************************** CALCULO BATERIA ********************************************/ 		
 
 			//genero y cargo fecha
@@ -70,7 +71,7 @@ while (true) {
 			//cargo sensores
 			$registro->sensores = $sensores;
 
-			echo "data: " . $cadena . "\n\n"; //debug
+			//echo "data: " . $cadena . "\n\n"; //debug
 			echo "data: " . json_encode($registro). "\n\n";	//produccion
 			
 	}else{

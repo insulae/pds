@@ -195,12 +195,12 @@ testCometa.addEventListener('message', function(e) {
 		
 	}else{
 		if(banErrorLectura != 1){
-			mostrarVoltaje("");
-			mostrarAmperaje("");
-			mostrarBateria("");
-			mostrarTemperatura("");
-			mostrarHumedad("");
-			mostrarPresion("");
+			mostrarVoltaje(0);
+			mostrarAmperaje(0);
+			mostrarBateria(0);
+			mostrarTemperatura(0);
+			mostrarHumedad(0);
+			mostrarPresion(0);
 			seteoCartel();
 			banErrorLectura = 1;
 			ampAnt = 0;
@@ -413,7 +413,6 @@ function guardarCheck(cadena, esFreeze) {
 
 /* ###################### VOLTAJE GAUGE ################## */
 function mostrarVoltaje(dato){
-
 	//armado de decimal
 	var decimal = parseInt(Math.round((dato - parseInt(dato))*10));
 	decimal = "."+decimal;
@@ -432,11 +431,15 @@ function mostrarVoltaje(dato){
 		$("#voltaje-valor-dec").css("color", "#00ff00");
 	}
 	
+	//muestro los cambios
+	$("#voltaje-valor").text(dato);
+	$("#voltaje-valor-dec").text(decimal);
+	
 	//controlo vacio y overflow
 	if(dato <= 0){
 		dato = 0;
-		$("#voltaje-valor").css("left", "37px"); //int37
-		$("#voltaje-valor").text("--");
+		$("#voltaje-valor").css("left", "30px"); //int37
+		$("#voltaje-valor").text("00");
 	//overflow
 	}else if(dato > 0 && dato < 10){
 		$("#voltaje-valor").css("left", "30px"); //int30
@@ -463,11 +466,7 @@ function mostrarVoltaje(dato){
 	}else if(dato < 20){
 		grado = parseInt(20-dato)* -6.80;
 	}
-	
-	//muestro los cambios
-	$("#voltaje-valor").text(dato);
-	$("#voltaje-valor-dec").text(decimal);
-	
+		
 	//muevo aguja
 	$("#voltaje-aguja").css("transform", "rotate("+grado+"deg)");
 }
@@ -484,6 +483,13 @@ function mostrarAmperaje(dato){
 	else if(dato >= 800){
 		$("#corriente-valor").css("color", "red");		
 	}
+	else{
+		$("#corriente-valor").css("color", "#00ff00");
+		dato = "00";
+	}
+	
+	//muestro los cambios
+	$("#corriente-valor").text(dato);
 	
 	//controlo vacio y overflow
 	if(dato <= 0){
@@ -514,9 +520,6 @@ function mostrarAmperaje(dato){
 	}else if(dato < 750){
 		grado = parseInt(750-dato)*-0.18266;
 	}	
-	
-	//muestro los cambios
-	$("#corriente-valor").text(dato);
 	
 	//muevo aguja
 	$("#corriente-aguja").css("transform", "rotate("+grado+"deg)");
