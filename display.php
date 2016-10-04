@@ -30,6 +30,7 @@
   				</div>
 			  	<label id="voltaje-titulo" class="voltaje-titulo" tex="test_voltaje">VOLT</label>
 			  	<label id="voltaje-valor" class="voltaje-valor"></label>
+			  	<label id="voltaje-valor-dec" class="voltaje-valor-dec"></label>
 			</div>
 			<div id="bateria" class="bateria">
 					<img id="bateria_graf" src="images/bateria_display_0.png" style="width: 65px">
@@ -44,7 +45,7 @@
 			<?php 
 				//$host = gethostname(); 
 				//echo gethostbyname($host);
-				echo "http://192.168.66.1";
+				echo "http://192.168.65.1";
 			?>
 		</label>
 		</div>		

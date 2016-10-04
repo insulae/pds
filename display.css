@@ -81,12 +81,22 @@
 .voltaje-valor{
 	position: absolute;
 	font-weight: bold;
-	font-size: 2.3em;
+	font-size: 2em;
 	color: #fff;
 	text-shadow: -1px 0 #5B1010, 0 1px #5B1010, 1px 0 #5B1010, 0 -1px #5B1010;	
-	left:30px;
+	left:25px;
 	bottom: 40px;
 }
+.voltaje-valor-dec{
+	position: absolute;
+	font-weight: bold;
+	font-size: 1.7em;
+	color: #fff;
+	text-shadow: -1px 0 #5B1010, 0 1px #5B1010, 1px 0 #5B1010, 0 -1px #5B1010;	
+	left:70px;
+	bottom:40px;
+}
+
 /* ###################################### BATERIA ############################ */
 .bateria {
 	position:relative;

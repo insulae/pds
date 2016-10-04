@@ -25,19 +25,21 @@ while (true) {
 
 
 /*************************************** SENSORES ********************************************/			
-		list($tiempo, $voltaje, $amperaje, $xx, $xxx) = split(',', $cadena);
+		list($tiempo, $amperaje, $voltaje, $xx, $xxx) = split(',', $cadena);
 /*************************************** SENSORES ********************************************/		
 					
 					
 /*************************************** CALCULO VOLTAJE ********************************************/
-			$voltaje = $voltaje;
-			$sensores[vol] = round($voltaje,3);
+			$sensores[vol_puro] = $voltaje;
+			$voltaje = ($voltaje*0.001268) + 0.086; //AGREGAR AQUI EL MULTIPLICADOR
+			$sensores[vol] = round($voltaje,3); 
 /*************************************** CALCULO VOLTAJE ********************************************/
 			
 			
 			
 /*************************************** CALCULO AMPERAJE ********************************************/
- 			$amperaje = $amperaje;
+			$sensores[amp_puro] = $amperaje;
+ 			$amperaje = ($amperaje*0.034)-21.0522; //AGREGAR AQUI EL MUTLIPLICADOR
 			$sensores[amp] = round($amperaje,1);
 /*************************************** CALCULO AMPERAJE ********************************************/
 
@@ -124,4 +126,4 @@ presion
 ]
 */
 
-?>
+?>s

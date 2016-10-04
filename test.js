@@ -76,8 +76,12 @@ testCometa.addEventListener('message', function(e) {
 		amperaje = dataCometa.sensores.amp;
 		
 		//controlo que no venga basura
-		if( (voltaje != 0) || (amperaje > -1000) ){
+	//	if( (voltaje != 0) || (amperaje > -1000) ){
 			mostrarVoltaje(voltaje);
+			
+			if(amperaje > -1 && amperaje < 2){
+				amperaje = 0;
+			}
 			mostrarAmperaje(parseInt(amperaje));
 			
 			// actualizo grafica
@@ -91,7 +95,7 @@ testCometa.addEventListener('message', function(e) {
 				vol.shift();	
 			}
 			grafica.render();	
-		}
+		//} //no va mas??????
 		
 				
 		//cambio gauges si hay cambio
@@ -438,13 +442,19 @@ function mostrarVoltaje(dato){
 	//controlo vacio y overflow
 	if(dato <= 0){
 		dato = 0;
-		$("#voltaje-valor").css("left", "30px"); //int37
-		$("#voltaje-valor").text("00");
+		$("#voltaje-valor").css("left", "45px"); //int37
+		$("#voltaje-valor").text("0");
 	//overflow
 	}else if(dato > 0 && dato < 10){
-		$("#voltaje-valor").css("left", "30px"); //int30
-		$("#voltaje-valor").text("0"+dato);
+		$("#voltaje-valor").css("left", "45px"); //int30
+		$("#voltaje-valor").text(dato);
+		$("#voltaje-valor-dec").css("left", "67px"); //int30
 		$("#voltaje-valor-dec").text(decimal);
+	}else if(dato > 10 && dato < 40){
+		$("#voltaje-valor").text(dato);
+		$("#voltaje-valor").css("left", "25px"); //int30
+		$("#voltaje-valor-dec").text(decimal);
+		$("#voltaje-valor-dec").css("left", "67px"); //int30		
 	}else if(dato > 40){
 		$("#voltaje-valor").css("left", "30px"); //int30
 		$("#voltaje-valor").text("O.F.");
@@ -452,9 +462,11 @@ function mostrarVoltaje(dato){
 		dato = 40;
 	//reseteo a inicial
 	}else{
-		dato = "00";
-		decimal = ".0";
-		$("#voltaje-valor").css("left", "25px"); //int35
+		$("#voltaje-valor").text("0");
+		$("#voltaje-valor-dec").text(".0");		
+	
+		$("#voltaje-valor").css("left", "100px"); //int35
+		$("#voltaje-valor-dec").css("left", "10px"); //int35
 		$("#voltaje-valor").css("color", "red");
 		$("#voltaje-valor-dec").css("color", "red");
 	}
