@@ -1,7 +1,6 @@
 <?php
 
 require('engine/base.php');
-session_start();
 switch(@$_REQUEST['accion']){
 
 

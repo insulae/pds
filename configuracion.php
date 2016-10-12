@@ -8,7 +8,7 @@
 	        <th style="width:150px">Nombre</th>
 	        <th style="width:200px;">Usuario</th>
 	        <th style="width:20px">Tipo</th>
-	        <th style="width:150px; padding-left:50px"><span class="glyph-icon flaticon-circle-1 add-usuario" data-toggle="modal" data-target="#modalAltaUsuario"></span></th>
+	        <th style="width:150px; padding-left:50px"><span class="glyph-icon flaticon-circle add-usuario" data-toggle="modal" data-target="#modalAltaUsuario"></span></th>
 	      </tr>
 	    </thead>
 	    <tbody>

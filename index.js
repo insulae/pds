@@ -6,7 +6,7 @@ function rompoJS(){
 	
 }
 //VARIABLES SETEABLES DESDE INTERFAZ
-var crankDif = 100;
+var crankDif = 300;
 var idioma_cod = navigator.language.substr (0, 2);
 
 //inicio
@@ -44,7 +44,12 @@ function tabSelect(tab){
 }
 
 $('#tab-inicio').click(function(){
-	tabSelect('inicio');
+	rompoJS();
+	$('#pagina').load('inicio.php');
+	$('#pagina').ready(function() {
+		$(".menu-tabs button").removeClass("tabactivo");
+		$.getScript('inicio.js', function() {cargaJS();});
+	});
 });
 
 $('#tab-test').click(function(){
@@ -70,7 +75,15 @@ $('#configuracion').click(function(){
 		$(".menu-tabs button").removeClass("tabactivo");
 		$.getScript('configuracion.js', function() {cargaJS();});
 	});
+});	
 
+$('#wifi').click(function(){
+	rompoJS();
+	$('#pagina').load('wificonf.php');
+	$('#pagina').ready(function() {
+		$(".menu-tabs button").removeClass("tabactivo");
+		$.getScript('wificonf.js', function() {cargaJS();});
+	});
 });
 
 cargaJS();

@@ -3,14 +3,14 @@
 	<div class="cont-aviones-botonera">
   		<input id="patente" type="text" class="form-control input-avion">
   		<button id="btn-buscar" type="button" class="btn btn-info btn-buscar"><label tex="buscar"></label></button>
-  		<span class="glyph-icon flaticon-circle-1 add-avion" data-toggle="modal" data-target="#modalAltaAvion" data-backdrop="false"></span>
+  		<span class="glyph-icon flaticon-circle add-avion" data-toggle="modal" data-target="#modalAltaAvion" data-backdrop="false"></span>
 	</div>
 	<div class="cont-aviones">
 	<table id="aviones-tabla">
     	<thead>
 	      <tr style="height: 40px;">
 	        <th style="width:230px"><label tex="avion"></label></th>
-	        <th><label tex="motores"></label></th>
+	        <th><label tex="motores"></label></th>	        
 	        <th style="width: 200px"><span class="glyph-icon flaticon-arrows-1 icon-acciones"></span></th>
 	      </tr>
 	    </thead>

@@ -1,0 +1,151 @@
+@CHARSET "UTF-8";
+
+/* ################# wifi ################# */
+.cont-wificonf-fondo{
+	position: absolute;
+  	border-radius: 10px 10px;
+  	background-color: #2a2c31;
+  	top:150px;
+  	margin-left: 5px;
+}
+.cont-wificonf{
+	position:relative;
+	background-color: black;
+	margin: 10px;
+	padding: 10px;
+	width:550px;
+	height: 250px;
+	overflow-y:scroll;
+}
+
+.cont-wificon-fondo{
+	position: absolute;
+  	border-radius: 10px 10px;
+  	background-color: #2a2c31;
+  	top:150px;
+  	right: 5px;
+}
+.cont-wificon{
+	position:relative;
+	background-color: black;
+	margin: 10px;
+	padding: 10px;
+	width:320px;
+	height: 250px;
+}
+
+.cont-wifiestado-fondo{
+	position: absolute;
+  	border-radius: 10px 10px;
+  	background-color: #2a2c31;
+  	top:10px;
+  	right: 5px;
+}
+.cont-wifiestado{
+	position:relative;
+	background-color: black;
+	margin: 10px;
+	padding: 10px;
+	width:900px;
+	height: 100px;
+	overflow-y:auto;
+}
+.input-wifi{
+	position:relative;
+	float:left;
+	background-color: #dadada;
+	width: 200px;
+	height: 40px;
+	border-radius: 3px 3px;
+	padding-left: 10px;
+	margin-top: 2px;	
+	margin-left: 2px;
+	font-weight: bold;
+	color:black;
+}
+.input-wifi:focus {
+  border-color: #ffffff;
+  outline: 0;
+  box-shadow: inset 0 1px 1px #3791ff, 0 0 20px #3791ff;
+}
+
+.refresca-wifi{
+	position:relative;
+	float:left;
+	color:#fff;
+	top:1px;
+	right:20px;
+	cursor: pointer;
+    display: inline-block;
+    transform: scaleY(1.15) scaleX(1.15);	
+}
+.refresca-wifi:hover{
+	color:#35ff35;
+}
+.estado-wifi{
+	position:relative;
+	background-color: green;
+	top: 250px;
+	left: 210px;
+	margin: 10px;
+	padding: 10px;
+	height: 40px;
+}
+
+/* ################# wifi TABLA ################# */
+
+.tr-wifi{
+	text-align: center;
+	font-size: 1.4em;
+	height: 60px;
+	background: #3c3c41;
+	cursor: pointer;
+}
+
+.tr-wifi-activo{
+	text-align: center;
+	font-size: 1.4em;
+	height: 60px;
+	background: #8ae234;
+	cursor: pointer;
+	color:black;
+}
+.td-hidden{
+	display: none;
+}
+
+
+.cont-wificonf th{
+	font-size: 1.2em;
+	width:70px; 
+	text-align: center;
+	background-color: #375a7f;
+	font-weight: bold;
+	border-bottom: 2px;
+	border-bottom-style: solid;
+	border-color: #000;
+}
+
+.cont-wificonf td{
+	border-bottom: 2px;
+	border-bottom-style: solid;
+	border-color: #000;
+}
+
+.btn-accion-eliminar, .btn-accion-editar{
+	display: inline-block;
+    transform: scaleY(1.2) scaleX(1.2);
+    cursor: pointer;
+}
+.btn-accion-eliminar{
+	color:#f28551;
+	margin-left: 30px;
+}
+.btn-accion-editar{
+	color:#40b440;	    
+}
+
+.icon-acciones{
+	display: inline-block;
+    transform: scaleY(1.4) scaleX(1.4);
+}

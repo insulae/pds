@@ -35,7 +35,8 @@
 			    <button id="tab-checks" type="button" class="tab tabno"><label tex="checks"></label></button>
 			    <button id="tab-cranks" type="button" class="tab tabno"><label tex="cranks"></label></button>
 			    <button id="tab-grabaciones" type="button" class="tab tabno"><label tex="grabaciones"></label></button>
-			    <div id="tab-avion" type="button" class="tabavion"></div>
+			    <div id="tab-avion" type="button" class="tabavion"></div>			    
+				<span id="wifi" class="glyph-icon flaticon-modem ico-wifi"></span>			    
 				<span id="configuracion" class="glyph-icon flaticon-cogwheel ico-conf"></span>	
 			</div>
 		</div>

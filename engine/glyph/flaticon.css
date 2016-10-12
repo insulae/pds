@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 20/04/2016 21:17
+  	Creation date: 11/10/2016 16:26
   	*/
 
 @font-face {
@@ -29,42 +29,33 @@ font-style: normal;
 margin-left: 20px;
 }
 
-.flaticon-alphabet:before { content: "\f100"; }
+.flaticon-airplane-flight:before { content: "\f100"; }
 .flaticon-arrows:before { content: "\f101"; }
 .flaticon-arrows-1:before { content: "\f102"; }
-.flaticon-check:before { content: "\f103"; }
-.flaticon-circle:before { content: "\f104"; }
-.flaticon-circle-1:before { content: "\f105"; }
-.flaticon-clock:before { content: "\f106"; }
-.flaticon-close:before { content: "\f107"; }
-.flaticon-cogwheel:before { content: "\f108"; }
-.flaticon-computer:before { content: "\f109"; }
-.flaticon-cone:before { content: "\f10a"; }
+.flaticon-candado-abierto:before { content: "\f103"; }
+.flaticon-candado-cerrado:before { content: "\f104"; }
+.flaticon-check:before { content: "\f105"; }
+.flaticon-circle:before { content: "\f106"; }
+.flaticon-circle-1:before { content: "\f107"; }
+.flaticon-clock:before { content: "\f108"; }
+.flaticon-close:before { content: "\f109"; }
+.flaticon-cogwheel:before { content: "\f10a"; }
 .flaticon-flash:before { content: "\f10b"; }
-.flaticon-flying:before { content: "\f10c"; }
-.flaticon-globe:before { content: "\f10d"; }
-.flaticon-graphic:before { content: "\f10e"; }
-.flaticon-graphic-1:before { content: "\f10f"; }
-.flaticon-lock:before { content: "\f110"; }
-.flaticon-nature:before { content: "\f111"; }
-.flaticon-next:before { content: "\f112"; }
-.flaticon-people:before { content: "\f113"; }
-.flaticon-phone:before { content: "\f114"; }
-.flaticon-play:before { content: "\f115"; }
-.flaticon-power:before { content: "\f116"; }
-.flaticon-shape:before { content: "\f117"; }
-.flaticon-signal:before { content: "\f118"; }
-.flaticon-signs:before { content: "\f119"; }
-.flaticon-signs-1:before { content: "\f11a"; }
-.flaticon-signs-2:before { content: "\f11b"; }
-.flaticon-speedometer:before { content: "\f11c"; }
-.flaticon-square:before { content: "\f11d"; }
-.flaticon-tool:before { content: "\f11e"; }
-.flaticon-tool-1:before { content: "\f11f"; }
-.flaticon-tool-2:before { content: "\f120"; }
-.flaticon-tool-3:before { content: "\f121"; }
-.flaticon-toolbox:before { content: "\f122"; }
-.flaticon-transport:before { content: "\f123"; }
-.flaticon-transport-1:before { content: "\f124"; }
-.flaticon-travel:before { content: "\f125"; }
-.flaticon-video:before { content: "\f126"; }
+.flaticon-graphic:before { content: "\f10c"; }
+.flaticon-modem:before { content: "\f10d"; }
+.flaticon-people:before { content: "\f10e"; }
+.flaticon-phone:before { content: "\f10f"; }
+.flaticon-shape:before { content: "\f110"; }
+.flaticon-signal:before { content: "\f111"; }
+.flaticon-signs:before { content: "\f112"; }
+.flaticon-signs-1:before { content: "\f113"; }
+.flaticon-tool:before { content: "\f114"; }
+.flaticon-tool-1:before { content: "\f115"; }
+.flaticon-tool-2:before { content: "\f116"; }
+.flaticon-toolbox:before { content: "\f117"; }
+.flaticon-wifi-0:before { content: "\f118"; }
+.flaticon-wifi-1:before { content: "\f119"; }
+.flaticon-wifi-2:before { content: "\f11a"; }
+.flaticon-wifi-3:before { content: "\f11b"; }
+.flaticon-wifi-4:before { content: "\f11c"; }
+.flaticon-wifi-5:before { content: "\f11d"; }
