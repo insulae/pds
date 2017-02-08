@@ -1,3 +1,4 @@
+//Brackets GIT
 var regRec = [];
 var regCrank = [];
 var cadenaAmp = []; //para salvar las 3 cadenas que me detectaron el crank
