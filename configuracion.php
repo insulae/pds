@@ -56,5 +56,5 @@
 		<br>
 		<label tex="ultimo_backup"></label>: <div id="archivo_backup"></div>
 	</div>
-
-<!--######################### MODAL AGREGAR usuario ########################## -->
+	
+<script src="configuracion.js"></script>

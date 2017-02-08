@@ -4,6 +4,9 @@ function cargaJS(){
 	traerWifis();
 }
 
+var reloj;
+var conReloj=0;
+
 
 /*##################################### wifi wifi ##########################*/
 
@@ -12,22 +15,34 @@ $('#wificonf-tabla').on('click', '.tr-wifi', function(event) {
 	  $(this).addClass('tr-wifi-activo').siblings().removeClass('tr-wifi-activo');
 	  wifi = $(this).find("#celda-wifi").html();
 	  $('#wifi-nombre').attr('value',wifi);
+	  $('#wifi-conectar').removeClass('disabled');
 });
 
 /* guardar wifi */
-$('#wifi-guardar').on('click', function() {
+$('#wifi-conectar').on('click', function() {
 	guardarWifi();
+	relojConectando();
 });
-
-
-
-/*###################### funciones a base ######################*/
 
 $('#refresca-wifi').click(function(){
 	$('#wificonf-tabla tbody').remove();
 	$('#estado-wifi').css('visibility','visible');
 	traerWifis();
 });
+
+function relojConectando(){
+	reloj = setInterval(function () {
+		$('#reloj').toggleClass('conectando');
+		conReloj++;
+		if(conReloj > 20){
+			clearInterval(reloj);
+			$('#wifi-conectar').addClass('disabled');
+			$('#reloj').removeClass('conectando');
+		}
+	}, 700)
+}
+
+/*###################### funciones a base ######################*/
 
 /* traer Usuarios  */
 function traerWifis() {
@@ -64,7 +79,7 @@ function traerWifis() {
 		    			fila+='<td id="celda-wifi" style="font-size: 0.8em;">'+wifi[i].nombre+'</td>';
 		    			fila+='<td style="padding-right:20px">'+wifi[i].encriptacion+'</td>';
 		    			fila+='<td>'+wifi[i].senal+'</td>';
-		    			fila+='<td><span class="glyph-icon flaticon-tool-2 btn-accion-editar"></span></td>';
+		    			fila+='<td></td>';
 		    			fila+='<td id="id-wifi" class="td-hidden">'+wifi[i].nombre+'</td>';
 		    			fila+='</tr>';
 		    			
@@ -90,3 +105,5 @@ function guardarWifi() {
 	    }	
 	});
 }
+
+cargaJS();

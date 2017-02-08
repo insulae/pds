@@ -35,9 +35,10 @@
 			    <button id="tab-checks" type="button" class="tab tabno"><label tex="checks"></label></button>
 			    <button id="tab-cranks" type="button" class="tab tabno"><label tex="cranks"></label></button>
 			    <button id="tab-grabaciones" type="button" class="tab tabno"><label tex="grabaciones"></label></button>
-			    <div id="tab-avion" type="button" class="tabavion"></div>			    
-				<span id="wifi" class="glyph-icon flaticon-modem ico-wifi"></span>			    
-				<span id="configuracion" class="glyph-icon flaticon-cogwheel ico-conf"></span>	
+			    <div id="tab-avion" type="button" class="tabavion"></div>
+				<div id="wifi" class="glyph-icon flaticon-modem ico-wifi"></div>
+				<div id="bategraf" class="glyph-icon flaticon-battery ico-bategraf"></div>			    
+				<div id="configuracion" class="glyph-icon flaticon-settings ico-conf"></div>	
 			</div>
 		</div>
 		<div id="pagina" class="pagina">
@@ -59,9 +60,13 @@
 //TODO CONFIG usr/bin/python /var/www/html/pds/sys/gpu_analog_chain.py &
 //TODO CONFIGepiphany-browser -a --profile ~/.config http://localhost/pds/display.php --display=:0 &
 
-
-//TODO CONFIG agregar en rc.xml:
-//TODO CONFIG <application name="epiphany-browser"><decor>no</decor></application>
+/*
+ * *modo AP display
+*leyenda en estado para que desconecte wifi desde display en caso de error
+*upload base
+*make excel
+*subir interfaz
+ */
 
 
 ?>

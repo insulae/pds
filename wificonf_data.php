@@ -35,7 +35,7 @@ switch(@$_REQUEST['accion']){
 		
 	break;
 	case 'guardarWifi':
-		exec("sudo sys/vash wifi connect ". @$_POST['wifi_nombre']. " ".@$_POST['wifi_clave']);
+		exec("sudo sys/vash wifi set ". @$_POST['wifi_nombre']. " ".@$_POST['wifi_clave']);
 		echo "listo";
 	break;
 }

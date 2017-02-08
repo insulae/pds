@@ -419,6 +419,9 @@ function guardarCheck(cadena, esFreeze) {
 function mostrarVoltaje(dato){
 	//armado de decimal
 	var decimal = parseInt(Math.round((dato - parseInt(dato))*10));
+	if(decimal == 10){
+		decimal = 9;
+	}
 	decimal = "."+decimal;
 	dato = parseInt(dato);
 	//seteo color
@@ -464,9 +467,8 @@ function mostrarVoltaje(dato){
 	}else{
 		$("#voltaje-valor").text("0");
 		$("#voltaje-valor-dec").text(".0");		
-	
-		$("#voltaje-valor").css("left", "100px"); //int35
-		$("#voltaje-valor-dec").css("left", "10px"); //int35
+		$("#voltaje-valor").css("left", "45px"); //int35
+		$("#voltaje-valor-dec").css("left", "67px"); //int35
 		$("#voltaje-valor").css("color", "red");
 		$("#voltaje-valor-dec").css("color", "red");
 	}

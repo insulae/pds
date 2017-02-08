@@ -50,24 +50,6 @@
 	height: 100px;
 	overflow-y:auto;
 }
-.input-wifi{
-	position:relative;
-	float:left;
-	background-color: #dadada;
-	width: 200px;
-	height: 40px;
-	border-radius: 3px 3px;
-	padding-left: 10px;
-	margin-top: 2px;	
-	margin-left: 2px;
-	font-weight: bold;
-	color:black;
-}
-.input-wifi:focus {
-  border-color: #ffffff;
-  outline: 0;
-  box-shadow: inset 0 1px 1px #3791ff, 0 0 20px #3791ff;
-}
 
 .refresca-wifi{
 	position:relative;
@@ -91,6 +73,50 @@
 	padding: 10px;
 	height: 40px;
 }
+
+/* ################# box wifi ################# */
+.input-wifi{
+	position:relative;
+	float:left;
+	background-color: #dadada;
+	width: 200px;
+	height: 40px;
+	border-radius: 3px 3px;
+	padding-left: 10px;
+	margin-top: 2px;	
+	margin-left: 2px;
+	font-weight: bold;
+	color:black;
+}
+.input-wifi:focus {
+  border-color: #ffffff;
+  outline: 0;
+  box-shadow: inset 0 1px 1px #3791ff, 0 0 20px #3791ff;
+}
+.wifi-conectar{
+	height: 45px;
+	width:50px;
+	background-color: #14e900;
+	text-align: center;
+	margin: 0 auto;
+	border-radius: 5px 5px;
+	border: 1px;
+	font-weight: bold;
+	color:black;
+	font-size:22px;
+}
+.flaticon-conectado{
+	display: inline-block;
+    transform: scaleY(1.3) scaleX(1.3);
+    padding-left: 20px;
+}
+.disabled{
+	background: grey;
+}
+.conectando{
+	color: red;
+}
+/* ################# box wifi ################# */
 
 /* ################# wifi TABLA ################# */
 

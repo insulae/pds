@@ -57,8 +57,10 @@ $('#btn-backup').click(function(){
 		,type:  'post'
 		,success: function (archivo) {
 			console.log("Se creo archivo: " + archivo);
-			$(location).attr('href','http://localhost/pds/sys/backups/'+archivo);
+			$(location).attr('href','sys/backups/'+archivo);
 			alertGuarda.close();
+			ultimoBackup();
+
 		}
 	});
 });
@@ -68,8 +70,9 @@ function ultimoBackup(){
 		url:   'configuracion_data.php?accion=ultimo_backup'
 		,type:  'post'
 		,success: function (archivo) {
-			$(archivo_backup).replaceWith('<a href="sys/backups/'+archivo+'">'+archivo+'</a>');
+			$('#archivo_backup').replaceWith('<a href="sys/backups/'+archivo+'">'+archivo+'</a>');
 			//alertGuarda.close();
+			console.log(archivo);
 		}
 	});	
 }
@@ -143,3 +146,4 @@ function eliminarUsuario(usuario){
 	    }	
 	});
 }
+cargaJS();

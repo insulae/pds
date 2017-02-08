@@ -55,9 +55,6 @@ testCometa.addEventListener('message', function(e) {
 			mostrarVoltaje("");
 			mostrarAmperaje("");
 			mostrarBateria("");
-			mostrarTemperatura("");
-			mostrarHumedad("");
-			mostrarPresion("");
 			seteoCartel();
 			banErrorCOM = 1;
 			ampAnt = 0;
@@ -69,6 +66,9 @@ testCometa.addEventListener('message', function(e) {
 function mostrarVoltaje(dato){
 	//armado de decimal
 	var decimal = parseInt(Math.round((dato - parseInt(dato))*10));
+	if(decimal == 10){
+		decimal = 9;
+	}
 	decimal = "."+decimal;
 	dato = parseInt(dato);
 	//seteo color
@@ -115,8 +115,8 @@ function mostrarVoltaje(dato){
 		$("#voltaje-valor").text("0");
 		$("#voltaje-valor-dec").text(".0");		
 	
-		$("#voltaje-valor").css("left", "100px"); //int35
-		$("#voltaje-valor-dec").css("left", "10px"); //int35
+		$("#voltaje-valor").css("left", "50px"); //int35
+		$("#voltaje-valor-dec").css("left", "70px"); //int35
 		$("#voltaje-valor").css("color", "red");
 		$("#voltaje-valor-dec").css("color", "red");
 	}

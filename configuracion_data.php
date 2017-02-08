@@ -53,16 +53,32 @@ switch(@$_REQUEST['accion']){
 		}
 		break;
 		
-//HACER BACKUP
-case 'backup':
-	$respuesta = shell_exec('sys/sh/backup.sh');
-	echo $respuesta;
-	break;
-	
-//ULTIMO BACKUP
-case 'ultimo_backup':
-	$respuesta = shell_exec('sys/sh/backup.sh');
-	echo $respuesta;
-	break;
+	//HACER BACKUP
+	case 'backup':
+		$query = $db->query('
+			SELECT *
+			FROM configuracion
+		');
+		$datos = queryToObject($query);	
+		$pds = $datos[0]->nro_pds;
+		$respuesta = exec('sys/backup.sh ' .$pds);
+		echo $respuesta;
+		break;
+		
+	//ULTIMO BACKUP
+	case 'ultimo_backup':
+		$respuesta = exec('cd sys/backups/ ; ls pds*');
+		echo $respuesta;
+		break;
+}
+
+
+function traerConfiguracion(){
+	$query = $db->query('
+			SELECT *
+			FROM configuracion
+		');
+	$datos = json_encode(queryToObject($query));
+	return 7;
 }
 ?>

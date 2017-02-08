@@ -31,6 +31,8 @@
     <label tex="clave">Contraseña:</label><br>
     <input id="wifi-clave" type="text" class="input-wifi"><br>
     <br><br>
-    <button id="wifi-guardar" type="button" class="btn btn-danger" style="width: 100px; height: 40px;"><label tex="wifi-guardar"/>Guardar</button>
+    <button id="wifi-conectar" type="button" class="wifi-conectar disabled" style="width: 200px; height: 40px;"><label tex="wifi-conectar"/>Conectar <span id="reloj" class="glyph-icon flaticon-conectado"></span></button>
 	</div>
 </div>
+
+<script src="wificonf.js"></script>

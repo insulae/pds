@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 11/10/2016 16:26
+  	Creation date: 08/11/2016 19:58
   	*/
 
 @font-face {
@@ -30,32 +30,32 @@ margin-left: 20px;
 }
 
 .flaticon-airplane-flight:before { content: "\f100"; }
-.flaticon-arrows:before { content: "\f101"; }
-.flaticon-arrows-1:before { content: "\f102"; }
-.flaticon-candado-abierto:before { content: "\f103"; }
-.flaticon-candado-cerrado:before { content: "\f104"; }
-.flaticon-check:before { content: "\f105"; }
-.flaticon-circle:before { content: "\f106"; }
-.flaticon-circle-1:before { content: "\f107"; }
-.flaticon-clock:before { content: "\f108"; }
-.flaticon-close:before { content: "\f109"; }
-.flaticon-cogwheel:before { content: "\f10a"; }
-.flaticon-flash:before { content: "\f10b"; }
-.flaticon-graphic:before { content: "\f10c"; }
-.flaticon-modem:before { content: "\f10d"; }
-.flaticon-people:before { content: "\f10e"; }
-.flaticon-phone:before { content: "\f10f"; }
-.flaticon-shape:before { content: "\f110"; }
-.flaticon-signal:before { content: "\f111"; }
-.flaticon-signs:before { content: "\f112"; }
-.flaticon-signs-1:before { content: "\f113"; }
-.flaticon-tool:before { content: "\f114"; }
-.flaticon-tool-1:before { content: "\f115"; }
-.flaticon-tool-2:before { content: "\f116"; }
-.flaticon-toolbox:before { content: "\f117"; }
-.flaticon-wifi-0:before { content: "\f118"; }
-.flaticon-wifi-1:before { content: "\f119"; }
-.flaticon-wifi-2:before { content: "\f11a"; }
-.flaticon-wifi-3:before { content: "\f11b"; }
-.flaticon-wifi-4:before { content: "\f11c"; }
-.flaticon-wifi-5:before { content: "\f11d"; }
+.flaticon-ban-circle-symbol:before { content: "\f101"; }
+.flaticon-battery:before { content: "\f102"; }
+.flaticon-call-center-worker-with-headset:before { content: "\f103"; }
+.flaticon-check:before { content: "\f104"; }
+.flaticon-checked-symbol:before { content: "\f105"; }
+.flaticon-cog-wheel-silhouette:before { content: "\f106"; }
+.flaticon-cross-mark-on-a-black-circle-background:before { content: "\f107"; }
+.flaticon-lightning:before { content: "\f108"; }
+.flaticon-wifi-2:before { content: "\f109"; }
+.flaticon-modem:before { content: "\f10a"; }
+.flaticon-move-arrows:before { content: "\f10b"; }
+.flaticon-open-wrench-tool-silhouette:before { content: "\f10c"; }
+.flaticon-padlock:before { content: "\f10d"; }
+.flaticon-pencil:before { content: "\f10e"; }
+.flaticon-plus-sign-in-a-black-circle:before { content: "\f10f"; }
+.flaticon-power-cord:before { content: "\f110"; }
+.flaticon-power-sign:before { content: "\f111"; }
+.flaticon-refresh-page-option:before { content: "\f112"; }
+.flaticon-settings:before { content: "\f113"; }
+.flaticon-wifi-0:before { content: "\f114"; }
+.flaticon-signal-wifi-4:before { content: "\f115"; }
+.flaticon-signal-wifi-3:before { content: "\f116"; }
+.flaticon-signal-wifi-5:before { content: "\f117"; }
+.flaticon-signal-wifi-1:before { content: "\f118"; }
+.flaticon-star:before { content: "\f119"; }
+.flaticon-time:before { content: "\f11a"; }
+.flaticon-toolbox:before { content: "\f11b"; }
+.flaticon-unlock:before { content: "\f11c"; }
+.flaticon-woman-with-headset:before { content: "\f11d"; }

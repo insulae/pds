@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#cd sys/
+
+if [ "$1" == "ap" ];then
+	#start ap
+	if [ "$2" == "start" ];then
+		bash pdsAP.sh start
+	fi
+	#stop ap
+	if [ "$2" == "stop" ];then
+		bash pdsAP.sh stop
+	fi
+fi
+
+if [ "$1" == "wifi" ];then
+	#start ap
+	if [ "$2" == "start" ];then
+		bash pdsWIFI.sh start
+	fi
+	#stop ap
+	if [ "$2" == "stop" ];then
+		bash pdsWIFI.sh stop
+	fi
+	#scan ap
+	if [ "$2" == "scan" ];then
+		bash pdsWIFI.sh scan
+	fi
+	#connect wifi
+	if [ "$2" == "connect" ];then
+		bash pdsWIFI.sh connect $3 $4
+	fi
+fi
+echo vash

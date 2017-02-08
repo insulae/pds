@@ -10,7 +10,6 @@ var crankDif = 300;
 var idioma_cod = navigator.language.substr (0, 2);
 
 //inicio
-var activo='inicio';
 var avion='';
 var id_avion='';
 var avion_motores = '';
@@ -36,8 +35,8 @@ $('#pagina').load('inicio.php');
 
 //TABS
 function tabSelect(tab){
-	rompoJS();
 	if(!($('#tab-'+tab).hasClass('tabno')) && avion !=""){
+		rompoJS();
 		$('#pagina').load(tab+'.php');
 		$('#tab-'+tab).addClass('tabactivo').siblings().removeClass('tabactivo');
 	}
@@ -48,7 +47,6 @@ $('#tab-inicio').click(function(){
 	$('#pagina').load('inicio.php');
 	$('#pagina').ready(function() {
 		$(".menu-tabs button").removeClass("tabactivo");
-		$.getScript('inicio.js', function() {cargaJS();});
 	});
 });
 
@@ -73,7 +71,6 @@ $('#configuracion').click(function(){
 	$('#pagina').load('configuracion.php');
 	$('#pagina').ready(function() {
 		$(".menu-tabs button").removeClass("tabactivo");
-		$.getScript('configuracion.js', function() {cargaJS();});
 	});
 });	
 
@@ -81,8 +78,15 @@ $('#wifi').click(function(){
 	rompoJS();
 	$('#pagina').load('wificonf.php');
 	$('#pagina').ready(function() {
-		$(".menu-tabs button").removeClass("tabactivo");
-		$.getScript('wificonf.js', function() {cargaJS();});
+		$(".menu-tabs button").removeClass("tabactivo");	
+	});
+});
+
+$('#bategraf').click(function(){
+	rompoJS();
+	$('#pagina').load('bateria.php');
+	$('#pagina').ready(function() {
+		$(".menu-tabs button").removeClass("tabactivo");	
 	});
 });
 
