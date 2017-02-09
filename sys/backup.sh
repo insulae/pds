@@ -1,6 +1,10 @@
 #!/bin/bash
-
-MYSQLDUMP=/opt/lampp/bin/mysqldump
+DEVEL=`cat sys/devel`
+if [ "$DEVEL" == "1" ];then
+    MYSQLDUMP=/opt/lampp/bin/mysqldump
+else
+    MYSQLDUMP=/usr/bin/mysqldump
+fi
 FECHA=`date +%Y-%m-%d`
 WORKDIR='sys/backups'
 cd $WORKDIR

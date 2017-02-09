@@ -25,3 +25,8 @@ if [ "$1" == "set" ];then
 	echo 'psk="'$3'"' >> wificlient.conf
 	echo '}' >> wificlient.conf
 fi
+
+if [ "$1" == "connect" ];then
+    wpa_supplicant -B -iwlan0 -c /pds/wifi_client.conf
+    dhclient wlan0
+fi

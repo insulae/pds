@@ -9,6 +9,8 @@ function rompoJS(){
 var crankDif = 300;
 var idioma_cod = navigator.language.substr (0, 2);
 
+//estado
+var pdsDevel=1; //si es 1 esta en desarrollo, 0 en producción, para activar o desactivar cosas como el mysql lampp, wifi, etc
 //inicio
 var avion='';
 var id_avion='';

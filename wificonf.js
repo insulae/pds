@@ -1,11 +1,11 @@
-function cargaJS(){
+function cargaJS() {
 	/* carga tabla  */
 	cargaIdioma();
 	traerWifis();
 }
 
 var reloj;
-var conReloj=0;
+var conReloj = 0;
 
 
 /*##################################### wifi wifi ##########################*/
@@ -54,7 +54,7 @@ function traerWifis() {
 	    	//console.log(JSON.stringify(datos));
 	    	//limpio tabla
 	    	$('#wificonf-tabla tbody').remove();
-	    	if(wifi){
+	    	if(wifi) {
 		    	for (var i=0; i < wifi.length; i++) {
 		    		if(wifi[i].encriptacion == "on"){
 		    			wifi[i].encriptacion = '<span class="glyph-icon flaticon-candado-cerrado icon-acciones"></span>';
@@ -102,8 +102,20 @@ function guardarWifi() {
 	    success:  function () {
 	    	//console.log(JSON.stringify(datos));
 	    	//limpio tabla
+            if(pdsDevel == 0){
+                conectarWifi();
+            }
+	    }
+	});
+}
+function conectarWifi(){
+    $.ajax({
+		url:   'wificonf_data.php?accion=conectarWifi',
+	    type:  'post',
+	    success:  function () {
+	    	//TODO chequear que conecta y dar mensaje
+            alert("todo");
 	    }	
 	});
 }
-
 cargaJS();

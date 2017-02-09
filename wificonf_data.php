@@ -34,9 +34,13 @@ switch(@$_REQUEST['accion']){
 		echo json_encode($datos);
 		
 	break;
+
 	case 'guardarWifi':
 		exec("sudo sys/vash wifi set ". @$_POST['wifi_nombre']. " ".@$_POST['wifi_clave']);
-		echo "listo";
+	break;
+
+	case 'conectarWifi':
+		exec("sudo sys/vash wifi connect");
 	break;
 }
 ?>

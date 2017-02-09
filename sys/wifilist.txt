@@ -2,15 +2,15 @@ wlan0     Scan completed :
           Cell 01 - Address: C0:4A:00:A7:9A:F4
                     Channel:10
                     Frequency:2.457 GHz (Channel 10)
-                    Quality=70/70  Signal level=-34 dBm  
+                    Quality=70/70  Signal level=-35 dBm  
                     Encryption key:on
                     ESSID:"demariaAP"
                     Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 6 Mb/s
                               9 Mb/s; 12 Mb/s; 18 Mb/s
                     Bit Rates:24 Mb/s; 36 Mb/s; 48 Mb/s; 54 Mb/s
                     Mode:Master
-                    Extra:tsf=000000f18a830ba6
-                    Extra: Last beacon: 132ms ago
+                    Extra:tsf=00000108423a78e9
+                    Extra: Last beacon: 128ms ago
                     IE: Unknown: 000964656D617269614150
                     IE: Unknown: 010882848B960C121824
                     IE: Unknown: 03010A
@@ -22,22 +22,22 @@ wlan0     Scan completed :
                     IE: Unknown: 32043048606C
                     IE: Unknown: 2D1AEF1103FFFF0000000000000000000000000000000406E6A70C00
                     IE: Unknown: 331AEF1103FFFF0000000000000000000000000000000406E6A70C00
-                    IE: Unknown: 3D160A070500000000000000000000000000000000000000
-                    IE: Unknown: 34160A070500000000000000000000000000000000000000
+                    IE: Unknown: 3D160A070100000000000000000000000000000000000000
+                    IE: Unknown: 34160A070100000000000000000000000000000000000000
                     IE: Unknown: DD180050F2020101830003A4000027A4000042435E0062322F00
                     IE: Unknown: DD0900037F01010000FF7F
           Cell 02 - Address: F0:F2:49:B9:42:38
                     Channel:1
                     Frequency:2.412 GHz (Channel 1)
-                    Quality=66/70  Signal level=-44 dBm  
+                    Quality=60/70  Signal level=-50 dBm  
                     Encryption key:on
                     ESSID:"HITRON-4230"
                     Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 9 Mb/s
                               18 Mb/s; 36 Mb/s; 54 Mb/s
                     Bit Rates:6 Mb/s; 12 Mb/s; 24 Mb/s; 48 Mb/s
                     Mode:Master
-                    Extra:tsf=000000000616b18e
-                    Extra: Last beacon: 1136ms ago
+                    Extra:tsf=000000001eba8a3d
+                    Extra: Last beacon: 1340ms ago
                     IE: Unknown: 000B484954524F4E2D34323330
                     IE: Unknown: 010882848B961224486C
                     IE: Unknown: 030101
@@ -54,7 +54,7 @@ wlan0     Scan completed :
                         Pairwise Ciphers (1) : CCMP
                         Authentication Suites (1) : PSK
                     IE: Unknown: DD180050F2020101800003A4000027A4000042435E0062322F00
-                    IE: Unknown: 0B05000012127A
+                    IE: Unknown: 0B05000045127A
                     IE: Unknown: 7F0101
                     IE: Unknown: DD07000C4304000000
                     IE: Unknown: 0706555320010B10
@@ -62,15 +62,15 @@ wlan0     Scan completed :
           Cell 03 - Address: 64:66:B3:5A:FB:E2
                     Channel:3
                     Frequency:2.422 GHz (Channel 3)
-                    Quality=59/70  Signal level=-51 dBm  
+                    Quality=64/70  Signal level=-46 dBm  
                     Encryption key:on
                     ESSID:"informatica"
                     Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 6 Mb/s
                               9 Mb/s; 12 Mb/s; 18 Mb/s
                     Bit Rates:24 Mb/s; 36 Mb/s; 48 Mb/s; 54 Mb/s
                     Mode:Master
-                    Extra:tsf=000003edeaced782
-                    Extra: Last beacon: 944ms ago
+                    Extra:tsf=00000015d612657e
+                    Extra: Last beacon: 1080ms ago
                     IE: Unknown: 000B696E666F726D6174696361
                     IE: Unknown: 010882848B960C121824
                     IE: Unknown: 030103
@@ -82,22 +82,22 @@ wlan0     Scan completed :
                     IE: Unknown: 32043048606C
                     IE: Unknown: 2D1AEF1103FFFF0000000000000000000000000000000406E6E70D00
                     IE: Unknown: 331AEF1103FFFF0000000000000000000000000000000406E6E70D00
-                    IE: Unknown: 3D1603051500000000000000000000000000000000000000
-                    IE: Unknown: 341603051500000000000000000000000000000000000000
+                    IE: Unknown: 3D1603051700000000000000000000000000000000000000
+                    IE: Unknown: 341603051700000000000000000000000000000000000000
                     IE: Unknown: DD180050F2020101830003A4000027A4000042435E0062322F00
                     IE: Unknown: DD0900037F01010000FF7F
           Cell 04 - Address: 38:60:77:04:C1:1B
                     Channel:6
                     Frequency:2.437 GHz (Channel 6)
-                    Quality=58/70  Signal level=-52 dBm  
+                    Quality=60/70  Signal level=-50 dBm  
                     Encryption key:on
                     ESSID:"informaCE"
                     Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 18 Mb/s
                               24 Mb/s; 36 Mb/s; 54 Mb/s
                     Bit Rates:6 Mb/s; 9 Mb/s; 12 Mb/s; 48 Mb/s
                     Mode:Master
-                    Extra:tsf=00000010e22e2cb9
-                    Extra: Last beacon: 740ms ago
+                    Extra:tsf=00000013939a0b8c
+                    Extra: Last beacon: 720ms ago
                     IE: Unknown: 0009696E666F726D614345
                     IE: Unknown: 010882848B962430486C
                     IE: Unknown: 030106
@@ -112,23 +112,40 @@ wlan0     Scan completed :
           Cell 05 - Address: 8C:DC:D4:69:8B:84
                     Channel:6
                     Frequency:2.437 GHz (Channel 6)
-                    Quality=34/70  Signal level=-76 dBm  
+                    Quality=35/70  Signal level=-75 dBm  
                     Encryption key:off
                     ESSID:"HP-Print-84-Deskjet 4640 series"
                     Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
                               11 Mb/s; 12 Mb/s; 18 Mb/s
                     Bit Rates:24 Mb/s; 36 Mb/s; 48 Mb/s; 54 Mb/s
                     Mode:Master
-                    Extra:tsf=0000000182c7ea6d
-                    Extra: Last beacon: 732ms ago
+                    Extra:tsf=000000044ca29f9a
+                    Extra: Last beacon: 940ms ago
                     IE: Unknown: 001F48502D5072696E742D38342D4465736B6A6574203436343020736572696573
                     IE: Unknown: 010802040B0C12161824
                     IE: Unknown: 030106
                     IE: Unknown: 2A0100
                     IE: Unknown: 32043048606C
                     IE: Unknown: DD180050F2020101800003A4000027A4000042435E0062322F00
-                    IE: Unknown: DD890800090004000000010102010002017803284465736B6A6574203436343020736572696573000000000000000000000000000000000000000000040F34363435000000000000000F434E340510434E344137344230524B30355A34000006101C852A4DB8001F08ABCD8CDCD4698B84070400000000080200D4090200080A04000000010B0400000000
-          Cell 06 - Address: 02:26:36:C4:7C:BF
+                    IE: Unknown: DD890800090004000000110102010002017803284465736B6A6574203436343020736572696573000000000000000000000000000000000000000000040F34363435000000000000000F434E340510434E344137344230524B30355A34000006101C852A4DB8001F08ABCD8CDCD4698B84070400000000080200D4090200080A04000000010B0400000000
+          Cell 06 - Address: 1C:3E:84:A1:A9:1C
+                    Channel:6
+                    Frequency:2.437 GHz (Channel 6)
+                    Quality=44/70  Signal level=-66 dBm  
+                    Encryption key:off
+                    ESSID:"HP-Print-1C-LaserJet 1102"
+                    Bit Rates:6 Mb/s; 9 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s
+                              36 Mb/s; 48 Mb/s; 54 Mb/s
+                    Mode:Master
+                    Extra:tsf=000000a1b7d1215f
+                    Extra: Last beacon: 880ms ago
+                    IE: Unknown: 001948502D5072696E742D31432D4C617365724A65742031313032
+                    IE: Unknown: 01088C1218243048606C
+                    IE: Unknown: 030106
+                    IE: Unknown: 050400010000
+                    IE: Unknown: 2A0100
+                    IE: Unknown: DD180050F2020101800003A4000027A4000042435E0062322F00
+          Cell 07 - Address: 02:22:32:52:78:4D
                     Channel:10
                     Frequency:2.457 GHz (Channel 10)
                     Quality=36/70  Signal level=-74 dBm  
@@ -136,25 +153,40 @@ wlan0     Scan completed :
                     ESSID:"HP7A4682"
                     Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s
                     Mode:Ad-Hoc
-                    Extra:tsf=00000001564cd3f4
-                    Extra: Last beacon: 480ms ago
+                    Extra:tsf=00000003e982701e
+                    Extra: Last beacon: 320ms ago
                     IE: Unknown: 00084850374134363832
                     IE: Unknown: 010482848B96
                     IE: Unknown: 03010A
                     IE: Unknown: 06020000
                     IE: Unknown: 0706455520010D14
-          Cell 07 - Address: 90:F6:52:D2:3B:E7
+          Cell 08 - Address: 02:22:C2:AF:F8:33
+                    Channel:10
+                    Frequency:2.457 GHz (Channel 10)
+                    Quality=24/70  Signal level=-86 dBm  
+                    Encryption key:off
+                    ESSID:"HP8A5BDB"
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s
+                    Mode:Ad-Hoc
+                    Extra:tsf=000001931bb402fa
+                    Extra: Last beacon: 516ms ago
+                    IE: Unknown: 00084850384135424442
+                    IE: Unknown: 010482848B96
+                    IE: Unknown: 03010A
+                    IE: Unknown: 06020000
+                    IE: Unknown: 0706455520010D14
+          Cell 09 - Address: 90:F6:52:D2:3B:E7
                     Channel:11
                     Frequency:2.462 GHz (Channel 11)
-                    Quality=34/70  Signal level=-76 dBm  
+                    Quality=31/70  Signal level=-79 dBm  
                     Encryption key:off
                     ESSID:"TP-LINK_D23BE7"
                     Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 9 Mb/s
                               18 Mb/s; 36 Mb/s; 54 Mb/s
                     Bit Rates:6 Mb/s; 12 Mb/s; 24 Mb/s; 48 Mb/s
                     Mode:Master
-                    Extra:tsf=000006cab67b099a
-                    Extra: Last beacon: 100ms ago
+                    Extra:tsf=000006e1670575a9
+                    Extra: Last beacon: 496ms ago
                     IE: Unknown: 000E54502D4C494E4B5F443233424537
                     IE: Unknown: 010882848B961224486C
                     IE: Unknown: 03010B
@@ -163,37 +195,42 @@ wlan0     Scan completed :
                     IE: Unknown: DD180050F2020101000003A4000027A4000042435E0062322F00
                     IE: Unknown: DD07000C4304000000
                     IE: Unknown: 0706555300010B10
-          Cell 08 - Address: 02:22:C2:AF:F8:33
-                    Channel:10
-                    Frequency:2.457 GHz (Channel 10)
-                    Quality=32/70  Signal level=-78 dBm  
-                    Encryption key:off
-                    ESSID:"HP8A5BDB"
-                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s
-                    Mode:Ad-Hoc
-                    Extra:tsf=0000017c7ece3365
-                    Extra: Last beacon: 508ms ago
-                    IE: Unknown: 00084850384135424442
-                    IE: Unknown: 010482848B96
-                    IE: Unknown: 03010A
-                    IE: Unknown: 06020000
-                    IE: Unknown: 0706455520010D14
-          Cell 09 - Address: 32:CD:A7:8C:5C:86
+          Cell 10 - Address: 12:C8:86:46:9B:9D
                     Channel:11
                     Frequency:2.462 GHz (Channel 11)
-                    Quality=33/70  Signal level=-77 dBm  
+                    Quality=35/70  Signal level=-75 dBm  
+                    Encryption key:off
+                    ESSID:"Portthru"
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 18 Mb/s
+                              24 Mb/s; 36 Mb/s; 54 Mb/s
+                    Bit Rates:6 Mb/s; 9 Mb/s; 12 Mb/s; 48 Mb/s
+                    Mode:Ad-Hoc
+                    Extra:tsf=0000000460c407c9
+                    Extra: Last beacon: 108ms ago
+                    IE: Unknown: 0008506F727474687275
+                    IE: Unknown: 010882848B962430486C
+                    IE: Unknown: 03010B
+                    IE: Unknown: 06020000
+                    IE: Unknown: 2A0100
+                    IE: Unknown: 2F0100
+                    IE: Unknown: 32040C121860
+                    IE: Unknown: DD09001018020000010000
+          Cell 11 - Address: 32:CD:A7:8C:5C:86
+                    Channel:11
+                    Frequency:2.462 GHz (Channel 11)
+                    Quality=30/70  Signal level=-80 dBm  
                     Encryption key:on
                     ESSID:"DIRECT-olM2020 Series"
                     Bit Rates:6 Mb/s; 9 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s
                               36 Mb/s; 48 Mb/s; 54 Mb/s
                     Mode:Master
-                    Extra:tsf=0000000b5e32fe82
-                    Extra: Last beacon: 496ms ago
+                    Extra:tsf=000000220edc6e0b
+                    Extra: Last beacon: 492ms ago
                     IE: Unknown: 00154449524543542D6F6C4D3230323020536572696573
                     IE: Unknown: 01088C1218243048606C
                     IE: Unknown: 03010B
-                    IE: Unknown: 2A0100
-                    IE: Unknown: 2F0100
+                    IE: Unknown: 2A0106
+                    IE: Unknown: 2F0106
                     IE: IEEE 802.11i/WPA2 Version 1
                         Group Cipher : CCMP
                         Pairwise Ciphers (1) : CCMP
@@ -202,28 +239,4 @@ wlan0     Scan completed :
                     IE: Unknown: DD180050F2020101800003A4000027A4000042435E0062322F00
                     IE: Unknown: DD050050F20500
                     IE: Unknown: DD800050F204104A0001101044000102103B0001031047001016A65700007C1000BB4932CDA78C5C861021000842726F6164636F6D10230006536F66744150102400013010420001301054000800060050F20400011011000C4D3230323020536572696573100800020018103C0001011049000E00372A0001200106FFFFFFFFFFFF
-          Cell 10 - Address: 32:CD:A7:14:FF:ED
-                    Channel:11
-                    Frequency:2.462 GHz (Channel 11)
-                    Quality=29/70  Signal level=-81 dBm  
-                    Encryption key:on
-                    ESSID:"DIRECT-50ML-2160 Series"
-                    Bit Rates:6 Mb/s; 9 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s
-                              36 Mb/s; 48 Mb/s; 54 Mb/s
-                    Mode:Master
-                    Extra:tsf=000000150645987d
-                    Extra: Last beacon: 496ms ago
-                    IE: Unknown: 00174449524543542D35304D4C2D3231363020536572696573
-                    IE: Unknown: 01088C1218243048606C
-                    IE: Unknown: 03010B
-                    IE: Unknown: 2A0100
-                    IE: Unknown: 2F0100
-                    IE: IEEE 802.11i/WPA2 Version 1
-                        Group Cipher : CCMP
-                        Pairwise Ciphers (1) : CCMP
-                        Authentication Suites (1) : PSK
-                    IE: Unknown: DD09001018020000040000
-                    IE: Unknown: DD180050F2020101800003A4000027A4000042435E0062322F00
-                    IE: Unknown: DD050050F20500
-                    IE: Unknown: DD820050F204104A0001101044000102103B0001031047001016A65700007C1000BB4932CDA714FFED1021000842726F6164636F6D10230006536F66744150102400013010420001301054000800060050F20400011011000E4D4C2D3231363020536572696573100800020080103C0001011049000E00372A0001200106FFFFFFFFFFFF
 
