@@ -1,4 +1,4 @@
-PREINSTALACION
+PREINSTALACION.
 
 /etc/rc.local
 
